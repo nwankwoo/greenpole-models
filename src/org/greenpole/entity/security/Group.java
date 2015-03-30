@@ -5,6 +5,9 @@
  */
 package org.greenpole.entity.security;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author Akinwale Agbaje
@@ -14,6 +17,7 @@ public class Group {
     private int id;
     private String name;
     private String description;
+    private Set<Requirement> requirements = new HashSet<>();
 
     public int getId() {
         return id;
@@ -37,6 +41,14 @@ public class Group {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Set<Requirement> getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(Set<Requirement> requirements) {
+        this.requirements = requirements;
     }
 
     @Override

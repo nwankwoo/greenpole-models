@@ -21,8 +21,6 @@ public class UserProfile {
     private int maxIndividualShareHolding;
     private int maxTotalShareHolding;
     private Set<Group> groups = new HashSet<>();
-    private Set<Requirement> requirements = new HashSet<>();
-    private Set<RequirementFunction> requirementFunctions = new HashSet<>();
 
     public int getId() {
         return id;
@@ -70,22 +68,6 @@ public class UserProfile {
 
     public void setGroups(Set<Group> groups) {
         this.groups = groups;
-    }
-
-    public Set<Requirement> getRequirements() {
-        return requirements;
-    }
-
-    public void setRequirements(Set<Requirement> requirements) {
-        this.requirements = requirements;
-    }
-
-    public Set<RequirementFunction> getRequirementFunctions() {
-        return requirementFunctions;
-    }
-
-    public void setRequirementFunctions(Set<RequirementFunction> requirementFunctions) {
-        this.requirementFunctions = requirementFunctions;
     }
 
     @Override
