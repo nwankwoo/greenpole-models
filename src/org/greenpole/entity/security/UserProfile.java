@@ -5,8 +5,9 @@
  */
 package org.greenpole.entity.security;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -14,13 +15,13 @@ import java.util.Set;
  * The user profile model, utilised by the front-end and middle-tier in
  * storing and retrieving user profile information.
  */
-public class UserProfile {
+public class UserProfile implements Serializable {
     private int id;
     private String firstName;
     private String lastName;
     private int maxIndividualShareHolding;
     private int maxTotalShareHolding;
-    private Set<Group> groups = new HashSet<>();
+    private Map<String, Group> groups = new HashMap<>(0);
 
     public int getId() {
         return id;
@@ -62,11 +63,11 @@ public class UserProfile {
         this.maxTotalShareHolding = maxTotalShareHolding;
     }
     
-    public Set<Group> getGroups() {
+    public Map<String, Group> getGroups() {
         return groups;
     }
 
-    public void setGroups(Set<Group> groups) {
+    public void setGroups(Map<String, Group> groups) {
         this.groups = groups;
     }
 

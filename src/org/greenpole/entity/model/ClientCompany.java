@@ -5,22 +5,40 @@
  */
 package org.greenpole.entity.model;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Akinwale Agbaje
  * The client company model, utilised by the front-end and middle-tier in
  * storing and retrieving client company information.
  */
-public class ClientCompany {
-    
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"name","code","nseSector","ceo","secretary","address","depositoryId","depositoryName","valid"})
+public class ClientCompany implements Serializable {
+    @XmlElement
     private String name;
+    @XmlElement
     private String code;
+    @XmlElement
     private String nseSector;
+    @XmlElement
     private String ceo;
+    @XmlElement
     private String secretary;
+    @XmlElement
     private String address;
+    @XmlElement
     private String depositoryName;
+    @XmlElement
     private int depositoryId;
+    @XmlElement
     private boolean valid;
 
     public ClientCompany() {

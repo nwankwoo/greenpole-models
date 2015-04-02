@@ -5,12 +5,14 @@
  */
 package org.greenpole.entity.security;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Akinwale Agbaje
  * The requirement functions the user has under their profile.
  */
-public class RequirementFunction {
+public class RequirementFunction implements Serializable {
     private int id;
     private String name;
     private String description;

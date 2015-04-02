@@ -5,19 +5,20 @@
  */
 package org.greenpole.entity.security;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author Akinwale Agbaje
  * The groups the user has under their profile.
  */
-public class Group {
+public class Group implements Serializable {
     private int id;
     private String name;
     private String description;
-    private Set<Requirement> requirements = new HashSet<>();
+    private Map<String, Requirement> requirements = new HashMap<>(0);
 
     public int getId() {
         return id;
@@ -43,11 +44,11 @@ public class Group {
         this.description = description;
     }
 
-    public Set<Requirement> getRequirements() {
+    public Map<String, Requirement> getRequirements() {
         return requirements;
     }
 
-    public void setRequirements(Set<Requirement> requirements) {
+    public void setRequirements(Map<String, Requirement> requirements) {
         this.requirements = requirements;
     }
 

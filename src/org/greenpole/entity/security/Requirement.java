@@ -5,20 +5,23 @@
  */
 package org.greenpole.entity.security;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author Akinwale Agbaje
  * The requirements the user has under their profile.
  */
-public class Requirement {
+public class Requirement implements Serializable {
     private int id;
     private String name;
     private String description;
+    private String viewType;
+    private String model;
     private String screen;
-    private Set<RequirementFunction> requirementFunctions = new HashSet<>();
+    private Map<String, RequirementFunction> requirementFunctions = new HashMap<>();
 
     public int getId() {
         return id;
@@ -44,6 +47,22 @@ public class Requirement {
         this.description = description;
     }
 
+    public String getViewType() {
+        return viewType;
+    }
+
+    public void setViewType(String viewType) {
+        this.viewType = viewType;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     public String getScreen() {
         return screen;
     }
@@ -51,12 +70,12 @@ public class Requirement {
     public void setScreen(String screen) {
         this.screen = screen;
     }
-
-    public Set<RequirementFunction> getRequirementFunctions() {
+    
+    public Map<String, RequirementFunction> getRequirementFunctions() {
         return requirementFunctions;
     }
 
-    public void setRequirementFunctions(Set<RequirementFunction> requirementFunctions) {
+    public void setRequirementFunctions(Map<String, RequirementFunction> requirementFunctions) {
         this.requirementFunctions = requirementFunctions;
     }
 
