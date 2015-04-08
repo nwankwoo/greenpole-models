@@ -20,6 +20,17 @@ public class User {
     private String department;
     private String unit;
 
+    public User(String firstName, String middleName, String lastName, String username, String department, String unit) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.username = username;
+        this.department = department;
+        this.unit = unit;
+    }
+
+    
+    
     /**
      * @return the firstName
      */
