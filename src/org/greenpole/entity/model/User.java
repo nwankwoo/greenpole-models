@@ -19,6 +19,12 @@ public class User {
     private String userType;
     private String department;
     private String unit;
+    private boolean grantAuthorisationRole;
+    
+    public User() {
+    }
+    
+    
 
     public User(String firstName, String middleName, String lastName, String username, String department, String unit) {
         this.firstName = firstName;
@@ -141,6 +147,14 @@ public class User {
      */
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public boolean isGrantAuthorisationRole() {
+        return grantAuthorisationRole;
+    }
+
+    public void setGrantAuthorisationRole(boolean grantAuthorisationRole) {
+        this.grantAuthorisationRole = grantAuthorisationRole;
     }
     
     
