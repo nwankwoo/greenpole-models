@@ -6,6 +6,7 @@
 package org.greenpole.entity.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -33,13 +34,19 @@ public class ClientCompany implements Serializable {
     @XmlElement
     private String secretary;
     @XmlElement
-    private String address;
+    private List <Address> address;
     @XmlElement
     private String depositoryName;
     @XmlElement
     private int depositoryId;
     @XmlElement
     private boolean valid;
+    @XmlElement
+    private List <EmailAddress> emailAddress;
+    
+    @XmlElement
+    private List <PhoneNumber> phoneNumber;
+    
 
     public ClientCompany() {
     }
@@ -56,7 +63,7 @@ public class ClientCompany implements Serializable {
      * @param depositoryId the depository's unique identification
      * @param valid the company's valid status
      */
-    public ClientCompany(String name, String code, String nseSector, String ceo, String secretary, String address, String depositoryName, int depositoryId, boolean valid) {
+    public ClientCompany(String name, String code, String nseSector, String ceo, String secretary, List <Address> address, String depositoryName, int depositoryId, boolean valid) {
         this.name = name;
         this.code = code;
         this.nseSector = nseSector;
@@ -148,19 +155,20 @@ public class ClientCompany implements Serializable {
         this.secretary = secretary;
     }
 
+    
     /**
-     * Gets the company's address.
-     * @return the company's address
+     * Gets the company address
+     * @return the address
      */
-    public String getAddress() {
+    public List <Address> getAddress() {
         return address;
     }
 
     /**
-     * Gets the company's address.
-     * @param address the company's address
+     * Sets the company address
+     * @param address the address to set
      */
-    public void setAddress(String address) {
+    public void setAddress(List <Address> address) {
         this.address = address;
     }
 
@@ -212,9 +220,42 @@ public class ClientCompany implements Serializable {
         this.valid = valid;
     }
 
+    /**
+     * Gets the company email address
+     * @return the emailAddress
+     */
+    public List <EmailAddress> getEmailAddress() {
+        return emailAddress;
+    }
+
+    /**
+     * Sets the company email address
+     * @param emailAddress the emailAddress to set
+     */
+    public void setEmailAddress(List <EmailAddress> emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    /**
+     * Gets the Company Phone Number
+     * @return the phoneNumber
+     */
+    public List <PhoneNumber> getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    /**
+     * Sets the company Phone Numbers
+     * @param phoneNumber the phoneNumber to set
+     */
+    public void setPhoneNumber(List <PhoneNumber> phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    
     @Override
     public String toString() {
-        return "ClientCompany{" + "name=" + name + ", code=" + code + ", nseSector=" + nseSector + ", ceo=" + ceo + ", secretary=" + secretary + ", address=" + address + ", depositoryName=" + depositoryName + ", depositoryId=" + depositoryId + ", valid=" + valid + '}';
+        return "ClientCompany{" + "name=" + name + ", code=" + code + ", nseSector=" + nseSector + ", ceo=" + ceo + ", secretary=" + secretary + ", address=" + getAddress() + ", depositoryName=" + depositoryName + ", depositoryId=" + depositoryId + ", valid=" + valid + '}';
     }
     
 }
