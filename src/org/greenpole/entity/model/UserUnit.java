@@ -11,11 +11,11 @@ package org.greenpole.entity.model;
  *
  * @author Yusuf Samsudeen Babashola (Algorithm)
  */
-public class Unit {
+public class UserUnit {
     private int unitID;
     private String name;
     
-    public Unit(int unitID, String name) {
+    public UserUnit(int unitID, String name) {
         this.unitID = unitID;
         this.name = name;
     }

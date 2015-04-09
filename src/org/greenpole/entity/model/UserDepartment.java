@@ -2,18 +2,19 @@ package org.greenpole.entity.model;
 
 
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
  * @author Yusuf Samsudeen Babashola 
  */
-public class Department {
+public class UserDepartment {
     private int departmentID;
     private String departmentName;
-    private List <Unit> units ;
+    private Set units = new HashSet(0);
 
-    public Department(int departmentID, String departmentName, List<Unit> units) {
+    public UserDepartment(int departmentID, String departmentName, Set units) {
         this.departmentID = departmentID;
         this.departmentName = departmentName;
         this.units = units;
@@ -52,14 +53,14 @@ public class Department {
     /**
      * @return the units
      */
-    public List <Unit> getUnits() {
+    public Set getUnits() {
         return units;
     }
 
     /**
      * @param units the units to set
      */
-    public void setUnits(List <Unit> units) {
+    public void setUnits(Set units) {
         this.units = units;
     }
     

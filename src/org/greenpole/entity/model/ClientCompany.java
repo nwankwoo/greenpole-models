@@ -6,11 +6,14 @@
 package org.greenpole.entity.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -20,8 +23,9 @@ import javax.xml.bind.annotation.XmlType;
  * storing and retrieving client company information.
  */
 @XmlRootElement
+@XmlSeeAlso({ClientCompanyAddress.class,ClientCompanyEmailAddress.class,ClientCompanyPhoneNumber.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"name","code","nseSector","ceo","secretary","address","depositoryId","depositoryName","valid"})
+@XmlType(propOrder = {"name","code","nseSector","ceo","secretary","addresses","emailAddresses","phoneNumbers","depositoryId","depositoryName","valid"})
 public class ClientCompany implements Serializable {
     @XmlElement
     private String name;
@@ -33,20 +37,18 @@ public class ClientCompany implements Serializable {
     private String ceo;
     @XmlElement
     private String secretary;
-    @XmlElement
-    private List <Address> address;
+    @XmlElementWrapper(name = "addresses")
+    private Set addresses = new HashSet(0);
     @XmlElement
     private String depositoryName;
     @XmlElement
     private int depositoryId;
     @XmlElement
     private boolean valid;
-    @XmlElement
-    private List <EmailAddress> emailAddress;
-    
-    @XmlElement
-    private List <PhoneNumber> phoneNumber;
-    
+    @XmlElementWrapper(name = "emailAddresses")
+    private Set emailAddresses = new HashSet(0);
+    @XmlElementWrapper(name = "phoneNumbers")
+    private Set phoneNumbers = new HashSet(0);
 
     public ClientCompany() {
     }
@@ -58,18 +60,22 @@ public class ClientCompany implements Serializable {
      * @param nseSector the NSE Sector the company belongs to
      * @param ceo the company's CEO
      * @param secretary the company's secretary
-     * @param address the company's address
+     * @param addresses the company's addresses
+     * @param emailAddresses the company's email addresses
+     * @param phoneNumbers the company's phone numbers
      * @param depositoryName the company's depository
      * @param depositoryId the depository's unique identification
      * @param valid the company's valid status
      */
-    public ClientCompany(String name, String code, String nseSector, String ceo, String secretary, List <Address> address, String depositoryName, int depositoryId, boolean valid) {
+    public ClientCompany(String name, String code, String nseSector, String ceo, String secretary, Set addresses, Set emailAddresses, Set phoneNumbers, String depositoryName, int depositoryId, boolean valid) {
         this.name = name;
         this.code = code;
         this.nseSector = nseSector;
         this.ceo = ceo;
         this.secretary = secretary;
-        this.address = address;
+        this.addresses = addresses;
+        this.emailAddresses = emailAddresses;
+        this.phoneNumbers = phoneNumbers;
         this.depositoryName = depositoryName;
         this.depositoryId = depositoryId;
         this.valid = valid;
@@ -155,23 +161,6 @@ public class ClientCompany implements Serializable {
         this.secretary = secretary;
     }
 
-    
-    /**
-     * Gets the company address
-     * @return the address
-     */
-    public List <Address> getAddress() {
-        return address;
-    }
-
-    /**
-     * Sets the company address
-     * @param address the address to set
-     */
-    public void setAddress(List <Address> address) {
-        this.address = address;
-    }
-
     /**
      * Gets the name of the company's depository.
      * @return the company's depository
@@ -221,41 +210,57 @@ public class ClientCompany implements Serializable {
     }
 
     /**
-     * Gets the company email address
-     * @return the emailAddress
+     * Gets the company addresses
+     * @return the addresses
      */
-    public List <EmailAddress> getEmailAddress() {
-        return emailAddress;
+    public Set getAddresses() {
+        return addresses;
     }
 
     /**
-     * Sets the company email address
-     * @param emailAddress the emailAddress to set
+     * Sets the company addresses
+     * @param addresses the addresses to set
      */
-    public void setEmailAddress(List <EmailAddress> emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setAddresses(Set addresses) {
+        this.addresses = addresses;
+    }
+
+    /**
+     * Gets the company email addresses
+     * @return the emailAddresses
+     */
+    public Set getEmailAddresses() {
+        return emailAddresses;
+    }
+
+    /**
+     * Sets the company email addresses
+     * @param emailAddresses the emailAddresses to set
+     */
+    public void setEmailAddresses(Set emailAddresses) {
+        this.emailAddresses = emailAddresses;
     }
 
     /**
      * Gets the Company Phone Number
-     * @return the phoneNumber
+     * @return the phoneNumbers
      */
-    public List <PhoneNumber> getPhoneNumber() {
-        return phoneNumber;
+    public Set getPhoneNumbers() {
+        return phoneNumbers;
     }
 
     /**
      * Sets the company Phone Numbers
-     * @param phoneNumber the phoneNumber to set
+     * @param phoneNumbers the phoneNumbers to set
      */
-    public void setPhoneNumber(List <PhoneNumber> phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumbers(Set phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
     }
 
     
     @Override
     public String toString() {
-        return "ClientCompany{" + "name=" + name + ", code=" + code + ", nseSector=" + nseSector + ", ceo=" + ceo + ", secretary=" + secretary + ", address=" + getAddress() + ", depositoryName=" + depositoryName + ", depositoryId=" + depositoryId + ", valid=" + valid + '}';
+        return "ClientCompany{" + "name=" + name + ", code=" + code + ", nseSector=" + nseSector + ", ceo=" + ceo + ", secretary=" + secretary + ", address=" + getAddresses() + ", depositoryName=" + depositoryName + ", depositoryId=" + depositoryId + ", valid=" + valid + '}';
     }
     
 }

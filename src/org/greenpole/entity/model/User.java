@@ -17,8 +17,8 @@ public class User {
     private String username;
     private String password;
     private String userType;
-    private String department;
-    private String unit;
+    private int deptId;
+    private int unitId;
     private boolean grantAuthorisationRole;
     private int maximumIndividualShareHoldings;
     private int maximumTotalShareHoldings;
@@ -28,13 +28,13 @@ public class User {
     
     
 
-    public User(String firstName, String middleName, String lastName, String username, String department, String unit) {
+    public User(String firstName, String middleName, String lastName, String username, int deptId, int unitId) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
         this.username = username;
-        this.department = department;
-        this.unit = unit;
+        this.deptId = deptId;
+        this.unitId = unitId;
     }
 
     
@@ -124,31 +124,31 @@ public class User {
     }
 
     /**
-     * @return the department
+     * @return the deptId
      */
-    public String getDepartment() {
-        return department;
+    public int getDeptId() {
+        return deptId;
     }
 
     /**
-     * @param department the department to set
+     * @param deptId the deptId to set
      */
-    public void setDepartment(String department) {
-        this.department = department;
+    public void setDeptId(int deptId) {
+        this.deptId = deptId;
     }
 
     /**
      * @return the unit
      */
-    public String getUnit() {
-        return unit;
+    public int getUnitId() {
+        return unitId;
     }
 
     /**
-     * @param unit the unit to set
+     * @param unitId the unit to set
      */
-    public void setUnit(String unit) {
-        this.unit = unit;
+    public void setUnitId(int unitId) {
+        this.unitId = unitId;
     }
 
     /**
