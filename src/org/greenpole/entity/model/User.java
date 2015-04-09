@@ -20,6 +20,8 @@ public class User {
     private String department;
     private String unit;
     private boolean grantAuthorisationRole;
+    private int maximumIndividualShareHoldings;
+    private int maximumTotalShareHoldings;
     
     public User() {
     }
@@ -149,13 +151,49 @@ public class User {
         this.unit = unit;
     }
 
+    /**
+     * @return the grantAuthorisationRole
+     */
     public boolean isGrantAuthorisationRole() {
         return grantAuthorisationRole;
     }
 
+    /**
+     * @param grantAuthorisationRole the grantAuthorisationRole to set
+     */
     public void setGrantAuthorisationRole(boolean grantAuthorisationRole) {
         this.grantAuthorisationRole = grantAuthorisationRole;
     }
+
+    /**
+     * @return the maximumIndividualShareHoldings
+     */
+    public int getMaximumIndividualShareHoldings() {
+        return maximumIndividualShareHoldings;
+    }
+
+    /**
+     * @param maximumIndividualShareHoldings the maximumIndividualShareHoldings to set
+     */
+    public void setMaximumIndividualShareHoldings(int maximumIndividualShareHoldings) {
+        this.maximumIndividualShareHoldings = maximumIndividualShareHoldings;
+    }
+
+    /**
+     * @return the maximumTotalShareHoldings
+     */
+    public int getMaximumTotalShareHoldings() {
+        return maximumTotalShareHoldings;
+    }
+
+    /**
+     * @param maximumTotalShareHoldings the maximumTotalShareHoldings to set
+     */
+    public void setMaximumTotalShareHoldings(int maximumTotalShareHoldings) {
+        this.maximumTotalShareHoldings = maximumTotalShareHoldings;
+    }
+
+    
     
     
 }
