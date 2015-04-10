@@ -7,51 +7,60 @@ package org.greenpole.entity.model.clientcompany;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Yusuf Samsudeen Babashola (Algorithm) 
+ * Carries information on the client company's phone numbers.
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"emailAddress","lineNumber"})
+@XmlType(propOrder = {"primaryPhoneNumber","emailAddress"})
 public class ClientCompanyPhoneNumber {
     @XmlElement
     private String phoneNumber;
-    @XmlElement
-    private int lineNumber;
+    @XmlAttribute
+    private boolean primaryPhoneNumber;
 
     public ClientCompanyPhoneNumber() {
     }
 
-    public ClientCompanyPhoneNumber(String phoneNumber) {
+    /**
+     * Collects all values for the client company phone number.
+     * @param phoneNumber the company's phone number
+     * @param primaryEmail the phone number's primary status
+     */
+    public ClientCompanyPhoneNumber(String phoneNumber, boolean primaryEmail) {
         this.phoneNumber = phoneNumber;
+        this.primaryPhoneNumber = primaryEmail;
     }
     
     /**
-     * @return the phoneNumber
+     * Gets the client company's phone number.
+     * @return the phone number
      */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
     /**
+     * 
      * @param phoneNumber the phoneNumber to set
      */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getLineNumber() {
-        return lineNumber;
+    public boolean isPrimaryPhoneNumber() {
+        return primaryPhoneNumber;
     }
 
-    public void setLineNumber(int lineNumber) {
-        this.lineNumber = lineNumber;
+    public void setPrimaryPhoneNumber(boolean primaryPhoneNumber) {
+        this.primaryPhoneNumber = primaryPhoneNumber;
     }
     
 }

@@ -7,6 +7,7 @@ package org.greenpole.entity.model.clientcompany;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -18,12 +19,12 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"emailAddress","lineNumber"})
+@XmlType(propOrder = {"primaryEmail","emailAddress"})
 public class ClientCompanyEmailAddress {
     @XmlElement
     private String emailAddress;
-    @XmlElement
-    private int lineNumber;
+    @XmlAttribute
+    private boolean primaryEmail;
 
     public ClientCompanyEmailAddress() {
     }
@@ -46,11 +47,11 @@ public class ClientCompanyEmailAddress {
         this.emailAddress = emailAddress;
     }
 
-    public int getLineNumber() {
-        return lineNumber;
+    public boolean isPrimaryEmail() {
+        return primaryEmail;
     }
 
-    public void setLineNumber(int lineNumber) {
-        this.lineNumber = lineNumber;
+    public void setPrimaryEmail(boolean primaryEmail) {
+        this.primaryEmail = primaryEmail;
     }
 }
