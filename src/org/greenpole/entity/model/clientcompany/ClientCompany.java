@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entity.model;
+package org.greenpole.entity.model.clientcompany;
 
 import java.io.Serializable;
 import java.util.HashSet;

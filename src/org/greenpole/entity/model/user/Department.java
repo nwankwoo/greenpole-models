@@ -1,27 +1,45 @@
-package org.greenpole.entity.model;
+package org.greenpole.entity.model.user;
 
 
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
+import org.greenpole.entity.model.clientcompany.ClientCompany;
 
 /**
  *
  * @author Yusuf Samsudeen Babashola 
  */
-public class UserDepartment {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"departmentID","departmentName","units","users"})
+@XmlSeeAlso({User.class,Unit.class})
+public class Department {
+    @XmlElement
     private int departmentID;
+    @XmlElement
     private String departmentName;
+    @XmlElementWrapper(name = "units")
     private Set units = new HashSet(0);
+    @XmlElementWrapper(name = "users")
+    private Set users = new HashSet(0);
 
-    public UserDepartment(int departmentID, String departmentName, Set units) {
+    public Department() {}
+    
+    public Department(int departmentID, String departmentName, Set units, Set users) {
         this.departmentID = departmentID;
         this.departmentName = departmentName;
         this.units = units;
+        this.users = users;
     }
     
-    
-
     /**
      * @return the departmentID
      */
@@ -63,6 +81,20 @@ public class UserDepartment {
     public void setUnits(Set units) {
         this.units = units;
     }
-    
-    
+
+    /**
+     * 
+     * @return 
+     */
+    public Set getUsers() {
+        return users;
+    }
+
+    /**
+     * 
+     * @param users 
+     */
+    public void setUsers(Set users) {
+        this.users = users;
+    }
 }
