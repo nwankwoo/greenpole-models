@@ -14,7 +14,10 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
-import org.greenpole.entity.model.ClientCompany;
+import org.greenpole.entity.model.clientcompany.ClientCompany;
+import org.greenpole.entity.model.user.Department;
+import org.greenpole.entity.model.user.Unit;
+import org.greenpole.entity.model.user.User;
 
 /**
  *
@@ -24,9 +27,8 @@ import org.greenpole.entity.model.ClientCompany;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"retn","desc","body"})
-@XmlSeeAlso(ClientCompany.class)
+@XmlSeeAlso({ClientCompany.class,User.class,Department.class,Unit.class})
 public class Response implements Serializable {
-    
     @XmlElement
     private int retn;
     @XmlElement
