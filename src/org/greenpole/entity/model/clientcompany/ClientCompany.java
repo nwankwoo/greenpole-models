@@ -50,6 +50,9 @@ public class ClientCompany implements Serializable {
     @XmlElementWrapper(name = "phoneNumbers")
     private Set phoneNumbers = new HashSet(0);
 
+    /**
+     * Initialises client company object.
+     */
     public ClientCompany() {
     }
 

@@ -8,6 +8,7 @@ package org.greenpole.entity.model.user;
 /**
  *
  * @author Akinwale Agbaje
+ * The acceptable list of user types.
  */
 public enum UserType {
     /**

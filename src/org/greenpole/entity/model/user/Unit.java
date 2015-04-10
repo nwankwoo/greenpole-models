@@ -21,6 +21,7 @@ import org.greenpole.entity.model.clientcompany.ClientCompany;
 /**
  *
  * @author Yusuf Samsudeen Babashola (Algorithm)
+ * Carries information on a department's unit.
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
@@ -34,52 +35,64 @@ public class Unit {
     @XmlElementWrapper(name = "users")
     private Set users = new HashSet(0);
     
+    /**
+     * Initialises the unit object.
+     */
     public Unit() {}
     
+    /**
+     * Collects all values for the unit object.
+     * @param unitID the unit's id
+     * @param name the unit's name
+     */
     public Unit(int unitID, String name) {
         this.unitID = unitID;
         this.name = name;
     }
 
     /**
-     * @return the unitID
+     * Gets the unit's id.
+     * @return the unitID the unit's id
      */
     public int getUnitID() {
         return unitID;
     }
 
     /**
-     * @param unitID the unitID to set
+     * Sets the unit's id.
+     * @param unitID the unit's id
      */
     public void setUnitID(int unitID) {
         this.unitID = unitID;
     }
 
     /**
-     * @return the name
+     * Gets the unit's name.
+     * @return the unit's name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @param name the name to set
+     * Sets the unit's name.
+     * @param name the unit's name
      */
     public void setName(String name) {
         this.name = name;
     }
     
     /**
-     * 
-     * @return 
+     * Gets all employees (system users) of a unit.
+     * @return the unit employees
      */
     public Set getUsers() {
         return users;
     }
 
     /**
-     * 
-     * @param users 
+     * Sets all employees (system users) to a unit.
+     * @param users the unit employees
      */
     public void setUsers(Set users) {
         this.users = users;

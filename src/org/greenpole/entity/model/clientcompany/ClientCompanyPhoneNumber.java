@@ -26,6 +26,9 @@ public class ClientCompanyPhoneNumber {
     @XmlAttribute
     private boolean primaryPhoneNumber;
 
+    /**
+     * Initialises the client company phone number object.
+     */
     public ClientCompanyPhoneNumber() {
     }
 
@@ -48,17 +51,25 @@ public class ClientCompanyPhoneNumber {
     }
 
     /**
-     * 
-     * @param phoneNumber the phoneNumber to set
+     * Sets the client company's phone number
+     * @param phoneNumber the client company's phone number
      */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Gets the primary status of the client company's phone number.
+     * @return the primary status of the client company's phone number
+     */
     public boolean isPrimaryPhoneNumber() {
         return primaryPhoneNumber;
     }
 
+    /**
+     * Sets the primary status of the client company's phone number.
+     * @param primaryPhoneNumber the primary status of the client company's phone number
+     */
     public void setPrimaryPhoneNumber(boolean primaryPhoneNumber) {
         this.primaryPhoneNumber = primaryPhoneNumber;
     }
