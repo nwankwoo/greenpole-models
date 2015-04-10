@@ -44,12 +44,20 @@ public class Department {
      * @param units the department's units
      * @param users the department's employees (system users)
      */
+    
     public Department(int departmentID, String departmentName, Set units, Set users) {
         this.departmentID = departmentID;
         this.departmentName = departmentName;
         this.units = units;
         this.users = users;
     }
+
+    public Department(int departmentID, String departmentName, Set units) {
+        this.departmentID = departmentID;
+        this.departmentName = departmentName;
+        this.units = units;
+    }
+    
     
     /**
      * Gets the department's id.

@@ -3,19 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entity.model.clientcompany;
+package org.greenpole.entity.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -25,9 +19,8 @@ import javax.xml.bind.annotation.XmlType;
  * storing and retrieving client company information.
  */
 @XmlRootElement
-@XmlSeeAlso({ClientCompanyAddress.class,ClientCompanyEmailAddress.class,ClientCompanyPhoneNumber.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"name","code","nseSector","ceo","secretary","addresses","emailAddresses","phoneNumbers","depositoryId","depositoryName","valid"})
+@XmlType(propOrder = {"name","code","nseSector","ceo","secretary","address","depositoryId","depositoryName","valid"})
 public class ClientCompany implements Serializable {
     @XmlElement
     private String name;
@@ -39,23 +32,16 @@ public class ClientCompany implements Serializable {
     private String ceo;
     @XmlElement
     private String secretary;
-    @XmlElementWrapper(name = "addresses")
-    private List <ClientCompanyAddress> addresses ;
+    @XmlElement
+    private String address;
     @XmlElement
     private String depositoryName;
     @XmlElement
     private int depositoryId;
     @XmlElement
     private boolean valid;
-    @XmlElementWrapper(name = "emailAddresses")
-    private List <ClientCompanyEmailAddress> emailAddresses ;
-    @XmlElementWrapper(name = "phoneNumbers")
-    private List <ClientCompanyPhoneNumber> phoneNumbers ;
 
-    /**
-     * Initialises client company object.
-     */
-   public ClientCompany() {
+    public ClientCompany() {
     }
 
     /**
@@ -65,186 +51,170 @@ public class ClientCompany implements Serializable {
      * @param nseSector the NSE Sector the company belongs to
      * @param ceo the company's CEO
      * @param secretary the company's secretary
-     * @param addresses the company's addresses
-     * @param emailAddresses the company's email addresses
-     * @param phoneNumbers the company's phone numbers
+     * @param address the company's address
      * @param depositoryName the company's depository
      * @param depositoryId the depository's unique identification
      * @param valid the company's valid status
      */
-    public ClientCompany(String name, String code, String nseSector, String ceo, String secretary, List addresses, List emailAddresses, List phoneNumbers, String depositoryName, int depositoryId, boolean valid) {
+    public ClientCompany(String name, String code, String nseSector, String ceo, String secretary, String address, String depositoryName, int depositoryId, boolean valid) {
         this.name = name;
         this.code = code;
         this.nseSector = nseSector;
         this.ceo = ceo;
         this.secretary = secretary;
-        this.addresses = addresses;
-        this.emailAddresses = emailAddresses;
-        this.phoneNumbers = phoneNumbers;
+        this.address = address;
         this.depositoryName = depositoryName;
         this.depositoryId = depositoryId;
         this.valid = valid;
     }
 
-  
-    @Override
-    public String toString() {
-        return "ClientCompany{" + "name=" + getName() + ", code=" + getCode() + ", nseSector=" + getNseSector() + ", ceo=" + getCeo() + ", secretary=" + getSecretary() + ", address=" + getAddresses() + ", depositoryName=" + getDepositoryName() + ", depositoryId=" + getDepositoryId() + ", valid=" + isValid() + '}';
-    }
-
     /**
-     * @return the name
+     * Gets the company's name.
+     * @return the company's name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @param name the name to set
+     * Gets the company's name.
+     * @param name the company's name
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * @return the code
+     * Gets the company's code.
+     * @return the company's code
      */
     public String getCode() {
         return code;
     }
 
     /**
-     * @param code the code to set
+     * Gets the company's code.
+     * @param code the company's code
      */
     public void setCode(String code) {
         this.code = code;
     }
 
     /**
-     * @return the nseSector
+     * Gets the company's NSE sector.
+     * @return the company's NSE sector
      */
     public String getNseSector() {
         return nseSector;
     }
 
     /**
-     * @param nseSector the nseSector to set
+     * Gets the company's NSE sector.
+     * @param nseSector the company's NSE sector
      */
     public void setNseSector(String nseSector) {
         this.nseSector = nseSector;
     }
 
     /**
-     * @return the ceo
+     * Gets the name of the company's CEO.
+     * @return the name of the company's CEO
      */
     public String getCeo() {
         return ceo;
     }
 
     /**
-     * @param ceo the ceo to set
+     * Gets the name of the company's CEO.
+     * @param ceo the name of the company's CEO
      */
     public void setCeo(String ceo) {
         this.ceo = ceo;
     }
 
     /**
-     * @return the secretary
+     * Gets the name of the company's secretary.
+     * @return the name of the company's secretary
      */
     public String getSecretary() {
         return secretary;
     }
 
     /**
-     * @param secretary the secretary to set
+     * Gets the name of the company's secretary.
+     * @param secretary the name of the company's secretary
      */
     public void setSecretary(String secretary) {
         this.secretary = secretary;
     }
 
     /**
-     * @return the addresses
+     * Gets the company's address.
+     * @return the company's address
      */
-    public List <ClientCompanyAddress> getAddresses() {
-        return addresses;
+    public String getAddress() {
+        return address;
     }
 
     /**
-     * @param addresses the addresses to set
+     * Gets the company's address.
+     * @param address the company's address
      */
-    public void setAddresses(List <ClientCompanyAddress> addresses) {
-        this.addresses = addresses;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     /**
-     * @return the depositoryName
+     * Gets the name of the company's depository.
+     * @return the company's depository
      */
     public String getDepositoryName() {
         return depositoryName;
     }
 
     /**
-     * @param depositoryName the depositoryName to set
+     * Gets the name of the company's depository.
+     * @param depositoryName the company's depository
      */
     public void setDepositoryName(String depositoryName) {
         this.depositoryName = depositoryName;
     }
 
     /**
-     * @return the depositoryId
+     * Gets the depository's unique identification.
+     * @return the depository's unique identification
      */
     public int getDepositoryId() {
         return depositoryId;
     }
 
     /**
-     * @param depositoryId the depositoryId to set
+     * Gets the depository's unique identification.
+     * @param depositoryId the depository's unique identification
      */
     public void setDepositoryId(int depositoryId) {
         this.depositoryId = depositoryId;
     }
 
     /**
-     * @return the valid
+     * Gets the company's valid status.
+     * @return the company's valid status
      */
     public boolean isValid() {
         return valid;
     }
 
     /**
-     * @param valid the valid to set
+     * Sets the company's valid status.
+     * @param valid the company's valid status
      */
     public void setValid(boolean valid) {
         this.valid = valid;
     }
 
-    /**
-     * @return the emailAddresses
-     */
-    public List <ClientCompanyEmailAddress> getEmailAddresses() {
-        return emailAddresses;
+    @Override
+    public String toString() {
+        return "ClientCompany{" + "name=" + name + ", code=" + code + ", nseSector=" + nseSector + ", ceo=" + ceo + ", secretary=" + secretary + ", address=" + address + ", depositoryName=" + depositoryName + ", depositoryId=" + depositoryId + ", valid=" + valid + '}';
     }
-
-    /**
-     * @param emailAddresses the emailAddresses to set
-     */
-    public void setEmailAddresses(List <ClientCompanyEmailAddress> emailAddresses) {
-        this.emailAddresses = emailAddresses;
-    }
-
-    /**
-     * @return the phoneNumbers
-     */
-    public List <ClientCompanyPhoneNumber> getPhoneNumbers() {
-        return phoneNumbers;
-    }
-
-    /**
-     * @param phoneNumbers the phoneNumbers to set
-     */
-    public void setPhoneNumbers(List <ClientCompanyPhoneNumber> phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
-    }
-
     
 }
