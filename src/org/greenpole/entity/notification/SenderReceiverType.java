@@ -8,6 +8,7 @@ package org.greenpole.entity.notification;
 /**
  *
  * @author Akinwale Agbaje
+ * The acceptable list of sender / receiver types.
  */
 public enum SenderReceiverType {
 

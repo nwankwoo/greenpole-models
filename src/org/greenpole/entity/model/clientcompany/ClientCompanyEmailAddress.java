@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -26,31 +25,50 @@ public class ClientCompanyEmailAddress {
     @XmlAttribute
     private boolean primaryEmail;
 
+    /**
+     * Initialises the client company email address object.
+     */
     public ClientCompanyEmailAddress() {
     }
     
-    public ClientCompanyEmailAddress(String emailAddress) {
+    /**
+     * Sets all data for the client company email address.
+     * @param emailAddress the company's email address
+     * @param primaryEmail the primary status of the company's email address
+     */
+    public ClientCompanyEmailAddress(String emailAddress, boolean primaryEmail) {
         this.emailAddress = emailAddress;
+        this.primaryEmail = primaryEmail;
     }
 
     /**
-     * @return the emailAddress
+     * Gets the company's email address.
+     * @return the company's email address
      */
     public String getEmailAddress() {
         return emailAddress;
     }
 
     /**
-     * @param emailAddress the emailAddress to set
+     * Sets the company's email address.
+     * @param emailAddress the company's email address
      */
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
+    /**
+     * Gets the primary status of the company's email address.
+     * @return the primary status of the company's email address
+     */
     public boolean isPrimaryEmail() {
         return primaryEmail;
     }
 
+    /**
+     * Sets the primary status of the company's email address.
+     * @param primaryEmail the primary status of the company's email address
+     */
     public void setPrimaryEmail(boolean primaryEmail) {
         this.primaryEmail = primaryEmail;
     }

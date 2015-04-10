@@ -44,6 +44,9 @@ public class User {
     @XmlElement
     private int maximumTotalShareHoldings;
     
+    /**
+     *
+     */
     public User() {
     }
     
