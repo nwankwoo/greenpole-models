@@ -49,6 +49,15 @@ public class User {
      */
     public User() {
     }
+
+    public User(String firstName, String middleName, String lastName, String username, int deptId, int unitId) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.username = username;
+        this.deptId = deptId;
+        this.unitId = unitId;
+    }
     
     /**
      * Collects all values of the user.
@@ -65,6 +74,8 @@ public class User {
      * @param maximumTotalShareHoldings the maximum share holding the user
      * can view for a holder's total company accounts
      */
+    
+    
     public User(String firstName, String middleName, String lastName, String username, String password, String userType, int deptId, int unitId, int maximumIndividualShareHoldings, int maximumTotalShareHoldings) {
         this.firstName = firstName;
         this.middleName = middleName;
