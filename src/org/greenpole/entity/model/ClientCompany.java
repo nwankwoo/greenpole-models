@@ -17,7 +17,9 @@ import javax.xml.bind.annotation.XmlType;
  * @author Akinwale Agbaje
  * The client company model, utilised by the front-end and middle-tier in
  * storing and retrieving client company information.
+ * @deprecated this is an old version. Use {@link org.greenpole.entity.model.clientcompany.ClientCompany}
  */
+@Deprecated
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"name","code","nseSector","ceo","secretary","address","depositoryId","depositoryName","valid"})

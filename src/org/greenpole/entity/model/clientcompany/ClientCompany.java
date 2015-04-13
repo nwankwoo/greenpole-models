@@ -6,10 +6,7 @@
 package org.greenpole.entity.model.clientcompany;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -27,22 +24,20 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlSeeAlso({ClientCompanyAddress.class,ClientCompanyEmailAddress.class,ClientCompanyPhoneNumber.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"name","code","nseSector","ceo","secretary","addresses","emailAddresses","phoneNumbers","depositoryId","depositoryName","valid"})
+@XmlType(propOrder = {"name","code","nseSectorId","ceo","secretary","addresses","emailAddresses","phoneNumbers","depositoryId","valid"})
 public class ClientCompany implements Serializable {
     @XmlElement
     private String name;
     @XmlElement
     private String code;
     @XmlElement
-    private String nseSector;
+    private int nseSectorId;
     @XmlElement
     private String ceo;
     @XmlElement
     private String secretary;
     @XmlElementWrapper(name = "addresses")
-    private List <ClientCompanyAddress> addresses ;
-    @XmlElement
-    private String depositoryName;
+    private List <ClientCompanyAddress> addresses;
     @XmlElement
     private int depositoryId;
     @XmlElement
@@ -51,11 +46,15 @@ public class ClientCompany implements Serializable {
     private List <ClientCompanyEmailAddress> emailAddresses ;
     @XmlElementWrapper(name = "phoneNumbers")
     private List <ClientCompanyPhoneNumber> phoneNumbers ;
+    @Deprecated
+    private String nseSector;
+    @Deprecated
+    private String depositoryName;
 
     /**
      * Initialises client company object.
      */
-   public ClientCompany() {
+    public ClientCompany() {
     }
 
     /**
@@ -71,7 +70,11 @@ public class ClientCompany implements Serializable {
      * @param depositoryName the company's depository
      * @param depositoryId the depository's unique identification
      * @param valid the company's valid status
+     * @deprecated {@link #depositoryName} is no longer relevant to the
+     * client company model. The middle tier has no need for it.
+     * Replaced by {@link #ClientCompany(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List, int, boolean, java.util.List, java.util.List)}
      */
+    @Deprecated
     public ClientCompany(String name, String code, String nseSector, String ceo, String secretary, List addresses, List emailAddresses, List phoneNumbers, String depositoryName, int depositoryId, boolean valid) {
         this.name = name;
         this.code = code;
@@ -86,10 +89,35 @@ public class ClientCompany implements Serializable {
         this.valid = valid;
     }
 
-  
+    /**
+     * Collects all values for the client company.
+     * @param name the company's name
+     * @param code the company's code
+     * @param nseSectorId the NSE Sector the company belongs to
+     * @param ceo the company's CEO
+     * @param secretary the company's secretary
+     * @param addresses the company's addresses
+     * @param depositoryId the depository's unique identification
+     * @param valid the company's valid status
+     * @param emailAddresses the company's email addresses
+     * @param phoneNumbers the company's phone numbers 
+     */
+    public ClientCompany(String name, String code, int nseSectorId, String ceo, String secretary, List<ClientCompanyAddress> addresses, int depositoryId, boolean valid, List<ClientCompanyEmailAddress> emailAddresses, List<ClientCompanyPhoneNumber> phoneNumbers) {
+        this.name = name;
+        this.code = code;
+        this.nseSectorId = nseSectorId;
+        this.ceo = ceo;
+        this.secretary = secretary;
+        this.addresses = addresses;
+        this.depositoryId = depositoryId;
+        this.valid = valid;
+        this.emailAddresses = emailAddresses;
+        this.phoneNumbers = phoneNumbers;
+    }
+
     @Override
     public String toString() {
-        return "ClientCompany{" + "name=" + getName() + ", code=" + getCode() + ", nseSector=" + getNseSector() + ", ceo=" + getCeo() + ", secretary=" + getSecretary() + ", address=" + getAddresses() + ", depositoryName=" + getDepositoryName() + ", depositoryId=" + getDepositoryId() + ", valid=" + isValid() + '}';
+        return "ClientCompany{" + "name=" + name + ", code=" + code + ", nseSectorId=" + nseSectorId + ", ceo=" + ceo + ", secretary=" + secretary + ", addresses=" + addresses + ", depositoryId=" + depositoryId + ", valid=" + valid + ", emailAddresses=" + emailAddresses + ", phoneNumbers=" + phoneNumbers + '}';
     }
 
     /**
@@ -123,6 +151,7 @@ public class ClientCompany implements Serializable {
     /**
      * @return the nseSector
      */
+    @Deprecated
     public String getNseSector() {
         return nseSector;
     }
@@ -130,6 +159,7 @@ public class ClientCompany implements Serializable {
     /**
      * @param nseSector the nseSector to set
      */
+    @Deprecated
     public void setNseSector(String nseSector) {
         this.nseSector = nseSector;
     }
@@ -179,6 +209,7 @@ public class ClientCompany implements Serializable {
     /**
      * @return the depositoryName
      */
+    @Deprecated
     public String getDepositoryName() {
         return depositoryName;
     }
@@ -186,6 +217,7 @@ public class ClientCompany implements Serializable {
     /**
      * @param depositoryName the depositoryName to set
      */
+    @Deprecated
     public void setDepositoryName(String depositoryName) {
         this.depositoryName = depositoryName;
     }
@@ -246,5 +278,11 @@ public class ClientCompany implements Serializable {
         this.phoneNumbers = phoneNumbers;
     }
 
-    
+    public int getNseSectorId() {
+        return nseSectorId;
+    }
+
+    public void setNseSectorId(int nseSectorId) {
+        this.nseSectorId = nseSectorId;
+    }
 }

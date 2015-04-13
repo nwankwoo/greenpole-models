@@ -8,7 +8,9 @@ package org.greenpole.entity.model;
 /**
  *
  * @author Samsudeen.Yusuf
+ * @deprecated this is an old version. Use {@link org.greenpole.entity.model.user.User}
  */
+@Deprecated
 public class User {
     
     private String firstName;
