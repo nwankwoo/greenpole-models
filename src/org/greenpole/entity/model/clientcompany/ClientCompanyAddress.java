@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"primaryAddress","addressLine","addressLine",
     "addressLine","addressLine","postCode","city","state","country"})
 public class ClientCompanyAddress {
+    private int clientCompanyId;
     @XmlElement
     private String addressLine1;
     @XmlElement
@@ -69,6 +70,49 @@ public class ClientCompanyAddress {
         this.state = state;
         this.country = country;
         this.primaryAddress = primaryAddress;
+    }
+
+    /**
+     * Collects all data for client company address object.
+     * This constructor should be used when trying to submit a client company address for
+     * editing, as it includes the {@link #clientCompanyId} variable, which is not used when
+     * creating a client company address.
+     * @param clientCompanyId the client company id
+     * @param addressLine1 the first address line
+     * @param addressLine2 the second address line
+     * @param addressLine3 the third address line
+     * @param addressLine4 the fourth address line
+     * @param postCode the the company's post code
+     * @param city the the company's resident city
+     * @param state the the company's resident state
+     * @param country the the company's resident country
+     * @param primaryAddress the primary status of the company's address
+     */
+    public ClientCompanyAddress(int clientCompanyId, String addressLine1, String addressLine2, String addressLine3, String addressLine4, String postCode, String city, String state, String country, boolean primaryAddress) {
+        this.clientCompanyId = clientCompanyId;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.addressLine3 = addressLine3;
+        this.addressLine4 = addressLine4;
+        this.postCode = postCode;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.primaryAddress = primaryAddress;
+    }
+
+    /**
+     * @return the client company id
+     */
+    public int getClientCompanyId() {
+        return clientCompanyId;
+    }
+
+    /**
+     * @param clientCompanyId the client company id to set
+     */
+    public void setClientCompanyId(int clientCompanyId) {
+        this.clientCompanyId = clientCompanyId;
     }
 
     /**

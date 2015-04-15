@@ -21,6 +21,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryPhoneNumber","emailAddress"})
 public class ClientCompanyPhoneNumber {
+    private int clientCompanyId;
     @XmlElement
     private String phoneNumber;
     @XmlAttribute
@@ -35,11 +36,40 @@ public class ClientCompanyPhoneNumber {
     /**
      * Collects all values for the client company phone number.
      * @param phoneNumber the company's phone number
-     * @param primaryEmail the phone number's primary status
+     * @param primaryPhoneNumber the phone number's primary status
      */
-    public ClientCompanyPhoneNumber(String phoneNumber, boolean primaryEmail) {
+    public ClientCompanyPhoneNumber(String phoneNumber, boolean primaryPhoneNumber) {
         this.phoneNumber = phoneNumber;
-        this.primaryPhoneNumber = primaryEmail;
+        this.primaryPhoneNumber = primaryPhoneNumber;
+    }
+
+    /**
+     * Collects all values for the client company phone number.
+     * This constructor should be used when trying to submit a client company phone number for
+     * editing, as it includes the {@link #clientCompanyId} variable, which is not used when
+     * creating a client company phone number.
+     * @param clientCompanyId the company's id
+     * @param phoneNumber the company's phone number
+     * @param primaryPhoneNumber the phone number's primary status
+     */
+    public ClientCompanyPhoneNumber(int clientCompanyId, String phoneNumber, boolean primaryPhoneNumber) {
+        this.clientCompanyId = clientCompanyId;
+        this.phoneNumber = phoneNumber;
+        this.primaryPhoneNumber = primaryPhoneNumber;
+    }
+
+    /**
+     * @return the client company id
+     */
+    public int getClientCompanyId() {
+        return clientCompanyId;
+    }
+
+    /**
+     * @param clientCompanyId the client company id to set
+     */
+    public void setClientCompanyId(int clientCompanyId) {
+        this.clientCompanyId = clientCompanyId;
     }
     
     /**

@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryEmail","emailAddress"})
 public class ClientCompanyEmailAddress {
+    private int clientCompanyId;
     @XmlElement
     private String emailAddress;
     @XmlAttribute
@@ -39,6 +40,35 @@ public class ClientCompanyEmailAddress {
     public ClientCompanyEmailAddress(String emailAddress, boolean primaryEmail) {
         this.emailAddress = emailAddress;
         this.primaryEmail = primaryEmail;
+    }
+
+    /**
+     * Sets all data for the client company email address.
+     * This constructor should be used when trying to submit a client company email address for
+     * editing, as it includes the {@link #clientCompanyId} variable, which is not used when
+     * creating a client company email address.
+     * @param clientCompanyId the company's id
+     * @param emailAddress the company's email address
+     * @param primaryEmail the primary status of the company's email address
+     */
+    public ClientCompanyEmailAddress(int clientCompanyId, String emailAddress, boolean primaryEmail) {
+        this.clientCompanyId = clientCompanyId;
+        this.emailAddress = emailAddress;
+        this.primaryEmail = primaryEmail;
+    }
+
+    /**
+     * @return the client company id
+     */
+    public int getClientCompanyId() {
+        return clientCompanyId;
+    }
+
+    /**
+     * @param clientCompanyId the client company id to set
+     */
+    public void setClientCompanyId(int clientCompanyId) {
+        this.clientCompanyId = clientCompanyId;
     }
 
     /**
