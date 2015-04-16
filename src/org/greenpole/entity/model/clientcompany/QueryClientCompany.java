@@ -1,7 +1,7 @@
 
 package org.greenpole.entity.model.clientcompany;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -10,115 +10,93 @@ import java.util.List;
  * can be used to query a client company
  */
 public class QueryClientCompany {
+    /**
+     * Default representation of descriptor=
+     * ShareUnit:none;numberofShareholders:none;numberofBondholders:none
+     * and this is only set when user is performing a range search
+     */
+    private String descriptor;
     
-    private List<Double> startShareUnit;
-    private List<Double> endShareUnit;
+    private Map<String,Double> shareUnit;
     
-    private List<Integer> startNumberOfShareholders;
-    private List<Integer> endNumberOfShareholders;
+    private Map<String,Integer> numberOfShareholders;
     
-    private List<Integer> startNumberOfBondholders;
-    private List<Integer> endNumberOfBondholders;
+    private Map<String,Integer> numberOfBondholders;
     
-    private List<ClientCompany> clientCompany;
+    private ClientCompany clientCompany;
+    
+    
 
     /**
-     * @return the startShareUnit
+     * @return the shareUnit
      */
-    public List<Double> getStartShareUnit() {
-        return startShareUnit;
+    public Map<String,Double> getShareUnit() {
+        return shareUnit;
     }
 
     /**
-     * @param startShareUnit the startShareUnit to set
+     * @param shareUnit the shareUnit to set
      */
-    public void setStartShareUnit(List<Double> startShareUnit) {
-        this.startShareUnit = startShareUnit;
+    public void setShareUnit(Map<String,Double> shareUnit) {
+        this.shareUnit = shareUnit;
     }
 
     /**
-     * @return the endShareUnit
+     * @return the numberOfShareholders
      */
-    public List<Double> getEndShareUnit() {
-        return endShareUnit;
+    public Map<String,Integer> getNumberOfShareholders() {
+        return numberOfShareholders;
     }
 
     /**
-     * @param endShareUnit the endShareUnit to set
+     * @param numberOfShareholders the numberOfShareholders to set
      */
-    public void setEndShareUnit(List<Double> endShareUnit) {
-        this.endShareUnit = endShareUnit;
-    }
-
-    /**
-     * @return the startNumberOfShareholders
-     */
-    public List<Integer> getStartNumberOfShareholders() {
-        return startNumberOfShareholders;
-    }
-
-    /**
-     * @param startNumberOfShareholders the startNumberOfShareholders to set
-     */
-    public void setStartNumberOfShareholders(List<Integer> startNumberOfShareholders) {
-        this.startNumberOfShareholders = startNumberOfShareholders;
-    }
-
-    /**
-     * @return the endNumberOfShareholders
-     */
-    public List<Integer> getEndNumberOfShareholders() {
-        return endNumberOfShareholders;
-    }
-
-    /**
-     * @param endNumberOfShareholders the endNumberOfShareholders to set
-     */
-    public void setEndNumberOfShareholders(List<Integer> endNumberOfShareholders) {
-        this.endNumberOfShareholders = endNumberOfShareholders;
+    public void setNumberOfShareholders(Map<String,Integer> numberOfShareholders) {
+        this.numberOfShareholders = numberOfShareholders;
     }
 
     /**
      * @return the startNumberOfBondholders
      */
-    public List<Integer> getStartNumberOfBondholders() {
-        return startNumberOfBondholders;
+    public Map<String,Integer> getNumberOfBondholders() {
+        return numberOfBondholders;
     }
 
     /**
-     * @param startNumberOfBondholders the startNumberOfBondholders to set
+     * @param numberOfBondholders the startNumberOfBondholders to set
      */
-    public void setStartNumberOfBondholders(List<Integer> startNumberOfBondholders) {
-        this.startNumberOfBondholders = startNumberOfBondholders;
-    }
-
-    /**
-     * @return the endNumberOfBondholders
-     */
-    public List<Integer> getEndNumberOfBondholders() {
-        return endNumberOfBondholders;
-    }
-
-    /**
-     * @param endNumberOfBondholders the endNumberOfBondholders to set
-     */
-    public void setEndNumberOfBondholders(List<Integer> endNumberOfBondholders) {
-        this.endNumberOfBondholders = endNumberOfBondholders;
+    public void setNumberOfBondholders(Map<String,Integer> numberOfBondholders) {
+        this.numberOfBondholders = numberOfBondholders;
     }
 
     /**
      * @return the clientCompany
      */
-    public List<ClientCompany> getClientCompany() {
+    public ClientCompany getClientCompany() {
         return clientCompany;
     }
 
     /**
      * @param clientCompany the clientCompany to set
      */
-    public void setClientCompany(List<ClientCompany> clientCompany) {
+    public void setClientCompany(ClientCompany clientCompany) {
         this.clientCompany = clientCompany;
     }
+
+    /**
+     * @return the descriptor
+     */
+    public String getDescriptor() {
+        return descriptor;
+    }
+
+    /**
+     * @param descriptor the descriptor to set
+     */
+    public void setDescriptor(String descriptor) {
+        this.descriptor = descriptor;
+    }
+    
     
     
     
