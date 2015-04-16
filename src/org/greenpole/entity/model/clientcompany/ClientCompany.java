@@ -26,6 +26,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"name","code","nseSectorId","ceo","secretary","addresses","emailAddresses","phoneNumbers","depositoryId","valid"})
 public class ClientCompany implements Serializable {
+    private int id;
     @XmlElement
     private String name;
     @XmlElement
@@ -115,9 +116,56 @@ public class ClientCompany implements Serializable {
         this.phoneNumbers = phoneNumbers;
     }
 
+    /**
+     * Collects all values for the client company.
+     * This constructor should be used when trying to submit a client company for
+     * editing, as it includes the {@link #id} variable, which is not used when
+     * creating a client company.
+     * @param id the company's id
+     * @param name the company's name
+     * @param code the company's code
+     * @param nseSectorId the NSE Sector the company belongs to
+     * @param ceo the company's CEO
+     * @param secretary the company's secretary
+     * @param addresses the company's addresses
+     * @param depositoryId the depository's unique identification
+     * @param valid the company's valid status
+     * @param emailAddresses the company's email addresses
+     * @param phoneNumbers the company's phone numbers 
+     */
+    public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, List<ClientCompanyAddress> addresses, int depositoryId, boolean valid, List<ClientCompanyEmailAddress> emailAddresses, List<ClientCompanyPhoneNumber> phoneNumbers) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.nseSectorId = nseSectorId;
+        this.ceo = ceo;
+        this.secretary = secretary;
+        this.addresses = addresses;
+        this.depositoryId = depositoryId;
+        this.valid = valid;
+        this.emailAddresses = emailAddresses;
+        this.phoneNumbers = phoneNumbers;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "ClientCompany{" + "name=" + name + ", code=" + code + ", nseSectorId=" + nseSectorId + ", ceo=" + ceo + ", secretary=" + secretary + ", addresses=" + addresses + ", depositoryId=" + depositoryId + ", valid=" + valid + ", emailAddresses=" + emailAddresses + ", phoneNumbers=" + phoneNumbers + '}';
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
