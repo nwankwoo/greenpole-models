@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entrycode.emmanuel;
+package org.greenpole.entity.model;
 
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -22,22 +22,19 @@ public class ShareQuotation implements Serializable {
 @XmlElement
 private int id;
 @XmlElement
-private String code;
-@XmlElement
 private Double unitPrice; 
+
     @Override
     public String toString() {
-        return "ShareQuotation{" + "id=" + id + ", code=" + code + ", unitPrice=" + unitPrice + '}';
+        return "ShareQuotation{" + "id=" + id + ", unitPrice=" + unitPrice + '}';
     }
-
+    
     public ShareQuotation(){}
-    public ShareQuotation(int id, String code, Double unitPrice) {
+    public ShareQuotation(int id, Double unitPrice) {
         this.id = id;
-        this.code = code;
         this.unitPrice = unitPrice;
     }
-    public ShareQuotation(String code, Double unitPrice) {
-        this.code = code;
+    public ShareQuotation(Double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -47,13 +44,6 @@ private Double unitPrice;
 
     public void setId(int id) {
         this.id = id;
-    }
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public Double getUnitPrice() {
