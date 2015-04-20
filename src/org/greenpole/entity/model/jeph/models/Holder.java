@@ -57,8 +57,14 @@ public class Holder {
     private List<String> holderResidentialAddresses;
     @XmlElement
     private List<String> holderEmailAddresses;
+    @XmlElement
+    private List<String> holderCompanyAccounts;
 
-    public Holder(int id, Holder holder, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, Date dob, boolean taxExempted, boolean merged, boolean pryHolder, List<String> holderPhoneNumbers, List<String> holderResidentialAddresses, List<String> holderEmailAddresses) {
+    public Holder(int id, Holder holder, int holderAcctNumber, String chn, 
+            String firstName, String middleName, String lastName, String type, 
+            String gender, Date dob, boolean taxExempted, boolean merged, 
+            boolean pryHolder, List<String> holderPhoneNumbers, List<String> holderResidentialAddresses, 
+            List<String> holderEmailAddresses, List<String> holderCompanyAccounts) {
         this.id = id;
         this.holder = holder;
         this.holderAcctNumber = holderAcctNumber;
@@ -75,6 +81,7 @@ public class Holder {
         this.holderPhoneNumbers = holderPhoneNumbers;
         this.holderResidentialAddresses = holderResidentialAddresses;
         this.holderEmailAddresses = holderEmailAddresses;
+        this.holderCompanyAccounts = holderCompanyAccounts;
     }
 
     public int getId() {
@@ -204,5 +211,14 @@ public class Holder {
     public void setHolderEmailAddresses(List<String> holderEmailAddresses) {
         this.holderEmailAddresses = holderEmailAddresses;
     }
+
+    public List<String> getHolderCompanyAccounts() {
+        return holderCompanyAccounts;
+    }
+
+    public void setHolderCompanyAccounts(List<String> holderCompanyAccounts) {
+        this.holderCompanyAccounts = holderCompanyAccounts;
+    }
+    
 
 }

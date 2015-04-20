@@ -71,71 +71,72 @@ public class PrivatePlacement implements Serializable {
         return clientCompanyId;
     }
 
-    public int getTotalSharesOnOffer() {
-        return totalSharesOnOffer;
-    }
-
-    public int getMethodOnOffer() {
-        return methodOnOffer;
-    }
-
-    public int getStartingMinSubscrptn() {
-        return startingMinSubscrptn;
-    }
-
-    public int getContinuingMinSubscrptn() {
-        return continuingMinSubscrptn;
-    }
-
-    public Double getOfferPrice() {
-        return offerPrice;
-    }
-
-    public int getOfferSize() {
-        return offerSize;
-    }
-
-    public Date getOpeningDate() {
-        return openingDate;
-    }
-
-    public Date getClosingDate() {
-        return closingDate;
-    }
-
     public void setClientCompanyId(int clientCompanyId) {
         this.clientCompanyId = clientCompanyId;
+    }
+
+    public int getTotalSharesOnOffer() {
+        return totalSharesOnOffer;
     }
 
     public void setTotalSharesOnOffer(int totalSharesOnOffer) {
         this.totalSharesOnOffer = totalSharesOnOffer;
     }
 
+    public int getMethodOnOffer() {
+        return methodOnOffer;
+    }
+
     public void setMethodOnOffer(int methodOnOffer) {
         this.methodOnOffer = methodOnOffer;
+    }
+
+    public int getStartingMinSubscrptn() {
+        return startingMinSubscrptn;
     }
 
     public void setStartingMinSubscrptn(int startingMinSubscrptn) {
         this.startingMinSubscrptn = startingMinSubscrptn;
     }
 
+    public int getContinuingMinSubscrptn() {
+        return continuingMinSubscrptn;
+    }
+
     public void setContinuingMinSubscrptn(int continuingMinSubscrptn) {
         this.continuingMinSubscrptn = continuingMinSubscrptn;
+    }
+
+    public Double getOfferPrice() {
+        return offerPrice;
     }
 
     public void setOfferPrice(Double offerPrice) {
         this.offerPrice = offerPrice;
     }
 
+    public int getOfferSize() {
+        return offerSize;
+    }
+
     public void setOfferSize(int offerSize) {
         this.offerSize = offerSize;
+    }
+
+    public Date getOpeningDate() {
+        return openingDate;
     }
 
     public void setOpeningDate(Date openingDate) {
         this.openingDate = openingDate;
     }
 
+    public Date getClosingDate() {
+        return closingDate;
+    }
+
     public void setClosingDate(Date closingDate) {
         this.closingDate = closingDate;
     }
+
 }
