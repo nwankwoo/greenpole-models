@@ -47,9 +47,9 @@ public class ClientCompany implements Serializable {
     private List <ClientCompanyEmailAddress> emailAddresses ;
     @XmlElementWrapper(name = "phoneNumbers")
     private List <ClientCompanyPhoneNumber> phoneNumbers ;
-    @Deprecated
+    
     private String nseSector;
-    @Deprecated
+    
     private String depositoryName;
 
     /**
@@ -145,6 +145,32 @@ public class ClientCompany implements Serializable {
         this.valid = valid;
         this.emailAddresses = emailAddresses;
         this.phoneNumbers = phoneNumbers;
+    }
+    
+    /**
+     * Basic Constructor For Client Company Used on ShareQuotation
+     * and other Views
+     * @param id
+     * @param name
+     * @param code
+     * @param nseSector
+     * @param depositoryName 
+     */
+
+    public ClientCompany(int id, String name, String code, String nseSector, String depositoryName) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.nseSector = nseSector;
+        this.depositoryName = depositoryName;
+    }
+
+    /**
+     * Constructor for setting client compnay for share unit quotation upload
+     * @param code 
+     */
+    public ClientCompany(String code) {
+        this.code = code;
     }
     
     
