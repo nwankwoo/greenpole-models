@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entity.model.clientcompany;
+package org.greenpole.entity.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryAddress","addressLine","addressLine",
     "addressLine","addressLine","postCode","city","state","country"})
-public class ClientCompanyAddress {
+public class Address {
     private int clientCompanyId;
     @XmlElement
     private String addressLine1;
@@ -44,7 +44,7 @@ public class ClientCompanyAddress {
     /**
      * Initialises client company address object.
      */
-    public ClientCompanyAddress() {
+    public Address() {
     }
 
     /**
@@ -59,7 +59,7 @@ public class ClientCompanyAddress {
      * @param country the the company's resident country
      * @param primaryAddress the primary status of the company's address
      */
-    public ClientCompanyAddress(String addressLine1, String addressLine2, String addressLine3, 
+    public Address(String addressLine1, String addressLine2, String addressLine3, 
             String addressLine4, String postCode, String city, String state, String country, boolean primaryAddress) {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
@@ -88,7 +88,7 @@ public class ClientCompanyAddress {
      * @param country the the company's resident country
      * @param primaryAddress the primary status of the company's address
      */
-    public ClientCompanyAddress(int clientCompanyId, String addressLine1, String addressLine2, String addressLine3, String addressLine4, String postCode, String city, String state, String country, boolean primaryAddress) {
+    public Address(int clientCompanyId, String addressLine1, String addressLine2, String addressLine3, String addressLine4, String postCode, String city, String state, String country, boolean primaryAddress) {
         this.clientCompanyId = clientCompanyId;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;

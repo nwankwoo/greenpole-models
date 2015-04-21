@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entity.model.clientcompany;
+package org.greenpole.entity.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryEmail","emailAddress"})
-public class ClientCompanyEmailAddress {
+public class EmailAddress {
     private int clientCompanyId;
     @XmlElement
     private String emailAddress;
@@ -29,7 +29,7 @@ public class ClientCompanyEmailAddress {
     /**
      * Initialises the client company email address object.
      */
-    public ClientCompanyEmailAddress() {
+    public EmailAddress() {
     }
     
     /**
@@ -37,7 +37,7 @@ public class ClientCompanyEmailAddress {
      * @param emailAddress the company's email address
      * @param primaryEmail the primary status of the company's email address
      */
-    public ClientCompanyEmailAddress(String emailAddress, boolean primaryEmail) {
+    public EmailAddress(String emailAddress, boolean primaryEmail) {
         this.emailAddress = emailAddress;
         this.primaryEmail = primaryEmail;
     }
@@ -51,7 +51,7 @@ public class ClientCompanyEmailAddress {
      * @param emailAddress the company's email address
      * @param primaryEmail the primary status of the company's email address
      */
-    public ClientCompanyEmailAddress(int clientCompanyId, String emailAddress, boolean primaryEmail) {
+    public EmailAddress(int clientCompanyId, String emailAddress, boolean primaryEmail) {
         this.clientCompanyId = clientCompanyId;
         this.emailAddress = emailAddress;
         this.primaryEmail = primaryEmail;

@@ -5,6 +5,9 @@
  */
 package org.greenpole.entity.model.clientcompany;
 
+import org.greenpole.entity.model.Address;
+import org.greenpole.entity.model.PhoneNumber;
+import org.greenpole.entity.model.EmailAddress;
 import java.io.Serializable;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -22,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  * storing and retrieving client company information.
  */
 @XmlRootElement
-@XmlSeeAlso({ClientCompanyAddress.class,ClientCompanyEmailAddress.class,ClientCompanyPhoneNumber.class})
+@XmlSeeAlso({Address.class,EmailAddress.class,PhoneNumber.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"name","code","nseSectorId","ceo","secretary","addresses","emailAddresses","phoneNumbers","depositoryId","valid"})
 public class ClientCompany implements Serializable {
@@ -38,15 +41,15 @@ public class ClientCompany implements Serializable {
     @XmlElement
     private String secretary;
     @XmlElementWrapper(name = "addresses")
-    private List <ClientCompanyAddress> addresses;
+    private List <Address> addresses;
     @XmlElement
     private int depositoryId;
     @XmlElement
     private boolean valid;
     @XmlElementWrapper(name = "emailAddresses")
-    private List <ClientCompanyEmailAddress> emailAddresses ;
+    private List <EmailAddress> emailAddresses ;
     @XmlElementWrapper(name = "phoneNumbers")
-    private List <ClientCompanyPhoneNumber> phoneNumbers ;
+    private List <PhoneNumber> phoneNumbers ;
     
     private String nseSector;
     
@@ -103,7 +106,7 @@ public class ClientCompany implements Serializable {
      * @param emailAddresses the company's email addresses
      * @param phoneNumbers the company's phone numbers 
      */
-    public ClientCompany(String name, String code, int nseSectorId, String ceo, String secretary, List<ClientCompanyAddress> addresses, int depositoryId, boolean valid, List<ClientCompanyEmailAddress> emailAddresses, List<ClientCompanyPhoneNumber> phoneNumbers) {
+    public ClientCompany(String name, String code, int nseSectorId, String ceo, String secretary, List<Address> addresses, int depositoryId, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers) {
         this.name = name;
         this.code = code;
         this.nseSectorId = nseSectorId;
@@ -133,7 +136,7 @@ public class ClientCompany implements Serializable {
      * @param emailAddresses the company's email addresses
      * @param phoneNumbers the company's phone numbers 
      */
-    public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, List<ClientCompanyAddress> addresses, int depositoryId, boolean valid, List<ClientCompanyEmailAddress> emailAddresses, List<ClientCompanyPhoneNumber> phoneNumbers) {
+    public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, List<Address> addresses, int depositoryId, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers) {
         this.id = id;
         this.name = name;
         this.code = code;
@@ -269,14 +272,14 @@ public class ClientCompany implements Serializable {
     /**
      * @return the addresses
      */
-    public List <ClientCompanyAddress> getAddresses() {
+    public List <Address> getAddresses() {
         return addresses;
     }
 
     /**
      * @param addresses the addresses to set
      */
-    public void setAddresses(List <ClientCompanyAddress> addresses) {
+    public void setAddresses(List <Address> addresses) {
         this.addresses = addresses;
     }
 
@@ -327,28 +330,28 @@ public class ClientCompany implements Serializable {
     /**
      * @return the emailAddresses
      */
-    public List <ClientCompanyEmailAddress> getEmailAddresses() {
+    public List <EmailAddress> getEmailAddresses() {
         return emailAddresses;
     }
 
     /**
      * @param emailAddresses the emailAddresses to set
      */
-    public void setEmailAddresses(List <ClientCompanyEmailAddress> emailAddresses) {
+    public void setEmailAddresses(List <EmailAddress> emailAddresses) {
         this.emailAddresses = emailAddresses;
     }
 
     /**
      * @return the phoneNumbers
      */
-    public List <ClientCompanyPhoneNumber> getPhoneNumbers() {
+    public List <PhoneNumber> getPhoneNumbers() {
         return phoneNumbers;
     }
 
     /**
      * @param phoneNumbers the phoneNumbers to set
      */
-    public void setPhoneNumbers(List <ClientCompanyPhoneNumber> phoneNumbers) {
+    public void setPhoneNumbers(List <PhoneNumber> phoneNumbers) {
         this.phoneNumbers = phoneNumbers;
     }
 
