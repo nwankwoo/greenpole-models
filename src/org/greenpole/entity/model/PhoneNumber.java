@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entity.model.clientcompany;
+package org.greenpole.entity.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryPhoneNumber","emailAddress"})
-public class ClientCompanyPhoneNumber {
+public class PhoneNumber {
     private int clientCompanyId;
     @XmlElement
     private String phoneNumber;
@@ -30,7 +30,7 @@ public class ClientCompanyPhoneNumber {
     /**
      * Initialises the client company phone number object.
      */
-    public ClientCompanyPhoneNumber() {
+    public PhoneNumber() {
     }
 
     /**
@@ -38,7 +38,7 @@ public class ClientCompanyPhoneNumber {
      * @param phoneNumber the company's phone number
      * @param primaryPhoneNumber the phone number's primary status
      */
-    public ClientCompanyPhoneNumber(String phoneNumber, boolean primaryPhoneNumber) {
+    public PhoneNumber(String phoneNumber, boolean primaryPhoneNumber) {
         this.phoneNumber = phoneNumber;
         this.primaryPhoneNumber = primaryPhoneNumber;
     }
@@ -52,7 +52,7 @@ public class ClientCompanyPhoneNumber {
      * @param phoneNumber the company's phone number
      * @param primaryPhoneNumber the phone number's primary status
      */
-    public ClientCompanyPhoneNumber(int clientCompanyId, String phoneNumber, boolean primaryPhoneNumber) {
+    public PhoneNumber(int clientCompanyId, String phoneNumber, boolean primaryPhoneNumber) {
         this.clientCompanyId = clientCompanyId;
         this.phoneNumber = phoneNumber;
         this.primaryPhoneNumber = primaryPhoneNumber;

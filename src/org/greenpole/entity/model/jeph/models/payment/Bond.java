@@ -1,4 +1,4 @@
-package org.greenpole.entity.model.jeph.models;
+package org.greenpole.entity.model.jeph.models.payment;
 
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
