@@ -5,138 +5,151 @@
  */
 package org.greenpole.entity.model.clientcompany;
 
-import javax.xml.bind.annotation.*;
-import java.io.Serializable;
-import java.util.*;
+import java.math.BigDecimal;
 
 /**
- * @author Jephthah Sadare
- * @version 1.0 Used by the middle-tier to capture private placement details and
- * also to pass bond model values to
- * org.greenpole.hibernate.entity.PrivatePlacement entity
+ *
+ * @author Yusuf Samsudeen Babashola (Algorithm) 
+ * 
+ * 
+ * This class represents a Private Placement
  */
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"clientCompanyId", "totalSharesOnOffer", "methodOnOffer", "startingMinSubscrptn", "continuingMinSubscrptn", "offerPrice", "offerSize", "openingDate", "closingDate"})
-
-public class PrivatePlacement implements Serializable {
-
-    @XmlElement
-    private int clientCompanyId;
-    @XmlElement
+public class PrivatePlacement {
+   private int clientCompanyId;
     private int totalSharesOnOffer;
-    @XmlElement
-    private int methodOnOffer;
-    @XmlElement
-    private int startingMinSubscrptn;
-    @XmlElement
-    private int continuingMinSubscrptn;
-    @XmlElement
-    private Double offerPrice;
-    @XmlElement
-    private int offerSize;
-    @XmlElement
-    private Date openingDate;
-    @XmlElement
-    private Date closingDate;
+    private String methodOfOffer;
+    private int startingMinimumSubscription;
+    private int continuingMinimumSubscription;
+    private double offerPrice;
+    private BigDecimal offerSize;
+    private String openingDate;
+    private String closingDate;
 
     /**
-     * Initializes PrivatePlacement member variables
-     *
-     * @param clientCompanyId
-     * @param totalSharesOnOffer
-     * @param methodOnOffer
-     * @param startingMinSubscrptn
-     * @param continuingMinSubscrptn
-     * @param offerPrice
-     * @param offerSize
-     * @param openingDate
-     * @param closingDate
+     * @return the clientCompanyId
      */
-    public PrivatePlacement(int clientCompanyId, int totalSharesOnOffer, int methodOnOffer,
-            int startingMinSubscrptn, int continuingMinSubscrptn, Double offerPrice, int offerSize, Date openingDate, Date closingDate) {
-        this.clientCompanyId = clientCompanyId;
-        this.totalSharesOnOffer = totalSharesOnOffer;
-        this.methodOnOffer = methodOnOffer;
-        this.startingMinSubscrptn = startingMinSubscrptn;
-        this.continuingMinSubscrptn = continuingMinSubscrptn;
-        this.offerPrice = offerPrice;
-        this.offerSize = offerSize;
-        this.openingDate = openingDate;
-        this.closingDate = closingDate;
-
-    }
-
     public int getClientCompanyId() {
         return clientCompanyId;
     }
 
+    /**
+     * @param clientCompanyId the clientCompanyId to set
+     */
     public void setClientCompanyId(int clientCompanyId) {
         this.clientCompanyId = clientCompanyId;
     }
 
+    /**
+     * @return the totalSharesOnOffer
+     */
     public int getTotalSharesOnOffer() {
         return totalSharesOnOffer;
     }
 
+    /**
+     * @param totalSharesOnOffer the totalSharesOnOffer to set
+     */
     public void setTotalSharesOnOffer(int totalSharesOnOffer) {
         this.totalSharesOnOffer = totalSharesOnOffer;
     }
 
-    public int getMethodOnOffer() {
-        return methodOnOffer;
+    /**
+     * @return the methodOfOffer
+     */
+    public String getMethodOfOffer() {
+        return methodOfOffer;
     }
 
-    public void setMethodOnOffer(int methodOnOffer) {
-        this.methodOnOffer = methodOnOffer;
+    /**
+     * @param methodOfOffer the methodOfOffer to set
+     */
+    public void setMethodOfOffer(String methodOfOffer) {
+        this.methodOfOffer = methodOfOffer;
     }
 
-    public int getStartingMinSubscrptn() {
-        return startingMinSubscrptn;
+    /**
+     * @return the startingMinimumSubscription
+     */
+    public int getStartingMinimumSubscription() {
+        return startingMinimumSubscription;
     }
 
-    public void setStartingMinSubscrptn(int startingMinSubscrptn) {
-        this.startingMinSubscrptn = startingMinSubscrptn;
+    /**
+     * @param startingMinimumSubscription the startingMinimumSubscription to set
+     */
+    public void setStartingMinimumSubscription(int startingMinimumSubscription) {
+        this.startingMinimumSubscription = startingMinimumSubscription;
     }
 
-    public int getContinuingMinSubscrptn() {
-        return continuingMinSubscrptn;
+    /**
+     * @return the continuingMinimumSubscription
+     */
+    public int getContinuingMinimumSubscription() {
+        return continuingMinimumSubscription;
     }
 
-    public void setContinuingMinSubscrptn(int continuingMinSubscrptn) {
-        this.continuingMinSubscrptn = continuingMinSubscrptn;
+    /**
+     * @param continuingMinimumSubscription the continuingMinimumSubscription to set
+     */
+    public void setContinuingMinimumSubscription(int continuingMinimumSubscription) {
+        this.continuingMinimumSubscription = continuingMinimumSubscription;
     }
 
-    public Double getOfferPrice() {
+    /**
+     * @return the offerPrice
+     */
+    public double getOfferPrice() {
         return offerPrice;
     }
 
-    public void setOfferPrice(Double offerPrice) {
+    /**
+     * @param offerPrice the offerPrice to set
+     */
+    public void setOfferPrice(double offerPrice) {
         this.offerPrice = offerPrice;
     }
 
-    public int getOfferSize() {
+    /**
+     * @return the offerSize
+     */
+    public BigDecimal getOfferSize() {
         return offerSize;
     }
 
-    public void setOfferSize(int offerSize) {
+    /**
+     * @param offerSize the offerSize to set
+     */
+    public void setOfferSize(BigDecimal offerSize) {
         this.offerSize = offerSize;
     }
 
-    public Date getOpeningDate() {
+    /**
+     * @return the openingDate
+     */
+    public String getOpeningDate() {
         return openingDate;
     }
 
-    public void setOpeningDate(Date openingDate) {
+    /**
+     * @param openingDate the openingDate to set
+     */
+    public void setOpeningDate(String openingDate) {
         this.openingDate = openingDate;
     }
 
-    public Date getClosingDate() {
+    /**
+     * @return the closingDate
+     */
+    public String getClosingDate() {
         return closingDate;
     }
 
-    public void setClosingDate(Date closingDate) {
+    /**
+     * @param closingDate the closingDate to set
+     */
+    public void setClosingDate(String closingDate) {
         this.closingDate = closingDate;
     }
-
+    
+     
 }
