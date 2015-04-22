@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entity.model.jeph.models.holder;
+package org.greenpole.entity.model.holder;
 
 import org.greenpole.entity.model.jeph.models.payment.Dividend;
 import org.greenpole.entity.model.jeph.models.payment.Coupon;
@@ -23,10 +23,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlSeeAlso({Coupon.class, Dividend.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderAcctNumber", "chn", "firstName", "middleName", "lastName", 
-    "type", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", 
-    "holderSignatures", "holderPhoneNumbers", "holderResidentialAddress", "holderCompanyAccounts",
-    "holderBondAccounts", "holderPostalAddress"})
+@XmlType(propOrder = {"bankId", "clientCompanyId", "holderId", "chn", "shareUnits", 
+    "esop", "taxExempted", "nubanAccount", "merged", "holderCompAccPrimary"})
 
 public class HolderCompanyAccount {
     

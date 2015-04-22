@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entity.model.jeph.models.holder;
+package org.greenpole.entity.model.holder;
 
 import org.greenpole.entity.model.jeph.models.payment.Coupon;
 import org.greenpole.entity.model.jeph.models.payment.BondOffer;
@@ -15,25 +15,26 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+import org.greenpole.entity.model.clientcompany.Bank;
 
 /**
  *
  * @author Jephthah Sadare
  */
-
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({BondOffer.class, Coupon.class})
-@XmlType(propOrder = {"primaryAddress","addressLine","addressLine",
-    "addressLine","addressLine","postCode","city","state","country"})
-
+@XmlSeeAlso({BondOffer.class, Coupon.class, Bank.class})
+@XmlType(propOrder = {"holderId", "bank", "bondOffer", "holderBondAccount", "chn", "bondUnits", "nubanAccount",
+    "merged", "holderBondAccPrimary", "coupons"})
 
 public class HolderBondAccount {
-    
+
     @XmlElement
     private int id;
     @XmlElement
-    private int bank;
+    private int holderId;
+    @XmlElement
+    private List<Bank> bank;
     @XmlElementWrapper(name = "bondOffer")
     private List<BondOffer> bondOffer;
     @XmlElementWrapper(name = "holderBondAccount")
@@ -51,8 +52,9 @@ public class HolderBondAccount {
     @XmlElementWrapper(name = "coupons")
     private List<Coupon> coupons;
 
-    public HolderBondAccount(int id, int bank, List<BondOffer> bondOffer, List<HolderBondAccount> holderBondAccount, String chn, Double bondUnits, String nubanAccount, boolean merged, boolean holderBondAccPrimary, List<Coupon> coupons) {
+    public HolderBondAccount(int id, int holderId, List<Bank> bank, List<BondOffer> bondOffer, List<HolderBondAccount> holderBondAccount, String chn, Double bondUnits, String nubanAccount, boolean merged, boolean holderBondAccPrimary, List<Coupon> coupons) {
         this.id = id;
+        this.holderId = holderId;
         this.bank = bank;
         this.bondOffer = bondOffer;
         this.holderBondAccount = holderBondAccount;
@@ -72,11 +74,19 @@ public class HolderBondAccount {
         this.id = id;
     }
 
-    public int getBank() {
+    public int getHolderId() {
+        return holderId;
+    }
+
+    public void setHolderId(int holderId) {
+        this.holderId = holderId;
+    }
+
+    public List<Bank> getBank() {
         return bank;
     }
 
-    public void setBank(int bank) {
+    public void setBank(List<Bank> bank) {
         this.bank = bank;
     }
 
@@ -143,6 +153,6 @@ public class HolderBondAccount {
     public void setCoupons(List<Coupon> coupons) {
         this.coupons = coupons;
     }
-
+    
     
 }

@@ -20,22 +20,22 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryEmail","emailAddress"})
 public class EmailAddress {
-    private int clientCompanyId;
+    private int entityId;
     @XmlElement
     private String emailAddress;
     @XmlAttribute
     private boolean primaryEmail;
 
     /**
-     * Initialises the client company email address object.
+     * Initialises the client entity email address object.
      */
     public EmailAddress() {
     }
     
     /**
-     * Sets all data for the client company email address.
-     * @param emailAddress the company's email address
-     * @param primaryEmail the primary status of the company's email address
+     * Sets all data for the client entity email address.
+     * @param emailAddress the entity's email address
+     * @param primaryEmail the primary status of the entity's email address
      */
     public EmailAddress(String emailAddress, boolean primaryEmail) {
         this.emailAddress = emailAddress;
@@ -43,61 +43,61 @@ public class EmailAddress {
     }
 
     /**
-     * Sets all data for the client company email address.
-     * This constructor should be used when trying to submit a client company email address for
-     * editing, as it includes the {@link #clientCompanyId} variable, which is not used when
-     * creating a client company email address.
-     * @param clientCompanyId the company's id
-     * @param emailAddress the company's email address
-     * @param primaryEmail the primary status of the company's email address
+     * Sets all data for the client entity email address.
+     * This constructor should be used when trying to submit a client entity email address for
+     * editing, as it includes the {@link #entityId} variable, which is not used when
+     * creating a client entity email address.
+     * @param clientCompanyId the entity's id
+     * @param emailAddress the entity's email address
+     * @param primaryEmail the primary status of the entity's email address
      */
     public EmailAddress(int clientCompanyId, String emailAddress, boolean primaryEmail) {
-        this.clientCompanyId = clientCompanyId;
+        this.entityId = clientCompanyId;
         this.emailAddress = emailAddress;
         this.primaryEmail = primaryEmail;
     }
 
     /**
-     * @return the client company id
+     * @return the client entity id
      */
-    public int getClientCompanyId() {
-        return clientCompanyId;
+    public int getEntityId() {
+        return entityId;
     }
 
     /**
-     * @param clientCompanyId the client company id to set
+     * @param entityId the client entity id to set
      */
-    public void setClientCompanyId(int clientCompanyId) {
-        this.clientCompanyId = clientCompanyId;
+    public void setEntityId(int entityId) {
+        this.entityId = entityId;
     }
 
     /**
-     * Gets the company's email address.
-     * @return the company's email address
+     * Gets the entity's email address.
+     * @return the entity's email address
      */
     public String getEmailAddress() {
         return emailAddress;
     }
 
     /**
-     * Sets the company's email address.
-     * @param emailAddress the company's email address
+     * Sets the entity's email address.
+     * @param emailAddress the entity's email address
      */
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
     /**
-     * Gets the primary status of the company's email address.
-     * @return the primary status of the company's email address
+     * Gets the primary status of the entity's email address.
+     * @return the primary status of the entity's email address
      */
     public boolean isPrimaryEmail() {
         return primaryEmail;
     }
 
     /**
-     * Sets the primary status of the company's email address.
-     * @param primaryEmail the primary status of the company's email address
+     * Sets the primary status of the entity's email address.
+     * @param primaryEmail the primary status of the entity's email address
      */
     public void setPrimaryEmail(boolean primaryEmail) {
         this.primaryEmail = primaryEmail;

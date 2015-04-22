@@ -15,27 +15,27 @@ import javax.xml.bind.annotation.XmlType;
 /**
  *
  * @author Yusuf Samsudeen Babashola (Algorithm) 
- * Carries information on the client company's phone numbers.
+ * Carries information on the client entity's phone numbers.
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryPhoneNumber","emailAddress"})
 public class PhoneNumber {
-    private int clientCompanyId;
+    private int entityId;
     @XmlElement
     private String phoneNumber;
     @XmlAttribute
     private boolean primaryPhoneNumber;
 
     /**
-     * Initialises the client company phone number object.
+     * Initialises the client entity phone number object.
      */
     public PhoneNumber() {
     }
 
     /**
-     * Collects all values for the client company phone number.
-     * @param phoneNumber the company's phone number
+     * Collects all values for the client entity phone number.
+     * @param phoneNumber the entity's phone number
      * @param primaryPhoneNumber the phone number's primary status
      */
     public PhoneNumber(String phoneNumber, boolean primaryPhoneNumber) {
@@ -44,36 +44,36 @@ public class PhoneNumber {
     }
 
     /**
-     * Collects all values for the client company phone number.
-     * This constructor should be used when trying to submit a client company phone number for
-     * editing, as it includes the {@link #clientCompanyId} variable, which is not used when
-     * creating a client company phone number.
-     * @param clientCompanyId the company's id
-     * @param phoneNumber the company's phone number
+     * Collects all values for the client entity phone number.
+     * This constructor should be used when trying to submit a client entity phone number for
+     * editing, as it includes the {@link #entityId} variable, which is not used when
+     * creating a client entity phone number.
+     * @param clientCompanyId the entity's id
+     * @param phoneNumber the entity's phone number
      * @param primaryPhoneNumber the phone number's primary status
      */
     public PhoneNumber(int clientCompanyId, String phoneNumber, boolean primaryPhoneNumber) {
-        this.clientCompanyId = clientCompanyId;
+        this.entityId = clientCompanyId;
         this.phoneNumber = phoneNumber;
         this.primaryPhoneNumber = primaryPhoneNumber;
     }
 
     /**
-     * @return the client company id
+     * @return the client entity id
      */
-    public int getClientCompanyId() {
-        return clientCompanyId;
+    public int getEntityId() {
+        return entityId;
     }
 
     /**
-     * @param clientCompanyId the client company id to set
+     * @param entityId the client entity id to set
      */
-    public void setClientCompanyId(int clientCompanyId) {
-        this.clientCompanyId = clientCompanyId;
+    public void setEntityId(int entityId) {
+        this.entityId = entityId;
     }
     
     /**
-     * Gets the client company's phone number.
+     * Gets the client entity's phone number.
      * @return the phone number
      */
     public String getPhoneNumber() {
@@ -81,24 +81,24 @@ public class PhoneNumber {
     }
 
     /**
-     * Sets the client company's phone number
-     * @param phoneNumber the client company's phone number
+     * Sets the client entity's phone number
+     * @param phoneNumber the client entity's phone number
      */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
     /**
-     * Gets the primary status of the client company's phone number.
-     * @return the primary status of the client company's phone number
+     * Gets the primary status of the client entity's phone number.
+     * @return the primary status of the client entity's phone number
      */
     public boolean isPrimaryPhoneNumber() {
         return primaryPhoneNumber;
     }
 
     /**
-     * Sets the primary status of the client company's phone number.
-     * @param primaryPhoneNumber the primary status of the client company's phone number
+     * Sets the primary status of the client entity's phone number.
+     * @param primaryPhoneNumber the primary status of the client entity's phone number
      */
     public void setPrimaryPhoneNumber(boolean primaryPhoneNumber) {
         this.primaryPhoneNumber = primaryPhoneNumber;
