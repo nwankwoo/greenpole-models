@@ -11,21 +11,14 @@ import java.util.Map;
  */
 public class QueryClientCompany {
     /**
-     * Default representation of descriptor=
-     * ShareUnit:none;numberofShareholders:none;numberofBondholders:none
+     * Default representation of descriptor=clientCompany:none;shareUnit:none;numberOfShareholders:none;numberOfBondholders:none
      * and this is only set when user is performing a range search
      */
     private String descriptor;
-    
     private Map<String,Double> shareUnit;
-    
     private Map<String,Integer> numberOfShareholders;
-    
     private Map<String,Integer> numberOfBondholders;
-    
     private ClientCompany clientCompany;
-    
-    
 
     /**
      * @return the shareUnit
@@ -96,8 +89,4 @@ public class QueryClientCompany {
     public void setDescriptor(String descriptor) {
         this.descriptor = descriptor;
     }
-    
-    
-    
-    
 }
