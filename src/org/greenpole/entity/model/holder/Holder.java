@@ -17,11 +17,13 @@ import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.Address;
 import org.greenpole.entity.model.EmailAddress;
 import org.greenpole.entity.model.PhoneNumber;
+import org.greenpole.entity.model.stockbroker.Stockbroker;
 
 /**
  *
  * @author Jephthah Sadare
  */
+
 @XmlRootElement
 @XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
 @XmlAccessorType(XmlAccessType.NONE)
@@ -34,8 +36,7 @@ public class Holder {
 
     @XmlElement
     private int holderId;
-    @XmlElement
-    private Holder holder;
+    
     @XmlElement
     private int holderAcctNumber;
     @XmlElement
@@ -51,7 +52,7 @@ public class Holder {
     @XmlElement
     private String gender;
     @XmlElement
-    private Date dob;
+    private String dob;
     @XmlElement
     private boolean taxExempted;
     @XmlElement
@@ -59,29 +60,27 @@ public class Holder {
     @XmlElement
     private boolean pryHolder;
     @XmlElement
-    private String pryAddress;
-    @XmlElementWrapper(name = "holders")
-    private List<Holder> holders;
+    private String pryAddress = "residentialAddress";
     @XmlElementWrapper(name = "holderPhoneNumbers")
     private List<PhoneNumber> holderPhoneNumbers;
     @XmlElementWrapper(name = "holderResidentialAddresses")
-    private List<Address> holderResidentialAddresses;
+    private Address holderResidentialAddresses;
     @XmlElementWrapper(name = "holderCompanyAccounts")
     private List<HolderCompanyAccount> holderCompanyAccounts;
     @XmlElementWrapper(name = "holderBondAccounts")
     private List<HolderBondAccount> holderBondAccounts;
     @XmlElementWrapper(name = "holderPostalAddresses")
-    private List<Address> holderPostalAddresses;
+    private Address holderPostalAddresses;
     @XmlElementWrapper(name = "holderEmailAddresses")
-    private List<EmailAddress> holderEmailAddresses;
+    private List<EmailAddress> holderEmailAddresses;    
+    @XmlElementWrapper(name = "holderStockbroker")
+    private Stockbroker holderStockbroker;
 
-    public Holder() {
-
+    public Holder(){
+        
     }
-
-    public Holder(int holderId, Holder holder, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, Date dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<Holder> holders, List<PhoneNumber> holderPhoneNumbers, List<Address> holderResidentialAddresses, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, List<Address> holderPostalAddresses, List<EmailAddress> holderEmailAddresses) {
+    public Holder(int holderId, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<PhoneNumber> holderPhoneNumbers, Address holderResidentialAddresses, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, Address holderPostalAddresses, List<EmailAddress> holderEmailAddresses) {
         this.holderId = holderId;
-        this.holder = holder;
         this.holderAcctNumber = holderAcctNumber;
         this.chn = chn;
         this.firstName = firstName;
@@ -94,7 +93,6 @@ public class Holder {
         this.merged = merged;
         this.pryHolder = pryHolder;
         this.pryAddress = pryAddress;
-        this.holders = holders;
         this.holderPhoneNumbers = holderPhoneNumbers;
         this.holderResidentialAddresses = holderResidentialAddresses;
         this.holderCompanyAccounts = holderCompanyAccounts;
@@ -111,13 +109,7 @@ public class Holder {
         this.holderId = holderId;
     }
 
-    public Holder getHolder() {
-        return holder;
-    }
-
-    public void setHolder(Holder holder) {
-        this.holder = holder;
-    }
+   
 
     public int getHolderAcctNumber() {
         return holderAcctNumber;
@@ -175,11 +167,11 @@ public class Holder {
         this.gender = gender;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(String dob) {
         this.dob = dob;
     }
 
@@ -215,13 +207,7 @@ public class Holder {
         this.pryAddress = pryAddress;
     }
 
-    public List<Holder> getHolders() {
-        return holders;
-    }
-
-    public void setHolders(List<Holder> holders) {
-        this.holders = holders;
-    }
+   
 
     public List<PhoneNumber> getHolderPhoneNumbers() {
         return holderPhoneNumbers;
@@ -231,11 +217,11 @@ public class Holder {
         this.holderPhoneNumbers = holderPhoneNumbers;
     }
 
-    public List<Address> getHolderResidentialAddresses() {
+    public Address getHolderResidentialAddresses() {
         return holderResidentialAddresses;
     }
 
-    public void setHolderResidentialAddresses(List<Address> holderResidentialAddresses) {
+    public void setHolderResidentialAddresses(Address holderResidentialAddresses) {
         this.holderResidentialAddresses = holderResidentialAddresses;
     }
 
@@ -255,11 +241,11 @@ public class Holder {
         this.holderBondAccounts = holderBondAccounts;
     }
 
-    public List<Address> getHolderPostalAddresses() {
+    public Address getHolderPostalAddresses() {
         return holderPostalAddresses;
     }
 
-    public void setHolderPostalAddresses(List<Address> holderPostalAddresses) {
+    public void setHolderPostalAddresses(Address holderPostalAddresses) {
         this.holderPostalAddresses = holderPostalAddresses;
     }
 
@@ -271,4 +257,21 @@ public class Holder {
         this.holderEmailAddresses = holderEmailAddresses;
     }
 
+    /**
+     * @return the holderStockbroker
+     */
+    public Stockbroker getHolderStockbroker() {
+        return holderStockbroker;
+    }
+
+    /**
+     * @param holderStockbroker the holderStockbroker to set
+     */
+    public void setHolderStockbroker(Stockbroker holderStockbroker) {
+        this.holderStockbroker = holderStockbroker;
+    }
+
+    
+    
+    
 }

@@ -39,7 +39,7 @@ public class HolderCompanyAccount {
     @XmlElement
     private String chn;
     @XmlElement
-    private Double shareUnits;
+    private double shareUnits;
     @XmlElement
     private boolean esop;
     @XmlElement
@@ -50,10 +50,12 @@ public class HolderCompanyAccount {
     private boolean merged;
     @XmlElement
     private boolean holderCompAccPrimary;
-    @XmlElementWrapper(name = "holderComponentAccounts")
-    private List<HolderCompanyAccount> holderCompanyAccounts;
 
-    public HolderCompanyAccount(int id, int bankId, int clientCompanyId, int holderId, String chn, Double shareUnits, boolean esop, boolean taxExempted, String nubanAccount, boolean merged, boolean holderCompAccPrimary, List<HolderCompanyAccount> holderCompanyAccounts) {
+    public HolderCompanyAccount() {
+    }
+
+    
+    public HolderCompanyAccount(int id, int bankId, int clientCompanyId, int holderId, String chn, double shareUnits, boolean esop, boolean taxExempted, String nubanAccount, boolean merged, boolean holderCompAccPrimary, List<HolderCompanyAccount> holderCompanyAccounts) {
         this.id = id;
         this.bankId = bankId;
         this.clientCompanyId = clientCompanyId;
@@ -65,7 +67,6 @@ public class HolderCompanyAccount {
         this.nubanAccount = nubanAccount;
         this.merged = merged;
         this.holderCompAccPrimary = holderCompAccPrimary;
-        this.holderCompanyAccounts = holderCompanyAccounts;
     }
 
     public int getId() {
@@ -108,11 +109,11 @@ public class HolderCompanyAccount {
         this.chn = chn;
     }
 
-    public Double getShareUnits() {
+    public double getShareUnits() {
         return shareUnits;
     }
 
-    public void setShareUnits(Double shareUnits) {
+    public void setShareUnits(double shareUnits) {
         this.shareUnits = shareUnits;
     }
 
@@ -156,13 +157,6 @@ public class HolderCompanyAccount {
         this.holderCompAccPrimary = holderCompAccPrimary;
     }
 
-    public List<HolderCompanyAccount> getHolderCompanyAccounts() {
-        return holderCompanyAccounts;
-    }
-
-    public void setHolderCompanyAccounts(List<HolderCompanyAccount> holderCompanyAccounts) {
-        this.holderCompanyAccounts = holderCompanyAccounts;
-    }
-    
+  
     
 }
