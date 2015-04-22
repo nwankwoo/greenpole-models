@@ -22,7 +22,6 @@ import org.greenpole.entity.model.PhoneNumber;
  *
  * @author Jephthah Sadare
  */
-
 @XmlRootElement
 @XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
 @XmlAccessorType(XmlAccessType.NONE)
@@ -75,6 +74,10 @@ public class Holder {
     private List<Address> holderPostalAddresses;
     @XmlElementWrapper(name = "holderEmailAddresses")
     private List<EmailAddress> holderEmailAddresses;
+
+    public Holder() {
+
+    }
 
     public Holder(int holderId, Holder holder, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, Date dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<Holder> holders, List<PhoneNumber> holderPhoneNumbers, List<Address> holderResidentialAddresses, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, List<Address> holderPostalAddresses, List<EmailAddress> holderEmailAddresses) {
         this.holderId = holderId;
@@ -268,7 +271,4 @@ public class Holder {
         this.holderEmailAddresses = holderEmailAddresses;
     }
 
-    
-    
-    
 }
