@@ -7,16 +7,20 @@ package org.greenpole.entrycode.emmanuel.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 
 /**
  *
  * @author user
  */
 @XmlRootElement
+@XmlSeeAlso({Administrator.class})
 @XmlAccessorType(XmlAccessType.NONE)
 public class Holder implements Serializable {
 
@@ -36,11 +40,12 @@ public class Holder implements Serializable {
     private String gender;
     @XmlElement
     private Date dob;
-
+    @XmlElementWrapper(name = "administrator")
+    private List<Administrator> administrator;
     public Holder() {
     }
 
-    public Holder(int id, int holderAcctNumber, String firstName, String middleName, String lastName, String type, String gender, Date dob) {
+    public Holder(int id, int holderAcctNumber, String firstName, String middleName, String lastName, String type, String gender, Date dob, List administrator) {
         this.id = id;
         this.holderAcctNumber = holderAcctNumber;
         this.firstName = firstName;
@@ -49,9 +54,10 @@ public class Holder implements Serializable {
         this.type = type;
         this.gender = gender;
         this.dob = dob;
+        this.administrator = administrator;
     }
 
-    public Holder(int holderAcctNumber, String firstName, String middleName, String lastName, String type, String gender, Date dob) {
+    public Holder(int holderAcctNumber, String firstName, String middleName, String lastName, String type, String gender, Date dob, List administrator) {
         this.holderAcctNumber = holderAcctNumber;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -59,6 +65,7 @@ public class Holder implements Serializable {
         this.type = type;
         this.gender = gender;
         this.dob = dob;
+        this.administrator = administrator;
     }
 
     /**
@@ -171,6 +178,20 @@ public class Holder implements Serializable {
      */
     public void setDob(Date dob) {
         this.dob = dob;
+    }
+
+    /**
+     * @return the administrator
+     */
+    public List<Administrator> getAdministrator() {
+        return administrator;
+    }
+
+    /**
+     * @param administrator the administrator to set
+     */
+    public void setAdministrator(List<Administrator> administrator) {
+        this.administrator = administrator;
     }
 
 }
