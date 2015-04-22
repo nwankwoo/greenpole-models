@@ -6,7 +6,7 @@
 package org.greenpole.entity.model.holder;
 
 import org.greenpole.entity.model.jeph.models.payment.Coupon;
-import org.greenpole.entity.model.jeph.models.payment.BondOffer;
+import org.greenpole.entity.model.clientcompany.BondOffer;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -36,13 +36,14 @@ public class HolderBondAccount {
     @XmlElement
     private List<Bank> bank;
     @XmlElementWrapper(name = "bondOffer")
-    private List<BondOffer> bondOffer;
+    private BondOffer bondOffer;
     @XmlElementWrapper(name = "holderBondAccount")
-    private List<HolderBondAccount> holderBondAccount;
     @XmlElement
     private String chn;
     @XmlElement
-    private Double bondUnits;
+    private double bondUnits;
+    @XmlElement
+    private double principalValue;
     @XmlElement
     private String nubanAccount;
     @XmlElement
@@ -52,12 +53,16 @@ public class HolderBondAccount {
     @XmlElementWrapper(name = "coupons")
     private List<Coupon> coupons;
 
-    public HolderBondAccount(int id, int holderId, List<Bank> bank, List<BondOffer> bondOffer, List<HolderBondAccount> holderBondAccount, String chn, Double bondUnits, String nubanAccount, boolean merged, boolean holderBondAccPrimary, List<Coupon> coupons) {
+    public HolderBondAccount() {
+    }
+    
+    
+
+    public HolderBondAccount(int id, int holderId, List<Bank> bank, BondOffer bondOffer, String chn, double bondUnits, String nubanAccount, boolean merged, boolean holderBondAccPrimary, List<Coupon> coupons) {
         this.id = id;
         this.holderId = holderId;
         this.bank = bank;
         this.bondOffer = bondOffer;
-        this.holderBondAccount = holderBondAccount;
         this.chn = chn;
         this.bondUnits = bondUnits;
         this.nubanAccount = nubanAccount;
@@ -90,21 +95,14 @@ public class HolderBondAccount {
         this.bank = bank;
     }
 
-    public List<BondOffer> getBondOffer() {
+    public BondOffer getBondOffer() {
         return bondOffer;
     }
 
-    public void setBondOffer(List<BondOffer> bondOffer) {
+    public void setBondOffer(BondOffer bondOffer) {
         this.bondOffer = bondOffer;
     }
 
-    public List<HolderBondAccount> getHolderBondAccount() {
-        return holderBondAccount;
-    }
-
-    public void setHolderBondAccount(List<HolderBondAccount> holderBondAccount) {
-        this.holderBondAccount = holderBondAccount;
-    }
 
     public String getChn() {
         return chn;
@@ -152,6 +150,20 @@ public class HolderBondAccount {
 
     public void setCoupons(List<Coupon> coupons) {
         this.coupons = coupons;
+    }
+
+    /**
+     * @return the principalValue
+     */
+    public double getPrincipalValue() {
+        return principalValue;
+    }
+
+    /**
+     * @param principalValue the principalValue to set
+     */
+    public void setPrincipalValue(double principalValue) {
+        this.principalValue = principalValue;
     }
     
     

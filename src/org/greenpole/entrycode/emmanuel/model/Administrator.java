@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlSeeAlso({AdministratorEmailAddress.class,AdministratorPhoneNumber.class,AdministratorResidentialAddress.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"firstName","middleName","lastName","emailAddress","phoneNumber","residentialAddress"})
+@XmlType(propOrder = {"firstName","middleName","lastName","emailAddress","phoneNumber","residentialAddress","holder"})
 public class Administrator implements Serializable {
     @XmlElement
     private int id;
@@ -38,9 +38,10 @@ public class Administrator implements Serializable {
     private List <AdministratorPhoneNumber> phoneNumber;
     @XmlElementWrapper(name = "residentialAddress")
     private List <AdministratorResidentialAddress> residentialAddress;
+    @XmlElementWrapper(name = "holder")
+    private List <Holder> holder;
     public Administrator(){}
-
-    public Administrator(int id, String firstName, String middleName, String lastName, List emailAddress, List phoneNumber, List residentialAddress) {
+    public Administrator(int id, String firstName, String middleName, String lastName, List<AdministratorEmailAddress> emailAddress, List<AdministratorPhoneNumber> phoneNumber, List<AdministratorResidentialAddress> residentialAddress, List<Holder> holder) {
         this.id = id;
         this.firstName = firstName;
         this.middleName = middleName;
@@ -48,17 +49,20 @@ public class Administrator implements Serializable {
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.residentialAddress = residentialAddress;
+        this.holder = holder;
     }
 
-    public Administrator(String firstName, String middleName, String lastName, List emailAddress, List phoneNumber, List residentialAddress) {
+    public Administrator(String firstName, String middleName, String lastName, List<AdministratorEmailAddress> emailAddress, List<AdministratorPhoneNumber> phoneNumber, List<AdministratorResidentialAddress> residentialAddress, List<Holder> holder) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.residentialAddress = residentialAddress;
+        this.holder = holder;
     }
 
+    
     public int getId() {
         return id;
     }
@@ -113,6 +117,20 @@ public class Administrator implements Serializable {
 
     public void setResidentialAddress(List <AdministratorResidentialAddress> residentialAddress) {
         this.residentialAddress = residentialAddress;
+    }
+
+    /**
+     * @return the holder
+     */
+    public List <Holder> getHolder() {
+        return holder;
+    }
+
+    /**
+     * @param holder the holder to set
+     */
+    public void setHolder(List <Holder> holder) {
+        this.holder = holder;
     }
     
 }
