@@ -18,7 +18,7 @@ public class BondOffer {
     private double unitPrice;
     private String bondMaturity;
     private String bondType;
-    private double taxRate;
+    private double interestRate;
     private String paymentPlan;
 
     /**
@@ -92,17 +92,17 @@ public class BondOffer {
     }
 
     /**
-     * @return the taxRate
+     * @return the interestRate
      */
-    public double getTaxRate() {
-        return taxRate;
+    public double getInterestRate() {
+        return interestRate;
     }
 
     /**
-     * @param taxRate the taxRate to set
+     * @param interestRate the interestRate to set
      */
-    public void setTaxRate(double taxRate) {
-        this.taxRate = taxRate;
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
     }
 
     /**
