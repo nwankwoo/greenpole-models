@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.clientcompany.ClientCompany;
-import org.greenpole.entity.model.sharequotation.ShareQuotation;
+import org.greenpole.entity.model.clientcompany.ShareQuotation;
 import org.greenpole.entity.model.user.Department;
 import org.greenpole.entity.model.user.Unit;
 import org.greenpole.entity.model.user.User;
