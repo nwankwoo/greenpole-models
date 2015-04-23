@@ -6,7 +6,6 @@
 package org.greenpole.entrycode.emmanuel.model;
 
 import java.io.Serializable;
-import java.sql.Date;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -31,9 +30,9 @@ public class PowerOfAttorney implements Serializable{
  @XmlElement
      private String type;
  @XmlElement
-     private Date startDate;
+     private String startDate;
  @XmlElement
-     private Date endDate;
+     private String endDate;
  @XmlElement
      private String periodType;
  @XmlElement
@@ -41,7 +40,7 @@ public class PowerOfAttorney implements Serializable{
  public PowerOfAttorney(){
  }
 
-    public PowerOfAttorney(int id, Holder holder, String title, String signaturePath, String type, Date startDate, Date endDate, String periodType, boolean primaryPowerOfAttorney) {
+    public PowerOfAttorney(int id, Holder holder, String title, String signaturePath, String type, String startDate, String endDate, String periodType, boolean primaryPowerOfAttorney) {
         this.id = id;
         this.holder = holder;
         this.title = title;
@@ -53,7 +52,7 @@ public class PowerOfAttorney implements Serializable{
         this.primaryPowerOfAttorney = primaryPowerOfAttorney;
     }
 
-    public PowerOfAttorney(Holder holder, String title, String signaturePath, String type, Date startDate, Date endDate, String periodType, boolean primaryPowerOfAttorney) {
+    public PowerOfAttorney(Holder holder, String title, String signaturePath, String type, String startDate, String endDate, String periodType, boolean primaryPowerOfAttorney) {
         this.holder = holder;
         this.title = title;
         this.signaturePath = signaturePath;
@@ -137,28 +136,28 @@ public class PowerOfAttorney implements Serializable{
     /**
      * @return the startDate
      */
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
     /**
      * @param startDate the startDate to set
      */
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
     /**
      * @return the endDate
      */
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
     /**
      * @param endDate the endDate to set
      */
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
