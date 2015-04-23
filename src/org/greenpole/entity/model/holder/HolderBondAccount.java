@@ -56,8 +56,6 @@ public class HolderBondAccount {
     public HolderBondAccount() {
     }
     
-    
-
     public HolderBondAccount(int id, int holderId, List<Bank> bank, BondOffer bondOffer, String chn, double bondUnits, String nubanAccount, boolean merged, boolean holderBondAccPrimary, List<Coupon> coupons) {
         this.id = id;
         this.holderId = holderId;

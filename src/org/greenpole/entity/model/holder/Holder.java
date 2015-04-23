@@ -5,7 +5,6 @@
  */
 package org.greenpole.entity.model.holder;
 
-import java.util.Date;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -102,7 +101,7 @@ public class Holder {
     }
 
     public int getHolderId() {
-        return holderId;
+         return holderId;
     }
 
     public void setHolderId(int holderId) {

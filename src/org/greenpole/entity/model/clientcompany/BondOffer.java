@@ -5,8 +5,6 @@
  */
 package org.greenpole.entity.model.clientcompany;
 
-import java.util.Date;
-
 /**
  *
  * @author Yusuf Samsudeen Babashola (Algorithm)
@@ -118,7 +116,5 @@ public class BondOffer {
     public void setPaymentPlan(String paymentPlan) {
         this.paymentPlan = paymentPlan;
     }
-    
-    
-    
+        
 }
