@@ -6,23 +6,42 @@
 package org.greenpole.entity.model.clientcompany;
 
 import java.math.BigDecimal;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
- * @author Yusuf Samsudeen Babashola (Algorithm) 
- * 
- * 
+ * @author Yusuf Samsudeen Babashola (Algorithm)
+ *
+ *
  * This class represents a Private Placement
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"clientCompanyId","totalSharesOnOffer","methodOfOffer","startingMinimumSubscription","continuingMinimumSubscription","offerPrice","openingDate","closingDate"})
+
 public class PrivatePlacement {
-   private int clientCompanyId;
+    
+    @XmlElement
+    private int clientCompanyId;
+    @XmlElement
     private int totalSharesOnOffer;
+    @XmlElement
     private String methodOfOffer;
+    @XmlElement
     private int startingMinimumSubscription;
+    @XmlElement
     private int continuingMinimumSubscription;
+    @XmlElement
     private double offerPrice;
+    @XmlElement
     private BigDecimal offerSize;
+    @XmlElement
     private String openingDate;
+    @XmlElement
     private String closingDate;
 
     /**
@@ -89,7 +108,8 @@ public class PrivatePlacement {
     }
 
     /**
-     * @param continuingMinimumSubscription the continuingMinimumSubscription to set
+     * @param continuingMinimumSubscription the continuingMinimumSubscription to
+     * set
      */
     public void setContinuingMinimumSubscription(int continuingMinimumSubscription) {
         this.continuingMinimumSubscription = continuingMinimumSubscription;
@@ -150,6 +170,5 @@ public class PrivatePlacement {
     public void setClosingDate(String closingDate) {
         this.closingDate = closingDate;
     }
-    
-     
+
 }

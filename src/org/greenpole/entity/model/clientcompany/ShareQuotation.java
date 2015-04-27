@@ -5,13 +5,24 @@
  */
 package org.greenpole.entity.model.clientcompany;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Yusuf Samsudeen Babashola (Algorithm) 
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"clientCompany","unitPrice"})
 public class ShareQuotation {
-    private int clientCompanyId;
+    private int id;
+    @XmlElement
     private ClientCompany clientCompany;
+    @XmlElement
     private double unitPrice;
 
     public ShareQuotation() {
@@ -26,21 +37,21 @@ public class ShareQuotation {
         this.clientCompany = clientCompany;
         this.unitPrice = unitPrice;
     }
-    
-    
 
     /**
-     * @return the clientCompanyId
+     * 
+     * @return the share quotation id
      */
-    public int getClientCompanyId() {
-        return clientCompanyId;
+    public int getId() {
+        return id;
     }
 
     /**
-     * @param clientCompanyId the clientCompanyId to set
+     * 
+     * @param id the share quotation id to set
      */
-    public void setClientCompanyId(int clientCompanyId) {
-        this.clientCompanyId = clientCompanyId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
