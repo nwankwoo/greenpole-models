@@ -50,9 +50,7 @@ public class ClientCompany implements Serializable {
     private List <EmailAddress> emailAddresses ;
     @XmlElementWrapper(name = "phoneNumbers")
     private List <PhoneNumber> phoneNumbers ;
-    
-    private String nseSector;
-    
+    private String nseSectorName;
     private String depositoryName;
 
     /**
@@ -75,14 +73,14 @@ public class ClientCompany implements Serializable {
      * @param depositoryId the depository's unique identification
      * @param valid the company's valid status
      * @deprecated {@link #depositoryName} is no longer relevant to the
-     * client company model. The middle tier has no need for it.
+     * client company model. The middle tier has no need for it. This constructor will be deleted very soon.
      * Replaced by {@link #ClientCompany(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List, int, boolean, java.util.List, java.util.List)}
      */
     @Deprecated
     public ClientCompany(String name, String code, String nseSector, String ceo, String secretary, List addresses, List emailAddresses, List phoneNumbers, String depositoryName, int depositoryId, boolean valid) {
         this.name = name;
         this.code = code;
-        this.nseSector = nseSector;
+        this.nseSectorName = nseSector;
         this.ceo = ceo;
         this.secretary = secretary;
         this.addresses = addresses;
@@ -95,6 +93,34 @@ public class ClientCompany implements Serializable {
 
     /**
      * Collects all values for the client company.
+     * This constructor should be used when trying to search for a client company (in conjunction with query client company class).
+     * @param name
+     * @param code
+     * @param ceo
+     * @param secretary
+     * @param addresses
+     * @param valid
+     * @param emailAddresses
+     * @param phoneNumbers
+     * @param nseSectorName
+     * @param depositoryName 
+     */
+    public ClientCompany(String name, String code, String ceo, String secretary, List<Address> addresses, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers, String nseSectorName, String depositoryName) {
+        this.name = name;
+        this.code = code;
+        this.ceo = ceo;
+        this.secretary = secretary;
+        this.addresses = addresses;
+        this.valid = valid;
+        this.emailAddresses = emailAddresses;
+        this.phoneNumbers = phoneNumbers;
+        this.nseSectorName = nseSectorName;
+        this.depositoryName = depositoryName;
+    }
+
+    /**
+     * Collects all values for the client company.
+     * This constructor should be used when trying to create a new client company.
      * @param name the company's name
      * @param code the company's code
      * @param nseSectorId the NSE Sector the company belongs to
@@ -153,23 +179,23 @@ public class ClientCompany implements Serializable {
     /**
      * Basic Constructor For Client Company Used on ShareQuotation
      * and other Views
-     * @param id
-     * @param name
-     * @param code
-     * @param nseSector
-     * @param depositoryName 
+     * @param id the company's id
+     * @param name the company's name
+     * @param code the company's code
+     * @param nseSector the company's NSE sector
+     * @param depositoryName  the company's depository
      */
 
     public ClientCompany(int id, String name, String code, String nseSector, String depositoryName) {
         this.id = id;
         this.name = name;
         this.code = code;
-        this.nseSector = nseSector;
+        this.nseSectorName = nseSector;
         this.depositoryName = depositoryName;
     }
 
     /**
-     * Constructor for setting client compnay for share unit quotation upload
+     * Constructor for setting client company for share unit quotation upload
      * @param code 
      */
     public ClientCompany(String code) {
@@ -226,19 +252,17 @@ public class ClientCompany implements Serializable {
     }
 
     /**
-     * @return the nseSector
+     * @return the nseSectorName
      */
-    @Deprecated
-    public String getNseSector() {
-        return nseSector;
+    public String getNseSectorName() {
+        return nseSectorName;
     }
 
     /**
-     * @param nseSector the nseSector to set
+     * @param nseSectorName the nseSectorName to set
      */
-    @Deprecated
-    public void setNseSector(String nseSector) {
-        this.nseSector = nseSector;
+    public void setNseSectorName(String nseSectorName) {
+        this.nseSectorName = nseSectorName;
     }
 
     /**
@@ -286,7 +310,6 @@ public class ClientCompany implements Serializable {
     /**
      * @return the depositoryName
      */
-    @Deprecated
     public String getDepositoryName() {
         return depositoryName;
     }
@@ -294,7 +317,6 @@ public class ClientCompany implements Serializable {
     /**
      * @param depositoryName the depositoryName to set
      */
-    @Deprecated
     public void setDepositoryName(String depositoryName) {
         this.depositoryName = depositoryName;
     }
