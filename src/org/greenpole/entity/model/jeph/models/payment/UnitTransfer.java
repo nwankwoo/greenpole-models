@@ -24,10 +24,6 @@ public class UnitTransfer {
     @XmlElement
     private int chnTo;
     @XmlElement
-    private int holderAcctIdFrom;
-    @XmlElement
-    private int holderAcctIdTo;
-    @XmlElement
     private int clientCompanyIdFrom;
     @XmlElement
     private int clieintCompanyIdTo;
@@ -40,28 +36,26 @@ public class UnitTransfer {
     @XmlElement
     private double unitPrice;
     @XmlElement
-    private String type;
+    private String transferType;
     @XmlElement
     private int bondOfferId;
 
-    public UnitTransfer(int id, int holderIdFrom, int holderIdTo, int chnFrom, int chnTo, int holderAcctIdFrom, int holderAcctIdTo, int clientCompanyIdFrom, int clieintCompanyIdTo, int units, double startingPrincipalValue, double remainingPrincipalValue, double unitPrice, String type, int bondOfferId) {
+    public UnitTransfer(int id, int holderIdFrom, int holderIdTo, int chnFrom, int chnTo, int clientCompanyIdFrom, int clieintCompanyIdTo, int units, double startingPrincipalValue, double remainingPrincipalValue, double unitPrice, String transferType, int bondOfferId) {
         this.id = id;
         this.holderIdFrom = holderIdFrom;
         this.holderIdTo = holderIdTo;
         this.chnFrom = chnFrom;
         this.chnTo = chnTo;
-        this.holderAcctIdFrom = holderAcctIdFrom;
-        this.holderAcctIdTo = holderAcctIdTo;
         this.clientCompanyIdFrom = clientCompanyIdFrom;
         this.clieintCompanyIdTo = clieintCompanyIdTo;
         this.units = units;
         this.startingPrincipalValue = startingPrincipalValue;
         this.remainingPrincipalValue = remainingPrincipalValue;
         this.unitPrice = unitPrice;
-        this.type = type;
+        this.transferType = transferType;
         this.bondOfferId = bondOfferId;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -100,22 +94,6 @@ public class UnitTransfer {
 
     public void setChnTo(int chnTo) {
         this.chnTo = chnTo;
-    }
-
-    public int getHolderAcctIdFrom() {
-        return holderAcctIdFrom;
-    }
-
-    public void setHolderAcctIdFrom(int holderAcctIdFrom) {
-        this.holderAcctIdFrom = holderAcctIdFrom;
-    }
-
-    public int getHolderAcctIdTo() {
-        return holderAcctIdTo;
-    }
-
-    public void setHolderAcctIdTo(int holderAcctIdTo) {
-        this.holderAcctIdTo = holderAcctIdTo;
     }
 
     public int getClientCompanyIdFrom() {
@@ -166,12 +144,12 @@ public class UnitTransfer {
         this.unitPrice = unitPrice;
     }
 
-    public String getType() {
-        return type;
+    public String getTransferType() {
+        return transferType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTransferType(String transferType) {
+        this.transferType = transferType;
     }
 
     public int getBondOfferId() {
@@ -181,6 +159,6 @@ public class UnitTransfer {
     public void setBondOfferId(int bondOfferId) {
         this.bondOfferId = bondOfferId;
     }
-    
+
     
 }
