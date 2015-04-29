@@ -35,7 +35,6 @@ public class Holder {
 
     @XmlElement
     private int holderId;
-    
     @XmlElement
     private int holderAcctNumber;
     @XmlElement
@@ -59,26 +58,29 @@ public class Holder {
     @XmlElement
     private boolean pryHolder;
     @XmlElement
-    private String pryAddress = "residentialAddress";
+    private String pryAddress;
+    
     @XmlElementWrapper(name = "holderPhoneNumbers")
     private List<PhoneNumber> holderPhoneNumbers;
     @XmlElementWrapper(name = "holderResidentialAddresses")
-    private Address holderResidentialAddresses;
+    private List<Address> holderResidentialAddresses;
+    @XmlElementWrapper(name = "holderPostalAddresses")
+    private List<Address> holderPostalAddresses;
+    @XmlElementWrapper(name = "holderEmailAddresses")
+    private List<EmailAddress> holderEmailAddresses;
+    
+    @XmlElement
+    private Stockbroker holderStockbroker;
+    
     @XmlElementWrapper(name = "holderCompanyAccounts")
     private List<HolderCompanyAccount> holderCompanyAccounts;
     @XmlElementWrapper(name = "holderBondAccounts")
     private List<HolderBondAccount> holderBondAccounts;
-    @XmlElementWrapper(name = "holderPostalAddresses")
-    private Address holderPostalAddresses;
-    @XmlElementWrapper(name = "holderEmailAddresses")
-    private List<EmailAddress> holderEmailAddresses;    
-    @XmlElementWrapper(name = "holderStockbroker")
-    private Stockbroker holderStockbroker;
 
     public Holder(){
         
     }
-    public Holder(int holderId, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<PhoneNumber> holderPhoneNumbers, Address holderResidentialAddresses, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, Address holderPostalAddresses, List<EmailAddress> holderEmailAddresses) {
+    public Holder(int holderId, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<Address> holderResidentialAddresses, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, List<Address> holderPostalAddresses, List<EmailAddress> holderEmailAddresses, Stockbroker holderStockbroker) {
         this.holderId = holderId;
         this.holderAcctNumber = holderAcctNumber;
         this.chn = chn;
@@ -98,6 +100,7 @@ public class Holder {
         this.holderBondAccounts = holderBondAccounts;
         this.holderPostalAddresses = holderPostalAddresses;
         this.holderEmailAddresses = holderEmailAddresses;
+        this.holderStockbroker = holderStockbroker;
     }
 
     public int getHolderId() {
@@ -216,11 +219,11 @@ public class Holder {
         this.holderPhoneNumbers = holderPhoneNumbers;
     }
 
-    public Address getHolderResidentialAddresses() {
+    public List<Address> getHolderResidentialAddresses() {
         return holderResidentialAddresses;
     }
 
-    public void setHolderResidentialAddresses(Address holderResidentialAddresses) {
+    public void setHolderResidentialAddresses(List<Address> holderResidentialAddresses) {
         this.holderResidentialAddresses = holderResidentialAddresses;
     }
 
@@ -240,11 +243,11 @@ public class Holder {
         this.holderBondAccounts = holderBondAccounts;
     }
 
-    public Address getHolderPostalAddresses() {
+    public List<Address> getHolderPostalAddresses() {
         return holderPostalAddresses;
     }
 
-    public void setHolderPostalAddresses(Address holderPostalAddresses) {
+    public void setHolderPostalAddresses(List<Address> holderPostalAddresses) {
         this.holderPostalAddresses = holderPostalAddresses;
     }
 

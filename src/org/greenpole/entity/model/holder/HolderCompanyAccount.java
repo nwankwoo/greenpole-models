@@ -21,13 +21,10 @@ import javax.xml.bind.annotation.XmlType;
  * @author Jephthah Sadare
  */
 @XmlRootElement
-@XmlSeeAlso({Coupon.class, Dividend.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"bankId", "clientCompanyId", "holderId", "chn", "shareUnits", 
     "esop", "taxExempted", "nubanAccount", "merged", "holderCompAccPrimary"})
-
 public class HolderCompanyAccount {
-    
     @XmlElement
     private int id;
     @XmlElement
@@ -54,6 +51,18 @@ public class HolderCompanyAccount {
     public HolderCompanyAccount() {
     }
 
+    public HolderCompanyAccount(int bankId, int clientCompanyId, int holderId, String chn, double shareUnits, boolean esop, boolean taxExempted, String nubanAccount, boolean merged, boolean holderCompAccPrimary) {
+        this.bankId = bankId;
+        this.clientCompanyId = clientCompanyId;
+        this.holderId = holderId;
+        this.chn = chn;
+        this.shareUnits = shareUnits;
+        this.esop = esop;
+        this.taxExempted = taxExempted;
+        this.nubanAccount = nubanAccount;
+        this.merged = merged;
+        this.holderCompAccPrimary = holderCompAccPrimary;
+    }
     
     public HolderCompanyAccount(int id, int bankId, int clientCompanyId, int holderId, String chn, double shareUnits, boolean esop, boolean taxExempted, String nubanAccount, boolean merged, boolean holderCompAccPrimary, List<HolderCompanyAccount> holderCompanyAccounts) {
         this.id = id;
@@ -155,8 +164,5 @@ public class HolderCompanyAccount {
 
     public void setHolderCompAccPrimary(boolean holderCompAccPrimary) {
         this.holderCompAccPrimary = holderCompAccPrimary;
-    }
-
-  
-    
+    }    
 }
