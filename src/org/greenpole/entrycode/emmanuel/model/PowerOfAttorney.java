@@ -11,36 +11,37 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
 /**
  *
  * @author user
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-public class PowerOfAttorney implements Serializable{
- @XmlElement
- private int id;
- @XmlElement
-     private Holder holder;
- @XmlElement
-     private String title;
- @XmlElement
-     private String signaturePath;
- @XmlElement
-     private String type;
- @XmlElement
-     private String startDate;
- @XmlElement
-     private String endDate;
- @XmlElement
-     private String periodType;
- @XmlElement
-     private boolean primaryPowerOfAttorney;
- public PowerOfAttorney(){
- }
+public class PowerOfAttorney implements Serializable {
 
-    public PowerOfAttorney(int id, Holder holder, String title, String signaturePath, String type, String startDate, String endDate, String periodType, boolean primaryPowerOfAttorney) {
+    @XmlElement
+    private int id;
+    @XmlElement
+    private Holder holder;
+    @XmlElement
+    private String title;
+    @XmlElement
+    private String signaturePath;
+    @XmlElement
+    private String type;
+    @XmlElement
+    private String startDate;
+    @XmlElement
+    private String endDate;
+    @XmlElement
+    private String periodType;
+    @XmlElement
+    private boolean primaryPowerOfAttorney;
+    private byte[] signatureFile;
+    public PowerOfAttorney() {
+    }
+
+    public PowerOfAttorney(int id, Holder holder, String title, String signaturePath, String type, String startDate, String endDate, String periodType, byte[] signatureFile, boolean primaryPowerOfAttorney) {
         this.id = id;
         this.holder = holder;
         this.title = title;
@@ -49,10 +50,11 @@ public class PowerOfAttorney implements Serializable{
         this.startDate = startDate;
         this.endDate = endDate;
         this.periodType = periodType;
+        this.signatureFile = signatureFile;
         this.primaryPowerOfAttorney = primaryPowerOfAttorney;
     }
 
-    public PowerOfAttorney(Holder holder, String title, String signaturePath, String type, String startDate, String endDate, String periodType, boolean primaryPowerOfAttorney) {
+    public PowerOfAttorney(Holder holder, String title, String signaturePath, String type, String startDate, String endDate, String periodType, byte[] signatureFile, boolean primaryPowerOfAttorney) {
         this.holder = holder;
         this.title = title;
         this.signaturePath = signaturePath;
@@ -60,6 +62,7 @@ public class PowerOfAttorney implements Serializable{
         this.startDate = startDate;
         this.endDate = endDate;
         this.periodType = periodType;
+        this.signatureFile = signatureFile;
         this.primaryPowerOfAttorney = primaryPowerOfAttorney;
     }
 
@@ -188,5 +191,13 @@ public class PowerOfAttorney implements Serializable{
     public void setPrimaryPowerOfAttorney(boolean primaryPowerOfAttorney) {
         this.primaryPowerOfAttorney = primaryPowerOfAttorney;
     }
- 
+
+    public byte[] getSignatureFile() {
+        return signatureFile;
+    }
+
+    public void setSignatureFile(byte[] signatureFile) {
+        this.signatureFile = signatureFile;
+    }
+
 }
