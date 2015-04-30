@@ -19,8 +19,8 @@ public class QueryHolder {
     //possible values = totalHoldings:none / totalHoldings:exact / totalHoldings:range
     private String descriptor;
     private Holder holder;
-    private Map<String, Integer> shareUnits;
-    private Map<String, Integer> totalHoldings;
+    private Map<String, Integer> shareUnits; //should be "start" and "end" keys for range, and "start" for exact
+    private Map<String, Integer> totalHoldings; //should be "start" and "end" keys for range, and "start" for exact
 
     public QueryHolder() {
     }
