@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.Address;
 import org.greenpole.entity.model.EmailAddress;
@@ -27,9 +28,9 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
 @XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderAcctNumber", "chn", "firstName", "middleName", "lastName",
-    "type", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress",
-    "holderSignatures", "holderPhoneNumbers", "holderResidentialAddress", "holderCompanyAccounts",
-    "holderBondAccounts", "holderPostalAddress"})
+    "type", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "holderPhoneNumbers",
+    "holderEmailAddresses", "holderResidentialAddresses", "holderPostalAddress", "holderCompanyAccounts",
+    "holderBondAccounts"})
 
 public class Holder {
 
@@ -62,14 +63,14 @@ public class Holder {
     
     @XmlElementWrapper(name = "holderPhoneNumbers")
     private List<PhoneNumber> holderPhoneNumbers;
+    @XmlElementWrapper(name = "holderEmailAddresses")
+    private List<EmailAddress> holderEmailAddresses;
     @XmlElementWrapper(name = "holderResidentialAddresses")
     private List<Address> holderResidentialAddresses;
     @XmlElementWrapper(name = "holderPostalAddresses")
     private List<Address> holderPostalAddresses;
-    @XmlElementWrapper(name = "holderEmailAddresses")
-    private List<EmailAddress> holderEmailAddresses;
     
-    @XmlElement
+    @XmlTransient
     private Stockbroker holderStockbroker;
     
     @XmlElementWrapper(name = "holderCompanyAccounts")
@@ -77,9 +78,8 @@ public class Holder {
     @XmlElementWrapper(name = "holderBondAccounts")
     private List<HolderBondAccount> holderBondAccounts;
 
-    public Holder(){
-        
-    }
+    public Holder(){}
+    
     public Holder(int holderId, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<Address> holderResidentialAddresses, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, List<Address> holderPostalAddresses, List<EmailAddress> holderEmailAddresses, Stockbroker holderStockbroker) {
         this.holderId = holderId;
         this.holderAcctNumber = holderAcctNumber;
@@ -208,8 +208,6 @@ public class Holder {
     public void setPryAddress(String pryAddress) {
         this.pryAddress = pryAddress;
     }
-
-   
 
     public List<PhoneNumber> getHolderPhoneNumbers() {
         return holderPhoneNumbers;

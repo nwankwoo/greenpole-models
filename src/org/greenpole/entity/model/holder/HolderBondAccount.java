@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.clientcompany.Bank;
 
@@ -23,58 +24,64 @@ import org.greenpole.entity.model.clientcompany.Bank;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({BondOffer.class, Coupon.class, Bank.class})
-@XmlType(propOrder = {"holderId", "bank", "bondOffer", "holderBondAccount", "chn", "bondUnits", "nubanAccount",
-    "merged", "holderBondAccPrimary", "coupons"})
+@XmlSeeAlso({Coupon.class})
+@XmlType(propOrder = {"holderId", "bondOffer", "chn", "bondUnits", "startingPrincipalValue", "remainingPrincipalValue",
+    "nubanAccount", "bank", "merged", "holderBondAccPrimary"})
 
 public class HolderBondAccount {
 
     @XmlElement
-    private int id;
-    @XmlElement
     private int holderId;
     @XmlElement
-    private List<Bank> bank;
-    @XmlElementWrapper(name = "bondOffer")
-    private BondOffer bondOffer;
-    @XmlElementWrapper(name = "holderBondAccount")
+    private int bondOfferId;
     @XmlElement
     private String chn;
     @XmlElement
     private double bondUnits;
     @XmlElement
-    private double principalValue;
+    private double startingPrincipalValue;
+    @XmlElement
+    private double remainingPrincipalValue;
     @XmlElement
     private String nubanAccount;
+    @XmlElement
+    private Bank bank;
     @XmlElement
     private boolean merged;
     @XmlElement
     private boolean holderBondAccPrimary;
-    @XmlElementWrapper(name = "coupons")
+    
+    @XmlTransient
     private List<Coupon> coupons;
+    
+    @XmlTransient
+    private int secHolderId;
+    @XmlTransient
+    private int secBondOfferId;
 
     public HolderBondAccount() {
     }
-    
-    public HolderBondAccount(int id, int holderId, List<Bank> bank, BondOffer bondOffer, String chn, double bondUnits, String nubanAccount, boolean merged, boolean holderBondAccPrimary, List<Coupon> coupons) {
-        this.id = id;
+
+    public HolderBondAccount(int holderId, int bondOfferId, String chn, double bondUnits, double startingPrincipalValue, double remainingPrincipalValue, String nubanAccount, Bank bank, boolean merged, boolean holderBondAccPrimary) {
         this.holderId = holderId;
-        this.bank = bank;
-        this.bondOffer = bondOffer;
+        this.bondOfferId = bondOfferId;
         this.chn = chn;
         this.bondUnits = bondUnits;
+        this.startingPrincipalValue = startingPrincipalValue;
+        this.remainingPrincipalValue = remainingPrincipalValue;
         this.nubanAccount = nubanAccount;
+        this.bank = bank;
         this.merged = merged;
         this.holderBondAccPrimary = holderBondAccPrimary;
-        this.coupons = coupons;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public HolderBondAccount(int holderId, int bondOfferId, boolean merged, boolean holderBondAccPrimary, int secHolderId, int secBondOfferId) {
+        this.holderId = holderId;
+        this.bondOfferId = bondOfferId;
+        this.merged = merged;
+        this.holderBondAccPrimary = holderBondAccPrimary;
+        this.secHolderId = secHolderId;
+        this.secBondOfferId = secBondOfferId;
     }
 
     public int getHolderId() {
@@ -85,22 +92,13 @@ public class HolderBondAccount {
         this.holderId = holderId;
     }
 
-    public List<Bank> getBank() {
-        return bank;
+    public int getBondOfferId() {
+        return bondOfferId;
     }
 
-    public void setBank(List<Bank> bank) {
-        this.bank = bank;
+    public void setBondOffer(int bondOfferId) {
+        this.bondOfferId = bondOfferId;
     }
-
-    public BondOffer getBondOffer() {
-        return bondOffer;
-    }
-
-    public void setBondOffer(BondOffer bondOffer) {
-        this.bondOffer = bondOffer;
-    }
-
 
     public String getChn() {
         return chn;
@@ -110,12 +108,28 @@ public class HolderBondAccount {
         this.chn = chn;
     }
 
-    public Double getBondUnits() {
+    public double getBondUnits() {
         return bondUnits;
     }
 
-    public void setBondUnits(Double bondUnits) {
+    public void setBondUnits(double bondUnits) {
         this.bondUnits = bondUnits;
+    }
+
+    public double getStartingPrincipalValue() {
+        return startingPrincipalValue;
+    }
+
+    public void setStartingPrincipalValue(double startingPrincipalValue) {
+        this.startingPrincipalValue = startingPrincipalValue;
+    }
+
+    public double getRemainingPrincipalValue() {
+        return remainingPrincipalValue;
+    }
+
+    public void setRemainingPrincipalValue(double remainingPrincipalValue) {
+        this.remainingPrincipalValue = remainingPrincipalValue;
     }
 
     public String getNubanAccount() {
@@ -124,6 +138,14 @@ public class HolderBondAccount {
 
     public void setNubanAccount(String nubanAccount) {
         this.nubanAccount = nubanAccount;
+    }
+
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
     }
 
     public boolean isMerged() {
@@ -150,19 +172,19 @@ public class HolderBondAccount {
         this.coupons = coupons;
     }
 
-    /**
-     * @return the principalValue
-     */
-    public double getPrincipalValue() {
-        return principalValue;
+    public int getSecHolderId() {
+        return secHolderId;
     }
 
-    /**
-     * @param principalValue the principalValue to set
-     */
-    public void setPrincipalValue(double principalValue) {
-        this.principalValue = principalValue;
+    public void setSecHolderId(int secHolderId) {
+        this.secHolderId = secHolderId;
     }
-    
-    
+
+    public int getSecBondOfferId() {
+        return secBondOfferId;
+    }
+
+    public void setSecBondOfferId(int secBondOfferId) {
+        this.secBondOfferId = secBondOfferId;
+    }
 }
