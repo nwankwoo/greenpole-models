@@ -5,6 +5,7 @@
  */
 package org.greenpole.entity.model.holder;
 
+import org.greenpole.entity.model.Administrator;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -76,7 +77,9 @@ public class Holder {
     private List<HolderCompanyAccount> holderCompanyAccounts;
     @XmlElementWrapper(name = "holderBondAccounts")
     private List<HolderBondAccount> holderBondAccounts;
-
+    
+    @XmlElementWrapper(name = "administrators")
+    private List<Administrator> administrators;
     public Holder(){
         
     }
@@ -271,6 +274,20 @@ public class Holder {
      */
     public void setHolderStockbroker(Stockbroker holderStockbroker) {
         this.holderStockbroker = holderStockbroker;
+    }
+
+    /**
+     * @return the administrators
+     */
+    public List<Administrator> getAdministrators() {
+        return administrators;
+    }
+
+    /**
+     * @param administrators the administrators to set
+     */
+    public void setAdministrators(List<Administrator> administrators) {
+        this.administrators = administrators;
     }
 
     

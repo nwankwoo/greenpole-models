@@ -6,131 +6,136 @@
 package org.greenpole.entity.model.holder;
 
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.Address;
 import org.greenpole.entity.model.EmailAddress;
 import org.greenpole.entity.model.PhoneNumber;
 
 /**
  *
- * @author Jephthah Sadare
+ * @author Yusuf Samsudeen Babashola (Algorithm)
  */
-@XmlRootElement
-@XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
-@XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"firstName", "middleName", "lastName", "administratorPhoneNumbers",
-    "administratorResidentialAddresses", "holders", "administratorEmailAddresses", "administratorPostalAddresses"})
-
 public class Administrator {
-    
-    @XmlElement
-    private int id;
-    @XmlElement
     private String firstName;
-    @XmlElement
     private String middleName;
-    @XmlElement
     private String lastName;
-    @XmlElementWrapper(name = "administratorPhoneNumbers")
-    private List<PhoneNumber> administratorPhoneNumbers;
-    @XmlElement
-    private Address administratorResidentialAddress;
-    @XmlElementWrapper(name = "holders")
-    private List<Holder> holders;
-    @XmlElementWrapper(name = "administratorEmailAddresses")
-    private List<EmailAddress> administratorEmailAddresses;
-    @XmlElement
-    private Address administratorPostalAddress;
+    private String dob;
+    private List <EmailAddress> emailAddress;
+    private List <PhoneNumber> phoneNumbers;
+    private Address residentialAddress;
+    private Address postalAddress;
 
-    public Administrator(int id, String firstName, String middleName, String lastName, List<PhoneNumber> administratorPhoneNumbers, Address administratorResidentialAddress, List<Holder> holders, List<EmailAddress> administratorEmailAddresses, Address administratorPostalAddress) {
-        this.id = id;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.administratorPhoneNumbers = administratorPhoneNumbers;
-        this.administratorResidentialAddress = administratorResidentialAddress;
-        this.holders = holders;
-        this.administratorEmailAddresses = administratorEmailAddresses;
-        this.administratorPostalAddress = administratorPostalAddress;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    /**
+     * @return the firstName
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * @param firstName the firstName to set
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * @return the middleName
+     */
     public String getMiddleName() {
         return middleName;
     }
 
+    /**
+     * @param middleName the middleName to set
+     */
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
     }
 
+    /**
+     * @return the lastName
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * @param lastName the lastName to set
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public List<PhoneNumber> getAdministratorPhoneNumbers() {
-        return administratorPhoneNumbers;
+    /**
+     * @return the dob
+     */
+    public String getDob() {
+        return dob;
     }
 
-    public void setAdministratorPhoneNumbers(List<PhoneNumber> administratorPhoneNumbers) {
-        this.administratorPhoneNumbers = administratorPhoneNumbers;
+    /**
+     * @param dob the dob to set
+     */
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
-    public Address getAdministratorResidentialAddress() {
-        return administratorResidentialAddress;
+    /**
+     * @return the emailAddress
+     */
+    public List <EmailAddress> getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setAdministratorResidentialAddress(Address administratorResidentialAddress) {
-        this.administratorResidentialAddress = administratorResidentialAddress;
+    /**
+     * @param emailAddress the emailAddress to set
+     */
+    public void setEmailAddress(List <EmailAddress> emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
-    public List<Holder> getHolders() {
-        return holders;
+    /**
+     * @return the phoneNumbers
+     */
+    public List <PhoneNumber> getPhoneNumbers() {
+        return phoneNumbers;
     }
 
-    public void setHolders(List<Holder> holders) {
-        this.holders = holders;
+    /**
+     * @param phoneNumbers the phoneNumbers to set
+     */
+    public void setPhoneNumbers(List <PhoneNumber> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
     }
 
-    public List<EmailAddress> getAdministratorEmailAddresses() {
-        return administratorEmailAddresses;
+    /**
+     * @return the residentialAddress
+     */
+    public Address getResidentialAddress() {
+        return residentialAddress;
     }
 
-    public void setAdministratorEmailAddresses(List<EmailAddress> administratorEmailAddresses) {
-        this.administratorEmailAddresses = administratorEmailAddresses;
+    /**
+     * @param residentialAddress the residentialAddress to set
+     */
+    public void setResidentialAddress(Address residentialAddress) {
+        this.residentialAddress = residentialAddress;
     }
 
-    public Address getAdministratorPostalAddress() {
-        return administratorPostalAddress;
+    /**
+     * @return the postalAddress
+     */
+    public Address getPostalAddress() {
+        return postalAddress;
     }
 
-    public void setAdministratorPostalAddress(Address administratorPostalAddress) {
-        this.administratorPostalAddress = administratorPostalAddress;
+    /**
+     * @param postalAddress the postalAddress to set
+     */
+    public void setPostalAddress(Address postalAddress) {
+        this.postalAddress = postalAddress;
     }
-
+    
+    
     
 }
