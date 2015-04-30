@@ -14,7 +14,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import org.greenpole.entity.model.clientcompany.Bank;
 
 /**
  *
@@ -22,17 +24,14 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"bankId", "clientCompanyId", "holderId", "chn", "shareUnits", 
-    "esop", "taxExempted", "nubanAccount", "merged", "holderCompAccPrimary"})
+@XmlSeeAlso({Dividend.class})
+@XmlType(propOrder = {"holderId", "clientCompanyId", "chn", "shareUnits", 
+    "esop", "taxExempted", "nubanAccount", "bank", "merged", "holderCompAccPrimary"})
 public class HolderCompanyAccount {
     @XmlElement
-    private int id;
-    @XmlElement
-    private  int bankId;
+    private int holderId;
     @XmlElement
     private int clientCompanyId;
-    @XmlElement
-    private int holderId;
     @XmlElement
     private String chn;
     @XmlElement
@@ -44,54 +43,43 @@ public class HolderCompanyAccount {
     @XmlElement
     private String nubanAccount;
     @XmlElement
+    private Bank bank;
+    @XmlElement
     private boolean merged;
     @XmlElement
     private boolean holderCompAccPrimary;
+    
+    @XmlTransient
+    private List<Dividend> dividends;
+    
+    @XmlTransient
+    private int secHolderId;
+    @XmlTransient
+    private int secClientCompanyId;
 
     public HolderCompanyAccount() {
     }
 
-    public HolderCompanyAccount(int bankId, int clientCompanyId, int holderId, String chn, double shareUnits, boolean esop, boolean taxExempted, String nubanAccount, boolean merged, boolean holderCompAccPrimary) {
-        this.bankId = bankId;
-        this.clientCompanyId = clientCompanyId;
+    public HolderCompanyAccount(int holderId, int clientCompanyId, String chn, double shareUnits, boolean esop, boolean taxExempted, String nubanAccount, Bank bank, boolean merged, boolean holderCompAccPrimary) {
         this.holderId = holderId;
+        this.clientCompanyId = clientCompanyId;
         this.chn = chn;
         this.shareUnits = shareUnits;
         this.esop = esop;
         this.taxExempted = taxExempted;
         this.nubanAccount = nubanAccount;
+        this.bank = bank;
         this.merged = merged;
         this.holderCompAccPrimary = holderCompAccPrimary;
     }
-    
-    public HolderCompanyAccount(int id, int bankId, int clientCompanyId, int holderId, String chn, double shareUnits, boolean esop, boolean taxExempted, String nubanAccount, boolean merged, boolean holderCompAccPrimary, List<HolderCompanyAccount> holderCompanyAccounts) {
-        this.id = id;
-        this.bankId = bankId;
-        this.clientCompanyId = clientCompanyId;
+
+    public HolderCompanyAccount(int holderId, int clientCompanyId, boolean merged, boolean holderCompAccPrimary, int secHolderId, int secClientCompanyId) {
         this.holderId = holderId;
-        this.chn = chn;
-        this.shareUnits = shareUnits;
-        this.esop = esop;
-        this.taxExempted = taxExempted;
-        this.nubanAccount = nubanAccount;
+        this.clientCompanyId = clientCompanyId;
         this.merged = merged;
         this.holderCompAccPrimary = holderCompAccPrimary;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getBankId() {
-        return bankId;
-    }
-
-    public void setBankId(int bankId) {
-        this.bankId = bankId;
+        this.secHolderId = secHolderId;
+        this.secClientCompanyId = secClientCompanyId;
     }
 
     public int getClientCompanyId() {
@@ -150,6 +138,14 @@ public class HolderCompanyAccount {
         this.nubanAccount = nubanAccount;
     }
 
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
+    }
+
     public boolean isMerged() {
         return merged;
     }
@@ -165,4 +161,28 @@ public class HolderCompanyAccount {
     public void setHolderCompAccPrimary(boolean holderCompAccPrimary) {
         this.holderCompAccPrimary = holderCompAccPrimary;
     }    
+
+    public List<Dividend> getDividends() {
+        return dividends;
+    }
+
+    public void setDividends(List<Dividend> dividends) {
+        this.dividends = dividends;
+    }
+
+    public int getSecHolderId() {
+        return secHolderId;
+    }
+
+    public void setSecHolderId(int secHolderId) {
+        this.secHolderId = secHolderId;
+    }
+
+    public int getSecClientCompanyId() {
+        return secClientCompanyId;
+    }
+
+    public void setSecClientCompanyId(int secClientCompanyId) {
+        this.secClientCompanyId = secClientCompanyId;
+    }
 }

@@ -5,7 +5,6 @@
  */
 package org.greenpole.entity.model.holder;
 
-import org.greenpole.entity.model.Administrator;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -13,6 +12,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.Address;
 import org.greenpole.entity.model.EmailAddress;
@@ -28,9 +28,9 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
 @XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderAcctNumber", "chn", "firstName", "middleName", "lastName",
-    "type", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress",
-    "holderSignatures", "holderPhoneNumbers", "holderResidentialAddress", "holderCompanyAccounts",
-    "holderBondAccounts", "holderPostalAddress"})
+    "type", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "holderPhoneNumbers",
+    "holderEmailAddresses", "holderResidentialAddresses", "holderPostalAddress", "holderCompanyAccounts",
+    "holderBondAccounts"})
 
 public class Holder {
 
@@ -63,26 +63,23 @@ public class Holder {
     
     @XmlElementWrapper(name = "holderPhoneNumbers")
     private List<PhoneNumber> holderPhoneNumbers;
+    @XmlElementWrapper(name = "holderEmailAddresses")
+    private List<EmailAddress> holderEmailAddresses;
     @XmlElementWrapper(name = "holderResidentialAddresses")
     private List<Address> holderResidentialAddresses;
     @XmlElementWrapper(name = "holderPostalAddresses")
     private List<Address> holderPostalAddresses;
-    @XmlElementWrapper(name = "holderEmailAddresses")
-    private List<EmailAddress> holderEmailAddresses;
     
-    @XmlElement
+    @XmlTransient
     private Stockbroker holderStockbroker;
     
     @XmlElementWrapper(name = "holderCompanyAccounts")
     private List<HolderCompanyAccount> holderCompanyAccounts;
     @XmlElementWrapper(name = "holderBondAccounts")
     private List<HolderBondAccount> holderBondAccounts;
+
+    public Holder(){}
     
-    @XmlElementWrapper(name = "administrators")
-    private List<Administrator> administrators;
-    public Holder(){
-        
-    }
     public Holder(int holderId, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<Address> holderResidentialAddresses, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, List<Address> holderPostalAddresses, List<EmailAddress> holderEmailAddresses, Stockbroker holderStockbroker) {
         this.holderId = holderId;
         this.holderAcctNumber = holderAcctNumber;
@@ -212,8 +209,6 @@ public class Holder {
         this.pryAddress = pryAddress;
     }
 
-   
-
     public List<PhoneNumber> getHolderPhoneNumbers() {
         return holderPhoneNumbers;
     }
@@ -274,20 +269,6 @@ public class Holder {
      */
     public void setHolderStockbroker(Stockbroker holderStockbroker) {
         this.holderStockbroker = holderStockbroker;
-    }
-
-    /**
-     * @return the administrators
-     */
-    public List<Administrator> getAdministrators() {
-        return administrators;
-    }
-
-    /**
-     * @param administrators the administrators to set
-     */
-    public void setAdministrators(List<Administrator> administrators) {
-        this.administrators = administrators;
     }
 
     
