@@ -15,9 +15,9 @@ public class QueryClientCompany {
      * and this is only set when user is performing a range search
      */
     private String descriptor;
-    private Map<String,Double> shareUnit;
-    private Map<String,Integer> numberOfShareholders;
-    private Map<String,Integer> numberOfBondholders;
+    private Map<String, Double> shareUnit;
+    private Map<String, Integer> numberOfShareholders;
+    private Map<String, Integer> numberOfBondholders;
     private ClientCompany clientCompany;
 
     /**

@@ -26,7 +26,7 @@ public class PowerOfAttorney implements Serializable {
     @XmlElement
     private String title;
     @XmlElement
-    private String signaturePath;
+    private String filePath;
     @XmlElement
     private String type;
     @XmlElement
@@ -34,34 +34,30 @@ public class PowerOfAttorney implements Serializable {
     @XmlElement
     private String endDate;
     @XmlElement
-    private String periodType;
-    @XmlElement
     private boolean primaryPowerOfAttorney;
     private byte[] signatureFile;
     public PowerOfAttorney() {
     }
 
-    public PowerOfAttorney(int id, Holder holder, String title, String signaturePath, String type, String startDate, String endDate, String periodType, byte[] signatureFile, boolean primaryPowerOfAttorney) {
+    public PowerOfAttorney(int id, Holder holder, String title, String filePath, String type, String startDate, String endDate, byte[] signatureFile, boolean primaryPowerOfAttorney) {
         this.id = id;
         this.holder = holder;
         this.title = title;
-        this.signaturePath = signaturePath;
+        this.filePath = filePath;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.periodType = periodType;
         this.signatureFile = signatureFile;
         this.primaryPowerOfAttorney = primaryPowerOfAttorney;
     }
 
-    public PowerOfAttorney(Holder holder, String title, String signaturePath, String type, String startDate, String endDate, String periodType, byte[] signatureFile, boolean primaryPowerOfAttorney) {
+    public PowerOfAttorney(Holder holder, String title, String filePath, String type, String startDate, String endDate, byte[] signatureFile, boolean primaryPowerOfAttorney) {
         this.holder = holder;
         this.title = title;
-        this.signaturePath = signaturePath;
+        this.filePath = filePath;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.periodType = periodType;
         this.signatureFile = signatureFile;
         this.primaryPowerOfAttorney = primaryPowerOfAttorney;
     }
@@ -109,17 +105,17 @@ public class PowerOfAttorney implements Serializable {
     }
 
     /**
-     * @return the signaturePath
+     * @return the filePath
      */
-    public String getSignaturePath() {
-        return signaturePath;
+    public String getFilePath() {
+        return filePath;
     }
 
     /**
-     * @param signaturePath the signaturePath to set
+     * @param filePath the filePath to set
      */
-    public void setSignaturePath(String signaturePath) {
-        this.signaturePath = signaturePath;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
     /**
@@ -162,20 +158,6 @@ public class PowerOfAttorney implements Serializable {
      */
     public void setEndDate(String endDate) {
         this.endDate = endDate;
-    }
-
-    /**
-     * @return the periodType
-     */
-    public String getPeriodType() {
-        return periodType;
-    }
-
-    /**
-     * @param periodType the periodType to set
-     */
-    public void setPeriodType(String periodType) {
-        this.periodType = periodType;
     }
 
     /**
