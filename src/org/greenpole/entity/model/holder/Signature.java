@@ -12,14 +12,14 @@ package org.greenpole.entity.model.holder;
 public class Signature {
     
     private Holder holder;
-    private String signature;
+    private byte[] signature;
 
     public Signature() {
     }
 
     
     
-    public Signature(Holder holder, String signature) {
+    public Signature(Holder holder, byte[] signature) {
         this.holder = holder;
         this.signature = signature;
     }
@@ -42,17 +42,18 @@ public class Signature {
     /**
      * @return the signature
      */
-    public String getSignature() {
+    public byte[] getSignature() {
         return signature;
     }
 
     /**
      * @param signature the signature to set
      */
-    public void setSignature(String signature) {
+    public void setSignature(byte[] signature) {
         this.signature = signature;
     }
-    
+
+   
     
     
 }
