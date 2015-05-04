@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -50,60 +51,38 @@ public class ClientCompany implements Serializable {
     private List <EmailAddress> emailAddresses ;
     @XmlElementWrapper(name = "phoneNumbers")
     private List <PhoneNumber> phoneNumbers ;
+    
+    @XmlTransient
     private String nseSectorName;
+    @XmlTransient
     private String depositoryName;
+    
+    @XmlTransient
+    private List<Address> deletedAddresses;
+    @XmlTransient
+    private List<EmailAddress> deletedEmailAddresses;
+    @XmlTransient
+    private List<PhoneNumber> deletedPhoneNumbers;
 
     /**
      * Initialises client company object.
      */
     public ClientCompany() {
     }
-
+    
     /**
      * Collects all values for the client company.
+     * This constructor should be used when trying to search for a client company (in conjunction with query client company class).
      * @param name the company's name
      * @param code the company's code
-     * @param nseSector the NSE Sector the company belongs to
+     * @param nseSectorName  the NSE Sector the company belongs to
      * @param ceo the company's CEO
      * @param secretary the company's secretary
      * @param addresses the company's addresses
      * @param emailAddresses the company's email addresses
      * @param phoneNumbers the company's phone numbers
      * @param depositoryName the company's depository
-     * @param depositoryId the depository's unique identification
      * @param valid the company's valid status
-     * @deprecated {@link #depositoryName} is no longer relevant to the
-     * client company model. The middle tier has no need for it. This constructor will be deleted very soon.
-     * Replaced by {@link #ClientCompany(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.List, int, boolean, java.util.List, java.util.List)}
-     */
-    @Deprecated
-    public ClientCompany(String name, String code, String nseSector, String ceo, String secretary, List addresses, List emailAddresses, List phoneNumbers, String depositoryName, int depositoryId, boolean valid) {
-        this.name = name;
-        this.code = code;
-        this.nseSectorName = nseSector;
-        this.ceo = ceo;
-        this.secretary = secretary;
-        this.addresses = addresses;
-        this.emailAddresses = emailAddresses;
-        this.phoneNumbers = phoneNumbers;
-        this.depositoryName = depositoryName;
-        this.depositoryId = depositoryId;
-        this.valid = valid;
-    }
-
-    /**
-     * Collects all values for the client company.
-     * This constructor should be used when trying to search for a client company (in conjunction with query client company class).
-     * @param name
-     * @param code
-     * @param ceo
-     * @param secretary
-     * @param addresses
-     * @param valid
-     * @param emailAddresses
-     * @param phoneNumbers
-     * @param nseSectorName
-     * @param depositoryName 
      */
     public ClientCompany(String name, String code, String ceo, String secretary, List<Address> addresses, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers, String nseSectorName, String depositoryName) {
         this.name = name;
@@ -161,6 +140,9 @@ public class ClientCompany implements Serializable {
      * @param valid the company's valid status
      * @param emailAddresses the company's email addresses
      * @param phoneNumbers the company's phone numbers 
+     * @deprecated you are advised to use the new constructor that includes lists for deleted addresses,
+     * email addresses, and phone numbers, as those constitute a part of editing
+     * {@link #ClientCompany(int, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.util.List, int, boolean, java.util.List, java.util.List, java.util.List, java.util.List, java.util.List)}
      */
     public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, List<Address> addresses, int depositoryId, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers) {
         this.id = id;
@@ -175,6 +157,43 @@ public class ClientCompany implements Serializable {
         this.emailAddresses = emailAddresses;
         this.phoneNumbers = phoneNumbers;
     }
+
+    /**
+     * Collects all values for the client company.
+     * This constructor should be used when trying to submit a client company for
+     * editing while wanting to delete addresses, email addresses and phone numbers at the same time, 
+     * as it includes the {@link #id} variable, which is not used when creating a client company.
+     * @param id the company's id
+     * @param name the company's name
+     * @param code the company's code
+     * @param nseSectorId the NSE Sector the company belongs to
+     * @param ceo the company's CEO
+     * @param secretary the company's secretary
+     * @param addresses the company's addresses
+     * @param depositoryId the depository's unique identification
+     * @param valid the company's valid status
+     * @param emailAddresses the company's email addresses
+     * @param phoneNumbers the company's phone numbers 
+     * @param deletedAddresses the company's addresses to delete
+     * @param deletedEmailAddresses the company's email addresses to delete
+     * @param deletedPhoneNumbers the company's phone numbers to delete
+     */
+    public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, List<Address> addresses, int depositoryId, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers, List<Address> deletedAddresses, List<EmailAddress> deletedEmailAddresses, List<PhoneNumber> deletedPhoneNumbers) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.nseSectorId = nseSectorId;
+        this.ceo = ceo;
+        this.secretary = secretary;
+        this.addresses = addresses;
+        this.depositoryId = depositoryId;
+        this.valid = valid;
+        this.emailAddresses = emailAddresses;
+        this.phoneNumbers = phoneNumbers;
+        this.deletedAddresses = deletedAddresses;
+        this.deletedEmailAddresses = deletedEmailAddresses;
+        this.deletedPhoneNumbers = deletedPhoneNumbers;
+    }
     
     /**
      * Basic Constructor For Client Company Used on ShareQuotation
@@ -182,27 +201,34 @@ public class ClientCompany implements Serializable {
      * @param id the company's id
      * @param name the company's name
      * @param code the company's code
-     * @param nseSector the company's NSE sector
+     * @param nseSectorName the company's NSE sector
      * @param depositoryName  the company's depository
      */
-
-    public ClientCompany(int id, String name, String code, String nseSector, String depositoryName) {
+    public ClientCompany(int id, String name, String code, String nseSectorName, String depositoryName) {
         this.id = id;
         this.name = name;
         this.code = code;
-        this.nseSectorName = nseSector;
+        this.nseSectorName = nseSectorName;
         this.depositoryName = depositoryName;
     }
 
     /**
      * Constructor for setting client company for share unit quotation upload
-     * @param code 
+     * @param code the company's code
      */
     public ClientCompany(String code) {
         this.code = code;
     }
-    
-    
+
+    /**
+     * Constructor for editing a client company code only.
+     * @param id the company's id
+     * @param code the company's code
+     */
+    public ClientCompany(int id, String code) {
+        this.id = id;
+        this.code = code;
+    }
 
     @Override
     public String toString() {
@@ -383,5 +409,29 @@ public class ClientCompany implements Serializable {
 
     public void setNseSectorId(int nseSectorId) {
         this.nseSectorId = nseSectorId;
+    }
+
+    public List<Address> getDeletedAddresses() {
+        return deletedAddresses;
+    }
+
+    public void setDeletedAddresses(List<Address> deletedAddresses) {
+        this.deletedAddresses = deletedAddresses;
+    }
+
+    public List<EmailAddress> getDeletedEmailAddresses() {
+        return deletedEmailAddresses;
+    }
+
+    public void setDeletedEmailAddresses(List<EmailAddress> deletedEmailAddresses) {
+        this.deletedEmailAddresses = deletedEmailAddresses;
+    }
+
+    public List<PhoneNumber> getDeletedPhoneNumbers() {
+        return deletedPhoneNumbers;
+    }
+
+    public void setDeletedPhoneNumbers(List<PhoneNumber> deletedPhoneNumbers) {
+        this.deletedPhoneNumbers = deletedPhoneNumbers;
     }
 }

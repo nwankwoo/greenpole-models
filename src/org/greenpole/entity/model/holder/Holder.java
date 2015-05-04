@@ -31,7 +31,6 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
     "type", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "holderPhoneNumbers",
     "holderEmailAddresses", "holderResidentialAddresses", "holderPostalAddress", "holderCompanyAccounts",
     "holderBondAccounts"})
-
 public class Holder {
 
     @XmlElement

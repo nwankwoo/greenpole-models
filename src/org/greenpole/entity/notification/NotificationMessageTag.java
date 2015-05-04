@@ -45,7 +45,7 @@ public enum NotificationMessageTag {
 
     /**
      * Gets the description of the defined notification message tag.
-     * @return the notification message tag
+     * @return the description of the notification message tag
      */
     public String getDescription() {
         return description;

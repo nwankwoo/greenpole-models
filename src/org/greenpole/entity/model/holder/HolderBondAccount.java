@@ -24,10 +24,8 @@ import org.greenpole.entity.model.clientcompany.Bank;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({Coupon.class})
 @XmlType(propOrder = {"holderId", "bondOffer", "chn", "bondUnits", "startingPrincipalValue", "remainingPrincipalValue",
     "nubanAccount", "bank", "merged", "holderBondAccPrimary"})
-
 public class HolderBondAccount {
 
     @XmlElement

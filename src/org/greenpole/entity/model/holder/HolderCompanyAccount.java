@@ -24,7 +24,6 @@ import org.greenpole.entity.model.clientcompany.Bank;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({Dividend.class})
 @XmlType(propOrder = {"holderId", "clientCompanyId", "chn", "shareUnits", 
     "esop", "taxExempted", "nubanAccount", "bank", "merged", "holderCompAccPrimary"})
 public class HolderCompanyAccount {

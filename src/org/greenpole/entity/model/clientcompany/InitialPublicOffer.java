@@ -6,23 +6,40 @@
 package org.greenpole.entity.model.clientcompany;
 
 import java.math.BigDecimal;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Yusuf Samsudeen Babashola (Algorithm)
  * 
- * This class represents an Intial Public Offer
+ * Used to transfer IPO information between the front end and the middle tier.
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"clientCompanyId","totalSharesOnOffer","methodOfOffer","startingMinimumSubscription",
+    "continuingMinimumSubscription","offerPrice","offerSize","openingDate","closingDate"})
 public class InitialPublicOffer {
-    
+    @XmlElement
     private int clientCompanyId;
+    @XmlElement
     private int totalSharesOnOffer;
+    @XmlElement
     private String methodOfOffer;
+    @XmlElement
     private int startingMinimumSubscription;
+    @XmlElement
     private int continuingMinimumSubscription;
+    @XmlElement
     private double offerPrice;
+    @XmlElement
     private BigDecimal offerSize;
+    @XmlElement
     private String openingDate;
+    @XmlElement
     private String closingDate;
 
     /**
