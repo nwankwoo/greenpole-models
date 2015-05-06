@@ -77,6 +77,9 @@ public class Holder {
     @XmlElementWrapper(name = "holderBondAccounts")
     private List<HolderBondAccount> holderBondAccounts;
 
+    @XmlElementWrapper(name = "administrators")
+    private List<Administrator> administrators;
+    
     public Holder(){}
     
     public Holder(int holderId, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<Address> holderResidentialAddresses, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, List<Address> holderPostalAddresses, List<EmailAddress> holderEmailAddresses, Stockbroker holderStockbroker) {
@@ -268,6 +271,20 @@ public class Holder {
      */
     public void setHolderStockbroker(Stockbroker holderStockbroker) {
         this.holderStockbroker = holderStockbroker;
+    }
+
+    /**
+     * @return the administrators
+     */
+    public List<Administrator> getAdministrators() {
+        return administrators;
+    }
+
+    /**
+     * @param administrators the administrators to set
+     */
+    public void setAdministrators(List<Administrator> administrators) {
+        this.administrators = administrators;
     }
 
     
