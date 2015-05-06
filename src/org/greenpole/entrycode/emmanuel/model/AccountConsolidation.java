@@ -21,30 +21,36 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlSeeAlso({CompanyAccountConsolidation.class})
 @XmlAccessorType(XmlAccessType.NONE)
 public class AccountConsolidation {
+
     @XmlElement
     private int id;
     @XmlElement
-   private Holder holder;
+    private int holderId;
     @XmlElement
-   private String holderName;
+    private Holder holder;
     @XmlElement
-   private int mergedToHolderId;
+    private String holderName;
     @XmlElement
-   private String mergedToHolderName;
+    private int mergedToHolderId;
     @XmlElement
-   private String mergeDate;
+    private String mergedToHolderName;
     @XmlElement
-   private boolean demerge;
+    private String mergeDate;
     @XmlElement
-   private String additionalChanges; 
+    private boolean demerge;
+    @XmlElement
+    private String additionalChanges;
     @XmlElement
     private String demergeDate;
     @XmlElementWrapper(name = "comnpanyAccountConsolidation")
-    private List <CompanyAccountConsolidation> comnpanyAccountConsolidation;
-    public AccountConsolidation(){}
+    private List<CompanyAccountConsolidation> comnpanyAccountConsolidation;
 
-    public AccountConsolidation(int id, Holder holder, String holderName, int mergedToHolderId, String mergedToHolderName, String mergeDate, boolean demerge, String additionalChanges, String demergeDate, List<CompanyAccountConsolidation> comnpanyAccountConsolidation) {
+    public AccountConsolidation() {
+    }
+
+    public AccountConsolidation(int id, int holderId, Holder holder, String holderName, int mergedToHolderId, String mergedToHolderName, String mergeDate, boolean demerge, String additionalChanges, String demergeDate, List<CompanyAccountConsolidation> comnpanyAccountConsolidation) {
         this.id = id;
+        this.holderId = holderId;
         this.holder = holder;
         this.holderName = holderName;
         this.mergedToHolderId = mergedToHolderId;
@@ -80,6 +86,19 @@ public class AccountConsolidation {
      */
     public void setId(int id) {
         this.id = id;
+    }
+    /**
+     * @return the holderId
+     */
+    public int getHolderId() {
+        return holderId;
+    }
+
+    /**
+     * @param holderId
+     */
+    public void setHolderId(int holderId) {
+        this.holderId = holderId;
     }
 
     /**
@@ -197,15 +216,16 @@ public class AccountConsolidation {
     /**
      * @return the comnpanyAccountConsolidation
      */
-    public List <CompanyAccountConsolidation> getComnpanyAccountConsolidation() {
+    public List<CompanyAccountConsolidation> getComnpanyAccountConsolidation() {
         return comnpanyAccountConsolidation;
     }
 
     /**
-     * @param comnpanyAccountConsolidation the comnpanyAccountConsolidation to set
+     * @param comnpanyAccountConsolidation the comnpanyAccountConsolidation to
+     * set
      */
-    public void setComnpanyAccountConsolidation(List <CompanyAccountConsolidation> comnpanyAccountConsolidation) {
+    public void setComnpanyAccountConsolidation(List<CompanyAccountConsolidation> comnpanyAccountConsolidation) {
         this.comnpanyAccountConsolidation = comnpanyAccountConsolidation;
     }
-    
+
 }
