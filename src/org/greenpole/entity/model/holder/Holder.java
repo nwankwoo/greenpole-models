@@ -91,9 +91,6 @@ public class Holder {
     @XmlTransient
     private List<PhoneNumber> deletedPhoneNumbers;
 
-    public Holder() {
-    }
-
     public Holder(int holderId, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<Address> holderResidentialAddresses, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, List<Address> holderPostalAddresses, List<EmailAddress> holderEmailAddresses, Stockbroker holderStockbroker) {
         this.holderId = holderId;
         this.holderAcctNumber = holderAcctNumber;

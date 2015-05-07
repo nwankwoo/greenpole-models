@@ -3,29 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entrycode.emmanuel.model;
+package org.greenpole.entity.model.holder.merge;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
- * @author user
+ * @author Akin
+ * Carries information on company account consolidations.
  */
 @XmlRootElement
-@XmlSeeAlso({AccountConsolidation.class})
 @XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"forCompanyId","tiedToInitialHolderId","tiedToCurrentHolderId","initialChn",
+    "currentChn","bondShareUnit","transfer","receiverUnitState","receiverStartUnit","unitAfterTransfer",
+    "mergeDate"})
 public class CompanyAccountConsolidation {
-
-    @XmlElement
+    @XmlTransient
     private int id;
-    @XmlElement
-    private AccountConsolidation accountConsolidation;
-    @XmlElement
-    private int accountConsolidationId;
     @XmlElement
     private int forCompanyId;
     @XmlElement
@@ -52,10 +51,51 @@ public class CompanyAccountConsolidation {
     public CompanyAccountConsolidation() {
     }
 
-    public CompanyAccountConsolidation(int id, AccountConsolidation accountConsolidation, int accountConsolidationId, int forCompanyId, int tiedToInitialHolderId, int tiedToCurrentHolderId, String initialChn, String currentChn, int bondShareUnit, boolean transfer, int receiverUnitState, int receiverStartUnit, int unitAfterTransfer, String mergeDate) {
+    /**
+     * 
+     * @param forCompanyId
+     * @param tiedToInitialHolderId
+     * @param tiedToCurrentHolderId
+     * @param initialChn
+     * @param currentChn
+     * @param bondShareUnit
+     * @param transfer
+     * @param receiverUnitState
+     * @param receiverStartUnit
+     * @param unitAfterTransfer
+     * @param mergeDate 
+     */
+    public CompanyAccountConsolidation(int forCompanyId, int tiedToInitialHolderId, int tiedToCurrentHolderId, String initialChn, String currentChn, int bondShareUnit, boolean transfer, int receiverUnitState, int receiverStartUnit, int unitAfterTransfer, String mergeDate) {
+        this.forCompanyId = forCompanyId;
+        this.tiedToInitialHolderId = tiedToInitialHolderId;
+        this.tiedToCurrentHolderId = tiedToCurrentHolderId;
+        this.initialChn = initialChn;
+        this.currentChn = currentChn;
+        this.bondShareUnit = bondShareUnit;
+        this.transfer = transfer;
+        this.receiverUnitState = receiverUnitState;
+        this.receiverStartUnit = receiverStartUnit;
+        this.unitAfterTransfer = unitAfterTransfer;
+        this.mergeDate = mergeDate;
+    }
+
+    /**
+     * 
+     * @param id
+     * @param forCompanyId
+     * @param tiedToInitialHolderId
+     * @param tiedToCurrentHolderId
+     * @param initialChn
+     * @param currentChn
+     * @param bondShareUnit
+     * @param transfer
+     * @param receiverUnitState
+     * @param receiverStartUnit
+     * @param unitAfterTransfer
+     * @param mergeDate 
+     */
+    public CompanyAccountConsolidation(int id, int forCompanyId, int tiedToInitialHolderId, int tiedToCurrentHolderId, String initialChn, String currentChn, int bondShareUnit, boolean transfer, int receiverUnitState, int receiverStartUnit, int unitAfterTransfer, String mergeDate) {
         this.id = id;
-        this.accountConsolidation = accountConsolidation;
-        this.accountConsolidationId = accountConsolidationId;
         this.forCompanyId = forCompanyId;
         this.tiedToInitialHolderId = tiedToInitialHolderId;
         this.tiedToCurrentHolderId = tiedToCurrentHolderId;
@@ -75,22 +115,6 @@ public class CompanyAccountConsolidation {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public AccountConsolidation getAccountConsolidation() {
-        return accountConsolidation;
-    }
-
-    public void setAccountConsolidation(AccountConsolidation accountConsolidation) {
-        this.accountConsolidation = accountConsolidation;
-    }
-
-    public int getAccountConsolidationId() {
-        return accountConsolidationId;
-    }
-
-    public void setAccountConsolidationId(int accountConsolidationId) {
-        this.accountConsolidationId = accountConsolidationId;
     }
 
     public int getForCompanyId() {

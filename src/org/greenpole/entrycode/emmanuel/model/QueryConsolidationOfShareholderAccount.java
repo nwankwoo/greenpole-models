@@ -5,6 +5,8 @@
  */
 package org.greenpole.entrycode.emmanuel.model;
 
+import org.greenpole.entity.model.holder.merge.AccountConsolidation;
+import org.greenpole.entity.model.holder.merge.CompanyAccountConsolidation;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
