@@ -78,6 +78,11 @@ public class Holder {
     private List<HolderCompanyAccount> holderCompanyAccounts;
     @XmlElementWrapper(name = "holderBondAccounts")
     private List<HolderBondAccount> holderBondAccounts;
+
+    @XmlElementWrapper(name = "administrators")
+    private List<Administrator> administrators;
+    
+    public Holder(){}
     
     @XmlTransient
     private List<Address> deletedAddresses;
@@ -313,6 +318,23 @@ public class Holder {
         this.holderStockbroker = holderStockbroker;
     }
 
+    /**
+     * @return the administrators
+     */
+    public List<Administrator> getAdministrators() {
+        return administrators;
+    }
+
+    /**
+     * @param administrators the administrators to set
+     */
+    public void setAdministrators(List<Administrator> administrators) {
+        this.administrators = administrators;
+    }
+
+    
+    
+    
     public List<Address> getDeletedAddresses() {
         return deletedAddresses;
     }
