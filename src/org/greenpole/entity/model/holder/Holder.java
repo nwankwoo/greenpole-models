@@ -23,7 +23,6 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
  *
  * @author Jephthah Sadare
  */
-
 @XmlRootElement
 @XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
 @XmlAccessorType(XmlAccessType.NONE)
@@ -60,6 +59,9 @@ public class Holder {
     @XmlElement
     private String pryAddress;
     
+    @XmlElementWrapper(name = "addresses")
+    private List <Address> addresses;
+
     @XmlElementWrapper(name = "holderPhoneNumbers")
     private List<PhoneNumber> holderPhoneNumbers;
     @XmlElementWrapper(name = "holderEmailAddresses")
@@ -68,10 +70,10 @@ public class Holder {
     private List<Address> holderResidentialAddresses;
     @XmlElementWrapper(name = "holderPostalAddresses")
     private List<Address> holderPostalAddresses;
-    
+
     @XmlTransient
     private Stockbroker holderStockbroker;
-    
+
     @XmlElementWrapper(name = "holderCompanyAccounts")
     private List<HolderCompanyAccount> holderCompanyAccounts;
     @XmlElementWrapper(name = "holderBondAccounts")
@@ -82,6 +84,16 @@ public class Holder {
     
     public Holder(){}
     
+    @XmlTransient
+    private List<Address> deletedAddresses;
+    @XmlTransient
+    private List<EmailAddress> deletedEmailAddresses;
+    @XmlTransient
+    private List<PhoneNumber> deletedPhoneNumbers;
+
+    public Holder() {
+    }
+
     public Holder(int holderId, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<Address> holderResidentialAddresses, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, List<Address> holderPostalAddresses, List<EmailAddress> holderEmailAddresses, Stockbroker holderStockbroker) {
         this.holderId = holderId;
         this.holderAcctNumber = holderAcctNumber;
@@ -105,15 +117,40 @@ public class Holder {
         this.holderStockbroker = holderStockbroker;
     }
 
+    public Holder(int holderId, int holderAcctNumber, String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, boolean merged, boolean pryHolder, String pryAddress, List<Address> addresses, List<PhoneNumber> holderPhoneNumbers, List<EmailAddress> holderEmailAddresses, List<Address> holderResidentialAddresses, List<Address> holderPostalAddresses, Stockbroker holderStockbroker, List<HolderCompanyAccount> holderCompanyAccounts, List<HolderBondAccount> holderBondAccounts, List<Address> deletedAddresses, List<EmailAddress> deletedEmailAddresses, List<PhoneNumber> deletedPhoneNumbers) {
+        this.holderId = holderId;
+        this.holderAcctNumber = holderAcctNumber;
+        this.chn = chn;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.type = type;
+        this.gender = gender;
+        this.dob = dob;
+        this.taxExempted = taxExempted;
+        this.merged = merged;
+        this.pryHolder = pryHolder;
+        this.pryAddress = pryAddress;
+        this.addresses = addresses;
+        this.holderPhoneNumbers = holderPhoneNumbers;
+        this.holderEmailAddresses = holderEmailAddresses;
+        this.holderResidentialAddresses = holderResidentialAddresses;
+        this.holderPostalAddresses = holderPostalAddresses;
+        this.holderStockbroker = holderStockbroker;
+        this.holderCompanyAccounts = holderCompanyAccounts;
+        this.holderBondAccounts = holderBondAccounts;
+        this.deletedAddresses = deletedAddresses;
+        this.deletedEmailAddresses = deletedEmailAddresses;
+        this.deletedPhoneNumbers = deletedPhoneNumbers;
+    }
+        
     public int getHolderId() {
-         return holderId;
+        return holderId;
     }
 
     public void setHolderId(int holderId) {
         this.holderId = holderId;
     }
-
-   
 
     public int getHolderAcctNumber() {
         return holderAcctNumber;
@@ -211,6 +248,14 @@ public class Holder {
         this.pryAddress = pryAddress;
     }
 
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+    
     public List<PhoneNumber> getHolderPhoneNumbers() {
         return holderPhoneNumbers;
     }
@@ -290,4 +335,29 @@ public class Holder {
     
     
     
+    public List<Address> getDeletedAddresses() {
+        return deletedAddresses;
+    }
+
+    public void setDeletedAddresses(List<Address> deletedAddresses) {
+        this.deletedAddresses = deletedAddresses;
+    }
+
+    public List<EmailAddress> getDeletedEmailAddresses() {
+        return deletedEmailAddresses;
+    }
+
+    public void setDeletedEmailAddresses(List<EmailAddress> deletedEmailAddresses) {
+        this.deletedEmailAddresses = deletedEmailAddresses;
+    }
+
+    public List<PhoneNumber> getDeletedPhoneNumbers() {
+        return deletedPhoneNumbers;
+    }
+
+    public void setDeletedPhoneNumbers(List<PhoneNumber> deletedPhoneNumbers) {
+        this.deletedPhoneNumbers = deletedPhoneNumbers;
+    }
+      
+
 }
