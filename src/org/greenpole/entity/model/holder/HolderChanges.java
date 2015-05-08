@@ -5,37 +5,53 @@
  */
 package org.greenpole.entity.model.holder;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Akin
  * Utilised in carrying holder changes between the front-end and the back-end.
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"initialForm", "currentForm", "changeTypeId", "changeDate", "lastName"})
 public class HolderChanges {
+    @XmlTransient
     private int id;
+    @XmlElement
     private String initialForm;
+    @XmlElement
     private String currentForm;
+    @XmlElement
     private int changeTypeId;
+    @XmlElement
     private String changeDate;
-    private Holder holder;
+    @XmlTransient
+    private int holderId;
 
     public HolderChanges() {
     }
 
-    public HolderChanges(String initialForm, String currentForm, int changeTypeId, String changeDate, Holder holder) {
+    public HolderChanges(String initialForm, String currentForm, int changeTypeId, String changeDate, int holderId) {
         this.initialForm = initialForm;
         this.currentForm = currentForm;
         this.changeTypeId = changeTypeId;
         this.changeDate = changeDate;
-        this.holder = holder;
+        this.holderId = holderId;
     }
 
-    public HolderChanges(int id, String initialForm, String currentForm, int changeTypeId, String changeDate, Holder holder) {
+    public HolderChanges(int id, String initialForm, String currentForm, int changeTypeId, String changeDate, int holderId) {
         this.id = id;
         this.initialForm = initialForm;
         this.currentForm = currentForm;
         this.changeTypeId = changeTypeId;
         this.changeDate = changeDate;
-        this.holder = holder;
+        this.holderId = holderId;
     }
 
     public int getId() {
@@ -78,11 +94,11 @@ public class HolderChanges {
         this.changeDate = changeDate;
     }
 
-    public Holder getHolder() {
-        return holder;
+    public int getHolderId() {
+        return holderId;
     }
 
-    public void setHolder(Holder holder) {
-        this.holder = holder;
+    public void setHolderId(int holderId) {
+        this.holderId = holderId;
     }
 }
