@@ -5,9 +5,13 @@
  */
 package org.greenpole.entrycode.emmanuel.model;
 
+import org.greenpole.entity.model.holder.merge.AccountConsolidation;
+import org.greenpole.entity.model.holder.merge.CompanyAccountConsolidation;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
@@ -22,94 +26,65 @@ public class QueryConsolidationOfShareholderAccount {
 
     @XmlElement
     private String descriptor;
+    @XmlElementWrapper(name = "companyAccountConsolidation")
+    private List<CompanyAccountConsolidation> companyAccountConsolidation;
+    @XmlElementWrapper(name = "accountConsolidation")
+    private List<AccountConsolidation> accountConsolidation;
     @XmlElement
-    private CompanyAccountConsolidation companyAccountConsolidation;
+    private String startDate;
     @XmlElement
-    private AccountConsolidation AccountConsolidation;
-    @XmlElement
-    private String start_date;
-    @XmlElement
-    private String end_date;
+    private String endDate;
 
     public QueryConsolidationOfShareholderAccount() {
     }
 
-    public QueryConsolidationOfShareholderAccount(String descriptor, CompanyAccountConsolidation companyAccountConsolidation, AccountConsolidation AccountConsolidation, String start_date, String end_date) {
+    public QueryConsolidationOfShareholderAccount(String descriptor, List<CompanyAccountConsolidation> companyAccountConsolidation, List<AccountConsolidation> accountConsolidation, String startDate, String endDate) {
         this.descriptor = descriptor;
         this.companyAccountConsolidation = companyAccountConsolidation;
-        this.AccountConsolidation = AccountConsolidation;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.accountConsolidation = accountConsolidation;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
-    /**
-     * @return the descriptor
-     */
     public String getDescriptor() {
         return descriptor;
     }
 
-    /**
-     * @param descriptor the descriptor to set
-     */
     public void setDescriptor(String descriptor) {
         this.descriptor = descriptor;
     }
 
-    /**
-     * @return the companyAccountConsolidation
-     */
-    public CompanyAccountConsolidation getCompanyAccountConsolidation() {
+    public List<CompanyAccountConsolidation> getCompanyAccountConsolidation() {
         return companyAccountConsolidation;
     }
 
-    /**
-     * @param companyAccountConsolidation the companyAccountConsolidation to set
-     */
-    public void setCompanyAccountConsolidation(CompanyAccountConsolidation companyAccountConsolidation) {
+    public void setCompanyAccountConsolidation(List<CompanyAccountConsolidation> companyAccountConsolidation) {
         this.companyAccountConsolidation = companyAccountConsolidation;
     }
 
-    /**
-     * @return the AccountConsolidation
-     */
-    public AccountConsolidation getAccountConsolidation() {
-        return AccountConsolidation;
+    public List<AccountConsolidation> getAccountConsolidation() {
+        return accountConsolidation;
     }
 
-    /**
-     * @param AccountConsolidation the AccountConsolidation to set
-     */
-    public void setAccountConsolidation(AccountConsolidation AccountConsolidation) {
-        this.AccountConsolidation = AccountConsolidation;
+    public void setAccountConsolidation(List<AccountConsolidation> accountConsolidation) {
+        this.accountConsolidation = accountConsolidation;
     }
 
-    /**
-     * @return the start_date
-     */
-    public String getStart_date() {
-        return start_date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    /**
-     * @param start_date the start_date to set
-     */
-    public void setStart_date(String start_date) {
-        this.start_date = start_date;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    /**
-     * @return the end_date
-     */
-    public String getEnd_date() {
-        return end_date;
+    public String getEndDate() {
+        return endDate;
     }
 
-    /**
-     * @param end_date the end_date to set
-     */
-    public void setEnd_date(String end_date) {
-        this.end_date = end_date;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
+    
 }

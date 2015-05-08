@@ -44,6 +44,18 @@ public class PrivatePlacement {
     @XmlElement
     private String closingDate;
 
+    public PrivatePlacement(int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
+        this.clientCompanyId = clientCompanyId;
+        this.totalSharesOnOffer = totalSharesOnOffer;
+        this.methodOfOffer = methodOfOffer;
+        this.startingMinimumSubscription = startingMinimumSubscription;
+        this.continuingMinimumSubscription = continuingMinimumSubscription;
+        this.offerPrice = offerPrice;
+        this.offerSize = offerSize;
+        this.openingDate = openingDate;
+        this.closingDate = closingDate;
+    }
+     
     /**
      * @return the clientCompanyId
      */

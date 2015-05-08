@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entrycode.emmanuel.model;
+package org.greenpole.entity.model.holder.merge;
 
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -12,52 +12,61 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
- *
- * @author user
+ * 
+ * @author Akin
+ * Carries information on account consolidations.
  */
 @XmlRootElement
 @XmlSeeAlso({CompanyAccountConsolidation.class})
 @XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"forCompanyId","tiedToInitialHolderId","tiedToCurrentHolderId","initialChn",
+    "currentChn","bondShareUnit","transfer","receiverUnitState","receiverStartUnit","unitAfterTransfer",
+    "mergeDate"})
 public class AccountConsolidation {
-    @XmlElement
+    @XmlTransient
     private int id;
     @XmlElement
-   private Holder holder;
+    private int holderId;
     @XmlElement
-   private String holderName;
+    private String holderName;
     @XmlElement
-   private int mergedToHolderId;
+    private int mergedToHolderId;
     @XmlElement
-   private String mergedToHolderName;
+    private String mergedToHolderName;
     @XmlElement
-   private String mergeDate;
+    private String mergeDate;
     @XmlElement
-   private boolean demerge;
+    private boolean demerge;
     @XmlElement
-   private String additionalChanges; 
+    private String additionalChanges;
     @XmlElement
     private String demergeDate;
     @XmlElementWrapper(name = "comnpanyAccountConsolidation")
-    private List <CompanyAccountConsolidation> comnpanyAccountConsolidation;
-    public AccountConsolidation(){}
+    private List<CompanyAccountConsolidation> companyAccountConsolidation;
 
-    public AccountConsolidation(int id, Holder holder, String holderName, int mergedToHolderId, String mergedToHolderName, String mergeDate, boolean demerge, String additionalChanges, String demergeDate, List<CompanyAccountConsolidation> comnpanyAccountConsolidation) {
-        this.id = id;
-        this.holder = holder;
-        this.holderName = holderName;
-        this.mergedToHolderId = mergedToHolderId;
-        this.mergedToHolderName = mergedToHolderName;
-        this.mergeDate = mergeDate;
-        this.demerge = demerge;
-        this.additionalChanges = additionalChanges;
-        this.demergeDate = demergeDate;
-        this.comnpanyAccountConsolidation = comnpanyAccountConsolidation;
+    public AccountConsolidation() {
     }
 
-    public AccountConsolidation(Holder holder, String holderName, int mergedToHolderId, String mergedToHolderName, String mergeDate, boolean demerge, String additionalChanges, String demergeDate, List<CompanyAccountConsolidation> comnpanyAccountConsolidation) {
-        this.holder = holder;
+    /**
+     * 
+     * @param id
+     * @param holderId
+     * @param holderName
+     * @param mergedToHolderId
+     * @param mergedToHolderName
+     * @param mergeDate
+     * @param demerge
+     * @param additionalChanges
+     * @param demergeDate
+     * @param comnpanyAccountConsolidation 
+     */
+    public AccountConsolidation(int id, int holderId, String holderName, int mergedToHolderId, String mergedToHolderName, String mergeDate, boolean demerge, String additionalChanges, String demergeDate, List<CompanyAccountConsolidation> comnpanyAccountConsolidation) {
+        this.id = id;
+        this.holderId = holderId;
         this.holderName = holderName;
         this.mergedToHolderId = mergedToHolderId;
         this.mergedToHolderName = mergedToHolderName;
@@ -65,7 +74,31 @@ public class AccountConsolidation {
         this.demerge = demerge;
         this.additionalChanges = additionalChanges;
         this.demergeDate = demergeDate;
-        this.comnpanyAccountConsolidation = comnpanyAccountConsolidation;
+        this.companyAccountConsolidation = comnpanyAccountConsolidation;
+    }
+
+    /**
+     * 
+     * @param holderId
+     * @param holderName
+     * @param mergedToHolderId
+     * @param mergedToHolderName
+     * @param mergeDate
+     * @param demerge
+     * @param additionalChanges
+     * @param demergeDate
+     * @param comnpanyAccountConsolidation 
+     */
+    public AccountConsolidation(int holderId, String holderName, int mergedToHolderId, String mergedToHolderName, String mergeDate, boolean demerge, String additionalChanges, String demergeDate, List<CompanyAccountConsolidation> comnpanyAccountConsolidation) {
+        this.holderId = holderId;
+        this.holderName = holderName;
+        this.mergedToHolderId = mergedToHolderId;
+        this.mergedToHolderName = mergedToHolderName;
+        this.mergeDate = mergeDate;
+        this.demerge = demerge;
+        this.additionalChanges = additionalChanges;
+        this.demergeDate = demergeDate;
+        this.companyAccountConsolidation = comnpanyAccountConsolidation;
     }
 
     /**
@@ -81,19 +114,18 @@ public class AccountConsolidation {
     public void setId(int id) {
         this.id = id;
     }
-
     /**
-     * @return the holder
+     * @return the holderId
      */
-    public Holder getHolder() {
-        return holder;
+    public int getHolderId() {
+        return holderId;
     }
 
     /**
-     * @param holder the holder to set
+     * @param holderId
      */
-    public void setHolder(Holder holder) {
-        this.holder = holder;
+    public void setHolderId(int holderId) {
+        this.holderId = holderId;
     }
 
     /**
@@ -195,17 +227,18 @@ public class AccountConsolidation {
     }
 
     /**
-     * @return the comnpanyAccountConsolidation
+     * @return the companyAccountConsolidation
      */
-    public List <CompanyAccountConsolidation> getComnpanyAccountConsolidation() {
-        return comnpanyAccountConsolidation;
+    public List<CompanyAccountConsolidation> getCompanyAccountConsolidation() {
+        return companyAccountConsolidation;
     }
 
     /**
-     * @param comnpanyAccountConsolidation the comnpanyAccountConsolidation to set
+     * @param companyAccountConsolidation the companyAccountConsolidation to
+ set
      */
-    public void setComnpanyAccountConsolidation(List <CompanyAccountConsolidation> comnpanyAccountConsolidation) {
-        this.comnpanyAccountConsolidation = comnpanyAccountConsolidation;
+    public void setCompanyAccountConsolidation(List<CompanyAccountConsolidation> companyAccountConsolidation) {
+        this.companyAccountConsolidation = companyAccountConsolidation;
     }
-    
+
 }

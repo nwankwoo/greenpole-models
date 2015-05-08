@@ -20,13 +20,9 @@ public class UnitTransfer {
     @XmlElement
     private int holderIdTo;
     @XmlElement
-    private int chnFrom;
+    private int chn;
     @XmlElement
-    private int chnTo;
-    @XmlElement
-    private int clientCompanyIdFrom;
-    @XmlElement
-    private int clieintCompanyIdTo;
+    private int clientCompanyId;
     @XmlElement
     private int units;
     @XmlElement
@@ -40,14 +36,12 @@ public class UnitTransfer {
     @XmlElement
     private int bondOfferId;
 
-    public UnitTransfer(int id, int holderIdFrom, int holderIdTo, int chnFrom, int chnTo, int clientCompanyIdFrom, int clieintCompanyIdTo, int units, double startingPrincipalValue, double remainingPrincipalValue, double unitPrice, String transferType, int bondOfferId) {
+    public UnitTransfer(int id, int holderIdFrom, int holderIdTo, int chn, int clientCompanyId, int units, double startingPrincipalValue, double remainingPrincipalValue, double unitPrice, String transferType, int bondOfferId) {
         this.id = id;
         this.holderIdFrom = holderIdFrom;
         this.holderIdTo = holderIdTo;
-        this.chnFrom = chnFrom;
-        this.chnTo = chnTo;
-        this.clientCompanyIdFrom = clientCompanyIdFrom;
-        this.clieintCompanyIdTo = clieintCompanyIdTo;
+        this.chn = chn;
+        this.clientCompanyId = clientCompanyId;
         this.units = units;
         this.startingPrincipalValue = startingPrincipalValue;
         this.remainingPrincipalValue = remainingPrincipalValue;
@@ -80,36 +74,20 @@ public class UnitTransfer {
         this.holderIdTo = holderIdTo;
     }
 
-    public int getChnFrom() {
-        return chnFrom;
+    public int getChn() {
+        return chn;
     }
 
-    public void setChnFrom(int chnFrom) {
-        this.chnFrom = chnFrom;
+    public void setChn(int chn) {
+        this.chn = chn;
     }
 
-    public int getChnTo() {
-        return chnTo;
+    public int getClientCompanyId() {
+        return clientCompanyId;
     }
 
-    public void setChnTo(int chnTo) {
-        this.chnTo = chnTo;
-    }
-
-    public int getClientCompanyIdFrom() {
-        return clientCompanyIdFrom;
-    }
-
-    public void setClientCompanyIdFrom(int clientCompanyIdFrom) {
-        this.clientCompanyIdFrom = clientCompanyIdFrom;
-    }
-
-    public int getClieintCompanyIdTo() {
-        return clieintCompanyIdTo;
-    }
-
-    public void setClieintCompanyIdTo(int clieintCompanyIdTo) {
-        this.clieintCompanyIdTo = clieintCompanyIdTo;
+    public void setClientCompanyId(int clientCompanyId) {
+        this.clientCompanyId = clientCompanyId;
     }
 
     public int getUnits() {
@@ -160,5 +138,6 @@ public class UnitTransfer {
         this.bondOfferId = bondOfferId;
     }
 
+    
     
 }
