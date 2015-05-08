@@ -20,10 +20,12 @@ import javax.xml.bind.annotation.XmlSeeAlso;
  * @author user
  */
 @XmlRootElement
-@XmlSeeAlso({})
+@XmlSeeAlso({CompanyAccountConsolidation.class,AccountConsolidation.class})
 @XmlAccessorType(XmlAccessType.NONE)
+//add order here
 public class QueryConsolidationOfShareholderAccount {
 
+    //descriptor must be date:none / date:exact / date:between / date:before / date:after
     @XmlElement
     private String descriptor;
     @XmlElementWrapper(name = "companyAccountConsolidation")
