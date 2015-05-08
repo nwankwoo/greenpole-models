@@ -32,6 +32,8 @@ public class HolderCompanyAccount {
     @XmlElement
     private int clientCompanyId;
     @XmlElement
+    private String clientCompany;
+    @XmlElement
     private String chn;
     @XmlElement
     private double shareUnits;
@@ -183,5 +185,19 @@ public class HolderCompanyAccount {
 
     public void setSecClientCompanyId(int secClientCompanyId) {
         this.secClientCompanyId = secClientCompanyId;
+    }
+
+    /**
+     * @return the clientCompany
+     */
+    public String getClientCompany() {
+        return clientCompany;
+    }
+
+    /**
+     * @param clientCompany the clientCompany to set
+     */
+    public void setClientCompany(String clientCompany) {
+        this.clientCompany = clientCompany;
     }
 }
