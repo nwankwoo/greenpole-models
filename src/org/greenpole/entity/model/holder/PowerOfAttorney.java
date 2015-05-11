@@ -10,6 +10,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entrycode.emmanuel.model.Holder;
 
 /**
@@ -18,12 +20,16 @@ import org.greenpole.entrycode.emmanuel.model.Holder;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"holderAcctNumber", "chn", "firstName", "middleName", "lastName",
+    "type", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "holderPhoneNumbers",
+    "holderEmailAddresses", "holderResidentialAddresses", "holderPostalAddress", "holderCompanyAccounts",
+    "holderBondAccounts"})
 public class PowerOfAttorney implements Serializable {
 
-    @XmlElement
+    @XmlTransient
     private int id;
     @XmlElement
-    private Holder holder;
+    private int holderId;
     @XmlElement
     private String title;
     @XmlElement
@@ -36,30 +42,31 @@ public class PowerOfAttorney implements Serializable {
     private String endDate;
     @XmlElement
     private boolean primaryPowerOfAttorney;
-    private byte[] powerOfAttorneyFile;
+    @XmlTransient
+    private String fileContents;
+    
     public PowerOfAttorney() {
     }
 
-    public PowerOfAttorney(int id, Holder holder, String title, String filePath, String type, String startDate, String endDate, byte[] signatureFile, boolean primaryPowerOfAttorney) {
-        this.id = id;
-        this.holder = holder;
+    public PowerOfAttorney(int holderId, String title, String filePath, String type, String startDate, String endDate, boolean primaryPowerOfAttorney, String fileContents) {
+        this.holderId = holderId;
         this.title = title;
         this.filePath = filePath;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.powerOfAttorneyFile = signatureFile;
         this.primaryPowerOfAttorney = primaryPowerOfAttorney;
+        this.fileContents = fileContents;
     }
 
-    public PowerOfAttorney(Holder holder, String title, String filePath, String type, String startDate, String endDate, byte[] signatureFile, boolean primaryPowerOfAttorney) {
-        this.holder = holder;
+    public PowerOfAttorney(int id, int holderId, String title, String filePath, String type, String startDate, String endDate, boolean primaryPowerOfAttorney) {
+        this.id = id;
+        this.holderId = holderId;
         this.title = title;
         this.filePath = filePath;
         this.type = type;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.powerOfAttorneyFile = signatureFile;
         this.primaryPowerOfAttorney = primaryPowerOfAttorney;
     }
 
@@ -78,17 +85,17 @@ public class PowerOfAttorney implements Serializable {
     }
 
     /**
-     * @return the holder
+     * @return the holderId
      */
-    public Holder getHolder() {
-        return holder;
+    public int getHolderId() {
+        return holderId;
     }
 
     /**
-     * @param holder the holder to set
+     * @param holderId the holderId to set
      */
-    public void setHolder(Holder holder) {
-        this.holder = holder;
+    public void setHolderId(int holderId) {
+        this.holderId = holderId;
     }
 
     /**
@@ -175,12 +182,12 @@ public class PowerOfAttorney implements Serializable {
         this.primaryPowerOfAttorney = primaryPowerOfAttorney;
     }
 
-    public byte[] getPowerOfAttorneyFile() {
-        return powerOfAttorneyFile;
+    public String getFileContents() {
+        return fileContents;
     }
 
-    public void setPowerOfAttorneyFile(byte[] powerOfAttorneyFile) {
-        this.powerOfAttorneyFile = powerOfAttorneyFile;
+    public void setFileContents(String fileContents) {
+        this.fileContents = fileContents;
     }
 
 }

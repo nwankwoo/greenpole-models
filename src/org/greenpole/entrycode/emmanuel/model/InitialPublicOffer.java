@@ -3,64 +3,56 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.greenpole.entrycode.emmanuel.model;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import org.greenpole.entity.model.clientcompany.ClientCompany;
 
 /**
  *
- * @author Idoko Emmanuel 
- * The Initial Public Offer model, utilized by the front-end and middle-tier in
- * storing and retrieving Initial Public Offer information.
+ * @author Idoko Emmanuel The Initial Public Offer model, utilized by the
+ * front-end and middle-tier in storing and retrieving Initial Public Offer
+ * information.
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlSeeAlso({ClientCompany.class})
-@XmlType(propOrder = {"clientCompany","totalSharesOnOffer","methodOnOffer","startingMinSub","contMinSub","offerPrice","offerSize","openingDate","closingDate"," ipoApplications","certificates"})
-public class InitialPublicOffer implements Serializable{
+@XmlType(propOrder = {"totalSharesOnOffer", "methodOnOffer", "startingMinSub", "contMinSub", 
+    "offerPrice", "offerSize", "openingDate", "closingDate", " ipoClosed"})
+public class InitialPublicOffer implements Serializable {
+
+    @XmlTransient
+    private int id;
+    @XmlTransient
+    private int clientCompanyId;
     @XmlElement
-    private ClientCompany clientCompany;
-    @XmlElement 
     private int totalSharesOnOffer;
     @XmlElement
     private String methodOnOffer;
     @XmlElement
     private int startingMinSub;
     @XmlElement
-     private int contMinSub;
+    private int contMinSub;
     @XmlElement
-     private Double offerPrice;
+    private double offerPrice;
     @XmlElement
-     private int offerSize;
+    private int offerSize;
     @XmlElement
-     private Date openingDate;
+    private String openingDate;
     @XmlElement
-     private Date closingDate;
-    @XmlElementWrapper(name = "ipoApplications")
-    private List <?> ipoApplications;
-    @XmlElementWrapper(name = "certificates")
-     private  List <?> certificates;
-    public InitialPublicOffer(){
+    private String closingDate;
+    @XmlElement
+    private boolean ipoClosed;
+
+    public InitialPublicOffer() {
     }
 
-    @Override
-    public String toString() {
-        return "InitialPublicOffer{" + "clientCompany=" + getClientCompany() + ", totalSharesOnOffer=" + totalSharesOnOffer + ", methodOnOffer=" + methodOnOffer + ", startingMinSub=" + startingMinSub + ", contMinSub=" + contMinSub + ", offerPrice=" + offerPrice + ", offerSize=" + offerSize + ", openingDate=" + openingDate + ", closingDate=" + closingDate + ", ipoApplications=" + ipoApplications + ", certificates=" + certificates + '}';
-    }
-
-    public InitialPublicOffer(ClientCompany clientCompany, int totalSharesOnOffer, String methodOnOffer, int startingMinSub, int contMinSub, Double offerPrice, int offerSize, Date openingDate, Date closingDate, List<?> ipoApplications, List<?> certificates) {
-        this.clientCompany = clientCompany;
+    public InitialPublicOffer(int clientCompanyId, int totalSharesOnOffer, String methodOnOffer, int startingMinSub, int contMinSub, double offerPrice, int offerSize, String openingDate, String closingDate) {
+        this.clientCompanyId = clientCompanyId;
         this.totalSharesOnOffer = totalSharesOnOffer;
         this.methodOnOffer = methodOnOffer;
         this.startingMinSub = startingMinSub;
@@ -69,9 +61,37 @@ public class InitialPublicOffer implements Serializable{
         this.offerSize = offerSize;
         this.openingDate = openingDate;
         this.closingDate = closingDate;
-        this.ipoApplications = ipoApplications;
-        this.certificates = certificates;
     }
+
+    public InitialPublicOffer(int id, int clientCompanyId, int totalSharesOnOffer, String methodOnOffer, int startingMinSub, int contMinSub, double offerPrice, int offerSize, String openingDate, String closingDate) {
+        this.id = id;
+        this.clientCompanyId = clientCompanyId;
+        this.totalSharesOnOffer = totalSharesOnOffer;
+        this.methodOnOffer = methodOnOffer;
+        this.startingMinSub = startingMinSub;
+        this.contMinSub = contMinSub;
+        this.offerPrice = offerPrice;
+        this.offerSize = offerSize;
+        this.openingDate = openingDate;
+        this.closingDate = closingDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getClientCompanyId() {
+        return clientCompanyId;
+    }
+
+    public void setClientCompanyId(int clientCompanyId) {
+        this.clientCompanyId = clientCompanyId;
+    }
+    
     /**
      * @return the totalSharesOnOffer
      */
@@ -131,14 +151,14 @@ public class InitialPublicOffer implements Serializable{
     /**
      * @return the offerPrice
      */
-    public Double getOfferPrice() {
+    public double getOfferPrice() {
         return offerPrice;
     }
 
     /**
      * @param offerPrice the offerPrice to set
      */
-    public void setOfferPrice(Double offerPrice) {
+    public void setOfferPrice(double offerPrice) {
         this.offerPrice = offerPrice;
     }
 
@@ -159,71 +179,36 @@ public class InitialPublicOffer implements Serializable{
     /**
      * @return the openingDate
      */
-    public Date getOpeningDate() {
+    public String getOpeningDate() {
         return openingDate;
     }
 
     /**
      * @param openingDate the openingDate to set
      */
-    public void setOpeningDate(Date openingDate) {
+    public void setOpeningDate(String openingDate) {
         this.openingDate = openingDate;
     }
 
     /**
      * @return the closingDate
      */
-    public Date getClosingDate() {
+    public String getClosingDate() {
         return closingDate;
     }
 
     /**
      * @param closingDate the closingDate to set
      */
-    public void setClosingDate(Date closingDate) {
+    public void setClosingDate(String closingDate) {
         this.closingDate = closingDate;
     }
 
-    /**
-     * @return the ipoApplications
-     */
-    public List<?> getIpoApplications() {
-        return ipoApplications;
+    public boolean isIpoClosed() {
+        return ipoClosed;
     }
 
-    /**
-     * @param ipoApplications the ipoApplications to set
-     */
-    public void setIpoApplications(List<?> ipoApplications) {
-        this.ipoApplications = ipoApplications;
+    public void setIpoClosed(boolean ipoClosed) {
+        this.ipoClosed = ipoClosed;
     }
-
-    /**
-     * @return the certificates
-     */
-    public List<?> getCertificates() {
-        return certificates;
-    }
-
-    /**
-     * @param certificates the certificates to set
-     */
-    public void setCertificates(List<?> certificates) {
-        this.certificates = certificates;
-    }
-
-    /**
-     * @return the clientCompany
-     */
-    public ClientCompany getClientCompany() {
-        return clientCompany;
-    }
-
-    /**
-     * @param clientCompany the clientCompany to set
-     */
-    public void setClientCompany(ClientCompany clientCompany) {
-        this.clientCompany = clientCompany;
-    }
-    
 }

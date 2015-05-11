@@ -19,10 +19,26 @@ public class Administrator {
     private String middleName;
     private String lastName;
     private String dob;
+    private String primaryAddress;
     private List <EmailAddress> emailAddress;
     private List <PhoneNumber> phoneNumbers;
     private Address residentialAddress;
     private Address postalAddress;
+
+    public Administrator() {
+    }
+
+    public Administrator(String firstName, String middleName, String lastName, String dob, String primaryAddress, List<EmailAddress> emailAddress, List<PhoneNumber> phoneNumbers, Address residentialAddress, Address postalAddress) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.primaryAddress = primaryAddress;
+        this.emailAddress = emailAddress;
+        this.phoneNumbers = phoneNumbers;
+        this.residentialAddress = residentialAddress;
+        this.postalAddress = postalAddress;
+    }
 
     /**
      * @return the firstName
@@ -78,6 +94,20 @@ public class Administrator {
      */
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    /**
+     * @return the primary address
+     */
+    public String getPrimaryAddress() {
+        return primaryAddress;
+    }
+
+    /**
+     * @param primaryAddress the primary address to set
+     */
+    public void setPrimaryAddress(String primaryAddress) {
+        this.primaryAddress = primaryAddress;
     }
 
     /**
