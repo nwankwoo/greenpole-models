@@ -16,7 +16,7 @@ import org.greenpole.entrycode.emmanuel.model.Holder;
 
 /**
  *
- * @author user
+ * @author Akin Agbaje
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)

@@ -24,23 +24,19 @@ import org.greenpole.entity.model.clientcompany.Bank;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "clientCompanyId", "chn", "shareUnits", 
-    "esop", "taxExempted", "nubanAccount", "bank", "merged", "holderCompAccPrimary"})
+@XmlType(propOrder = {"holderId", "clientCompanyId", "shareUnits", "esop",
+    "nubanAccount", "bank", "merged", "holderCompAccPrimary"})
 public class HolderCompanyAccount {
     @XmlElement
     private int holderId;
     @XmlElement
     private int clientCompanyId;
     @XmlElement
-    private String clientCompany;
+    private String clientCompanyName;
     @XmlElement
-    private String chn;
-    @XmlElement
-    private double shareUnits;
+    private int shareUnits;
     @XmlElement
     private boolean esop;
-    @XmlElement
-    private boolean taxExempted;
     @XmlElement
     private String nubanAccount;
     @XmlElement
@@ -61,13 +57,11 @@ public class HolderCompanyAccount {
     public HolderCompanyAccount() {
     }
 
-    public HolderCompanyAccount(int holderId, int clientCompanyId, String chn, double shareUnits, boolean esop, boolean taxExempted, String nubanAccount, Bank bank, boolean merged, boolean holderCompAccPrimary) {
+    public HolderCompanyAccount(int holderId, int clientCompanyId, int shareUnits, boolean esop, String nubanAccount, Bank bank, boolean merged, boolean holderCompAccPrimary) {
         this.holderId = holderId;
         this.clientCompanyId = clientCompanyId;
-        this.chn = chn;
         this.shareUnits = shareUnits;
         this.esop = esop;
-        this.taxExempted = taxExempted;
         this.nubanAccount = nubanAccount;
         this.bank = bank;
         this.merged = merged;
@@ -99,19 +93,11 @@ public class HolderCompanyAccount {
         this.holderId = holderId;
     }
 
-    public String getChn() {
-        return chn;
-    }
-
-    public void setChn(String chn) {
-        this.chn = chn;
-    }
-
-    public double getShareUnits() {
+    public int getShareUnits() {
         return shareUnits;
     }
 
-    public void setShareUnits(double shareUnits) {
+    public void setShareUnits(int shareUnits) {
         this.shareUnits = shareUnits;
     }
 
@@ -121,14 +107,6 @@ public class HolderCompanyAccount {
 
     public void setEsop(boolean esop) {
         this.esop = esop;
-    }
-
-    public boolean isTaxExempted() {
-        return taxExempted;
-    }
-
-    public void setTaxExempted(boolean taxExempted) {
-        this.taxExempted = taxExempted;
     }
 
     public String getNubanAccount() {
@@ -188,16 +166,16 @@ public class HolderCompanyAccount {
     }
 
     /**
-     * @return the clientCompany
+     * @return the clientCompanyName
      */
-    public String getClientCompany() {
-        return clientCompany;
+    public String getClientCompanyName() {
+        return clientCompanyName;
     }
 
     /**
-     * @param clientCompany the clientCompany to set
+     * @param clientCompanyName the clientCompanyName to set
      */
-    public void setClientCompany(String clientCompany) {
-        this.clientCompany = clientCompany;
+    public void setClientCompanyName(String clientCompanyName) {
+        this.clientCompanyName = clientCompanyName;
     }
 }

@@ -24,7 +24,7 @@ import org.greenpole.entity.model.clientcompany.Bank;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "bondOffer", "chn", "bondUnits", "startingPrincipalValue", "remainingPrincipalValue",
+@XmlType(propOrder = {"holderId", "bondOffer", "bondUnits", "startingPrincipalValue", "remainingPrincipalValue",
     "nubanAccount", "bank", "merged", "holderBondAccPrimary"})
 public class HolderBondAccount {
 
@@ -33,9 +33,7 @@ public class HolderBondAccount {
     @XmlElement
     private int bondOfferId;
     @XmlElement
-    private String chn;
-    @XmlElement
-    private double bondUnits;
+    private int bondUnits;
     @XmlElement
     private double startingPrincipalValue;
     @XmlElement
@@ -60,10 +58,9 @@ public class HolderBondAccount {
     public HolderBondAccount() {
     }
 
-    public HolderBondAccount(int holderId, int bondOfferId, String chn, double bondUnits, double startingPrincipalValue, double remainingPrincipalValue, String nubanAccount, Bank bank, boolean merged, boolean holderBondAccPrimary) {
+    public HolderBondAccount(int holderId, int bondOfferId, int bondUnits, double startingPrincipalValue, double remainingPrincipalValue, String nubanAccount, Bank bank, boolean merged, boolean holderBondAccPrimary) {
         this.holderId = holderId;
         this.bondOfferId = bondOfferId;
-        this.chn = chn;
         this.bondUnits = bondUnits;
         this.startingPrincipalValue = startingPrincipalValue;
         this.remainingPrincipalValue = remainingPrincipalValue;
@@ -98,19 +95,11 @@ public class HolderBondAccount {
         this.bondOfferId = bondOfferId;
     }
 
-    public String getChn() {
-        return chn;
-    }
-
-    public void setChn(String chn) {
-        this.chn = chn;
-    }
-
-    public double getBondUnits() {
+    public int getBondUnits() {
         return bondUnits;
     }
 
-    public void setBondUnits(double bondUnits) {
+    public void setBondUnits(int bondUnits) {
         this.bondUnits = bondUnits;
     }
 
