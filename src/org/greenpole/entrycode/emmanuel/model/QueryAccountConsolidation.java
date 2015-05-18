@@ -5,6 +5,7 @@
  */
 package org.greenpole.entrycode.emmanuel.model;
 
+import org.greenpole.entity.model.holder.QueryHolderConsolidation;
 import org.greenpole.entity.model.holder.merge.AccountConsolidation;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -24,14 +25,14 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 public class QueryAccountConsolidation {
 
     @XmlElement
-    private QueryConsolidationOfShareholderAccount queryConsolidationOfShareholderAccount;
+    private QueryHolderConsolidation queryConsolidationOfShareholderAccount;
     @XmlElementWrapper(name = "accountConsolidation")
     private List<AccountConsolidation> accountConsolidation;
 
     public QueryAccountConsolidation() {
     }
 
-    public QueryAccountConsolidation(QueryConsolidationOfShareholderAccount queryConsolidationOfShareholderAccount, List<AccountConsolidation> accountConsolidation) {
+    public QueryAccountConsolidation(QueryHolderConsolidation queryConsolidationOfShareholderAccount, List<AccountConsolidation> accountConsolidation) {
         this.queryConsolidationOfShareholderAccount = queryConsolidationOfShareholderAccount;
         this.accountConsolidation = accountConsolidation;
     }
@@ -39,14 +40,14 @@ public class QueryAccountConsolidation {
     /**
      * @return the queryConsolidationOfShareholderAccount
      */
-    public QueryConsolidationOfShareholderAccount getQueryConsolidationOfShareholderAccount() {
+    public QueryHolderConsolidation getQueryConsolidationOfShareholderAccount() {
         return queryConsolidationOfShareholderAccount;
     }
 
     /**
      * @param queryConsolidationOfShareholderAccount the queryConsolidationOfShareholderAccount to set
      */
-    public void setQueryConsolidationOfShareholderAccount(QueryConsolidationOfShareholderAccount queryConsolidationOfShareholderAccount) {
+    public void setQueryConsolidationOfShareholderAccount(QueryHolderConsolidation queryConsolidationOfShareholderAccount) {
         this.queryConsolidationOfShareholderAccount = queryConsolidationOfShareholderAccount;
     }
 

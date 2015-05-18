@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entrycode.emmanuel.model;
+package org.greenpole.entity.model.holder;
 
 import org.greenpole.entity.model.holder.merge.AccountConsolidation;
 import org.greenpole.entity.model.holder.merge.CompanyAccountConsolidation;
@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 @XmlSeeAlso({CompanyAccountConsolidation.class,AccountConsolidation.class})
 @XmlAccessorType(XmlAccessType.NONE)
 //add order here
-public class QueryConsolidationOfShareholderAccount {
+public class QueryHolderConsolidation {
 
     //descriptor must be date:none / date:exact / date:between / date:before / date:after
     @XmlElement
@@ -37,10 +37,10 @@ public class QueryConsolidationOfShareholderAccount {
     @XmlElement
     private String endDate;
 
-    public QueryConsolidationOfShareholderAccount() {
+    public QueryHolderConsolidation() {
     }
 
-    public QueryConsolidationOfShareholderAccount(String descriptor, List<CompanyAccountConsolidation> companyAccountConsolidation, List<AccountConsolidation> accountConsolidation, String startDate, String endDate) {
+    public QueryHolderConsolidation(String descriptor, List<CompanyAccountConsolidation> companyAccountConsolidation, List<AccountConsolidation> accountConsolidation, String startDate, String endDate) {
         this.descriptor = descriptor;
         this.companyAccountConsolidation = companyAccountConsolidation;
         this.accountConsolidation = accountConsolidation;
