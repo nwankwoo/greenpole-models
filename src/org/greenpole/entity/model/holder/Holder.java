@@ -32,7 +32,7 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
     "holderBondAccounts"})
 public class Holder {
 
-    @XmlElement
+    @XmlTransient
     private int holderId;
     @XmlElement
     private int holderAcctNumber;
