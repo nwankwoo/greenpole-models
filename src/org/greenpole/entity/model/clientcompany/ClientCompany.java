@@ -30,6 +30,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"name","code","nseSectorId","ceo","secretary","addresses","emailAddresses","phoneNumbers","depositoryId","valid"})
 public class ClientCompany implements Serializable {
+    
+    @XmlTransient
     private int id;
     @XmlElement
     private String name;

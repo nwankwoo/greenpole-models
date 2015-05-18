@@ -10,14 +10,13 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Yusuf Samsudeen Babashola (Algorithm)
- *
- *
- * This class represents a Private Placement
+ * Conveys private placement data between the front-end and the middle-tier.
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
@@ -25,6 +24,8 @@ import javax.xml.bind.annotation.XmlType;
 
 public class PrivatePlacement {
     
+    @XmlTransient
+    private int id;
     @XmlElement
     private int clientCompanyId;
     @XmlElement
@@ -44,6 +45,18 @@ public class PrivatePlacement {
     @XmlElement
     private String closingDate;
 
+    /**
+     * Collects data for new creation of private placement.
+     * @param clientCompanyId
+     * @param totalSharesOnOffer
+     * @param methodOfOffer
+     * @param startingMinimumSubscription
+     * @param continuingMinimumSubscription
+     * @param offerPrice
+     * @param offerSize
+     * @param openingDate
+     * @param closingDate 
+     */
     public PrivatePlacement(int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnOffer = totalSharesOnOffer;
@@ -54,6 +67,46 @@ public class PrivatePlacement {
         this.offerSize = offerSize;
         this.openingDate = openingDate;
         this.closingDate = closingDate;
+    }
+    
+    /**
+     * Collects data for querying / editing existing private placement.
+     * @param id
+     * @param clientCompanyId
+     * @param totalSharesOnOffer
+     * @param methodOfOffer
+     * @param startingMinimumSubscription
+     * @param continuingMinimumSubscription
+     * @param offerPrice
+     * @param offerSize
+     * @param openingDate
+     * @param closingDate 
+     */
+    public PrivatePlacement(int id, int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
+        this.id = id;
+        this.clientCompanyId = clientCompanyId;
+        this.totalSharesOnOffer = totalSharesOnOffer;
+        this.methodOfOffer = methodOfOffer;
+        this.startingMinimumSubscription = startingMinimumSubscription;
+        this.continuingMinimumSubscription = continuingMinimumSubscription;
+        this.offerPrice = offerPrice;
+        this.offerSize = offerSize;
+        this.openingDate = openingDate;
+        this.closingDate = closingDate;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to be set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
      
     /**

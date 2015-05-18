@@ -27,7 +27,7 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
 @XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderAcctNumber", "chn", "firstName", "middleName", "lastName",
-    "type", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "holderPhoneNumbers",
+    "typeId", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "holderPhoneNumbers",
     "holderEmailAddresses", "holderResidentialAddresses", "holderPostalAddress", "holderCompanyAccounts",
     "holderBondAccounts"})
 public class Holder {
@@ -44,8 +44,10 @@ public class Holder {
     private String middleName;
     @XmlElement
     private String lastName;
+    @XmlTransient
+    private String type;//deprecated
     @XmlElement
-    private String type;
+    private int typeId;
     @XmlElement
     private String gender;
     @XmlElement
@@ -57,7 +59,7 @@ public class Holder {
     @XmlElement
     private boolean pryHolder;
     @XmlElement
-    private String pryAddress;
+    private String primaryAddress;
     
     @XmlElementWrapper(name = "holderPhoneNumbers")
     private List<PhoneNumber> holderPhoneNumbers;
@@ -88,33 +90,33 @@ public class Holder {
     
     public Holder(){}
 
-    public Holder(String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<EmailAddress> holderEmailAddresses, List<Address> holderResidentialAddresses, List<Address> holderPostalAddresses) {
+    public Holder(String chn, String firstName, String middleName, String lastName, int typeId, String gender, String dob, boolean taxExempted, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<EmailAddress> holderEmailAddresses, List<Address> holderResidentialAddresses, List<Address> holderPostalAddresses) {
         this.chn = chn;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        this.type = type;
+        this.typeId = typeId;
         this.gender = gender;
         this.dob = dob;
         this.taxExempted = taxExempted;
-        this.pryAddress = pryAddress;
+        this.primaryAddress = pryAddress;
         this.holderPhoneNumbers = holderPhoneNumbers;
         this.holderEmailAddresses = holderEmailAddresses;
         this.holderResidentialAddresses = holderResidentialAddresses;
         this.holderPostalAddresses = holderPostalAddresses;
     }
 
-    public Holder(int holderId, String chn, String firstName, String middleName, String lastName, String type, String gender, String dob, boolean taxExempted, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<EmailAddress> holderEmailAddresses, List<Address> holderResidentialAddresses, List<Address> holderPostalAddresses, List<HolderChanges> changes) {
+    public Holder(int holderId, String chn, String firstName, String middleName, String lastName, int typeId, String gender, String dob, boolean taxExempted, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<EmailAddress> holderEmailAddresses, List<Address> holderResidentialAddresses, List<Address> holderPostalAddresses, List<HolderChanges> changes) {
         this.holderId = holderId;
         this.chn = chn;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
-        this.type = type;
+        this.typeId = typeId;
         this.gender = gender;
         this.dob = dob;
         this.taxExempted = taxExempted;
-        this.pryAddress = pryAddress;
+        this.primaryAddress = pryAddress;
         this.holderPhoneNumbers = holderPhoneNumbers;
         this.holderEmailAddresses = holderEmailAddresses;
         this.holderResidentialAddresses = holderResidentialAddresses;
@@ -170,12 +172,28 @@ public class Holder {
         this.lastName = lastName;
     }
 
+    /**
+     * @deprecated typeId should be used instead
+     * @return 
+     */
     public String getType() {
         return type;
     }
 
+    /**
+     * @deprecated typeId should be used instead
+     * @param type 
+     */
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 
     public String getGender() {
@@ -218,12 +236,12 @@ public class Holder {
         this.pryHolder = pryHolder;
     }
 
-    public String getPryAddress() {
-        return pryAddress;
+    public String getPrimaryAddress() {
+        return primaryAddress;
     }
 
-    public void setPryAddress(String pryAddress) {
-        this.pryAddress = pryAddress;
+    public void setPrimaryAddress(String primaryAddress) {
+        this.primaryAddress = primaryAddress;
     }
     
     public List<PhoneNumber> getHolderPhoneNumbers() {
