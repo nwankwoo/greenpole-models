@@ -2,16 +2,16 @@ package org.greenpole.entity.model.user;
 
 
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import org.greenpole.entity.model.clientcompany.ClientCompany;
 
 /**
  *
@@ -20,106 +20,80 @@ import org.greenpole.entity.model.clientcompany.ClientCompany;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"departmentID","departmentName","units","users"})
+@XmlType(propOrder = {"departmentName","units","users"})
 @XmlSeeAlso({User.class,Unit.class})
-public class Department {
-    @XmlElement
+public class Department implements Serializable {
+    @XmlTransient
     private int departmentID;
     @XmlElement
     private String departmentName;
     @XmlElementWrapper(name = "units")
-    private Set units = new HashSet(0);
+    private List<Unit> units;
     @XmlElementWrapper(name = "users")
-    private Set users = new HashSet(0);
+    private List<User> users;
 
     /**
      * Initialises the department object.
      */
     public Department() {}
-    
+
     /**
-     * Collects all values of the department object.
-     * @param departmentID the department's id
-     * @param departmentName the department's name
-     * @param units the department's units
-     * @param users the department's employees (system users)
+     * Used to query / edit an existing department.
+     * Parameters are self-explanatory.
+     * @param departmentID
+     * @param departmentName
+     * @param units
+     * @param users 
      */
-    
-    public Department(int departmentID, String departmentName, Set units, Set users) {
+    public Department(int departmentID, String departmentName, List<Unit> units, List<User> users) {
         this.departmentID = departmentID;
         this.departmentName = departmentName;
         this.units = units;
         this.users = users;
     }
 
-    public Department(int departmentID, String departmentName, Set units) {
-        this.departmentID = departmentID;
+    /**
+     * Used to create a new department.
+     * Parameters are self-explanatory.
+     * @param departmentName
+     * @param units
+     * @param users 
+     */
+    public Department(String departmentName, List<Unit> units, List<User> users) {
         this.departmentName = departmentName;
         this.units = units;
+        this.users = users;
     }
-    
-    
-    /**
-     * Gets the department's id.
-     * @return the department's id
-     */
+
     public int getDepartmentID() {
         return departmentID;
     }
 
-    /**
-     * Sets the department's id.
-     * @param departmentID the department's id
-     */
     public void setDepartmentID(int departmentID) {
         this.departmentID = departmentID;
     }
 
-    /**
-     * Gets the department's name.
-     * @return the department's name
-     */
     public String getDepartmentName() {
         return departmentName;
     }
 
-    /**
-     * Sets the department's name.
-     * @param departmentName the department's name
-     */
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
     }
 
-    /**
-     * Gets the department's units.
-     * @return the department's units
-     */
-    public Set getUnits() {
+    public List<Unit> getUnits() {
         return units;
     }
 
-    /**
-     * Sets the department's units.
-     * @param units the department's units
-     */
-    public void setUnits(Set units) {
+    public void setUnits(List<Unit> units) {
         this.units = units;
     }
 
-    /**
-     * Gets the department's employees (system users).
-     * @return the department's employees
-     */
-    public Set getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    /**
-     * Sets the department's employees (system users).
-     * @param users the department's employees
-     */
-    public void setUsers(Set users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }

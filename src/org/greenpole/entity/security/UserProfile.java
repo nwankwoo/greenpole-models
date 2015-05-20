@@ -8,6 +8,13 @@ package org.greenpole.entity.security;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -15,13 +22,58 @@ import java.util.Map;
  * The user profile model, utilised by the front-end and middle-tier in
  * storing and retrieving user profile information.
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"name","description","viewType","model",
+    "screen","requirementFunctions"})
 public class UserProfile implements Serializable {
+    @XmlTransient
     private int id;
+    @XmlElement
     private String firstName;
+    @XmlElement
     private String lastName;
+    @XmlElement
     private int maxIndividualShareHolding;
+    @XmlElement
     private int maxTotalShareHolding;
+    @XmlElementWrapper(name = "groups")
     private Map<String, Group> groups = new HashMap<>(0);
+
+    public UserProfile() {
+    }
+
+    /**
+     * Used to query / edit an existing user profile.
+     * Parameters are self-explanatory.
+     * @param id
+     * @param firstName
+     * @param lastName
+     * @param maxIndividualShareHolding
+     * @param maxTotalShareHolding 
+     */
+    public UserProfile(int id, String firstName, String lastName, int maxIndividualShareHolding, int maxTotalShareHolding) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.maxIndividualShareHolding = maxIndividualShareHolding;
+        this.maxTotalShareHolding = maxTotalShareHolding;
+    }
+
+    /**
+     * Used to creating a new user profile.
+     * Parameters are self-explanatory.
+     * @param firstName
+     * @param lastName
+     * @param maxIndividualShareHolding
+     * @param maxTotalShareHolding 
+     */
+    public UserProfile(String firstName, String lastName, int maxIndividualShareHolding, int maxTotalShareHolding) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.maxIndividualShareHolding = maxIndividualShareHolding;
+        this.maxTotalShareHolding = maxTotalShareHolding;
+    }
 
     /**
      * Gets the user's unique identification.

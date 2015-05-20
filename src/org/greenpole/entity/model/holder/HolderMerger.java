@@ -5,6 +5,7 @@
  */
 package org.greenpole.entity.model.holder;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -23,23 +24,23 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({Holder.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryHolder","pryHolderChanges","secondaryHolders"})
-public class HolderMerger {
+public class HolderMerger implements Serializable {
     @XmlElement
     private Holder primaryHolder;
-    //used to store changes made to the primary holder account as a result of the merge. Form should be:
+    //used to store original values of the primary holder account as a result of the merge if change was made.
     //form should be: type:value;gender:value;dob:value;phone:value;email:value
     //where "value" could be "none" or the previous value of the variable before its change, NOT the current value the variable holds
     @XmlElement
-    private String pryHolderChanges;
+    private String pryHolderOriginalValues;
     @XmlElementWrapper(name = "secondaryHolders")
     private List<Holder> secondaryHolders;
 
     public HolderMerger() {
     }
 
-    public HolderMerger(Holder primaryHolder, String pryHolderChanges, List<Holder> secondaryHolders) {
+    public HolderMerger(Holder primaryHolder, String pryHolderOriginalValues, List<Holder> secondaryHolders) {
         this.primaryHolder = primaryHolder;
-        this.pryHolderChanges = pryHolderChanges;
+        this.pryHolderOriginalValues = pryHolderOriginalValues;
         this.secondaryHolders = secondaryHolders;
     }
 
@@ -51,12 +52,12 @@ public class HolderMerger {
         this.primaryHolder = primaryHolder;
     }
 
-    public String getPryHolderChanges() {
-        return pryHolderChanges;
+    public String getPryHolderOriginalValues() {
+        return pryHolderOriginalValues;
     }
 
-    public void setPryHolderChanges(String pryHolderChanges) {
-        this.pryHolderChanges = pryHolderChanges;
+    public void setPryHolderOriginalValues(String pryHolderOriginalValues) {
+        this.pryHolderOriginalValues = pryHolderOriginalValues;
     }
 
     public List<Holder> getSecondaryHolders() {

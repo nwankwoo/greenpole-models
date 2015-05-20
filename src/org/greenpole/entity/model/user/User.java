@@ -5,10 +5,12 @@
  */
 package org.greenpole.entity.model.user;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -22,7 +24,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"firstName","middleName","lastName","username",
     "password","userType","deptId","unitId","maximumIndividualShareHoldings",
     "maximumTotalShareHoldings"})
-public class User {
+public class User implements Serializable {
+    @XmlTransient
+    private int id;
     @XmlElement
     private String firstName;
     @XmlElement
@@ -44,12 +48,48 @@ public class User {
     @XmlElement
     private int maximumTotalShareHoldings;
     
-    /**
-     *
-     */
     public User() {
     }
 
+    /**
+     * Used to query / edit existing user.
+     * Parameters are self-explanatory.
+     * @param id
+     * @param firstName
+     * @param middleName
+     * @param lastName
+     * @param username
+     * @param password
+     * @param userType
+     * @param deptId
+     * @param unitId
+     * @param maximumIndividualShareHoldings
+     * @param maximumTotalShareHoldings 
+     */
+    public User(int id, String firstName, String middleName, String lastName, String username, String password, String userType, int deptId, int unitId, int maximumIndividualShareHoldings, int maximumTotalShareHoldings) {
+        this.id = id;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.userType = userType;
+        this.deptId = deptId;
+        this.unitId = unitId;
+        this.maximumIndividualShareHoldings = maximumIndividualShareHoldings;
+        this.maximumTotalShareHoldings = maximumTotalShareHoldings;
+    }
+
+    /**
+     * Used to create new user.
+     * Parameters are self-explanatory.
+     * @param firstName
+     * @param middleName
+     * @param lastName
+     * @param username
+     * @param deptId
+     * @param unitId 
+     */
     public User(String firstName, String middleName, String lastName, String username, int deptId, int unitId) {
         this.firstName = firstName;
         this.middleName = middleName;
@@ -60,22 +100,19 @@ public class User {
     }
     
     /**
-     * Collects all values of the user.
-     * @param firstName the user's first name
-     * @param middleName the user's middle name
-     * @param lastName the user's last name
-     * @param username the user's username
-     * @param password the user's password
-     * @param userType the user's account type
-     * @param deptId the user's department id
-     * @param unitId  the user's department unit id
-     * @param maximumIndividualShareHoldings the maximum share holding the user 
-     * can view for a holder's company account
-     * @param maximumTotalShareHoldings the maximum share holding the user
-     * can view for a holder's total company accounts
+     * Used to create new user.
+     * Parameters are self-explanatory.
+     * @param firstName
+     * @param middleName
+     * @param lastName
+     * @param username
+     * @param password
+     * @param userType
+     * @param deptId
+     * @param unitId
+     * @param maximumIndividualShareHoldings
+     * @param maximumTotalShareHoldings 
      */
-    
-    
     public User(String firstName, String middleName, String lastName, String username, String password, String userType, int deptId, int unitId, int maximumIndividualShareHoldings, int maximumTotalShareHoldings) {
         this.firstName = firstName;
         this.middleName = middleName;
@@ -87,6 +124,20 @@ public class User {
         this.unitId = unitId;
         this.maximumIndividualShareHoldings = maximumIndividualShareHoldings;
         this.maximumTotalShareHoldings = maximumTotalShareHoldings;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**

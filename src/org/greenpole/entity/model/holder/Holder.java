@@ -5,6 +5,7 @@
  */
 package org.greenpole.entity.model.holder;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -27,10 +28,10 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
 @XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderAcctNumber", "chn", "firstName", "middleName", "lastName",
-    "typeId", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "holderPhoneNumbers",
-    "holderEmailAddresses", "holderResidentialAddresses", "holderPostalAddress", "holderCompanyAccounts",
-    "holderBondAccounts"})
-public class Holder {
+    "typeId", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "phoneNumbers",
+    "emailAddresses", "residentialAddresses", "postalAddresses", "companyAccounts",
+    "bondAccounts", "administrators"})
+public class Holder implements Serializable {
 
     @XmlTransient
     private int holderId;
@@ -44,8 +45,6 @@ public class Holder {
     private String middleName;
     @XmlElement
     private String lastName;
-    @XmlTransient
-    private String type;//deprecated
     @XmlElement
     private int typeId;
     @XmlElement
@@ -61,18 +60,18 @@ public class Holder {
     @XmlElement
     private String primaryAddress;
     
-    @XmlElementWrapper(name = "holderPhoneNumbers")
-    private List<PhoneNumber> holderPhoneNumbers;
-    @XmlElementWrapper(name = "holderEmailAddresses")
-    private List<EmailAddress> holderEmailAddresses;
-    @XmlElementWrapper(name = "holderResidentialAddresses")
-    private List<Address> holderResidentialAddresses;
-    @XmlElementWrapper(name = "holderPostalAddresses")
-    private List<Address> holderPostalAddresses;
-    @XmlElementWrapper(name = "holderCompanyAccounts")
-    private List<HolderCompanyAccount> holderCompanyAccounts;
-    @XmlElementWrapper(name = "holderBondAccounts")
-    private List<HolderBondAccount> holderBondAccounts;
+    @XmlElementWrapper(name = "phoneNumbers")
+    private List<PhoneNumber> phoneNumbers;
+    @XmlElementWrapper(name = "emailAddresses")
+    private List<EmailAddress> emailAddresses;
+    @XmlElementWrapper(name = "residentialAddresses")
+    private List<Address> residentialAddresses;
+    @XmlElementWrapper(name = "postalAddresses")
+    private List<Address> postalAddresses;
+    @XmlElementWrapper(name = "companyAccounts")
+    private List<HolderCompanyAccount> companyAccounts;
+    @XmlElementWrapper(name = "bondAccounts")
+    private List<HolderBondAccount> bondAccounts;
     @XmlElementWrapper(name = "administrators")
     private List<Administrator> administrators;
     
@@ -82,7 +81,9 @@ public class Holder {
     private List<HolderChanges> changes;
     
     @XmlTransient
-    private List<Address> deletedAddresses;
+    private List<Address> deletedPostalAddresses;
+    @XmlTransient
+    private List<Address> deletedResidentialAddresses;
     @XmlTransient
     private List<EmailAddress> deletedEmailAddresses;
     @XmlTransient
@@ -100,10 +101,10 @@ public class Holder {
         this.dob = dob;
         this.taxExempted = taxExempted;
         this.primaryAddress = pryAddress;
-        this.holderPhoneNumbers = holderPhoneNumbers;
-        this.holderEmailAddresses = holderEmailAddresses;
-        this.holderResidentialAddresses = holderResidentialAddresses;
-        this.holderPostalAddresses = holderPostalAddresses;
+        this.phoneNumbers = holderPhoneNumbers;
+        this.emailAddresses = holderEmailAddresses;
+        this.residentialAddresses = holderResidentialAddresses;
+        this.postalAddresses = holderPostalAddresses;
     }
 
     public Holder(int holderId, String chn, String firstName, String middleName, String lastName, int typeId, String gender, String dob, boolean taxExempted, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<EmailAddress> holderEmailAddresses, List<Address> holderResidentialAddresses, List<Address> holderPostalAddresses, List<HolderChanges> changes) {
@@ -117,10 +118,10 @@ public class Holder {
         this.dob = dob;
         this.taxExempted = taxExempted;
         this.primaryAddress = pryAddress;
-        this.holderPhoneNumbers = holderPhoneNumbers;
-        this.holderEmailAddresses = holderEmailAddresses;
-        this.holderResidentialAddresses = holderResidentialAddresses;
-        this.holderPostalAddresses = holderPostalAddresses;
+        this.phoneNumbers = holderPhoneNumbers;
+        this.emailAddresses = holderEmailAddresses;
+        this.residentialAddresses = holderResidentialAddresses;
+        this.postalAddresses = holderPostalAddresses;
         this.changes = changes;
     }
         
@@ -170,22 +171,6 @@ public class Holder {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    /**
-     * @deprecated typeId should be used instead
-     * @return 
-     */
-    public String getType() {
-        return type;
-    }
-
-    /**
-     * @deprecated typeId should be used instead
-     * @param type 
-     */
-    public void setType(String type) {
-        this.type = type;
     }
 
     public int getTypeId() {
@@ -244,52 +229,52 @@ public class Holder {
         this.primaryAddress = primaryAddress;
     }
     
-    public List<PhoneNumber> getHolderPhoneNumbers() {
-        return holderPhoneNumbers;
+    public List<PhoneNumber> getPhoneNumbers() {
+        return phoneNumbers;
     }
 
-    public void setHolderPhoneNumbers(List<PhoneNumber> holderPhoneNumbers) {
-        this.holderPhoneNumbers = holderPhoneNumbers;
+    public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
     }
 
-    public List<Address> getHolderResidentialAddresses() {
-        return holderResidentialAddresses;
+    public List<Address> getResidentialAddresses() {
+        return residentialAddresses;
     }
 
-    public void setHolderResidentialAddresses(List<Address> holderResidentialAddresses) {
-        this.holderResidentialAddresses = holderResidentialAddresses;
+    public void setResidentialAddresses(List<Address> residentialAddresses) {
+        this.residentialAddresses = residentialAddresses;
     }
 
-    public List<HolderCompanyAccount> getHolderCompanyAccounts() {
-        return holderCompanyAccounts;
+    public List<HolderCompanyAccount> getCompanyAccounts() {
+        return companyAccounts;
     }
 
-    public void setHolderCompanyAccounts(List<HolderCompanyAccount> holderCompanyAccounts) {
-        this.holderCompanyAccounts = holderCompanyAccounts;
+    public void setCompanyAccounts(List<HolderCompanyAccount> companyAccounts) {
+        this.companyAccounts = companyAccounts;
     }
 
-    public List<HolderBondAccount> getHolderBondAccounts() {
-        return holderBondAccounts;
+    public List<HolderBondAccount> getBondAccounts() {
+        return bondAccounts;
     }
 
-    public void setHolderBondAccounts(List<HolderBondAccount> holderBondAccounts) {
-        this.holderBondAccounts = holderBondAccounts;
+    public void setBondAccounts(List<HolderBondAccount> bondAccounts) {
+        this.bondAccounts = bondAccounts;
     }
 
-    public List<Address> getHolderPostalAddresses() {
-        return holderPostalAddresses;
+    public List<Address> getPostalAddresses() {
+        return postalAddresses;
     }
 
-    public void setHolderPostalAddresses(List<Address> holderPostalAddresses) {
-        this.holderPostalAddresses = holderPostalAddresses;
+    public void setPostalAddresses(List<Address> postalAddresses) {
+        this.postalAddresses = postalAddresses;
     }
 
-    public List<EmailAddress> getHolderEmailAddresses() {
-        return holderEmailAddresses;
+    public List<EmailAddress> getEmailAddresses() {
+        return emailAddresses;
     }
 
-    public void setHolderEmailAddresses(List<EmailAddress> holderEmailAddresses) {
-        this.holderEmailAddresses = holderEmailAddresses;
+    public void setEmailAddresses(List<EmailAddress> emailAddresses) {
+        this.emailAddresses = emailAddresses;
     }
 
     /**
@@ -320,15 +305,20 @@ public class Holder {
         this.administrators = administrators;
     }
 
-    
-    
-    
-    public List<Address> getDeletedAddresses() {
-        return deletedAddresses;
+    public List<Address> getDeletedPostalAddresses() {
+        return deletedPostalAddresses;
     }
 
-    public void setDeletedAddresses(List<Address> deletedAddresses) {
-        this.deletedAddresses = deletedAddresses;
+    public void setDeletedPostalAddresses(List<Address> deletedPostalAddresses) {
+        this.deletedPostalAddresses = deletedPostalAddresses;
+    }
+
+    public List<Address> getDeletedResidentialAddresses() {
+        return deletedResidentialAddresses;
+    }
+
+    public void setDeletedResidentialAddresses(List<Address> deletedResidentialAddresses) {
+        this.deletedResidentialAddresses = deletedResidentialAddresses;
     }
 
     public List<EmailAddress> getDeletedEmailAddresses() {

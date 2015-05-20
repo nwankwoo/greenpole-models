@@ -28,7 +28,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlSeeAlso({Address.class,EmailAddress.class,PhoneNumber.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"name","code","nseSectorId","ceo","secretary","addresses","emailAddresses","phoneNumbers","depositoryId","valid"})
+@XmlType(propOrder = {"name","code","nseSectorId","ceo","secretary","addresses","emailAddresses",
+    "phoneNumbers","depositoryId","valid"})
 public class ClientCompany implements Serializable {
     
     @XmlTransient
@@ -45,14 +46,14 @@ public class ClientCompany implements Serializable {
     private String secretary;
     @XmlElementWrapper(name = "addresses")
     private List <Address> addresses;
+    @XmlElementWrapper(name = "emailAddresses")
+    private List <EmailAddress> emailAddresses ;
+    @XmlElementWrapper(name = "phoneNumbers")
+    private List <PhoneNumber> phoneNumbers;
     @XmlElement
     private int depositoryId;
     @XmlElement
     private boolean valid;
-    @XmlElementWrapper(name = "emailAddresses")
-    private List <EmailAddress> emailAddresses ;
-    @XmlElementWrapper(name = "phoneNumbers")
-    private List <PhoneNumber> phoneNumbers ;
     
     @XmlTransient
     private String nseSectorName;
@@ -114,40 +115,6 @@ public class ClientCompany implements Serializable {
      * @param phoneNumbers the company's phone numbers 
      */
     public ClientCompany(String name, String code, int nseSectorId, String ceo, String secretary, List<Address> addresses, int depositoryId, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers) {
-        this.name = name;
-        this.code = code;
-        this.nseSectorId = nseSectorId;
-        this.ceo = ceo;
-        this.secretary = secretary;
-        this.addresses = addresses;
-        this.depositoryId = depositoryId;
-        this.valid = valid;
-        this.emailAddresses = emailAddresses;
-        this.phoneNumbers = phoneNumbers;
-    }
-
-    /**
-     * Collects all values for the client company.
-     * This constructor should be used when trying to submit a client company for
-     * editing, as it includes the {@link #id} variable, which is not used when
-     * creating a client company.
-     * @param id the company's id
-     * @param name the company's name
-     * @param code the company's code
-     * @param nseSectorId the NSE Sector the company belongs to
-     * @param ceo the company's CEO
-     * @param secretary the company's secretary
-     * @param addresses the company's addresses
-     * @param depositoryId the depository's unique identification
-     * @param valid the company's valid status
-     * @param emailAddresses the company's email addresses
-     * @param phoneNumbers the company's phone numbers 
-     * @deprecated you are advised to use the new constructor that includes lists for deleted addresses,
-     * email addresses, and phone numbers, as those constitute a part of editing
-     * {@link #ClientCompany(int, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.util.List, int, boolean, java.util.List, java.util.List, java.util.List, java.util.List, java.util.List)}
-     */
-    public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, List<Address> addresses, int depositoryId, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers) {
-        this.id = id;
         this.name = name;
         this.code = code;
         this.nseSectorId = nseSectorId;
@@ -230,11 +197,6 @@ public class ClientCompany implements Serializable {
     public ClientCompany(int id, String code) {
         this.id = id;
         this.code = code;
-    }
-
-    @Override
-    public String toString() {
-        return "ClientCompany{" + "name=" + name + ", code=" + code + ", nseSectorId=" + nseSectorId + ", ceo=" + ceo + ", secretary=" + secretary + ", addresses=" + addresses + ", depositoryId=" + depositoryId + ", valid=" + valid + ", emailAddresses=" + emailAddresses + ", phoneNumbers=" + phoneNumbers + '}';
     }
 
     /**

@@ -5,16 +5,30 @@
  */
 package org.greenpole.entity.model.holder;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Akin
  * Utilised in querying changes made to holder accounts, like change of name, change of address, etc
  */
-public class QueryHolderChanges {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"descriptor", "holderChanges", "start_date", "end_date"})
+public class QueryHolderChanges implements Serializable {
     //descriptor must be date:none / date:exact / date:between / date:before / date:after
+    @XmlElement
     private String descriptor;
+    @XmlElement
     private HolderChanges holderChanges;
+    @XmlElement
     private String start_date;
+    @XmlElement
     private String end_date;
 
     public QueryHolderChanges() {

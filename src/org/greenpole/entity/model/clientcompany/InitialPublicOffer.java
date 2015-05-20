@@ -5,11 +5,13 @@
  */
 package org.greenpole.entity.model.clientcompany;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -22,7 +24,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"clientCompanyId","totalSharesOnOffer","methodOfOffer","startingMinimumSubscription",
     "continuingMinimumSubscription","offerPrice","offerSize","openingDate","closingDate"})
-public class InitialPublicOffer {
+public class InitialPublicOffer implements Serializable {
+    @XmlTransient
+    private int id;
     @XmlElement
     private int clientCompanyId;
     @XmlElement
@@ -41,6 +45,45 @@ public class InitialPublicOffer {
     private String openingDate;
     @XmlElement
     private String closingDate;
+
+    public InitialPublicOffer(int id, int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
+        this.id = id;
+        this.clientCompanyId = clientCompanyId;
+        this.totalSharesOnOffer = totalSharesOnOffer;
+        this.methodOfOffer = methodOfOffer;
+        this.startingMinimumSubscription = startingMinimumSubscription;
+        this.continuingMinimumSubscription = continuingMinimumSubscription;
+        this.offerPrice = offerPrice;
+        this.offerSize = offerSize;
+        this.openingDate = openingDate;
+        this.closingDate = closingDate;
+    }
+
+    public InitialPublicOffer(int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
+        this.clientCompanyId = clientCompanyId;
+        this.totalSharesOnOffer = totalSharesOnOffer;
+        this.methodOfOffer = methodOfOffer;
+        this.startingMinimumSubscription = startingMinimumSubscription;
+        this.continuingMinimumSubscription = continuingMinimumSubscription;
+        this.offerPrice = offerPrice;
+        this.offerSize = offerSize;
+        this.openingDate = openingDate;
+        this.closingDate = closingDate;
+    }
+
+    /**
+     * @return the id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * @return the clientCompanyId

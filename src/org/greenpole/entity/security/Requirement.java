@@ -8,20 +8,77 @@ package org.greenpole.entity.security;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Akinwale Agbaje
  * The requirements the user has under their profile.
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"name","description","viewType","model",
+    "screen","requirementFunctions"})
 public class Requirement implements Serializable {
+    @XmlTransient
     private int id;
+    @XmlElement
     private String name;
+    @XmlElement
     private String description;
+    @XmlElement
     private String viewType;
+    @XmlElement
     private String model;
+    @XmlElement
     private String screen;
+    @XmlElementWrapper(name = "requirementFunctions")
     private Map<String, RequirementFunction> requirementFunctions = new HashMap<>();
+
+    public Requirement() {
+    }
+
+    /**
+     * Used to edit / query an existing requirement.
+     * Parameters are self-explanatory.
+     * @param id
+     * @param name
+     * @param description
+     * @param viewType
+     * @param model
+     * @param screen 
+     */
+    public Requirement(int id, String name, String description, String viewType, String model, String screen) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.viewType = viewType;
+        this.model = model;
+        this.screen = screen;
+    }
+
+    /**
+     * Used to create a new requirement.
+     * Parameters are self-explanatory.
+     * @param name
+     * @param description
+     * @param viewType
+     * @param model
+     * @param screen 
+     */
+    public Requirement(String name, String description, String viewType, String model, String screen) {
+        this.name = name;
+        this.description = description;
+        this.viewType = viewType;
+        this.model = model;
+        this.screen = screen;
+    }
 
     /**
      * Gets the requirement's unique identification.

@@ -38,26 +38,25 @@ public class BondOffer implements Serializable {
     private double unitPrice;
     @XmlElement
     private String bondMaturity;
-    @XmlTransient
-    private String bondType;
     @XmlElement
     private int bondTypeId;
     @XmlElement
     private double interestRate;
-    @XmlTransient
-    private String paymentPlan;
     @XmlElement
     private int paymentPlanId;
 
+    public BondOffer() {
+    }
+
     /**
      * For new bond offer creation.
-     * @param clientCompanyId
-     * @param title
-     * @param unitPrice
-     * @param bondMaturity
-     * @param bondTypeId
-     * @param interestRate
-     * @param paymentPlanId 
+     * @param clientCompanyId the company id
+     * @param title the bond offer's title
+     * @param unitPrice the bond offer's unit price
+     * @param bondMaturity the bond offer's maturity
+     * @param bondTypeId the bond offer's type id
+     * @param interestRate the bond offer's interest rate
+     * @param paymentPlanId  the bond offer's payment plan
      */
     public BondOffer(int clientCompanyId, String title, double unitPrice, String bondMaturity, int bondTypeId, double interestRate, int paymentPlanId) {
         this.clientCompanyId = clientCompanyId;
@@ -71,14 +70,14 @@ public class BondOffer implements Serializable {
 
     /**
      * For editing or query existing bond offer.
-     * @param id
-     * @param clientCompanyId
-     * @param title
-     * @param unitPrice
-     * @param bondMaturity
-     * @param bondTypeId
-     * @param interestRate
-     * @param paymentPlanId 
+     * @param id the bond offer id
+     * @param clientCompanyId the company id
+     * @param title the bond offer's title
+     * @param unitPrice the bond offer's unit price
+     * @param bondMaturity the bond offer's maturity
+     * @param bondTypeId the bond offer's type id
+     * @param interestRate the bond offer's interest rate
+     * @param paymentPlanId  the bond offer's payment plan
      */
     public BondOffer(int id, int clientCompanyId, String title, double unitPrice, String bondMaturity, int bondTypeId, double interestRate, int paymentPlanId) {
         this.id = id;
@@ -161,22 +160,6 @@ public class BondOffer implements Serializable {
         this.bondMaturity = bondMaturity;
     }
 
-    /**
-     * @deprecated use bondTypeId
-     * @return the bondType
-     */
-    public String getBondType() {
-        return bondType;
-    }
-
-    /**
-     * @deprecated use bondTypeId
-     * @param bondType the bondType to set
-     */
-    public void setBondType(String bondType) {
-        this.bondType = bondType;
-    }
-
     public int getBondTypeId() {
         return bondTypeId;
     }
@@ -197,22 +180,6 @@ public class BondOffer implements Serializable {
      */
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
-    }
-
-    /**
-     * @deprecated use paymentPlanId
-     * @return the paymentPlan
-     */
-    public String getPaymentPlan() {
-        return paymentPlan;
-    }
-
-    /**
-     * @deprecated use playmentPlanId
-     * @param paymentPlan the paymentPlan to set
-     */
-    public void setPaymentPlan(String paymentPlan) {
-        this.paymentPlan = paymentPlan;
     }
 
     /**

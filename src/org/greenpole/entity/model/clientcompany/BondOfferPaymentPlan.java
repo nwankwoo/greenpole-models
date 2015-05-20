@@ -30,10 +30,13 @@ public class BondOfferPaymentPlan implements Serializable {
     @XmlElement
     private String description;
 
+    public BondOfferPaymentPlan() {
+    }
+
     /**
      * Use to create new payment plan.
-     * @param paymentPlan
-     * @param description
+     * @param paymentPlan the plan name
+     * @param description the plan description
      */
     public BondOfferPaymentPlan(String paymentPlan, String description) {
         this.paymentPlan = paymentPlan;
@@ -42,9 +45,9 @@ public class BondOfferPaymentPlan implements Serializable {
 
     /**
      * Use to query / edit existing payment plan.
-     * @param id
-     * @param paymentPlan
-     * @param description
+     * @param id the plan's id
+     * @param paymentPlan the plan name
+     * @param description the plan description
      */
     public BondOfferPaymentPlan(int id, String paymentPlan, String description) {
         this.id = id;

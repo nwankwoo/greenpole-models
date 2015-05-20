@@ -5,6 +5,7 @@
  */
 package org.greenpole.entity.model.clientcompany;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -20,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"bankName","bankCode"})
-public class Bank {
+public class Bank implements Serializable {
     
     @XmlTransient
     private int id;
@@ -28,6 +29,14 @@ public class Bank {
     private String bankName;
     @XmlElement
     private String bankCode;
+
+    public Bank() {
+    }
+
+    public Bank(String bankName, String bankCode) {
+        this.bankName = bankName;
+        this.bankCode = bankCode;
+    }
 
     public Bank(int id, String bankName, String bankCode) {
         this.id = id;
@@ -58,7 +67,5 @@ public class Bank {
     public void setBankCode(String bankCode) {
         this.bankCode = bankCode;
     }
-    
-    
     
 }

@@ -5,11 +5,13 @@
  */
 package org.greenpole.entity.model;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -19,7 +21,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryEmail","emailAddress"})
-public class EmailAddress {
+public class EmailAddress implements Serializable {
+    @XmlTransient
     private int entityId;
     @XmlElement
     private String emailAddress;
@@ -47,12 +50,12 @@ public class EmailAddress {
      * This constructor should be used when trying to submit a client entity email address for
      * editing, as it includes the {@link #entityId} variable, which is not used when
      * creating a client entity email address.
-     * @param clientCompanyId the entity's id
+     * @param entityId the entity's id
      * @param emailAddress the entity's email address
      * @param primaryEmail the primary status of the entity's email address
      */
-    public EmailAddress(int clientCompanyId, String emailAddress, boolean primaryEmail) {
-        this.entityId = clientCompanyId;
+    public EmailAddress(int entityId, String emailAddress, boolean primaryEmail) {
+        this.entityId = entityId;
         this.emailAddress = emailAddress;
         this.primaryEmail = primaryEmail;
     }

@@ -30,10 +30,13 @@ public class BondType implements Serializable {
     @XmlElement
     private String description;
 
+    public BondType() {
+    }
+
     /**
      * Use to create new bond type.
-     * @param type
-     * @param description
+     * @param type the bond type name
+     * @param description the bond type description
      */
     public BondType(String type, String description) {
         this.type = type;
@@ -42,9 +45,9 @@ public class BondType implements Serializable {
 
     /**
      * Use to query / edit existing bond type
-     * @param id
-     * @param type
-     * @param description
+     * @param id the bond type id
+     * @param type the bond type name
+     * @param description the bond type description
      */
     public BondType(int id, String type, String description) {
         this.id = id;

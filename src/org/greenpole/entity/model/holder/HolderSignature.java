@@ -5,6 +5,7 @@
  */
 package org.greenpole.entity.model.holder;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -21,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderId", "title", "signaturePath", "holderSignaturePrimary"})
 
-public class HolderSignature {
+public class HolderSignature implements Serializable {
 
     @XmlTransient
     private int id;
@@ -40,7 +41,8 @@ public class HolderSignature {
     }
 
     /**
-     * 
+     * Used in querying / editing existing holder signature.
+     * Parameters are self-explanatory.
      * @param id
      * @param holderId
      * @param title
@@ -56,7 +58,8 @@ public class HolderSignature {
     }
 
     /**
-     * 
+     * Used in creating new holder signature.
+     * Parameters are self-explanatory.
      * @param holderId holder id
      * @param title signature title
      * @param signaturePath path of uploaded signature image

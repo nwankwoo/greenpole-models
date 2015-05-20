@@ -5,11 +5,13 @@
  */
 package org.greenpole.entity.model;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -20,7 +22,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryPhoneNumber","emailAddress"})
-public class PhoneNumber {
+public class PhoneNumber implements Serializable {
+    @XmlTransient
     private int entityId;
     @XmlElement
     private String phoneNumber;
@@ -48,12 +51,12 @@ public class PhoneNumber {
      * This constructor should be used when trying to submit a client entity phone number for
      * editing, as it includes the {@link #entityId} variable, which is not used when
      * creating a client entity phone number.
-     * @param clientCompanyId the entity's id
+     * @param entityId the entity's id
      * @param phoneNumber the entity's phone number
      * @param primaryPhoneNumber the phone number's primary status
      */
-    public PhoneNumber(int clientCompanyId, String phoneNumber, boolean primaryPhoneNumber) {
-        this.entityId = clientCompanyId;
+    public PhoneNumber(int entityId, String phoneNumber, boolean primaryPhoneNumber) {
+        this.entityId = entityId;
         this.phoneNumber = phoneNumber;
         this.primaryPhoneNumber = primaryPhoneNumber;
     }

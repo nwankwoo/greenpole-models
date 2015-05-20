@@ -1,7 +1,14 @@
 
 package org.greenpole.entity.model.clientcompany;
 
+import java.io.Serializable;
 import java.util.Map;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
@@ -9,16 +16,36 @@ import java.util.Map;
  * This class encapsulate all the necessary search parameters that
  * can be used to query a client company
  */
-public class QueryClientCompany {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"descriptor","shareUnit","numberOfShareholders",
+    "numberOfBondholders","clientCompany"})
+public class QueryClientCompany implements Serializable {
     /**
      * Default representation of descriptor=clientCompany:none;shareUnit:none;numberOfShareholders:none;numberOfBondholders:none
      * and this is only set when user is performing a range search
      */
+    @XmlElement
     private String descriptor;
+    @XmlElementWrapper(name = "shareUnit")
     private Map<String, Double> shareUnit;
+    @XmlElementWrapper(name = "numberOfShareholders")
     private Map<String, Integer> numberOfShareholders;
+    @XmlElementWrapper(name = "numberOfBondholders")
     private Map<String, Integer> numberOfBondholders;
+    @XmlElement
     private ClientCompany clientCompany;
+
+    public QueryClientCompany() {
+    }
+
+    public QueryClientCompany(String descriptor, Map<String, Double> shareUnit, Map<String, Integer> numberOfShareholders, Map<String, Integer> numberOfBondholders, ClientCompany clientCompany) {
+        this.descriptor = descriptor;
+        this.shareUnit = shareUnit;
+        this.numberOfShareholders = numberOfShareholders;
+        this.numberOfBondholders = numberOfBondholders;
+        this.clientCompany = clientCompany;
+    }
 
     /**
      * @return the shareUnit

@@ -5,21 +5,35 @@
  */
 package org.greenpole.entity.model.holder;
 
+import java.io.Serializable;
 import java.util.Map;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Jephthah Sadare
  * Utilised in querying holder accounts
  */
-public class QueryHolder {
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"descriptor", "holder", "units", "totalHoldings"})
+public class QueryHolder implements Serializable {
     //descriptor must be (default value) = holder:none;units:none;totalHoldings:none
     //possible values = holder:none / holder:exact
     //possible values = units:none / units:exact / units:range - note, units is tied to bond or share, so holderType must be set
     //possible values = totalHoldings:none / totalHoldings:exact / totalHoldings:range
+    @XmlElement
     private String descriptor;
+    @XmlElement
     private Holder holder;
+    @XmlElementWrapper(name = "units")
     private Map<String, Integer> units; //should be "start" and "end" keys for range, and "start" for exact
+    @XmlElementWrapper(name = "totalHoldings")
     private Map<String, Integer> totalHoldings; //should be "start" and "end" keys for range, and "start" for exact
 
     public QueryHolder() {

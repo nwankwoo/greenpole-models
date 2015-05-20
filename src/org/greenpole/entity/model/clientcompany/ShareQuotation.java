@@ -5,10 +5,12 @@
  */
 package org.greenpole.entity.model.clientcompany;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -18,7 +20,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"clientCompany","unitPrice"})
-public class ShareQuotation {
+public class ShareQuotation implements Serializable {
+    @XmlTransient
     private int id;
     @XmlElement
     private ClientCompany clientCompany;
@@ -28,11 +31,12 @@ public class ShareQuotation {
     public ShareQuotation() {
     }
 
-    /**
-     * 
-     * @param clientCompany
-     * @param unitPrice 
-     */
+    public ShareQuotation(int id, ClientCompany clientCompany, double unitPrice) {
+        this.id = id;
+        this.clientCompany = clientCompany;
+        this.unitPrice = unitPrice;
+    }
+
     public ShareQuotation(ClientCompany clientCompany, double unitPrice) {
         this.clientCompany = clientCompany;
         this.unitPrice = unitPrice;

@@ -8,7 +8,9 @@ package org.greenpole.entity.security;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -19,11 +21,32 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"systemId","password"})
+@XmlType(propOrder = {"password"})
 public class SystemCredentials implements Serializable {
-    
+    @XmlTransient
     private int systemId;
+    @XmlElement
     private int password;
+
+    /**
+     * Used to query / edit an existing system credentials.
+     * Parameters are self-explanatory.
+     * @param systemId
+     * @param password 
+     */
+    public SystemCredentials(int systemId, int password) {
+        this.systemId = systemId;
+        this.password = password;
+    }
+
+    /**
+     * Used to create new system credentials.
+     * Parameter is self-explanatory.
+     * @param password 
+     */
+    public SystemCredentials(int password) {
+        this.password = password;
+    }
 
     /**
      * Gets the system's unique identification.

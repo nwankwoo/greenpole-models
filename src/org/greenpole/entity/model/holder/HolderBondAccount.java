@@ -5,15 +5,11 @@
  */
 package org.greenpole.entity.model.holder;
 
-import org.greenpole.entity.model.jeph.models.payment.Coupon;
-import org.greenpole.entity.model.clientcompany.BondOffer;
-import java.util.List;
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.clientcompany.Bank;
@@ -25,8 +21,8 @@ import org.greenpole.entity.model.clientcompany.Bank;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderId", "bondOffer", "bondUnits", "startingPrincipalValue", "remainingPrincipalValue",
-    "nubanAccount", "bank", "merged", "holderBondAccPrimary"})
-public class HolderBondAccount {
+    "nubanAccount", "bank", "holderBondAccPrimary", "merged"})
+public class HolderBondAccount implements Serializable {
 
     @XmlElement
     private int holderId;
@@ -43,12 +39,9 @@ public class HolderBondAccount {
     @XmlElement
     private Bank bank;
     @XmlElement
-    private boolean merged;
-    @XmlElement
     private boolean holderBondAccPrimary;
-    
-    @XmlTransient
-    private List<Coupon> coupons;
+    @XmlElement
+    private boolean merged;
     
     @XmlTransient
     private int secHolderId;
@@ -149,14 +142,6 @@ public class HolderBondAccount {
 
     public void setHolderBondAccPrimary(boolean holderBondAccPrimary) {
         this.holderBondAccPrimary = holderBondAccPrimary;
-    }
-
-    public List<Coupon> getCoupons() {
-        return coupons;
-    }
-
-    public void setCoupons(List<Coupon> coupons) {
-        this.coupons = coupons;
     }
 
     public int getSecHolderId() {

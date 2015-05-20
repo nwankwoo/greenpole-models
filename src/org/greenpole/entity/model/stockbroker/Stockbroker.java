@@ -1,20 +1,39 @@
 
 package org.greenpole.entity.model.stockbroker;
 
+import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
 /**
  *
  * @author Yusuf Samsudeen Babashola (Algorithm)
  */
-public class Stockbroker {
-    
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"name"})
+public class Stockbroker implements Serializable {
+    @XmlTransient
     private int id;
+    @XmlElement
     private String name;
 
     public Stockbroker() {
     }
-    
-    
 
+    public Stockbroker(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Stockbroker(String name) {
+        this.name = name;
+    }
+    
     /**
      * @return the id
      */

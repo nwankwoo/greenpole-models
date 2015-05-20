@@ -5,6 +5,7 @@
  */
 package org.greenpole.entity.model.holder;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -19,8 +20,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"initialForm", "currentForm", "changeTypeId", "changeDate", "lastName"})
-public class HolderChanges {
+@XmlType(propOrder = {"initialForm", "currentForm", "changeTypeId", "changeDate"})
+public class HolderChanges implements Serializable {
     @XmlTransient
     private int id;
     @XmlElement

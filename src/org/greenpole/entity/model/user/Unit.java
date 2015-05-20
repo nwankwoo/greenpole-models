@@ -1,15 +1,15 @@
 package org.greenpole.entity.model.user;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.io.Serializable;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import org.greenpole.entity.model.clientcompany.ClientCompany;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,76 +25,62 @@ import org.greenpole.entity.model.clientcompany.ClientCompany;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"unitID","name","users"})
+@XmlType(propOrder = {"name","users"})
 @XmlSeeAlso(User.class)
-public class Unit {
-    @XmlElement
+public class Unit implements Serializable {
+    @XmlTransient
     private int unitID;
     @XmlElement
     private String name;
     @XmlElementWrapper(name = "users")
-    private Set users = new HashSet(0);
+    private List<User> users;
     
     /**
      * Initialises the unit object.
      */
     public Unit() {}
+
+    /**
+     * Used to create a new unit.
+     * Parameter is self-explanatory.
+     * @param name 
+     */
+    public Unit(String name) {
+        this.name = name;
+    }
     
     /**
-     * Collects all values for the unit object.
-     * @param unitID the unit's id
-     * @param name the unit's name
+     * Used to query / edit an existing unit.
+     * Parameters are self-explanatory.
+     * @param unitID
+     * @param name 
      */
     public Unit(int unitID, String name) {
         this.unitID = unitID;
         this.name = name;
     }
 
-    /**
-     * Gets the unit's id.
-     * @return the unitID the unit's id
-     */
     public int getUnitID() {
         return unitID;
     }
 
-    /**
-     * Sets the unit's id.
-     * @param unitID the unit's id
-     */
     public void setUnitID(int unitID) {
         this.unitID = unitID;
     }
 
-    /**
-     * Gets the unit's name.
-     * @return the unit's name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Sets the unit's name.
-     * @param name the unit's name
-     */
     public void setName(String name) {
         this.name = name;
     }
-    
-    /**
-     * Gets all employees (system users) of a unit.
-     * @return the unit employees
-     */
-    public Set getUsers() {
+
+    public List<User> getUsers() {
         return users;
     }
 
-    /**
-     * Sets all employees (system users) to a unit.
-     * @param users the unit employees
-     */
-    public void setUsers(Set users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }

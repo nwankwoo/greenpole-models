@@ -5,6 +5,7 @@
  */
 package org.greenpole.entity.model.holder.merge;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -22,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"forCompanyId","tiedToInitialHolderId","tiedToCurrentHolderId","initialChn",
     "currentChn","bondShareUnit","transfer","receiverUnitState","receiverStartUnit","unitAfterTransfer",
     "mergeDate"})
-public class CompanyAccountConsolidation {
+public class CompanyAccountConsolidation implements Serializable {
     @XmlTransient
     private int id;
     @XmlElement
@@ -52,7 +53,8 @@ public class CompanyAccountConsolidation {
     }
 
     /**
-     * 
+     * Used to create a new company account consolidation.
+     * Parameters are self-explanatory.
      * @param forCompanyId
      * @param tiedToInitialHolderId
      * @param tiedToCurrentHolderId
@@ -80,7 +82,8 @@ public class CompanyAccountConsolidation {
     }
 
     /**
-     * 
+     * Used to query / edit an existing company account consolidation.
+     * Parameters are self-explanatory.
      * @param id
      * @param forCompanyId
      * @param tiedToInitialHolderId

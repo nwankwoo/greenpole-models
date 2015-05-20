@@ -5,6 +5,7 @@
  */
 package org.greenpole.entity.model.clientcompany;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -20,10 +21,10 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"clientCompanyId","totalSharesOnOffer","methodOfOffer","startingMinimumSubscription","continuingMinimumSubscription","offerPrice","openingDate","closingDate"})
-
-public class PrivatePlacement {
-    
+@XmlType(propOrder = {"clientCompanyId","totalSharesOnOffer","methodOfOffer",
+    "startingMinimumSubscription","continuingMinimumSubscription","offerPrice",
+    "openingDate","closingDate"})
+public class PrivatePlacement implements Serializable {
     @XmlTransient
     private int id;
     @XmlElement

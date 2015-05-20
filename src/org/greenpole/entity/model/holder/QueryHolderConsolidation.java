@@ -5,6 +5,7 @@
  */
 package org.greenpole.entity.model.holder;
 
+import java.io.Serializable;
 import org.greenpole.entity.model.holder.merge.AccountConsolidation;
 import org.greenpole.entity.model.holder.merge.CompanyAccountConsolidation;
 import java.util.List;
@@ -14,17 +15,19 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
- * @author user
+ * @author Akin Agbaje
+ * Utilised in querying holder consolidation - holder account merge details
  */
 @XmlRootElement
 @XmlSeeAlso({CompanyAccountConsolidation.class,AccountConsolidation.class})
 @XmlAccessorType(XmlAccessType.NONE)
-//add order here
-public class QueryHolderConsolidation {
-
+@XmlType(propOrder = {"descriptor", "accountConsolidation", "companyAccountConsolidation",
+    "startDate", "end_date"})
+public class QueryHolderConsolidation implements Serializable {
     //descriptor must be date:none / date:exact / date:between / date:before / date:after
     @XmlElement
     private String descriptor;

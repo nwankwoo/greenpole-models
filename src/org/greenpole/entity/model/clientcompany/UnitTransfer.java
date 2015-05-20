@@ -5,6 +5,7 @@
  */
 package org.greenpole.entity.model.clientcompany;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -21,8 +22,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(propOrder = {"holderIdFrom","chnFrom","holderIdTo","chnTo",
     "clientCompanyId","bondOfferId","units","unitPrice","transferType",
     "startingPrincipalValue","remainingPrincipalValue"})
-public class UnitTransfer {
-
+public class UnitTransfer implements Serializable {
     @XmlElement
     private int holderIdFrom;
     @XmlElement

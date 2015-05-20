@@ -5,10 +5,12 @@
  */
 package org.greenpole.entity.model;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -20,8 +22,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"primaryAddress","addressLine","addressLine",
     "addressLine","addressLine","postCode","city","state","country"})
-public class Address {
-    private int entityId;
+public class Address implements Serializable {
+    @XmlTransient
+    private int id;
     @XmlElement
     private String addressLine1;
     @XmlElement
@@ -75,7 +78,7 @@ public class Address {
     /**
      * Collects all data for client entity address object.
      * This constructor should be used when trying to submit a client entity address for
-     * editing, as it includes the {@link #entityId} variable, which is not used when
+     * editing, as it includes the {@link #id} variable, which is not used when
      * creating a client entity address.
      * @param entityId the client entity id
      * @param addressLine1 the first address line
@@ -89,7 +92,7 @@ public class Address {
      * @param primaryAddress the primary status of the entity's address
      */
     public Address(int entityId, String addressLine1, String addressLine2, String addressLine3, String addressLine4, String postCode, String city, String state, String country, boolean primaryAddress) {
-        this.entityId = entityId;
+        this.id = entityId;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.addressLine3 = addressLine3;
@@ -104,15 +107,15 @@ public class Address {
     /**
      * @return the client entity id
      */
-    public int getEntityId() {
-        return entityId;
+    public int getId() {
+        return id;
     }
 
     /**
-     * @param entityId the client entity id to set
+     * @param id the client entity id to set
      */
-    public void setEntityId(int entityId) {
-        this.entityId = entityId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**

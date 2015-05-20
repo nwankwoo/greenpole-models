@@ -12,7 +12,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
-import org.greenpole.entrycode.emmanuel.model.Holder;
 
 /**
  *
@@ -20,10 +19,8 @@ import org.greenpole.entrycode.emmanuel.model.Holder;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderAcctNumber", "chn", "firstName", "middleName", "lastName",
-    "type", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "holderPhoneNumbers",
-    "holderEmailAddresses", "holderResidentialAddresses", "holderPostalAddress", "holderCompanyAccounts",
-    "holderBondAccounts"})
+@XmlType(propOrder = {"holderId", "title", "type", "startDate", "endDate",
+    "primaryPowerOfAttorney"})
 public class PowerOfAttorney implements Serializable {
 
     @XmlTransient
@@ -32,7 +29,7 @@ public class PowerOfAttorney implements Serializable {
     private int holderId;
     @XmlElement
     private String title;
-    @XmlElement
+    @XmlTransient
     private String filePath;
     @XmlElement
     private String type;
@@ -48,6 +45,18 @@ public class PowerOfAttorney implements Serializable {
     public PowerOfAttorney() {
     }
 
+    /**
+     * Used in creating new power of attorney.
+     * Parameters are self-explanatory.
+     * @param holderId
+     * @param title
+     * @param filePath
+     * @param type
+     * @param startDate
+     * @param endDate
+     * @param primaryPowerOfAttorney
+     * @param fileContents 
+     */
     public PowerOfAttorney(int holderId, String title, String filePath, String type, String startDate, String endDate, boolean primaryPowerOfAttorney, String fileContents) {
         this.holderId = holderId;
         this.title = title;
@@ -59,6 +68,18 @@ public class PowerOfAttorney implements Serializable {
         this.fileContents = fileContents;
     }
 
+    /**
+     * Used in querying / editing existing power of attorney.
+     * Parameters are self-explanatory.
+     * @param id
+     * @param holderId
+     * @param title
+     * @param filePath
+     * @param type
+     * @param startDate
+     * @param endDate
+     * @param primaryPowerOfAttorney 
+     */
     public PowerOfAttorney(int id, int holderId, String title, String filePath, String type, String startDate, String endDate, boolean primaryPowerOfAttorney) {
         this.id = id;
         this.holderId = holderId;
