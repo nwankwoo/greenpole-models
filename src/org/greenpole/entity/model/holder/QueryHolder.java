@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -35,15 +36,18 @@ public class QueryHolder implements Serializable {
     private Map<String, Integer> units; //should be "start" and "end" keys for range, and "start" for exact
     @XmlElementWrapper(name = "totalHoldings")
     private Map<String, Integer> totalHoldings; //should be "start" and "end" keys for range, and "start" for exact
+    @XmlTransient
+    boolean isShareHolder; //true, if shareholder. False, if bondholder
 
     public QueryHolder() {
     }
 
-    public QueryHolder(String descriptor, Holder holder, Map<String, Integer> units, Map<String, Integer> totalHoldings) {
+    public QueryHolder(String descriptor, Holder holder, Map<String, Integer> units, Map<String, Integer> totalHoldings, boolean isShareHolder) {
         this.descriptor = descriptor;
         this.holder = holder;
         this.units = units;
         this.totalHoldings = totalHoldings;
+        this.isShareHolder = isShareHolder;
     }
 
     public String getDescriptor() {
@@ -76,5 +80,13 @@ public class QueryHolder implements Serializable {
 
     public void setTotalHoldings(Map<String, Integer> totalHoldings) {
         this.totalHoldings = totalHoldings;
+    }
+
+    public boolean isIsShareHolder() {
+        return isShareHolder;
+    }
+
+    public void setIsShareHolder(boolean isShareHolder) {
+        this.isShareHolder = isShareHolder;
     }
 }
