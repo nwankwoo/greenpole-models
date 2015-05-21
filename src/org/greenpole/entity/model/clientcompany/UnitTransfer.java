@@ -40,7 +40,7 @@ public class UnitTransfer implements Serializable {
     @XmlElement
     private double unitPrice;
     @XmlElement
-    private String transferType;
+    private int transferTypeId;
     @XmlElement
     private double startingPrincipalValue;
     @XmlElement
@@ -58,9 +58,9 @@ public class UnitTransfer implements Serializable {
      * @param clientCompanyId the client company, for which the transaction concerns
      * @param units the share units
      * @param unitPrice the price per share unit
-     * @param transferType the type of transfer
+     * @param transferTypeId the type of transfer
      */
-    public UnitTransfer(int holderIdFrom, int chnFrom, int holderIdTo, int chnTo, int clientCompanyId, int units, double unitPrice, String transferType) {
+    public UnitTransfer(int holderIdFrom, int chnFrom, int holderIdTo, int chnTo, int clientCompanyId, int units, double unitPrice, int transferTypeId) {
         this.holderIdFrom = holderIdFrom;
         this.chnFrom = chnFrom;
         this.holderIdTo = holderIdTo;
@@ -68,7 +68,7 @@ public class UnitTransfer implements Serializable {
         this.clientCompanyId = clientCompanyId;
         this.units = units;
         this.unitPrice = unitPrice;
-        this.transferType = transferType;
+        this.transferTypeId = transferTypeId;
     }
 
     /**
@@ -80,11 +80,11 @@ public class UnitTransfer implements Serializable {
      * @param bondOfferId the bond offer's id, for which the transaction concerns
      * @param units the bond units
      * @param unitPrice the price per bond unit
-     * @param transferType the type of transfer
+     * @param transferTypeId the type of transfer
      * @param startingPrincipalValue the starting principal value (value of the bond units)
      * @param remainingPrincipalValue the remaining principal value (value of the bond units left to be redeemed)
      */
-    public UnitTransfer(int holderIdFrom, int chnFrom, int holderIdTo, int chnTo, int bondOfferId, int units, double unitPrice, String transferType, double startingPrincipalValue, double remainingPrincipalValue) {
+    public UnitTransfer(int holderIdFrom, int chnFrom, int holderIdTo, int chnTo, int bondOfferId, int units, double unitPrice, int transferTypeId, double startingPrincipalValue, double remainingPrincipalValue) {
         this.holderIdFrom = holderIdFrom;
         this.chnFrom = chnFrom;
         this.holderIdTo = holderIdTo;
@@ -92,7 +92,7 @@ public class UnitTransfer implements Serializable {
         this.bondOfferId = bondOfferId;
         this.units = units;
         this.unitPrice = unitPrice;
-        this.transferType = transferType;
+        this.transferTypeId = transferTypeId;
         this.startingPrincipalValue = startingPrincipalValue;
         this.remainingPrincipalValue = remainingPrincipalValue;
     }
@@ -169,12 +169,12 @@ public class UnitTransfer implements Serializable {
         this.unitPrice = unitPrice;
     }
 
-    public String getTransferType() {
-        return transferType;
+    public int getTransferTypeId() {
+        return transferTypeId;
     }
 
-    public void setTransferType(String transferType) {
-        this.transferType = transferType;
+    public void setTransferTypeId(int transferTypeId) {
+        this.transferTypeId = transferTypeId;
     }
 
     public int getBondOfferId() {
