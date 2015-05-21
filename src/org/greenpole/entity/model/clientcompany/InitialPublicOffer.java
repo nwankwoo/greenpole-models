@@ -46,6 +46,9 @@ public class InitialPublicOffer implements Serializable {
     @XmlElement
     private String closingDate;
 
+    public InitialPublicOffer() {
+    }
+
     public InitialPublicOffer(int id, int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;

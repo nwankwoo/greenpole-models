@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlSeeAlso({Holder.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"primaryHolder","pryHolderChanges","secondaryHolders"})
+@XmlType(propOrder = {"primaryHolder","pryHolderOriginalValues","secondaryHolders"})
 public class HolderMerger implements Serializable {
     @XmlElement
     private Holder primaryHolder;

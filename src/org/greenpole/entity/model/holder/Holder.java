@@ -58,7 +58,7 @@ public class Holder implements Serializable {
     @XmlElement
     private boolean pryHolder;
     @XmlElement
-    private String primaryAddress;
+    private String pryAddress;
     
     @XmlElementWrapper(name = "phoneNumbers")
     private List<PhoneNumber> phoneNumbers;
@@ -100,7 +100,7 @@ public class Holder implements Serializable {
         this.gender = gender;
         this.dob = dob;
         this.taxExempted = taxExempted;
-        this.primaryAddress = pryAddress;
+        this.pryAddress = pryAddress;
         this.phoneNumbers = holderPhoneNumbers;
         this.emailAddresses = holderEmailAddresses;
         this.residentialAddresses = holderResidentialAddresses;
@@ -117,7 +117,7 @@ public class Holder implements Serializable {
         this.gender = gender;
         this.dob = dob;
         this.taxExempted = taxExempted;
-        this.primaryAddress = pryAddress;
+        this.pryAddress = pryAddress;
         this.phoneNumbers = holderPhoneNumbers;
         this.emailAddresses = holderEmailAddresses;
         this.residentialAddresses = holderResidentialAddresses;
@@ -221,12 +221,12 @@ public class Holder implements Serializable {
         this.pryHolder = pryHolder;
     }
 
-    public String getPrimaryAddress() {
-        return primaryAddress;
+    public String getPryAddress() {
+        return pryAddress;
     }
 
-    public void setPrimaryAddress(String primaryAddress) {
-        this.primaryAddress = primaryAddress;
+    public void setPryAddress(String pryAddress) {
+        this.pryAddress = pryAddress;
     }
     
     public List<PhoneNumber> getPhoneNumbers() {

@@ -24,8 +24,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"name","description","viewType","model",
-    "screen","requirementFunctions"})
+@XmlType(propOrder = {"firstName","lastName","maxIndividualShareHolding",
+    "maxTotalShareHolding","groups"})
 public class UserProfile implements Serializable {
     @XmlTransient
     private int id;

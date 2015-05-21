@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"descriptor", "holderChanges", "start_date", "end_date"})
+@XmlType(propOrder = {"descriptor", "holderChanges", "startDate", "endDate"})
 public class QueryHolderChanges implements Serializable {
     //descriptor must be date:none / date:exact / date:between / date:before / date:after
     @XmlElement
@@ -27,18 +27,18 @@ public class QueryHolderChanges implements Serializable {
     @XmlElement
     private HolderChanges holderChanges;
     @XmlElement
-    private String start_date;
+    private String startDate;
     @XmlElement
-    private String end_date;
+    private String endDate;
 
     public QueryHolderChanges() {
     }
 
-    public QueryHolderChanges(String descriptor, HolderChanges holderChanges, String start_date, String end_date) {
+    public QueryHolderChanges(String descriptor, HolderChanges holderChanges, String startDate, String endDate) {
         this.descriptor = descriptor;
         this.holderChanges = holderChanges;
-        this.start_date = start_date;
-        this.end_date = end_date;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public String getDescriptor() {
@@ -57,19 +57,19 @@ public class QueryHolderChanges implements Serializable {
         this.holderChanges = holderChanges;
     }
 
-    public String getStart_date() {
-        return start_date;
+    public String getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(String start_date) {
-        this.start_date = start_date;
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
     }
 
-    public String getEnd_date() {
-        return end_date;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setEnd_date(String end_date) {
-        this.end_date = end_date;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 }

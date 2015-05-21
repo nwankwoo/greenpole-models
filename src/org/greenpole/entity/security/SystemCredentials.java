@@ -28,6 +28,9 @@ public class SystemCredentials implements Serializable {
     @XmlElement
     private int password;
 
+    public SystemCredentials() {
+    }
+
     /**
      * Used to query / edit an existing system credentials.
      * Parameters are self-explanatory.

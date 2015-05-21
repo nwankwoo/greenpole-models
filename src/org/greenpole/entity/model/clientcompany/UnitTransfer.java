@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderIdFrom","chnFrom","holderIdTo","chnTo",
-    "clientCompanyId","bondOfferId","units","unitPrice","transferType",
+    "clientCompanyId","bondOfferId","units","unitPrice","transferTypeId",
     "startingPrincipalValue","remainingPrincipalValue"})
 public class UnitTransfer implements Serializable {
     @XmlElement

@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({CompanyAccountConsolidation.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderId","holderName","mergedToHolderId","mergedToHolderName",
-    "mergeDate","demerge","additionalChanges","demergeDate","comnpanyAccountConsolidation"})
+    "mergeDate","demerge","additionalChanges","demergeDate","companyAccountConsolidation"})
 public class AccountConsolidation implements Serializable {
     @XmlTransient
     private int id;

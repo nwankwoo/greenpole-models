@@ -40,7 +40,7 @@ public class Administrator implements Serializable {
     @XmlElement
     private String dob;
     @XmlElement
-    private String primaryAddress;
+    private String pryAddress;
     @XmlElement
     private Address residentialAddress;
     @XmlElement
@@ -71,7 +71,7 @@ public class Administrator implements Serializable {
         this.middleName = middleName;
         this.lastName = lastName;
         this.dob = dob;
-        this.primaryAddress = primaryAddress;
+        this.pryAddress = primaryAddress;
         this.residentialAddress = residentialAddress;
         this.postalAddress = postalAddress;
         this.emailAddresses = emailAddresses;
@@ -98,7 +98,7 @@ public class Administrator implements Serializable {
         this.middleName = middleName;
         this.lastName = lastName;
         this.dob = dob;
-        this.primaryAddress = primaryAddress;
+        this.pryAddress = primaryAddress;
         this.residentialAddress = residentialAddress;
         this.postalAddress = postalAddress;
         this.emailAddresses = emailAddresses;
@@ -178,15 +178,15 @@ public class Administrator implements Serializable {
     /**
      * @return the primary address
      */
-    public String getPrimaryAddress() {
-        return primaryAddress;
+    public String getPryAddress() {
+        return pryAddress;
     }
 
     /**
-     * @param primaryAddress the primary address to set
+     * @param pryAddress the primary address to set
      */
-    public void setPrimaryAddress(String primaryAddress) {
-        this.primaryAddress = primaryAddress;
+    public void setPryAddress(String pryAddress) {
+        this.pryAddress = pryAddress;
     }
 
     /**

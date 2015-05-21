@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({CompanyAccountConsolidation.class,AccountConsolidation.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"descriptor", "accountConsolidation", "companyAccountConsolidation",
-    "startDate", "end_date"})
+    "startDate", "endDate"})
 public class QueryHolderConsolidation implements Serializable {
     //descriptor must be date:none / date:exact / date:between / date:before / date:after
     @XmlElement

@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"clientCompanyId","totalSharesOnOffer","methodOfOffer",
     "startingMinimumSubscription","continuingMinimumSubscription","offerPrice",
-    "openingDate","closingDate"})
+    "offerSize","openingDate","closingDate"})
 public class PrivatePlacement implements Serializable {
     @XmlTransient
     private int id;
@@ -45,6 +45,9 @@ public class PrivatePlacement implements Serializable {
     private String openingDate;
     @XmlElement
     private String closingDate;
+
+    public PrivatePlacement() {
+    }
 
     /**
      * Collects data for new creation of private placement.

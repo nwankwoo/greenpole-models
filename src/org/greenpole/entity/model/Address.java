@@ -20,8 +20,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"primaryAddress","addressLine","addressLine",
-    "addressLine","addressLine","postCode","city","state","country"})
+@XmlType(propOrder = {"primaryAddress","addressLine1","addressLine2",
+    "addressLine3","addressLine4","postCode","city","state","country"})
 public class Address implements Serializable {
     @XmlTransient
     private int id;

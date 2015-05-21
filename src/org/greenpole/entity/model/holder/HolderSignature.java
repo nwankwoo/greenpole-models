@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "title", "signaturePath", "holderSignaturePrimary"})
+@XmlType(propOrder = {"holderId", "title", "signaturePath", "primarySignature"})
 
 public class HolderSignature implements Serializable {
 

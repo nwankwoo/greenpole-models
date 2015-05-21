@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"primaryPhoneNumber","emailAddress"})
+@XmlType(propOrder = {"primaryPhoneNumber","phoneNumber"})
 public class PhoneNumber implements Serializable {
     @XmlTransient
     private int entityId;
