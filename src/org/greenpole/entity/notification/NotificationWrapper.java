@@ -61,7 +61,7 @@ import org.greenpole.entity.security.UserProfile;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"code","messageTag","from","to","description","model","attendedTo"})
+@XmlType(propOrder = {"code","messageTag","from","to","description","model"})
 @XmlSeeAlso({Address.class, EmailAddress.class, PhoneNumber.class, Bank.class, BondOffer.class,
     BondOfferPaymentPlan.class, BondType.class, ClientCompany.class, InitialPublicOffer.class,
     PrivatePlacement.class, QueryClientCompany.class, ShareQuotation.class, UnitTransfer.class,
@@ -90,7 +90,7 @@ public class NotificationWrapper implements Serializable {
     private String fromType;
     @XmlTransient
     private String toType;
-    @XmlElement
+    @XmlTransient
     private boolean attendedTo;
 
     public NotificationWrapper() {
