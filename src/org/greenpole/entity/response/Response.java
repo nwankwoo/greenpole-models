@@ -44,6 +44,7 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
 import org.greenpole.entity.model.user.Department;
 import org.greenpole.entity.model.user.Unit;
 import org.greenpole.entity.model.user.User;
+import org.greenpole.entity.notification.NotificationWrapper;
 import org.greenpole.entity.security.Group;
 import org.greenpole.entity.security.Login;
 import org.greenpole.entity.security.Requirement;
@@ -67,7 +68,7 @@ import org.greenpole.entity.security.UserProfile;
     QueryHolder.class, QueryHolderChanges.class, QueryHolderConsolidation.class, AccountConsolidation.class,
     CompanyAccountConsolidation.class, Stockbroker.class, Department.class, Unit.class, User.class,
     Group.class, Login.class, Requirement.class, RequirementFunction.class, SystemCredentials.class,
-    UserProfile.class})
+    UserProfile.class, NotificationWrapper.class})
 public class Response implements Serializable {
     @XmlElement
     private int retn;
