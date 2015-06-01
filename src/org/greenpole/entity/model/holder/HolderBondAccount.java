@@ -83,7 +83,7 @@ public class HolderBondAccount implements Serializable {
         return bondOfferId;
     }
 
-    public void setBondOffer(int bondOfferId) {
+    public void setBondOfferId(int bondOfferId) {
         this.bondOfferId = bondOfferId;
     }
 

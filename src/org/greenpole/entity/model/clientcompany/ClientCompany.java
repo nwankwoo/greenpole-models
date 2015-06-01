@@ -29,7 +29,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"id","name","code","ceo","secretary","addresses","emailAddresses",
     "phoneNumbers","nseSectorId","nseSectorName","depositoryId","depositoryName","valid",
-    "deletedAddresses","deletedEmailAddresses","deletedPhoneNumbers"})
+    "shareUnitPrice","noShareholders","noBondholders","deletedAddresses",
+    "deletedEmailAddresses","deletedPhoneNumbers"})
 public class ClientCompany implements Serializable {
     
     @XmlElement
@@ -59,6 +60,13 @@ public class ClientCompany implements Serializable {
     private String nseSectorName;
     @XmlElement
     private String depositoryName;
+    
+    @XmlElement
+    private int noShareholders;
+    @XmlElement
+    private int noBondholders;
+    @XmlElement
+    private double shareUnitPrice;
     
     @XmlElement
     private List<Address> deletedAddresses;
@@ -397,5 +405,29 @@ public class ClientCompany implements Serializable {
 
     public void setDeletedPhoneNumbers(List<PhoneNumber> deletedPhoneNumbers) {
         this.deletedPhoneNumbers = deletedPhoneNumbers;
+    }
+
+    public int getNoShareholders() {
+        return noShareholders;
+    }
+
+    public void setNoShareholders(int noShareholders) {
+        this.noShareholders = noShareholders;
+    }
+
+    public int getNoBondholders() {
+        return noBondholders;
+    }
+
+    public void setNoBondholders(int noBondholders) {
+        this.noBondholders = noBondholders;
+    }
+
+    public double getShareUnitPrice() {
+        return shareUnitPrice;
+    }
+
+    public void setShareUnitPrice(double shareUnitPrice) {
+        this.shareUnitPrice = shareUnitPrice;
     }
 }
