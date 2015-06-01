@@ -13,7 +13,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -24,10 +23,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlSeeAlso({CompanyAccountConsolidation.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId","holderName","mergedToHolderId","mergedToHolderName",
+@XmlType(propOrder = {"id","holderId","holderName","mergedToHolderId","mergedToHolderName",
     "mergeDate","demerge","additionalChanges","demergeDate","companyAccountConsolidation"})
 public class AccountConsolidation implements Serializable {
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private int holderId;

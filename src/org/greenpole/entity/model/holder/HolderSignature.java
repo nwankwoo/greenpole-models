@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -20,11 +19,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "title", "signaturePath", "primarySignature"})
+@XmlType(propOrder = {"id","holderId", "title", "signaturePath", "primarySignature","signatureContent"})
 
 public class HolderSignature implements Serializable {
 
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private int holderId;
@@ -34,7 +33,7 @@ public class HolderSignature implements Serializable {
     private String signaturePath;
     @XmlElement
     private boolean primarySignature;
-    @XmlTransient
+    @XmlElement
     private String signatureContent;
 
     public HolderSignature() {

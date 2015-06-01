@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -20,11 +19,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"departmentName","units","users"})
+@XmlType(propOrder = {"departmentId","departmentName","units","users"})
 @XmlSeeAlso({User.class,Unit.class})
 public class Department implements Serializable {
-    @XmlTransient
-    private int departmentID;
+    @XmlElement(name = "id")
+    private int departmentId;
     @XmlElement
     private String departmentName;
     @XmlElementWrapper(name = "units")
@@ -46,7 +45,7 @@ public class Department implements Serializable {
      * @param users 
      */
     public Department(int departmentID, String departmentName, List<Unit> units, List<User> users) {
-        this.departmentID = departmentID;
+        this.departmentId = departmentID;
         this.departmentName = departmentName;
         this.units = units;
         this.users = users;
@@ -65,12 +64,12 @@ public class Department implements Serializable {
         this.users = users;
     }
 
-    public int getDepartmentID() {
-        return departmentID;
+    public int getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartmentID(int departmentID) {
-        this.departmentID = departmentID;
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getDepartmentName() {

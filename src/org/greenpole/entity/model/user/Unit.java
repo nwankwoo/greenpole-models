@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /*
@@ -25,11 +24,11 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"name","users"})
+@XmlType(propOrder = {"unitId","name","users"})
 @XmlSeeAlso(User.class)
 public class Unit implements Serializable {
-    @XmlTransient
-    private int unitID;
+    @XmlElement(name = "id")
+    private int unitId;
     @XmlElement
     private String name;
     @XmlElementWrapper(name = "users")
@@ -56,16 +55,16 @@ public class Unit implements Serializable {
      * @param name 
      */
     public Unit(int unitID, String name) {
-        this.unitID = unitID;
+        this.unitId = unitID;
         this.name = name;
     }
 
-    public int getUnitID() {
-        return unitID;
+    public int getUnitId() {
+        return unitId;
     }
 
-    public void setUnitID(int unitID) {
-        this.unitID = unitID;
+    public void setUnitId(int unitId) {
+        this.unitId = unitId;
     }
 
     public String getName() {

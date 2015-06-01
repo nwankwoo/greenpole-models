@@ -13,7 +13,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -23,10 +22,10 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"name","description","viewType","model",
+@XmlType(propOrder = {"id","name","description","viewType","model",
     "screen","requirementFunctions"})
 public class Requirement implements Serializable {
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private String name;

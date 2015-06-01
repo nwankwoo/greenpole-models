@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -19,17 +18,17 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "title", "type", "startDate", "endDate",
-    "primaryPowerOfAttorney"})
+@XmlType(propOrder = {"id","holderId", "title", "filePath", "type", "startDate", "endDate",
+    "primaryPowerOfAttorney", "fileContents"})
 public class PowerOfAttorney implements Serializable {
 
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private int holderId;
     @XmlElement
     private String title;
-    @XmlTransient
+    @XmlElement
     private String filePath;
     @XmlElement
     private String type;
@@ -39,7 +38,7 @@ public class PowerOfAttorney implements Serializable {
     private String endDate;
     @XmlElement
     private boolean primaryPowerOfAttorney;
-    @XmlTransient
+    @XmlElement
     private String fileContents;
     
     public PowerOfAttorney() {

@@ -20,10 +20,10 @@ import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"bankName","bankCode"})
+@XmlType(propOrder = {"id","bankName","bankCode"})
 public class Bank implements Serializable {
     
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private String bankName;

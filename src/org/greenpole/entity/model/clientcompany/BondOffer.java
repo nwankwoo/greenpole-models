@@ -24,11 +24,11 @@ import org.greenpole.entity.model.PhoneNumber;
 @XmlRootElement
 @XmlSeeAlso({Address.class,EmailAddress.class,PhoneNumber.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"clientCompanyId","title","unitPrice","bondMaturity",
+@XmlType(propOrder = {"id","clientCompanyId","title","unitPrice","bondMaturity",
     "bondTypeId","interestRate","paymentPlanId"})
 public class BondOffer implements Serializable {
     
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private int clientCompanyId;

@@ -16,7 +16,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -28,11 +27,12 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlSeeAlso({Address.class,EmailAddress.class,PhoneNumber.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"name","code","nseSectorId","ceo","secretary","addresses","emailAddresses",
-    "phoneNumbers","depositoryId","valid"})
+@XmlType(propOrder = {"id","name","code","ceo","secretary","addresses","emailAddresses",
+    "phoneNumbers","nseSectorId","nseSectorName","depositoryId","depositoryName","valid",
+    "deletedAddresses","deletedEmailAddresses","deletedPhoneNumbers"})
 public class ClientCompany implements Serializable {
     
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private String name;
@@ -55,16 +55,16 @@ public class ClientCompany implements Serializable {
     @XmlElement
     private boolean valid;
     
-    @XmlTransient
+    @XmlElement
     private String nseSectorName;
-    @XmlTransient
+    @XmlElement
     private String depositoryName;
     
-    @XmlTransient
+    @XmlElement
     private List<Address> deletedAddresses;
-    @XmlTransient
+    @XmlElement
     private List<EmailAddress> deletedEmailAddresses;
-    @XmlTransient
+    @XmlElement
     private List<PhoneNumber> deletedPhoneNumbers;
 
     /**

@@ -13,7 +13,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.Address;
 import org.greenpole.entity.model.EmailAddress;
@@ -26,10 +25,10 @@ import org.greenpole.entity.model.PhoneNumber;
 @XmlRootElement
 @XmlSeeAlso({EmailAddress.class, PhoneNumber.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"firstName", "middleName", "lastName", "dob", "pryAddress",
+@XmlType(propOrder = {"id","firstName", "middleName", "lastName", "dob", "pryAddress",
     "residentialAddress", "postalAddress", "emailAddresses", "phoneNumbers"})
 public class Administrator implements Serializable {
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private String firstName;

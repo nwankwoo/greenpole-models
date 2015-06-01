@@ -5,7 +5,6 @@
  */
 package org.greenpole.entity.notification;
 
-import com.oracle.jrockit.jfr.ContentType;
 import java.io.Serializable;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,7 +13,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.Address;
 import org.greenpole.entity.model.EmailAddress;
@@ -61,7 +59,8 @@ import org.greenpole.entity.security.UserProfile;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"code","messageTag","from","to","description","model"})
+@XmlType(propOrder = {"id","code","messageTag","from","to","description","model",
+    "fromType","toType","attendedTo"})
 @XmlSeeAlso({Address.class, EmailAddress.class, PhoneNumber.class, Bank.class, BondOffer.class,
     BondOfferPaymentPlan.class, BondType.class, ClientCompany.class, InitialPublicOffer.class,
     PrivatePlacement.class, QueryClientCompany.class, ShareQuotation.class, UnitTransfer.class,
@@ -72,7 +71,7 @@ import org.greenpole.entity.security.UserProfile;
     Group.class, Login.class, Requirement.class, RequirementFunction.class, SystemCredentials.class,
     UserProfile.class})
 public class NotificationWrapper implements Serializable {
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private String code;
@@ -86,11 +85,11 @@ public class NotificationWrapper implements Serializable {
     private List<?> model;
     @XmlElement
     private String messageTag;
-    @XmlTransient
+    @XmlElement
     private String fromType;
-    @XmlTransient
+    @XmlElement
     private String toType;
-    @XmlTransient
+    @XmlElement
     private boolean attendedTo;
 
     public NotificationWrapper() {

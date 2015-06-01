@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.clientcompany.Bank;
 
@@ -21,7 +20,7 @@ import org.greenpole.entity.model.clientcompany.Bank;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderId", "bondOfferId", "bondUnits", "startingPrincipalValue", "remainingPrincipalValue",
-    "nubanAccount", "bank", "holderBondAccPrimary", "merged"})
+    "nubanAccount", "bank", "holderBondAccPrimary", "merged","secHolderId","secBondOfferId"})
 public class HolderBondAccount implements Serializable {
 
     @XmlElement
@@ -43,9 +42,9 @@ public class HolderBondAccount implements Serializable {
     @XmlElement
     private boolean merged;
     
-    @XmlTransient
+    @XmlElement
     private int secHolderId;
-    @XmlTransient
+    @XmlElement
     private int secBondOfferId;
 
     public HolderBondAccount() {

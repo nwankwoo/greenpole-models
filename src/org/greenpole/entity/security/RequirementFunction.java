@@ -10,7 +10,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -20,9 +19,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"name","description"})
+@XmlType(propOrder = {"id","name","description"})
 public class RequirementFunction implements Serializable {
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private String name;

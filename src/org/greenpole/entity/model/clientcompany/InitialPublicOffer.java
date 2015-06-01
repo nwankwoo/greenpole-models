@@ -11,7 +11,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -22,10 +21,10 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"clientCompanyId","totalSharesOnOffer","methodOfOffer","startingMinimumSubscription",
-    "continuingMinimumSubscription","offerPrice","offerSize","openingDate","closingDate"})
+@XmlType(propOrder = {"id","clientCompanyId","totalSharesOnOffer","methodOfOffer","startingMinimumSubscription",
+    "continuingMinimumSubscription","offerPrice","offerSize","openingDate","closingDate", "tax", "interestRate"})
 public class InitialPublicOffer implements Serializable {
-    @XmlTransient
+    @XmlElement
     private int id;
     @XmlElement
     private int clientCompanyId;
@@ -45,11 +44,15 @@ public class InitialPublicOffer implements Serializable {
     private String openingDate;
     @XmlElement
     private String closingDate;
+    @XmlElement
+    private double tax;
+    @XmlElement
+    private double interestRate;
 
     public InitialPublicOffer() {
     }
 
-    public InitialPublicOffer(int id, int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
+    public InitialPublicOffer(int id, int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate, double tax, double interestRate) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnOffer = totalSharesOnOffer;
@@ -60,9 +63,11 @@ public class InitialPublicOffer implements Serializable {
         this.offerSize = offerSize;
         this.openingDate = openingDate;
         this.closingDate = closingDate;
+        this.tax = tax;
+        this.interestRate = interestRate;
     }
 
-    public InitialPublicOffer(int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
+    public InitialPublicOffer(int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate, double tax, double interestRate) {
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnOffer = totalSharesOnOffer;
         this.methodOfOffer = methodOfOffer;
@@ -72,6 +77,8 @@ public class InitialPublicOffer implements Serializable {
         this.offerSize = offerSize;
         this.openingDate = openingDate;
         this.closingDate = closingDate;
+        this.tax = tax;
+        this.interestRate = interestRate;
     }
 
     /**
@@ -213,7 +220,33 @@ public class InitialPublicOffer implements Serializable {
     public void setClosingDate(String closingDate) {
         this.closingDate = closingDate;
     }
-    
-    
+
+    /**
+     * @return the tax
+     */
+    public double getTax() {
+        return tax;
+    }
+
+    /**
+     * @param tax the tax to set
+     */
+    public void setTax(double tax) {
+        this.tax = tax;
+    }
+
+    /**
+     * @return the interest rate
+     */
+    public double getInterestRate() {
+        return interestRate;
+    }
+
+    /**
+     * @param interestRate the interest rate to set
+     */
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
     
 }

@@ -13,7 +13,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.Address;
 import org.greenpole.entity.model.EmailAddress;
@@ -27,13 +26,14 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
 @XmlRootElement
 @XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderAcctNumber", "chn", "firstName", "middleName", "lastName",
+@XmlType(propOrder = {"holderId","holderAcctNumber", "chn", "firstName", "middleName", "lastName",
     "typeId", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "phoneNumbers",
     "emailAddresses", "residentialAddresses", "postalAddresses", "companyAccounts",
-    "bondAccounts", "administrators"})
+    "bondAccounts", "administrators","holderStockbroker","changes","deletedPostalAddresses",
+    "deletedResidentialAddresses","deletedEmailAddresses","deletedPhoneNumbers"})
 public class Holder implements Serializable {
 
-    @XmlTransient
+    @XmlElement(name = "id")
     private int holderId;
     @XmlElement
     private int holderAcctNumber;
@@ -75,18 +75,18 @@ public class Holder implements Serializable {
     @XmlElementWrapper(name = "administrators")
     private List<Administrator> administrators;
     
-    @XmlTransient
+    @XmlElement
     private Stockbroker holderStockbroker;
-    @XmlTransient
+    @XmlElementWrapper(name = "changes")
     private List<HolderChanges> changes;
     
-    @XmlTransient
+    @XmlElementWrapper(name = "deletedPostalAddresses")
     private List<Address> deletedPostalAddresses;
-    @XmlTransient
+    @XmlElementWrapper(name = "deletedResidentialAddresses")
     private List<Address> deletedResidentialAddresses;
-    @XmlTransient
+    @XmlElementWrapper(name = "deletedEmailAddresses")
     private List<EmailAddress> deletedEmailAddresses;
-    @XmlTransient
+    @XmlElementWrapper(name = "deletedPhoneNumbers")
     private List<PhoneNumber> deletedPhoneNumbers;
     
     public Holder(){}

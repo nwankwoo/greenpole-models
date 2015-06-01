@@ -12,7 +12,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -22,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"descriptor", "holder", "units", "totalHoldings"})
+@XmlType(propOrder = {"descriptor", "holder", "units", "totalHoldings", "isShareHolder"})
 public class QueryHolder implements Serializable {
     //descriptor must be (default value) = holder:none;units:none;totalHoldings:none
     //possible values = holder:none / holder:exact
@@ -36,7 +35,7 @@ public class QueryHolder implements Serializable {
     private Map<String, Integer> units; //should be "start" and "end" keys for range, and "start" for exact
     @XmlElementWrapper(name = "totalHoldings")
     private Map<String, Integer> totalHoldings; //should be "start" and "end" keys for range, and "start" for exact
-    @XmlTransient
+    @XmlElement
     boolean isShareHolder; //true, if shareholder. False, if bondholder
 
     public QueryHolder() {
