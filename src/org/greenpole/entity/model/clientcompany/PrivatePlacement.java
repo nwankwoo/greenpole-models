@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id","clientCompanyId","totalSharesOnOffer","methodOfOffer",
+@XmlType(propOrder = {"id","clientCompanyId","clientCompanyName","totalSharesOnOffer","methodOfOffer",
     "startingMinimumSubscription","continuingMinimumSubscription","offerPrice",
     "offerSize","openingDate","closingDate"})
 public class PrivatePlacement implements Serializable {
@@ -28,6 +28,8 @@ public class PrivatePlacement implements Serializable {
     private int id;
     @XmlElement
     private int clientCompanyId;
+    @XmlElement
+    private String clientCompanyName;
     @XmlElement
     private int totalSharesOnOffer;
     @XmlElement
@@ -124,6 +126,14 @@ public class PrivatePlacement implements Serializable {
      */
     public void setClientCompanyId(int clientCompanyId) {
         this.clientCompanyId = clientCompanyId;
+    }
+
+    public String getClientCompanyName() {
+        return clientCompanyName;
+    }
+
+    public void setClientCompanyName(String clientCompanyName) {
+        this.clientCompanyName = clientCompanyName;
     }
 
     /**
