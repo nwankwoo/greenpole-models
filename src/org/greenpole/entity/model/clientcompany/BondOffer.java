@@ -11,7 +11,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.Address;
 import org.greenpole.entity.model.EmailAddress;
@@ -24,14 +23,16 @@ import org.greenpole.entity.model.PhoneNumber;
 @XmlRootElement
 @XmlSeeAlso({Address.class,EmailAddress.class,PhoneNumber.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id","clientCompanyId","title","unitPrice","bondMaturity",
-    "bondTypeId","interestRate","paymentPlanId"})
+@XmlType(propOrder = {"id","clientCompanyId","clientCompanyName","title","unitPrice",
+    "bondMaturity","bondTypeId","bondType","interestRate","paymentPlanId","paymentPlan"})
 public class BondOffer implements Serializable {
     
     @XmlElement
     private int id;
     @XmlElement
     private int clientCompanyId;
+    @XmlElement
+    private String clientCompanyName;
     @XmlElement
     private String title;
     @XmlElement
@@ -41,9 +42,13 @@ public class BondOffer implements Serializable {
     @XmlElement
     private int bondTypeId;
     @XmlElement
+    private String bondType;
+    @XmlElement
     private double interestRate;
     @XmlElement
     private int paymentPlanId;
+    @XmlElement
+    private String paymentPlan;
 
     public BondOffer() {
     }
@@ -118,6 +123,14 @@ public class BondOffer implements Serializable {
         this.clientCompanyId = clientCompanyId;
     }
 
+    public String getClientCompanyName() {
+        return clientCompanyName;
+    }
+
+    public void setClientCompanyName(String clientCompanyName) {
+        this.clientCompanyName = clientCompanyName;
+    }
+
     /**
      * @return the title
      */
@@ -168,6 +181,14 @@ public class BondOffer implements Serializable {
         this.bondTypeId = bondTypeId;
     }
 
+    public String getBondType() {
+        return bondType;
+    }
+
+    public void setBondType(String bondType) {
+        this.bondType = bondType;
+    }
+
     /**
      * @return the interestRate
      */
@@ -194,6 +215,14 @@ public class BondOffer implements Serializable {
      */
     public void setPaymentPlanId(int paymentPlanId) {
         this.paymentPlanId = paymentPlanId;
+    }
+
+    public String getPaymentPlan() {
+        return paymentPlan;
+    }
+
+    public void setPaymentPlan(String paymentPlan) {
+        this.paymentPlan = paymentPlan;
     }
         
 }
