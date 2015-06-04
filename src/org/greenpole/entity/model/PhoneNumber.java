@@ -20,15 +20,17 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"entityId","primaryPhoneNumber","phoneNumber"})
+@XmlType(propOrder = {"id","primaryPhoneNumber","phoneNumber","entityId"})
 public class PhoneNumber implements Serializable {
-    @XmlElement(name = "id")
-    private int entityId;
+    @XmlElement
+    private int id;
     @XmlElement
     private String phoneNumber;
     @XmlAttribute
     private boolean primaryPhoneNumber;
-
+    @XmlElement
+    private int entityId;
+    
     /**
      * Initialises the client entity phone number object.
      */
@@ -36,13 +38,15 @@ public class PhoneNumber implements Serializable {
     }
 
     /**
-     * Collects all values for the client entity phone number.
+     * Collects all values for the entity phone number.
      * @param phoneNumber the entity's phone number
      * @param primaryPhoneNumber the phone number's primary status
+     * @param entityId the entity id
      */
-    public PhoneNumber(String phoneNumber, boolean primaryPhoneNumber) {
+    public PhoneNumber(String phoneNumber, boolean primaryPhoneNumber, int entityId) {
         this.phoneNumber = phoneNumber;
         this.primaryPhoneNumber = primaryPhoneNumber;
+        this.entityId = entityId;
     }
 
     /**
@@ -50,28 +54,24 @@ public class PhoneNumber implements Serializable {
      * This constructor should be used when trying to submit a client entity phone number for
      * editing, as it includes the {@link #entityId} variable, which is not used when
      * creating a client entity phone number.
-     * @param entityId the entity's id
+     * @param id the id
      * @param phoneNumber the entity's phone number
      * @param primaryPhoneNumber the phone number's primary status
+     * @param entityId the entity's id
      */
-    public PhoneNumber(int entityId, String phoneNumber, boolean primaryPhoneNumber) {
-        this.entityId = entityId;
+    public PhoneNumber(int id, String phoneNumber, boolean primaryPhoneNumber, int entityId) {
+        this.id = id;
         this.phoneNumber = phoneNumber;
         this.primaryPhoneNumber = primaryPhoneNumber;
-    }
-
-    /**
-     * @return the client entity id
-     */
-    public int getEntityId() {
-        return entityId;
-    }
-
-    /**
-     * @param entityId the client entity id to set
-     */
-    public void setEntityId(int entityId) {
         this.entityId = entityId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     /**
@@ -106,4 +106,17 @@ public class PhoneNumber implements Serializable {
         this.primaryPhoneNumber = primaryPhoneNumber;
     }
     
+    /**
+     * @return the client entity id
+     */
+    public int getEntityId() {
+        return entityId;
+    }
+
+    /**
+     * @param entityId the client entity id to set
+     */
+    public void setEntityId(int entityId) {
+        this.entityId = entityId;
+    }
 }

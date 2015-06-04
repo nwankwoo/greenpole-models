@@ -19,14 +19,17 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"entityId","primaryEmail","emailAddress"})
+@XmlType(propOrder = {"id","primaryEmail","emailAddress","entityId"})
 public class EmailAddress implements Serializable {
-    @XmlElement(name = "id")
-    private int entityId;
+    
+    @XmlElement
+    private int id;
     @XmlElement
     private String emailAddress;
     @XmlAttribute
     private boolean primaryEmail;
+    @XmlElement
+    private int entityId;
 
     /**
      * Initialises the client entity email address object.
@@ -35,13 +38,15 @@ public class EmailAddress implements Serializable {
     }
     
     /**
-     * Sets all data for the client entity email address.
+     * Sets all data for the entity email address.
      * @param emailAddress the entity's email address
      * @param primaryEmail the primary status of the entity's email address
+     * @param entityId the entity id
      */
-    public EmailAddress(String emailAddress, boolean primaryEmail) {
+    public EmailAddress(String emailAddress, boolean primaryEmail, int entityId) {
         this.emailAddress = emailAddress;
         this.primaryEmail = primaryEmail;
+        this.entityId = entityId;
     }
 
     /**
@@ -49,28 +54,24 @@ public class EmailAddress implements Serializable {
      * This constructor should be used when trying to submit a client entity email address for
      * editing, as it includes the {@link #entityId} variable, which is not used when
      * creating a client entity email address.
-     * @param entityId the entity's id
+     * @param id the id
      * @param emailAddress the entity's email address
      * @param primaryEmail the primary status of the entity's email address
+     * @param entityId the entity's id
      */
-    public EmailAddress(int entityId, String emailAddress, boolean primaryEmail) {
-        this.entityId = entityId;
+    public EmailAddress(int id, String emailAddress, boolean primaryEmail, int entityId) {
+        this.id = id;
         this.emailAddress = emailAddress;
         this.primaryEmail = primaryEmail;
-    }
-
-    /**
-     * @return the client entity id
-     */
-    public int getEntityId() {
-        return entityId;
-    }
-
-    /**
-     * @param entityId the client entity id to set
-     */
-    public void setEntityId(int entityId) {
         this.entityId = entityId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
@@ -103,5 +104,19 @@ public class EmailAddress implements Serializable {
      */
     public void setPrimaryEmail(boolean primaryEmail) {
         this.primaryEmail = primaryEmail;
+    }
+    
+    /**
+     * @return the client entity id
+     */
+    public int getEntityId() {
+        return entityId;
+    }
+
+    /**
+     * @param entityId the client entity id to set
+     */
+    public void setEntityId(int entityId) {
+        this.entityId = entityId;
     }
 }

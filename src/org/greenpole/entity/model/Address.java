@@ -8,6 +8,7 @@ package org.greenpole.entity.model;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
@@ -20,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"id","primaryAddress","addressLine1","addressLine2",
-    "addressLine3","addressLine4","postCode","city","state","country"})
+    "addressLine3","addressLine4","postCode","city","state","country","entityId"})
 public class Address implements Serializable {
     @XmlElement
     private int id;
@@ -40,8 +41,10 @@ public class Address implements Serializable {
     private String state;
     @XmlElement
     private String country;
-    @XmlElement
+    @XmlAttribute
     private boolean primaryAddress;
+    @XmlElement
+    private int entityId;
 
     /**
      * Initialises client entity address object.
@@ -50,7 +53,8 @@ public class Address implements Serializable {
     }
 
     /**
-     * Collects all data for client entity address object.
+     * Collects all data for entity address object.
+     * @param id the address id
      * @param addressLine1 the first address line
      * @param addressLine2 the second address line
      * @param addressLine3 the third address line
@@ -60,9 +64,11 @@ public class Address implements Serializable {
      * @param state the the entity's resident state
      * @param country the the entity's resident country
      * @param primaryAddress the primary status of the entity's address
+     * @param entityId the entity id
      */
-    public Address(String addressLine1, String addressLine2, String addressLine3, 
-            String addressLine4, String postCode, String city, String state, String country, boolean primaryAddress) {
+    public Address(int id, String addressLine1, String addressLine2, String addressLine3, 
+            String addressLine4, String postCode, String city, String state, String country, boolean primaryAddress, int entityId) {
+        this.id = id;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.addressLine3 = addressLine3;
@@ -72,14 +78,14 @@ public class Address implements Serializable {
         this.state = state;
         this.country = country;
         this.primaryAddress = primaryAddress;
+        this.entityId = entityId;
     }
 
     /**
-     * Collects all data for client entity address object.
+     * Collects all data for entity address object.
      * This constructor should be used when trying to submit a client entity address for
      * editing, as it includes the {@link #id} variable, which is not used when
      * creating a client entity address.
-     * @param entityId the client entity id
      * @param addressLine1 the first address line
      * @param addressLine2 the second address line
      * @param addressLine3 the third address line
@@ -89,9 +95,9 @@ public class Address implements Serializable {
      * @param state the the entity's resident state
      * @param country the the entity's resident country
      * @param primaryAddress the primary status of the entity's address
+     * @param entityId the entity id
      */
-    public Address(int entityId, String addressLine1, String addressLine2, String addressLine3, String addressLine4, String postCode, String city, String state, String country, boolean primaryAddress) {
-        this.id = entityId;
+    public Address(String addressLine1, String addressLine2, String addressLine3, String addressLine4, String postCode, String city, String state, String country, boolean primaryAddress, int entityId) {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.addressLine3 = addressLine3;
@@ -101,6 +107,7 @@ public class Address implements Serializable {
         this.state = state;
         this.country = country;
         this.primaryAddress = primaryAddress;
+        this.entityId = entityId;
     }
 
     /**
@@ -259,5 +266,19 @@ public class Address implements Serializable {
      */
     public void setPrimaryAddress(boolean primaryAddress) {
         this.primaryAddress = primaryAddress;
+    }
+
+    /**
+     * @return the entity id
+     */
+    public int getEntityId() {
+        return entityId;
+    }
+
+    /**
+     * @param entityId the entity id to be set
+     */
+    public void setEntityId(int entityId) {
+        this.entityId = entityId;
     }
 }
