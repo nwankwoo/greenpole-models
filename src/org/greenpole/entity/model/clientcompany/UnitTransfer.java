@@ -19,10 +19,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderIdFrom","chnFrom","holderIdTo","chnTo",
-    "clientCompanyId","bondOfferId","units","unitPrice","transferTypeId",
-    "startingPrincipalValue","remainingPrincipalValue"})
+@XmlType(propOrder = {"cscsTransactionId","holderIdFrom","chnFrom","holderIdTo",
+    "chnTo","clientCompanyId","clientCompanyName","bondOfferId","units","unitPrice",
+    "unitType","transferTypeId","transactionDate","startingPrincipalValue",
+    "remainingPrincipalValue"})
 public class UnitTransfer implements Serializable {
+    @XmlElement
+    private int cscsTransactionId;
     @XmlElement
     private int holderIdFrom;
     @XmlElement
@@ -34,13 +37,19 @@ public class UnitTransfer implements Serializable {
     @XmlElement
     private int clientCompanyId;
     @XmlElement
+    private String clientCompanyName;
+    @XmlElement
     private int bondOfferId;
     @XmlElement
     private int units;
     @XmlElement
     private double unitPrice;
     @XmlElement
+    private String unitType;
+    @XmlElement
     private int transferTypeId;
+    @XmlElement
+    private String transactionDate;
     @XmlElement
     private double startingPrincipalValue;
     @XmlElement
@@ -93,6 +102,24 @@ public class UnitTransfer implements Serializable {
         this.units = units;
         this.unitPrice = unitPrice;
         this.transferTypeId = transferTypeId;
+        this.startingPrincipalValue = startingPrincipalValue;
+        this.remainingPrincipalValue = remainingPrincipalValue;
+    }
+
+    public UnitTransfer(int cscsTransactionId, int holderIdFrom, int chnFrom, int holderIdTo, int chnTo, int clientCompanyId, String clientCompanyName, int bondOfferId, int units, double unitPrice, String unitType, int transferTypeId, String transactionDate, double startingPrincipalValue, double remainingPrincipalValue) {
+        this.cscsTransactionId = cscsTransactionId;
+        this.holderIdFrom = holderIdFrom;
+        this.chnFrom = chnFrom;
+        this.holderIdTo = holderIdTo;
+        this.chnTo = chnTo;
+        this.clientCompanyId = clientCompanyId;
+        this.clientCompanyName = clientCompanyName;
+        this.bondOfferId = bondOfferId;
+        this.units = units;
+        this.unitPrice = unitPrice;
+        this.unitType = unitType;
+        this.transferTypeId = transferTypeId;
+        this.transactionDate = transactionDate;
         this.startingPrincipalValue = startingPrincipalValue;
         this.remainingPrincipalValue = remainingPrincipalValue;
     }
@@ -185,5 +212,35 @@ public class UnitTransfer implements Serializable {
         this.bondOfferId = bondOfferId;
     }
 
-    
+    public int getCscsTransactionId() {
+        return cscsTransactionId;
+    }
+
+    public void setCscsTransactionId(int cscsTransactionId) {
+        this.cscsTransactionId = cscsTransactionId;
+    }
+
+    public String getClientCompanyName() {
+        return clientCompanyName;
+    }
+
+    public void setClientCompanyName(String clientCompanyName) {
+        this.clientCompanyName = clientCompanyName;
+    }
+
+    public String getUnitType() {
+        return unitType;
+    }
+
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
+    }
+
+    public String getTransactionDate() {
+        return transactionDate;
+    }
+
+    public void setTransactionDate(String transactionDate) {
+        this.transactionDate = transactionDate;
+    }
 }

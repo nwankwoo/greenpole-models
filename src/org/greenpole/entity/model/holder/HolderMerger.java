@@ -28,7 +28,7 @@ public class HolderMerger implements Serializable {
     @XmlElement
     private Holder primaryHolder;
     //used to store original values of the primary holder account as a result of the merge if change was made.
-    //form should be: type:value;gender:value;dob:value;phone:value;email:value
+    //form should be: type:value;gender:value;dob:value;phone:value;email:value [their ids, not their actual values]
     //where "value" could be "none" or the previous value of the variable before its change, NOT the current value the variable holds
     @XmlElement
     private String pryHolderOriginalValues;
