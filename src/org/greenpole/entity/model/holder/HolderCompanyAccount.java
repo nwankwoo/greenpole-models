@@ -19,7 +19,7 @@ import org.greenpole.entity.model.clientcompany.Bank;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "clientCompanyId", "shareUnits", "esop",
+@XmlType(propOrder = {"holderId", "clientCompanyId", "clientCompanyName", "shareUnits", "esop",
     "nubanAccount", "bank", "holderCompAccPrimary", "merged","pryHolderId",
     "pryClientCompanyId"})
 public class HolderCompanyAccount implements Serializable {
@@ -27,6 +27,8 @@ public class HolderCompanyAccount implements Serializable {
     private int holderId;
     @XmlElement
     private int clientCompanyId;
+    @XmlElement
+    private String clientCompanyName;
     @XmlElement
     private int shareUnits;
     @XmlElement
@@ -74,6 +76,14 @@ public class HolderCompanyAccount implements Serializable {
 
     public void setClientCompanyId(int clientCompanyId) {
         this.clientCompanyId = clientCompanyId;
+    }
+
+    public String getClientCompanyName() {
+        return clientCompanyName;
+    }
+
+    public void setClientCompanyName(String clientCompanyName) {
+        this.clientCompanyName = clientCompanyName;
     }
 
     public int getHolderId() {

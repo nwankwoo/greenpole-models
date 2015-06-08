@@ -28,6 +28,8 @@ public class HolderBondAccount implements Serializable {
     @XmlElement
     private int bondOfferId;
     @XmlElement
+    private String bondOfferTitle;
+    @XmlElement
     private int bondUnits;
     @XmlElement
     private double startingPrincipalValue;
@@ -85,6 +87,14 @@ public class HolderBondAccount implements Serializable {
 
     public void setBondOfferId(int bondOfferId) {
         this.bondOfferId = bondOfferId;
+    }
+
+    public String getBondOfferTitle() {
+        return bondOfferTitle;
+    }
+
+    public void setBondOfferTitle(String bondOfferTitle) {
+        this.bondOfferTitle = bondOfferTitle;
     }
 
     public int getBondUnits() {
