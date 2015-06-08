@@ -25,14 +25,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlSeeAlso({CompanyAccountConsolidation.class,AccountConsolidation.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"descriptor", "accountConsolidation", "companyAccountConsolidation",
-    "startDate", "endDate"})
+@XmlType(propOrder = {"descriptor", "accountConsolidation", "startDate", "endDate"})
 public class QueryHolderConsolidation implements Serializable {
     //descriptor must be date:none / date:exact / date:between / date:before / date:after
     @XmlElement
     private String descriptor;
-    @XmlElementWrapper(name = "companyAccountConsolidation")
-    private List<CompanyAccountConsolidation> companyAccountConsolidation;
     @XmlElementWrapper(name = "accountConsolidation")
     private List<AccountConsolidation> accountConsolidation;
     @XmlElement
@@ -43,9 +40,8 @@ public class QueryHolderConsolidation implements Serializable {
     public QueryHolderConsolidation() {
     }
 
-    public QueryHolderConsolidation(String descriptor, List<CompanyAccountConsolidation> companyAccountConsolidation, List<AccountConsolidation> accountConsolidation, String startDate, String endDate) {
+    public QueryHolderConsolidation(String descriptor, List<AccountConsolidation> accountConsolidation, String startDate, String endDate) {
         this.descriptor = descriptor;
-        this.companyAccountConsolidation = companyAccountConsolidation;
         this.accountConsolidation = accountConsolidation;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -57,14 +53,6 @@ public class QueryHolderConsolidation implements Serializable {
 
     public void setDescriptor(String descriptor) {
         this.descriptor = descriptor;
-    }
-
-    public List<CompanyAccountConsolidation> getCompanyAccountConsolidation() {
-        return companyAccountConsolidation;
-    }
-
-    public void setCompanyAccountConsolidation(List<CompanyAccountConsolidation> companyAccountConsolidation) {
-        this.companyAccountConsolidation = companyAccountConsolidation;
     }
 
     public List<AccountConsolidation> getAccountConsolidation() {
