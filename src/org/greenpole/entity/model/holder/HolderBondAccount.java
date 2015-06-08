@@ -19,8 +19,9 @@ import org.greenpole.entity.model.clientcompany.Bank;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "bondOfferId", "bondUnits", "startingPrincipalValue", "remainingPrincipalValue",
-    "nubanAccount", "bank", "holderBondAccPrimary", "merged", "pryHolderId", "pryBondOfferId"})
+@XmlType(propOrder = {"holderId", "bondOfferId", "bondOfferTitle", "bondUnits", "startingPrincipalValue", 
+    "remainingPrincipalValue", "nubanAccount", "bank", "holderBondAccPrimary", "merged", "pryHolderId", 
+    "pryBondOfferId"})
 public class HolderBondAccount implements Serializable {
 
     @XmlElement
