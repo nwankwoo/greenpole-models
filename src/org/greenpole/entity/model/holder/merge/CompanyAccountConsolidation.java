@@ -19,14 +19,16 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id","forCompanyId","tiedToInitialHolderId","tiedToCurrentHolderId","initialChn",
-    "currentChn","bondShareUnit","transfer","receiverUnitState","receiverStartUnit","unitAfterTransfer",
-    "mergeDate"})
+@XmlType(propOrder = {"id","forBondOfferId","forCompanyId","tiedToInitialHolderId","tiedToCurrentHolderId",
+    "initialChn","currentChn","bondShareUnit","transfer","receiverUnitState","receiverStartUnit",
+    "unitAfterTransfer","mergeDate"})
 public class CompanyAccountConsolidation implements Serializable {
     @XmlElement
     private int id;
     @XmlElement
     private int forCompanyId;
+    @XmlElement
+    private int forBondOfferId;
     @XmlElement
     private int tiedToInitialHolderId;
     @XmlElement
@@ -51,66 +53,6 @@ public class CompanyAccountConsolidation implements Serializable {
     public CompanyAccountConsolidation() {
     }
 
-    /**
-     * Used to create a new company account consolidation.
-     * Parameters are self-explanatory.
-     * @param forCompanyId
-     * @param tiedToInitialHolderId
-     * @param tiedToCurrentHolderId
-     * @param initialChn
-     * @param currentChn
-     * @param bondShareUnit
-     * @param transfer
-     * @param receiverUnitState
-     * @param receiverStartUnit
-     * @param unitAfterTransfer
-     * @param mergeDate 
-     */
-    public CompanyAccountConsolidation(int forCompanyId, int tiedToInitialHolderId, int tiedToCurrentHolderId, String initialChn, String currentChn, int bondShareUnit, boolean transfer, int receiverUnitState, int receiverStartUnit, int unitAfterTransfer, String mergeDate) {
-        this.forCompanyId = forCompanyId;
-        this.tiedToInitialHolderId = tiedToInitialHolderId;
-        this.tiedToCurrentHolderId = tiedToCurrentHolderId;
-        this.initialChn = initialChn;
-        this.currentChn = currentChn;
-        this.bondShareUnit = bondShareUnit;
-        this.transfer = transfer;
-        this.receiverUnitState = receiverUnitState;
-        this.receiverStartUnit = receiverStartUnit;
-        this.unitAfterTransfer = unitAfterTransfer;
-        this.mergeDate = mergeDate;
-    }
-
-    /**
-     * Used to query / edit an existing company account consolidation.
-     * Parameters are self-explanatory.
-     * @param id
-     * @param forCompanyId
-     * @param tiedToInitialHolderId
-     * @param tiedToCurrentHolderId
-     * @param initialChn
-     * @param currentChn
-     * @param bondShareUnit
-     * @param transfer
-     * @param receiverUnitState
-     * @param receiverStartUnit
-     * @param unitAfterTransfer
-     * @param mergeDate 
-     */
-    public CompanyAccountConsolidation(int id, int forCompanyId, int tiedToInitialHolderId, int tiedToCurrentHolderId, String initialChn, String currentChn, int bondShareUnit, boolean transfer, int receiverUnitState, int receiverStartUnit, int unitAfterTransfer, String mergeDate) {
-        this.id = id;
-        this.forCompanyId = forCompanyId;
-        this.tiedToInitialHolderId = tiedToInitialHolderId;
-        this.tiedToCurrentHolderId = tiedToCurrentHolderId;
-        this.initialChn = initialChn;
-        this.currentChn = currentChn;
-        this.bondShareUnit = bondShareUnit;
-        this.transfer = transfer;
-        this.receiverUnitState = receiverUnitState;
-        this.receiverStartUnit = receiverStartUnit;
-        this.unitAfterTransfer = unitAfterTransfer;
-        this.mergeDate = mergeDate;
-    }
-
     public int getId() {
         return id;
     }
@@ -125,6 +67,14 @@ public class CompanyAccountConsolidation implements Serializable {
 
     public void setForCompanyId(int forCompanyId) {
         this.forCompanyId = forCompanyId;
+    }
+
+    public int getForBondOfferId() {
+        return forBondOfferId;
+    }
+
+    public void setForBondOfferId(int forBondOfferId) {
+        this.forBondOfferId = forBondOfferId;
     }
 
     public int getTiedToInitialHolderId() {

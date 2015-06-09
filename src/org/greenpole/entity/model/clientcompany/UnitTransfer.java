@@ -29,11 +29,11 @@ public class UnitTransfer implements Serializable {
     @XmlElement
     private int holderIdFrom;
     @XmlElement
-    private int chnFrom;
+    private String chnFrom;
     @XmlElement
     private int holderIdTo;
     @XmlElement
-    private int chnTo;
+    private String chnTo;
     @XmlElement
     private int clientCompanyId;
     @XmlElement
@@ -69,7 +69,7 @@ public class UnitTransfer implements Serializable {
      * @param unitPrice the price per share unit
      * @param transferTypeId the type of transfer
      */
-    public UnitTransfer(int holderIdFrom, int chnFrom, int holderIdTo, int chnTo, int clientCompanyId, int units, double unitPrice, int transferTypeId) {
+    public UnitTransfer(int holderIdFrom, String chnFrom, int holderIdTo, String chnTo, int clientCompanyId, int units, double unitPrice, int transferTypeId) {
         this.holderIdFrom = holderIdFrom;
         this.chnFrom = chnFrom;
         this.holderIdTo = holderIdTo;
@@ -93,7 +93,7 @@ public class UnitTransfer implements Serializable {
      * @param startingPrincipalValue the starting principal value (value of the bond units)
      * @param remainingPrincipalValue the remaining principal value (value of the bond units left to be redeemed)
      */
-    public UnitTransfer(int holderIdFrom, int chnFrom, int holderIdTo, int chnTo, int bondOfferId, int units, double unitPrice, int transferTypeId, double startingPrincipalValue, double remainingPrincipalValue) {
+    public UnitTransfer(int holderIdFrom, String chnFrom, int holderIdTo, String chnTo, int bondOfferId, int units, double unitPrice, int transferTypeId, double startingPrincipalValue, double remainingPrincipalValue) {
         this.holderIdFrom = holderIdFrom;
         this.chnFrom = chnFrom;
         this.holderIdTo = holderIdTo;
@@ -106,7 +106,7 @@ public class UnitTransfer implements Serializable {
         this.remainingPrincipalValue = remainingPrincipalValue;
     }
 
-    public UnitTransfer(int cscsTransactionId, int holderIdFrom, int chnFrom, int holderIdTo, int chnTo, int clientCompanyId, String clientCompanyName, int bondOfferId, int units, double unitPrice, String unitType, int transferTypeId, String transactionDate, double startingPrincipalValue, double remainingPrincipalValue) {
+    public UnitTransfer(int cscsTransactionId, int holderIdFrom, String chnFrom, int holderIdTo, String chnTo, int clientCompanyId, String clientCompanyName, int bondOfferId, int units, double unitPrice, String unitType, int transferTypeId, String transactionDate, double startingPrincipalValue, double remainingPrincipalValue) {
         this.cscsTransactionId = cscsTransactionId;
         this.holderIdFrom = holderIdFrom;
         this.chnFrom = chnFrom;
@@ -140,19 +140,19 @@ public class UnitTransfer implements Serializable {
         this.holderIdTo = holderIdTo;
     }
 
-    public int getChnFrom() {
+    public String getChnFrom() {
         return chnFrom;
     }
 
-    public void setChnFrom(int chnFrom) {
+    public void setChnFrom(String chnFrom) {
         this.chnFrom = chnFrom;
     }
 
-    public int getChnTo() {
+    public String getChnTo() {
         return chnTo;
     }
 
-    public void setChnTo(int chnTo) {
+    public void setChnTo(String chnTo) {
         this.chnTo = chnTo;
     }
 

@@ -27,8 +27,8 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
 @XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderId","holderAcctNumber", "chn", "firstName", "middleName", "lastName",
-    "typeId", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "phoneNumbers",
-    "emailAddresses", "residentialAddresses", "postalAddresses", "companyAccounts",
+    "typeId", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "addressPrimary",
+    "phoneNumbers", "emailAddresses", "residentialAddresses", "postalAddresses", "companyAccounts",
     "bondAccounts", "administrators","holderStockbroker","changes","deletedPostalAddresses",
     "deletedResidentialAddresses","deletedEmailAddresses","deletedPhoneNumbers"})
 public class Holder implements Serializable {
@@ -59,6 +59,8 @@ public class Holder implements Serializable {
     private boolean pryHolder;
     @XmlElement
     private String pryAddress;
+    @XmlElement
+    private Address addressPrimary;
     
     @XmlElementWrapper(name = "phoneNumbers")
     private List<PhoneNumber> phoneNumbers;
@@ -343,5 +345,13 @@ public class Holder implements Serializable {
 
     public void setChanges(List<HolderChanges> changes) {
         this.changes = changes;
+    }
+
+    public Address getAddressPrimary() {
+        return addressPrimary;
+    }
+
+    public void setAddressPrimary(Address addressPrimary) {
+        this.addressPrimary = addressPrimary;
     }
 }

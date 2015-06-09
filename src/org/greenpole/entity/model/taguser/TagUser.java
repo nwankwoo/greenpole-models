@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.holder.QueryHolderChanges;
 import org.greenpole.entity.model.holder.QueryHolderConsolidation;
+import org.greenpole.entity.model.holder.merge.AccountConsolidation;
 
 /**
  *

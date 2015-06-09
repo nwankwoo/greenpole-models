@@ -19,14 +19,16 @@ import org.greenpole.entity.model.clientcompany.Bank;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "clientCompanyId", "shareUnits", "esop",
-    "nubanAccount", "bank", "holderCompAccPrimary", "merged","secHolderId",
-    "secClientCompanyId"})
+@XmlType(propOrder = {"holderId", "clientCompanyId", "clientCompanyName", "shareUnits", "esop",
+    "nubanAccount", "bank", "holderCompAccPrimary", "merged","pryHolderId",
+    "pryClientCompanyId"})
 public class HolderCompanyAccount implements Serializable {
     @XmlElement
     private int holderId;
     @XmlElement
     private int clientCompanyId;
+    @XmlElement
+    private String clientCompanyName;
     @XmlElement
     private int shareUnits;
     @XmlElement
@@ -41,9 +43,9 @@ public class HolderCompanyAccount implements Serializable {
     private boolean merged;
     
     @XmlElement
-    private int secHolderId;
+    private int pryHolderId;
     @XmlElement
-    private int secClientCompanyId;
+    private int pryClientCompanyId;
 
     public HolderCompanyAccount() {
     }
@@ -59,13 +61,13 @@ public class HolderCompanyAccount implements Serializable {
         this.holderCompAccPrimary = holderCompAccPrimary;
     }
 
-    public HolderCompanyAccount(int holderId, int clientCompanyId, boolean merged, boolean holderCompAccPrimary, int secHolderId, int secClientCompanyId) {
+    public HolderCompanyAccount(int holderId, int clientCompanyId, boolean merged, boolean holderCompAccPrimary, int pryHolderId, int pryClientCompanyId) {
         this.holderId = holderId;
         this.clientCompanyId = clientCompanyId;
         this.merged = merged;
         this.holderCompAccPrimary = holderCompAccPrimary;
-        this.secHolderId = secHolderId;
-        this.secClientCompanyId = secClientCompanyId;
+        this.pryHolderId = pryHolderId;
+        this.pryClientCompanyId = pryClientCompanyId;
     }
 
     public int getClientCompanyId() {
@@ -74,6 +76,14 @@ public class HolderCompanyAccount implements Serializable {
 
     public void setClientCompanyId(int clientCompanyId) {
         this.clientCompanyId = clientCompanyId;
+    }
+
+    public String getClientCompanyName() {
+        return clientCompanyName;
+    }
+
+    public void setClientCompanyName(String clientCompanyName) {
+        this.clientCompanyName = clientCompanyName;
     }
 
     public int getHolderId() {
@@ -132,19 +142,19 @@ public class HolderCompanyAccount implements Serializable {
         this.holderCompAccPrimary = holderCompAccPrimary;
     }
 
-    public int getSecHolderId() {
-        return secHolderId;
+    public int getPryHolderId() {
+        return pryHolderId;
     }
 
-    public void setSecHolderId(int secHolderId) {
-        this.secHolderId = secHolderId;
+    public void setPryHolderId(int pryHolderId) {
+        this.pryHolderId = pryHolderId;
     }
 
-    public int getSecClientCompanyId() {
-        return secClientCompanyId;
+    public int getPryClientCompanyId() {
+        return pryClientCompanyId;
     }
 
-    public void setSecClientCompanyId(int secClientCompanyId) {
-        this.secClientCompanyId = secClientCompanyId;
+    public void setPryClientCompanyId(int pryClientCompanyId) {
+        this.pryClientCompanyId = pryClientCompanyId;
     }
 }

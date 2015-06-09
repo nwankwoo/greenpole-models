@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"descriptor", "holder", "units", "totalHoldings", "isShareHolder"})
+@XmlType(propOrder = {"descriptor", "holder", "units", "totalHoldings", "isShareHolder", "isTaxExempted"})
 public class QueryHolder implements Serializable {
     //descriptor must be (default value) = holder:none;units:none;totalHoldings:none
     //possible values = holder:none / holder:exact
@@ -37,16 +37,19 @@ public class QueryHolder implements Serializable {
     private Map<String, Integer> totalHoldings; //should be "start" and "end" keys for range, and "start" for exact
     @XmlElement
     boolean isShareHolder; //true, if shareholder. False, if bondholder
+    @XmlElement
+    boolean isTaxExempted; //true, if holder is tax exempted
 
     public QueryHolder() {
     }
 
-    public QueryHolder(String descriptor, Holder holder, Map<String, Integer> units, Map<String, Integer> totalHoldings, boolean isShareHolder) {
+    public QueryHolder(String descriptor, Holder holder, Map<String, Integer> units, Map<String, Integer> totalHoldings, boolean isShareHolder, boolean isTaxExempted) {
         this.descriptor = descriptor;
         this.holder = holder;
         this.units = units;
         this.totalHoldings = totalHoldings;
         this.isShareHolder = isShareHolder;
+        this.isTaxExempted = isTaxExempted;
     }
 
     public String getDescriptor() {
@@ -87,5 +90,13 @@ public class QueryHolder implements Serializable {
 
     public void setIsShareHolder(boolean isShareHolder) {
         this.isShareHolder = isShareHolder;
+    }
+
+    public boolean isIsTaxExempted() {
+        return isTaxExempted;
+    }
+
+    public void setIsTaxExempted(boolean isTaxExempted) {
+        this.isTaxExempted = isTaxExempted;
     }
 }

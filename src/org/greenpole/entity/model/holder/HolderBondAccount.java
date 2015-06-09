@@ -19,14 +19,17 @@ import org.greenpole.entity.model.clientcompany.Bank;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "bondOfferId", "bondUnits", "startingPrincipalValue", "remainingPrincipalValue",
-    "nubanAccount", "bank", "holderBondAccPrimary", "merged","secHolderId","secBondOfferId"})
+@XmlType(propOrder = {"holderId", "bondOfferId", "bondOfferTitle", "bondUnits", "startingPrincipalValue", 
+    "remainingPrincipalValue", "nubanAccount", "bank", "holderBondAccPrimary", "merged", "pryHolderId", 
+    "pryBondOfferId"})
 public class HolderBondAccount implements Serializable {
 
     @XmlElement
     private int holderId;
     @XmlElement
     private int bondOfferId;
+    @XmlElement
+    private String bondOfferTitle;
     @XmlElement
     private int bondUnits;
     @XmlElement
@@ -43,9 +46,9 @@ public class HolderBondAccount implements Serializable {
     private boolean merged;
     
     @XmlElement
-    private int secHolderId;
+    private int pryHolderId;
     @XmlElement
-    private int secBondOfferId;
+    private int pryBondOfferId;
 
     public HolderBondAccount() {
     }
@@ -62,13 +65,13 @@ public class HolderBondAccount implements Serializable {
         this.holderBondAccPrimary = holderBondAccPrimary;
     }
 
-    public HolderBondAccount(int holderId, int bondOfferId, boolean merged, boolean holderBondAccPrimary, int secHolderId, int secBondOfferId) {
+    public HolderBondAccount(int holderId, int bondOfferId, boolean merged, boolean holderBondAccPrimary, int pryHolderId, int pryBondOfferId) {
         this.holderId = holderId;
         this.bondOfferId = bondOfferId;
         this.merged = merged;
         this.holderBondAccPrimary = holderBondAccPrimary;
-        this.secHolderId = secHolderId;
-        this.secBondOfferId = secBondOfferId;
+        this.pryHolderId = pryHolderId;
+        this.pryBondOfferId = pryBondOfferId;
     }
 
     public int getHolderId() {
@@ -85,6 +88,14 @@ public class HolderBondAccount implements Serializable {
 
     public void setBondOfferId(int bondOfferId) {
         this.bondOfferId = bondOfferId;
+    }
+
+    public String getBondOfferTitle() {
+        return bondOfferTitle;
+    }
+
+    public void setBondOfferTitle(String bondOfferTitle) {
+        this.bondOfferTitle = bondOfferTitle;
     }
 
     public int getBondUnits() {
@@ -143,19 +154,19 @@ public class HolderBondAccount implements Serializable {
         this.holderBondAccPrimary = holderBondAccPrimary;
     }
 
-    public int getSecHolderId() {
-        return secHolderId;
+    public int getPryHolderId() {
+        return pryHolderId;
     }
 
-    public void setSecHolderId(int secHolderId) {
-        this.secHolderId = secHolderId;
+    public void setPryHolderId(int pryHolderId) {
+        this.pryHolderId = pryHolderId;
     }
 
-    public int getSecBondOfferId() {
-        return secBondOfferId;
+    public int getPryBondOfferId() {
+        return pryBondOfferId;
     }
 
-    public void setSecBondOfferId(int secBondOfferId) {
-        this.secBondOfferId = secBondOfferId;
+    public void setPryBondOfferId(int pryBondOfferId) {
+        this.pryBondOfferId = pryBondOfferId;
     }
 }
