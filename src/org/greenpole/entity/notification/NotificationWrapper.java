@@ -59,8 +59,8 @@ import org.greenpole.entity.security.UserProfile;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id","code","messageTag","from","to","description","model",
-    "fromType","toType","attendedTo"})
+@XmlType(propOrder = {"id","code","messageTag","notificationType","from","to",
+    "description","model","fromType","toType","attendedTo"})
 @XmlSeeAlso({Address.class, EmailAddress.class, PhoneNumber.class, Bank.class, BondOffer.class,
     BondOfferPaymentPlan.class, BondType.class, ClientCompany.class, InitialPublicOffer.class,
     PrivatePlacement.class, QueryClientCompany.class, ShareQuotation.class, UnitTransfer.class,
@@ -86,6 +86,8 @@ public class NotificationWrapper implements Serializable {
     @XmlElement
     private String messageTag;
     @XmlElement
+    private String notificationType;
+    @XmlElement
     private String fromType;
     @XmlElement
     private String toType;
@@ -109,7 +111,7 @@ public class NotificationWrapper implements Serializable {
      * @param toType
      * @param attendedTo 
      */
-    public NotificationWrapper(int id, String code, String description, String from, String to, List<?> model, String messageTag, String fromType, String toType, boolean attendedTo) {
+    public NotificationWrapper(int id, String code, String description, String from, String to, List<?> model, String messageTag, String notificationType, String fromType, String toType, boolean attendedTo) {
         this.id = id;
         this.code = code;
         this.description = description;
@@ -117,6 +119,7 @@ public class NotificationWrapper implements Serializable {
         this.to = to;
         this.model = model;
         this.messageTag = messageTag;
+        this.notificationType = notificationType;
         this.fromType = fromType;
         this.toType = toType;
         this.attendedTo = attendedTo;
@@ -131,17 +134,19 @@ public class NotificationWrapper implements Serializable {
      * @param to
      * @param model
      * @param messageTag
+     * @param notificationType
      * @param fromType
      * @param toType
      * @param attendedTo 
      */
-    public NotificationWrapper(String code, String description, String from, String to, List<?> model, String messageTag, String fromType, String toType, boolean attendedTo) {
+    public NotificationWrapper(String code, String description, String from, String to, List<?> model, String messageTag, String notificationType, String fromType, String toType, boolean attendedTo) {
         this.code = code;
         this.description = description;
         this.from = from;
         this.to = to;
         this.model = model;
         this.messageTag = messageTag;
+        this.notificationType = notificationType;
         this.fromType = fromType;
         this.toType = toType;
         this.attendedTo = attendedTo;
@@ -243,6 +248,14 @@ public class NotificationWrapper implements Serializable {
      */
     public void setMessageTag(String messageTag) {
         this.messageTag = messageTag;
+    }
+
+    public String getNotificationType() {
+        return notificationType;
+    }
+
+    public void setNotificationType(String notificationType) {
+        this.notificationType = notificationType;
     }
 
     /**
