@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import org.greenpole.entity.model.Address;
 
 /**
  *
@@ -18,14 +19,23 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id","holderId", "title", "filePath", "type", "startDate", "endDate",
-    "primaryPowerOfAttorney", "fileContents"})
+@XmlType(propOrder = {"id","holderId", "holderFirstName", "holderMiddleName",
+    "holderLastName", "holderAddress", "title", "filePath", "type", "startDate",
+    "endDate", "primaryPowerOfAttorney", "fileContents"})
 public class PowerOfAttorney implements Serializable {
 
     @XmlElement
     private int id;
     @XmlElement
     private int holderId;
+    @XmlElement
+    private int holderFirstName;
+    @XmlElement
+    private int holderMiddleName;
+    @XmlElement
+    private int holderLastName;
+    @XmlElement
+    private Address holderAddress;
     @XmlElement
     private String title;
     @XmlElement
@@ -208,6 +218,38 @@ public class PowerOfAttorney implements Serializable {
 
     public void setFileContents(String fileContents) {
         this.fileContents = fileContents;
+    }
+
+    public int getHolderFirstName() {
+        return holderFirstName;
+    }
+
+    public void setHolderFirstName(int holderFirstName) {
+        this.holderFirstName = holderFirstName;
+    }
+
+    public int getHolderMiddleName() {
+        return holderMiddleName;
+    }
+
+    public void setHolderMiddleName(int holderMiddleName) {
+        this.holderMiddleName = holderMiddleName;
+    }
+
+    public int getHolderLastName() {
+        return holderLastName;
+    }
+
+    public void setHolderLastName(int holderLastName) {
+        this.holderLastName = holderLastName;
+    }
+
+    public Address getHolderAddress() {
+        return holderAddress;
+    }
+
+    public void setHolderAddress(Address holderAddress) {
+        this.holderAddress = holderAddress;
     }
 
 }
