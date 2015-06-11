@@ -74,6 +74,11 @@ public class ClientCompany implements Serializable {
     private List<EmailAddress> deletedEmailAddresses;
     @XmlElement
     private List<PhoneNumber> deletedPhoneNumbers;
+    //added by emma
+    @XmlElement
+    private boolean clientCompanyPrimary;
+    @XmlElement
+    private boolean merged;
 
     /**
      * Initialises client company object.
@@ -189,6 +194,31 @@ public class ClientCompany implements Serializable {
         this.depositoryName = depositoryName;
     }
 
+    public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, List<Address> addresses, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers, int depositoryId, boolean valid, String nseSectorName, String depositoryName, int noShareholders, int noBondholders, double shareUnitPrice, List<Address> deletedAddresses, List<EmailAddress> deletedEmailAddresses, List<PhoneNumber> deletedPhoneNumbers, boolean clientCompanyPrimary, boolean merged) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.nseSectorId = nseSectorId;
+        this.ceo = ceo;
+        this.secretary = secretary;
+        this.addresses = addresses;
+        this.emailAddresses = emailAddresses;
+        this.phoneNumbers = phoneNumbers;
+        this.depositoryId = depositoryId;
+        this.valid = valid;
+        this.nseSectorName = nseSectorName;
+        this.depositoryName = depositoryName;
+        this.noShareholders = noShareholders;
+        this.noBondholders = noBondholders;
+        this.shareUnitPrice = shareUnitPrice;
+        this.deletedAddresses = deletedAddresses;
+        this.deletedEmailAddresses = deletedEmailAddresses;
+        this.deletedPhoneNumbers = deletedPhoneNumbers;
+        this.clientCompanyPrimary = clientCompanyPrimary;
+        this.merged = merged;
+    }
+
+   
     /**
      * Constructor for setting client company for share unit quotation upload
      * @param code the company's code
@@ -430,4 +460,33 @@ public class ClientCompany implements Serializable {
     public void setShareUnitPrice(double shareUnitPrice) {
         this.shareUnitPrice = shareUnitPrice;
     }
+
+    /**
+     * @return the clientCompanyPrimary
+     */
+    public boolean isClientCompanyPrimary() {
+        return clientCompanyPrimary;
+    }
+
+    /**
+     * @param clientCompanyPrimary the clientCompanyPrimary to set
+     */
+    public void setClientCompanyPrimary(boolean clientCompanyPrimary) {
+        this.clientCompanyPrimary = clientCompanyPrimary;
+    }
+
+    /**
+     * @return the merged
+     */
+    public boolean isMerged() {
+        return merged;
+    }
+
+    /**
+     * @param merged the merged to set
+     */
+    public void setMerged(boolean merged) {
+        this.merged = merged;
+    }
+    
 }

@@ -4,11 +4,9 @@
  * and open the template in the editor.
  */
 package org.greenpole.entrycode.emmanuel.model;
-
-import java.util.List;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlTransient;
+import org.greenpole.entity.model.holder.Holder;
 
 /**
  *

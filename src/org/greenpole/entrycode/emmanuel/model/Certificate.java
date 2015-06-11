@@ -12,6 +12,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.clientcompany.InitialPublicOffer;
 import org.greenpole.entity.model.clientcompany.PrivatePlacement;
+import org.greenpole.entity.model.clientcompany.ClientCompany;
+import org.greenpole.entity.model.holder.Holder;
 
 /**
  *
