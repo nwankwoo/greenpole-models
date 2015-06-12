@@ -50,7 +50,13 @@ public class InitialPublicOffer implements Serializable {
     private double tax;
     @XmlElement
     private double interestRate;
-
+//fields below are added by emmanuel and they are used for IPO report
+    @XmlElement
+    private int totalSharesSubscribed;
+    @XmlElement
+    private int totalSharesRemaining;
+    @XmlElement
+    private int totalSharesOverSubscribed;
     public InitialPublicOffer() {
     }
 
@@ -82,6 +88,15 @@ public class InitialPublicOffer implements Serializable {
         this.tax = tax;
         this.interestRate = interestRate;
     }
+
+    public InitialPublicOffer(int id, int totalSharesOnOffer, int totalSharesSubscribed, int totalSharesRemaining, int totalSharesOverSubscribed) {
+        this.id = id;
+        this.totalSharesOnOffer = totalSharesOnOffer;
+        this.totalSharesSubscribed = totalSharesSubscribed;
+        this.totalSharesRemaining = totalSharesRemaining;
+        this.totalSharesOverSubscribed = totalSharesOverSubscribed;
+    }
+    
 
     /**
      * @return the id
@@ -257,6 +272,48 @@ public class InitialPublicOffer implements Serializable {
      */
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
+    }
+
+    /**
+     * @return the totalSharesSubscribed
+     */
+    public int getTotalSharesSubscribed() {
+        return totalSharesSubscribed;
+    }
+
+    /**
+     * @param totalSharesSubscribed the totalSharesSubscribed to set
+     */
+    public void setTotalSharesSubscribed(int totalSharesSubscribed) {
+        this.totalSharesSubscribed = totalSharesSubscribed;
+    }
+
+    /**
+     * @return the totalSharesRemaining
+     */
+    public int getTotalSharesRemaining() {
+        return totalSharesRemaining;
+    }
+
+    /**
+     * @param totalSharesRemaining the totalSharesRemaining to set
+     */
+    public void setTotalSharesRemaining(int totalSharesRemaining) {
+        this.totalSharesRemaining = totalSharesRemaining;
+    }
+
+    /**
+     * @return the totalSharesOverSubscribed
+     */
+    public int getTotalSharesOverSubscribed() {
+        return totalSharesOverSubscribed;
+    }
+
+    /**
+     * @param totalSharesOverSubscribed the totalSharesOverSubscribed to set
+     */
+    public void setTotalSharesOverSubscribed(int totalSharesOverSubscribed) {
+        this.totalSharesOverSubscribed = totalSharesOverSubscribed;
     }
     
 }

@@ -46,7 +46,13 @@ public class PrivatePlacement implements Serializable {
     private String openingDate;
     @XmlElement
     private String closingDate;
-
+//added by emmanuel for pp report
+    @XmlElement
+    private int totalSharesSubscribed;
+    @XmlElement
+    private int totalSharesRemaining;
+    @XmlElement
+    private int totalSharesOverSubscribed;
     public PrivatePlacement() {
     }
 
@@ -98,6 +104,14 @@ public class PrivatePlacement implements Serializable {
         this.offerSize = offerSize;
         this.openingDate = openingDate;
         this.closingDate = closingDate;
+    }
+
+    public PrivatePlacement(int id, int totalSharesOnOffer, int totalSharesSubscribed, int totalSharesRemaining, int totalSharesOverSubscribed) {
+        this.id = id;
+        this.totalSharesOnOffer = totalSharesOnOffer;
+        this.totalSharesSubscribed = totalSharesSubscribed;
+        this.totalSharesRemaining = totalSharesRemaining;
+        this.totalSharesOverSubscribed = totalSharesOverSubscribed;
     }
 
     /**
@@ -247,6 +261,48 @@ public class PrivatePlacement implements Serializable {
      */
     public void setClosingDate(String closingDate) {
         this.closingDate = closingDate;
+    }
+
+    /**
+     * @return the totalSharesSubscribed
+     */
+    public int getTotalSharesSubscribed() {
+        return totalSharesSubscribed;
+    }
+
+    /**
+     * @param totalSharesSubscribed the totalSharesSubscribed to set
+     */
+    public void setTotalSharesSubscribed(int totalSharesSubscribed) {
+        this.totalSharesSubscribed = totalSharesSubscribed;
+    }
+
+    /**
+     * @return the totalSharesRemaining
+     */
+    public int getTotalSharesRemaining() {
+        return totalSharesRemaining;
+    }
+
+    /**
+     * @param totalSharesRemaining the totalSharesRemaining to set
+     */
+    public void setTotalSharesRemaining(int totalSharesRemaining) {
+        this.totalSharesRemaining = totalSharesRemaining;
+    }
+
+    /**
+     * @return the totalSharesOverSubscribed
+     */
+    public int getTotalSharesOverSubscribed() {
+        return totalSharesOverSubscribed;
+    }
+
+    /**
+     * @param totalSharesOverSubscribed the totalSharesOverSubscribed to set
+     */
+    public void setTotalSharesOverSubscribed(int totalSharesOverSubscribed) {
+        this.totalSharesOverSubscribed = totalSharesOverSubscribed;
     }
 
 }
