@@ -7,13 +7,25 @@ package org.greenpole.entirycode.jeph.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Jephthah Sadare
  */
+@XmlRootElement
+@XmlSeeAlso({Dividend.class, DividendSettlement.class})
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"id", "clientCompanyId", "yearType", "issueType",
+    "qualifyDate", "withholdingTaxRateInd", "withholdingTaxRateCorp", "yearEnding", 
+    "datePayable", "rate", "dividends", "dividendSettlements"})
+
 public class DividendDeclared implements Serializable {
 
     @XmlElement
@@ -24,6 +36,8 @@ public class DividendDeclared implements Serializable {
     private String yearType;// interim or final
     @XmlElement
     private String issueType;
+    @XmlElement
+    private String issueDate;
     @XmlElement
     private String qualifyDate;
     @XmlElement
@@ -50,6 +64,7 @@ public class DividendDeclared implements Serializable {
      * @param clientCompanyId
      * @param yearType
      * @param issueType
+     * @param issueDate
      * @param qualifyDate
      * @param withholdingTaxRateInd
      * @param withholdingTaxRateCorp
@@ -59,11 +74,12 @@ public class DividendDeclared implements Serializable {
      * @param dividends
      * @param dividendSettlements 
      */
-    public DividendDeclared(int id, int clientCompanyId, String yearType, String issueType, String qualifyDate, double withholdingTaxRateInd, double withholdingTaxRateCorp, int yearEnding, String datePayable, double rate, List<Dividend> dividends, List<DividendSettlement> dividendSettlements) {
+    public DividendDeclared(int id, int clientCompanyId, String yearType, String issueType, String issueDate, String qualifyDate, double withholdingTaxRateInd, double withholdingTaxRateCorp, int yearEnding, String datePayable, double rate, List<Dividend> dividends, List<DividendSettlement> dividendSettlements) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;
         this.yearType = yearType;
         this.issueType = issueType;
+        this.issueDate = issueDate;
         this.qualifyDate = qualifyDate;
         this.withholdingTaxRateInd = withholdingTaxRateInd;
         this.withholdingTaxRateCorp = withholdingTaxRateCorp;
@@ -73,6 +89,8 @@ public class DividendDeclared implements Serializable {
         this.dividends = dividends;
         this.dividendSettlements = dividendSettlements;
     }
+    
+    
 
     public int getId() {
         return id;
@@ -106,6 +124,14 @@ public class DividendDeclared implements Serializable {
         this.issueType = issueType;
     }
 
+    public String getIssueDate() {
+        return issueDate;
+    }
+
+    public void setIssueDate(String issueDate) {
+        this.issueDate = issueDate;
+    }
+        
     public String getQualifyDate() {
         return qualifyDate;
     }
