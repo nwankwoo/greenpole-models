@@ -7,28 +7,13 @@ package org.greenpole.entirycode.jeph.model;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Jephthah Sadare
  */
-@XmlRootElement
-@XmlSeeAlso({DividendAnnotation.class})
-@XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id", "clientCompanyId", "dividendDeclaredId", "dividendIssueTypeId",
-    "holderCompanyAccountId", "warrantNumber", "clientCompName", "issueType", "issueDate", 
-    "divNumber", "yearType", "yearEnding", "SHolderMailingAddr", "rate", "compAccHoldings", 
-    "withldingTaxRate", "grossAmount", "tax","payableAmount", "payableDate", "issued", 
-    "issuedDate", "reIssued", "reIssuedDate", "paid", "paidDate", "paymentMethod",
-    "unclaimed", "unclaimedDate", "canelled", "canelledDate", "dividenAnnotations"})
-
 public class Dividend implements Serializable {
 
     @XmlElement

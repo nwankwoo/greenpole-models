@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entirycode.jeph.model;
+package org.greenpole.entrycode.jeph;
 
 import java.io.Serializable;
 import java.util.List;
