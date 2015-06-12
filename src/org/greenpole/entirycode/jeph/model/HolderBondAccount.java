@@ -6,7 +6,11 @@
 package org.greenpole.entirycode.jeph.model;
 
 import java.io.Serializable;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.clientcompany.Bank;
 import org.greenpole.entity.model.holder.Holder;
 
@@ -14,6 +18,13 @@ import org.greenpole.entity.model.holder.Holder;
  *
  * @author Jephthah Sadare
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"holderId", "bondOfferId", "bondUnits",
+    "startingPrincipalValue", "remainingPrincipalValue", "nubanAccount",
+    "bank", "holderBondAccPrimary", "merged", "holder",
+    "secHolderId", "secBondOfferId"})
+
 public class HolderBondAccount implements Serializable {
 
     @XmlElement
@@ -36,7 +47,6 @@ public class HolderBondAccount implements Serializable {
     private boolean merged;
     @XmlElement
     private Holder holder;
-
     @XmlElement
     private int secHolderId;
     @XmlElement

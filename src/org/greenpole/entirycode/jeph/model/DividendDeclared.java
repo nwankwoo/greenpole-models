@@ -7,13 +7,26 @@ package org.greenpole.entirycode.jeph.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Jephthah Sadare
  */
+@XmlRootElement
+@XmlSeeAlso({Dividend.class, DividendSettlement.class})
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"id", "clientCompanyId", "yearType",
+    "issueType", "issueDate", "qualifyDate", "withholdingTaxRateInd",
+    "withholdingTaxRateCorp", "yearEnding", "datePayable", "rate",
+    "dividends", "dividendSettlements"})
+
 public class DividendDeclared implements Serializable {
 
     @XmlElement
