@@ -20,8 +20,7 @@ import org.greenpole.entity.model.holder.Holder;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "bondOfferId", "bondUnits",
-    "startingPrincipalValue", "remainingPrincipalValue", "nubanAccount",
+@XmlType(propOrder = {"holderId", "bondOfferId", "bondUnits", "startingPrincipalValue", "remainingPrincipalValue", "nubanAccount",
     "bank", "holderBondAccPrimary", "merged", "holder",
     "secHolderId", "secBondOfferId"})
 
