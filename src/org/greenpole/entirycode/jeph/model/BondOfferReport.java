@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.greenpole.entrycode.jeph;
+package org.greenpole.entirycode.jeph.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.holder.Holder;
 import org.greenpole.entity.model.holder.HolderBondAccount;
 
@@ -16,6 +21,13 @@ import org.greenpole.entity.model.holder.HolderBondAccount;
  *
  * @author Jephthah Sadare
  */
+@XmlRootElement
+@XmlSeeAlso({HolderBondAccount.class, Holder.class})
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"id", "clientCompanyId", "title",
+    "bondUnitPrice", "bondMaturity", "bondTypeId", "interestRate",
+    "valid", "bondOfferPaymentPlanId", "holderBondAccounts", "holder"})
+
 public class BondOfferReport implements Serializable {
 
     @XmlElement

@@ -7,23 +7,37 @@ package org.greenpole.entirycode.jeph.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
 /**
  *
  * @author Jephthah Sadare
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"id", "clientCompanyId", "dividendDeclaredId","dividendIssueTypeId", 
+    "holderCompanyAccountId", "warrantNumber", "clientCompName","issueType", "issueDate", 
+    "divNumber", "yearType", "yearEnding","SHolderMailingAddr", "rate", 
+    "compAccHoldings", "withldingTaxRate", "grossAmount","tax", "payableAmount", 
+    "payableDate", "issued", "issuedDate","reIssued", "reIssuedDate", 
+    "paid", "paidDate", "paymentMethod","unclaimed", "unclaimedDate", 
+    "cancelled", "canelledDate", "dividenAnnotations"})
+
 public class Dividend implements Serializable {
 
     @XmlElement
     private int id;
     @XmlElement
-    private int clientCompanyId;
+    private int clientCompanyId;//
     @XmlElement
-    private int dividendDeclaredId;
+    private int dividendDeclaredId;//
     @XmlElement
-    private int dividendIssueTypeId;
+    private int dividendIssueTypeId;//
     @XmlElement
     private int holderCompanyAccountId;
     @XmlElement
@@ -39,7 +53,7 @@ public class Dividend implements Serializable {
     @XmlElement
     private String yearType;
     @XmlElement
-    private String yearEnding;
+    private String yearEnding;//
     @XmlElement
     private String SHolderMailingAddr;
     @XmlElement
@@ -57,29 +71,29 @@ public class Dividend implements Serializable {
     @XmlElement
     private String payableDate;
     @XmlElement
-    private boolean issued;
+    private boolean issued;//
     @XmlElement
-    private String issuedDate;
+    private String issuedDate;//
     @XmlElement
-    private boolean reIssued;
+    private boolean reIssued;//
     @XmlElement
-    private String reIssuedDate;
+    private String reIssuedDate;//
     @XmlElement
-    private Boolean paid;
+    private Boolean paid;//
     @XmlElement
-    private String paidDate;
+    private String paidDate;//
     @XmlElement
-    private String paymentMethod;
+    private String paymentMethod;//
     @XmlElement
-    private boolean unclaimed;
+    private boolean unclaimed;//
     @XmlElement
-    private String unclaimedDate;
+    private String unclaimedDate;//
     @XmlElement
-    private boolean cancelled;
+    private boolean cancelled;//
     @XmlElement
-    private String canelledDate;
+    private String canelledDate;//
     @XmlElementWrapper(name = "dividenAnnotations")
-    private List<DividendAnnotation> dividenAnnotations;
+    private List<DividendAnnotation> dividenAnnotations;//
 
     public Dividend() {
     }
