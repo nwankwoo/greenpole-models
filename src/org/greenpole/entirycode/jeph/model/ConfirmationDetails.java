@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"title", "details"})
+@XmlType(propOrder = {"title", "details", "details"})
 
 public class ConfirmationDetails implements Serializable {
 

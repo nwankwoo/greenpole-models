@@ -22,6 +22,7 @@ import org.greenpole.entity.model.holder.Holder;
     "issuer", "sharesSubscribed", "amountPaid", "issuingHouse",
     "sharesSubscribedValue", "sharesAdjusted", "returnMoney", "processingPayment",
     "approved", "canceled", "dateApplied", "holder"})
+
 public class PrivatePlacementApplication {
 
     @XmlElement
