@@ -23,15 +23,13 @@ import org.greenpole.entity.model.clientcompany.ClientCompany;
 @XmlRootElement
 @XmlSeeAlso({ClientCompany.class, ProcessedTransactionHolder.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id", "clientCompanyId", "transactionTypeId",
-    "cscsTransactionId", "companyName", "processedTransactionHolders", "clientCompany"})
+@XmlType(propOrder = {"id", "transactionTypeId", "cscsTransactionId", 
+    "companyName", "processedTransactionHolders", "clientCompany"})
 
 public class ProcessedTransaction implements Serializable {
 
     @XmlElement
     private int id;
-    @XmlElement
-    private int clientCompanyId;
     @XmlElement
     private int transactionTypeId;
     @XmlElement
@@ -49,16 +47,14 @@ public class ProcessedTransaction implements Serializable {
     /**
      * 
      * @param id
-     * @param clientCompanyId
      * @param transactionTypeId
      * @param cscsTransactionId
      * @param companyName
      * @param processedTransactionHolders
      * @param clientCompany 
      */
-    public ProcessedTransaction(int id, int clientCompanyId, int transactionTypeId, int cscsTransactionId, String companyName, List<ProcessedTransactionHolder> processedTransactionHolders, ClientCompany clientCompany) {
+    public ProcessedTransaction(int id, int transactionTypeId, int cscsTransactionId, String companyName, List<ProcessedTransactionHolder> processedTransactionHolders, ClientCompany clientCompany) {
         this.id = id;
-        this.clientCompanyId = clientCompanyId;
         this.transactionTypeId = transactionTypeId;
         this.cscsTransactionId = cscsTransactionId;
         this.companyName = companyName;
@@ -72,14 +68,6 @@ public class ProcessedTransaction implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getClientCompanyId() {
-        return clientCompanyId;
-    }
-
-    public void setClientCompanyId(int clientCompanyId) {
-        this.clientCompanyId = clientCompanyId;
     }
 
     public int getTransactionTypeId() {
