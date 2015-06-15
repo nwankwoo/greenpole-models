@@ -32,7 +32,7 @@ public class PrivatePlacement implements Serializable {
     @XmlElement
     private String clientCompanyName;
     @XmlElement
-    private int totalSharesOnOffer;
+    private BigDecimal totalSharesOnOffer;
     @XmlElement
     private String methodOfOffer;
     @XmlElement
@@ -69,7 +69,7 @@ public class PrivatePlacement implements Serializable {
      * @param openingDate
      * @param closingDate 
      */
-    public PrivatePlacement(int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
+    public PrivatePlacement(int clientCompanyId, BigDecimal totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnOffer = totalSharesOnOffer;
         this.methodOfOffer = methodOfOffer;
@@ -94,7 +94,7 @@ public class PrivatePlacement implements Serializable {
      * @param openingDate
      * @param closingDate 
      */
-    public PrivatePlacement(int id, int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
+    public PrivatePlacement(int id, int clientCompanyId, BigDecimal totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnOffer = totalSharesOnOffer;
@@ -107,7 +107,7 @@ public class PrivatePlacement implements Serializable {
         this.closingDate = closingDate;
     }
 
-    public PrivatePlacement(int id, int totalSharesOnOffer, int totalSharesSubscribed, int totalSharesRemaining, int totalSharesOverSubscribed) {
+    public PrivatePlacement(int id, BigDecimal totalSharesOnOffer, int totalSharesSubscribed, int totalSharesRemaining, int totalSharesOverSubscribed) {
         this.id = id;
         this.totalSharesOnOffer = totalSharesOnOffer;
         this.totalSharesSubscribed = totalSharesSubscribed;
@@ -154,14 +154,14 @@ public class PrivatePlacement implements Serializable {
     /**
      * @return the totalSharesOnOffer
      */
-    public int getTotalSharesOnOffer() {
+    public BigDecimal getTotalSharesOnOffer() {
         return totalSharesOnOffer;
     }
 
     /**
      * @param totalSharesOnOffer the totalSharesOnOffer to set
      */
-    public void setTotalSharesOnOffer(int totalSharesOnOffer) {
+    public void setTotalSharesOnOffer(BigDecimal totalSharesOnOffer) {
         this.totalSharesOnOffer = totalSharesOnOffer;
     }
 
