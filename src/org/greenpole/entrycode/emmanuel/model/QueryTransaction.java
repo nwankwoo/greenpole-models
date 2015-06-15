@@ -21,13 +21,18 @@ import org.greenpole.entity.model.clientcompany.UnitTransfer;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"descriptor", "processedTransaction", "startDate", "endDate", "unitTransfer","shareUnitSold","shareUnitBought","bondUnitSold","bondUnitBought"})
+@XmlType(propOrder = {"descriptor", "startDate", "endDate", "unitTransfer","shareUnitSold","shareUnitBought","bondUnitSold","bondUnitBought","isShareHolder"})
 public class QueryTransaction implements Serializable {
-
+//descriptor must be (default value) = date:none;unitTransfer:none;shareUnitSold:none;shareUnitBought:none;bondUnitSold:none;bondUnitBought:none
+//possible values = date: none / date: before / date: between / date: after / date: exact   
+//possible values = unitTransfer: none / unitTransfer:client company name / unitTransfer: client company Id / unitTransfer: from shareholder /
+    //unitTransfer: to shareholder /unitTransfer: from bondholder / unitTransfer: to bondholder
+    //possible values = shareUnitSold:none / shareUnitSold:exact / shareUnitSold:range / shareUnitSold: approximated / - note, units is tied to bond or share, so holderType should be set
+//possible values = shareUnitBought:none / shareUnitBought:exact / shareUnitBought:range / shareUnitBought: approximated /
+//possible values = bondUnitSold:none / bondUnitSold:exact / bondUnitSold:range / bondUnitSold: approximated /
+//possible values = bondUnitBought:none / bondUnitBought:exact / bondUnitBought:range / bondUnitBought: approximated /
     @XmlElement
     private String descriptor;
-    @XmlElement
-    private ProcessedTransaction processedTransaction;
     @XmlElement
     private String startDate;
     @XmlElement
@@ -42,21 +47,14 @@ public class QueryTransaction implements Serializable {
     private Map<String, Integer> bondUnitSold;
     @XmlElementWrapper(name = "bondUnitBought")
     private Map<String, Integer> bondUnitBought;
+    @XmlElement
+    private boolean isShareHolder; //true, if shareholder. False, if bondholder
 
     public QueryTransaction() {
     }
 
-    public QueryTransaction(String descriptor, ProcessedTransaction processedTransaction, String startDate, String endDate, UnitTransfer unitTransfer) {
+    public QueryTransaction(String descriptor, String startDate, String endDate, UnitTransfer unitTransfer, Map<String, Integer> shareUnitSold, Map<String, Integer> shareUnitBought, Map<String, Integer> bondUnitSold, Map<String, Integer> bondUnitBought, boolean isShareHolder) {
         this.descriptor = descriptor;
-        this.processedTransaction = processedTransaction;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.unitTransfer = unitTransfer;
-    }
-
-    public QueryTransaction(String descriptor, ProcessedTransaction processedTransaction, String startDate, String endDate, UnitTransfer unitTransfer, Map<String, Integer> shareUnitSold, Map<String, Integer> shareUnitBought, Map<String, Integer> bondUnitSold, Map<String, Integer> bondUnitBought) {
-        this.descriptor = descriptor;
-        this.processedTransaction = processedTransaction;
         this.startDate = startDate;
         this.endDate = endDate;
         this.unitTransfer = unitTransfer;
@@ -64,6 +62,7 @@ public class QueryTransaction implements Serializable {
         this.shareUnitBought = shareUnitBought;
         this.bondUnitSold = bondUnitSold;
         this.bondUnitBought = bondUnitBought;
+        this.isShareHolder = isShareHolder;
     }
 
     /**
@@ -78,20 +77,6 @@ public class QueryTransaction implements Serializable {
      */
     public void setDescriptor(String descriptor) {
         this.descriptor = descriptor;
-    }
-
-    /**
-     * @return the processedTransaction
-     */
-    public ProcessedTransaction getProcessedTransaction() {
-        return processedTransaction;
-    }
-
-    /**
-     * @param processedTransaction the processedTransaction to set
-     */
-    public void setProcessedTransaction(ProcessedTransaction processedTransaction) {
-        this.processedTransaction = processedTransaction;
     }
 
     /**
@@ -192,4 +177,18 @@ public class QueryTransaction implements Serializable {
         this.bondUnitBought = bondUnitBought;
     }
 
-}
+    /**
+     * @return the isShareHolder
+     */
+    public boolean isIsShareHolder() {
+        return isShareHolder;
+    }
+
+    /**
+     * @param isShareHolder the isShareHolder to set
+     */
+    public void setIsShareHolder(boolean isShareHolder) {
+        this.isShareHolder = isShareHolder;
+    }
+
+    }
