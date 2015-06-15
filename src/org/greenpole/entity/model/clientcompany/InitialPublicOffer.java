@@ -22,7 +22,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"id","clientCompanyId","clientCompanyName","totalSharesOnOffer","methodOfOffer","startingMinimumSubscription",
-    "continuingMinimumSubscription","offerPrice","offerSize","openingDate","closingDate", "tax", "interestRate"})
+    "continuingMinimumSubscription","offerPrice","offerSize","openingDate","closingDate", "tax", "interestRate",
+    "totalSharesSubscribed","totalSharesRemaining","totalSharesOverSubscribed"})
 public class InitialPublicOffer implements Serializable {
     @XmlElement
     private int id;
@@ -50,13 +51,13 @@ public class InitialPublicOffer implements Serializable {
     private double tax;
     @XmlElement
     private double interestRate;
-//fields below are added by emmanuel and they are used for IPO report
     @XmlElement
     private int totalSharesSubscribed;
     @XmlElement
     private int totalSharesRemaining;
     @XmlElement
     private int totalSharesOverSubscribed;
+    
     public InitialPublicOffer() {
     }
 
