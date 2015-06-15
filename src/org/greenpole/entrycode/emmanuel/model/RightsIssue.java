@@ -56,7 +56,7 @@ public class RightsIssue implements Serializable {
     @XmlElement
     private int totalSharesRem;
     @XmlElement
-    private int totalSharesOverSub;
+    private long totalSharesOverSub;
     @XmlElement
     private int totalSharesPaidForAfterClose;
     @XmlElement
@@ -151,7 +151,7 @@ public class RightsIssue implements Serializable {
         this.totalSharesHolderOverSub = totalSharesHolderOverSub;
     }
 
-    public RightsIssue(int clientCompanyId, BigDecimal totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed, List<RightsIssueApplication> rightsIssueApplication, int totalSharesSub, int totalSharesRem, int totalSharesOverSub, int totalSharesPaidForAfterClose, int totalSharesHolderOverSub) {
+    public RightsIssue(int clientCompanyId, BigDecimal totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed, List<RightsIssueApplication> rightsIssueApplication, int totalSharesSub, int totalSharesRem, long totalSharesOverSub, int totalSharesPaidForAfterClose, int totalSharesHolderOverSub) {
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnIssue = totalSharesOnIssue;
         this.methodOnOffer = methodOnOffer;
@@ -386,14 +386,14 @@ public class RightsIssue implements Serializable {
     /**
      * @return the totalSharesOverSub
      */
-    public int getTotalSharesOverSub() {
+    public long getTotalSharesOverSub() {
         return totalSharesOverSub;
     }
 
     /**
      * @param totalSharesOverSub the totalSharesOverSub to set
      */
-    public void setTotalSharesOverSub(int totalSharesOverSub) {
+    public void setTotalSharesOverSub(long totalSharesOverSub) {
         this.totalSharesOverSub = totalSharesOverSub;
     }
 
