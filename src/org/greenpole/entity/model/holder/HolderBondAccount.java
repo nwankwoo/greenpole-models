@@ -19,8 +19,8 @@ import org.greenpole.entity.model.clientcompany.Bank;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"holderId", "bondOfferId", "bondOfferTitle", "bondUnits", "startingPrincipalValue", 
-    "remainingPrincipalValue", "nubanAccount", "bank", "holderBondAccPrimary", "merged", "pryHolderId", 
+@XmlType(propOrder = {"holderId", "bondOfferId", "bondOfferTitle", "bondUnits", "startingPrincipalValue",
+    "remainingPrincipalValue", "nubanAccount", "bank", "holderBondAccPrimary", "merged", "holder", "pryHolderId",
     "pryBondOfferId"})
 public class HolderBondAccount implements Serializable {
 
@@ -44,7 +44,10 @@ public class HolderBondAccount implements Serializable {
     private boolean holderBondAccPrimary;
     @XmlElement
     private boolean merged;
-    
+    // needed to hold holder details
+    @XmlElement
+    private Holder holder;
+
     @XmlElement
     private int pryHolderId;
     @XmlElement
@@ -70,6 +73,22 @@ public class HolderBondAccount implements Serializable {
         this.bondOfferId = bondOfferId;
         this.merged = merged;
         this.holderBondAccPrimary = holderBondAccPrimary;
+        this.pryHolderId = pryHolderId;
+        this.pryBondOfferId = pryBondOfferId;
+    }
+
+    public HolderBondAccount(int holderId, int bondOfferId, String bondOfferTitle, int bondUnits, double startingPrincipalValue, double remainingPrincipalValue, String nubanAccount, Bank bank, boolean holderBondAccPrimary, boolean merged, Holder holder, int pryHolderId, int pryBondOfferId) {
+        this.holderId = holderId;
+        this.bondOfferId = bondOfferId;
+        this.bondOfferTitle = bondOfferTitle;
+        this.bondUnits = bondUnits;
+        this.startingPrincipalValue = startingPrincipalValue;
+        this.remainingPrincipalValue = remainingPrincipalValue;
+        this.nubanAccount = nubanAccount;
+        this.bank = bank;
+        this.holderBondAccPrimary = holderBondAccPrimary;
+        this.merged = merged;
+        this.holder = holder;
         this.pryHolderId = pryHolderId;
         this.pryBondOfferId = pryBondOfferId;
     }
@@ -144,6 +163,14 @@ public class HolderBondAccount implements Serializable {
 
     public void setMerged(boolean merged) {
         this.merged = merged;
+    }
+
+    public Holder getHolder() {
+        return holder;
+    }
+
+    public void setHolder(Holder holder) {
+        this.holder = holder;
     }
 
     public boolean isHolderBondAccPrimary() {
