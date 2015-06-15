@@ -22,7 +22,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"id","clientCompanyId","clientCompanyName","totalSharesOnOffer","methodOfOffer",
     "startingMinimumSubscription","continuingMinimumSubscription","offerPrice",
-    "offerSize","openingDate","closingDate"})
+    "offerSize","openingDate","closingDate","totalSharesSubscribed","totalSharesRemaining",
+    "totalSharesOverSubscribed"})
 public class PrivatePlacement implements Serializable {
     @XmlElement
     private int id;
@@ -46,13 +47,13 @@ public class PrivatePlacement implements Serializable {
     private String openingDate;
     @XmlElement
     private String closingDate;
-//added by emmanuel for pp report
     @XmlElement
     private int totalSharesSubscribed;
     @XmlElement
     private int totalSharesRemaining;
     @XmlElement
     private int totalSharesOverSubscribed;
+    
     public PrivatePlacement() {
     }
 
