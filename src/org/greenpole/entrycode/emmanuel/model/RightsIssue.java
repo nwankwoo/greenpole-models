@@ -6,6 +6,7 @@
 package org.greenpole.entrycode.emmanuel.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -29,7 +30,7 @@ public class RightsIssue implements Serializable {
     @XmlElement
      private int clientCompanyId;
     @XmlElement
-     private int totalSharesOnIssue;
+     private BigDecimal totalSharesOnIssue;
     @XmlElement
      private String methodOnOffer;
     @XmlElement
@@ -55,7 +56,7 @@ public class RightsIssue implements Serializable {
     @XmlElement
     private int totalSharesRem;
     @XmlElement
-    private int totalSharesOverSub;
+    private long totalSharesOverSub;
     @XmlElement
     private int totalSharesPaidForAfterClose;
     @XmlElement
@@ -63,7 +64,7 @@ public class RightsIssue implements Serializable {
     public RightsIssue() {
     }
 
-    public RightsIssue(int id, int clientCompanyId, int totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed) {
+    public RightsIssue(int id, int clientCompanyId, BigDecimal totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnIssue = totalSharesOnIssue;
@@ -78,7 +79,7 @@ public class RightsIssue implements Serializable {
         this.rightsClosed = rightsClosed;
     }
 
-    public RightsIssue(int clientCompanyId, int totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed) {
+    public RightsIssue(int clientCompanyId, BigDecimal totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed) {
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnIssue = totalSharesOnIssue;
         this.methodOnOffer = methodOnOffer;
@@ -92,7 +93,7 @@ public class RightsIssue implements Serializable {
         this.rightsClosed = rightsClosed;
     }
 
-    public RightsIssue(int id, int clientCompanyId, int totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed, List<RightsIssueApplication> rightsIssueApplication, int totalSharesSub, int totalSharesRem, int totalSharesOverSub) {
+    public RightsIssue(int id, int clientCompanyId, BigDecimal totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed, List<RightsIssueApplication> rightsIssueApplication, int totalSharesSub, int totalSharesRem, int totalSharesOverSub) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnIssue = totalSharesOnIssue;
@@ -111,7 +112,7 @@ public class RightsIssue implements Serializable {
         this.totalSharesOverSub = totalSharesOverSub;
     }
 
-    public RightsIssue(int clientCompanyId, int totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed, List<RightsIssueApplication> rightsIssueApplication, int totalSharesSub, int totalSharesRem, int totalSharesOverSub) {
+    public RightsIssue(int clientCompanyId, BigDecimal totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed, List<RightsIssueApplication> rightsIssueApplication, int totalSharesSub, int totalSharesRem, int totalSharesOverSub) {
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnIssue = totalSharesOnIssue;
         this.methodOnOffer = methodOnOffer;
@@ -129,7 +130,7 @@ public class RightsIssue implements Serializable {
         this.totalSharesOverSub = totalSharesOverSub;
     }
 
-    public RightsIssue(int id, int clientCompanyId, int totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed, List<RightsIssueApplication> rightsIssueApplication, int totalSharesSub, int totalSharesRem, int totalSharesOverSub, int totalSharesPaidForAfterClose, int totalSharesHolderOverSub) {
+    public RightsIssue(int id, int clientCompanyId, BigDecimal totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed, List<RightsIssueApplication> rightsIssueApplication, int totalSharesSub, int totalSharesRem, int totalSharesOverSub, int totalSharesPaidForAfterClose, int totalSharesHolderOverSub) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnIssue = totalSharesOnIssue;
@@ -150,7 +151,7 @@ public class RightsIssue implements Serializable {
         this.totalSharesHolderOverSub = totalSharesHolderOverSub;
     }
 
-    public RightsIssue(int clientCompanyId, int totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed, List<RightsIssueApplication> rightsIssueApplication, int totalSharesSub, int totalSharesRem, int totalSharesOverSub, int totalSharesPaidForAfterClose, int totalSharesHolderOverSub) {
+    public RightsIssue(int clientCompanyId, BigDecimal totalSharesOnIssue, String methodOnOffer, double issuePrice, int issueSize, int qualifyShareUnit, int alottedUnitPerQualifyUnit, String qualifyDate, String openingDate, String closingDate, boolean rightsClosed, List<RightsIssueApplication> rightsIssueApplication, int totalSharesSub, int totalSharesRem, long totalSharesOverSub, int totalSharesPaidForAfterClose, int totalSharesHolderOverSub) {
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnIssue = totalSharesOnIssue;
         this.methodOnOffer = methodOnOffer;
@@ -203,14 +204,14 @@ public class RightsIssue implements Serializable {
     /**
      * @return the totalSharesOnIssue
      */
-    public int getTotalSharesOnIssue() {
+    public BigDecimal getTotalSharesOnIssue() {
         return totalSharesOnIssue;
     }
 
     /**
      * @param totalSharesOnIssue the totalSharesOnIssue to set
      */
-    public void setTotalSharesOnIssue(int totalSharesOnIssue) {
+    public void setTotalSharesOnIssue(BigDecimal totalSharesOnIssue) {
         this.totalSharesOnIssue = totalSharesOnIssue;
     }
 
@@ -385,14 +386,14 @@ public class RightsIssue implements Serializable {
     /**
      * @return the totalSharesOverSub
      */
-    public int getTotalSharesOverSub() {
+    public long getTotalSharesOverSub() {
         return totalSharesOverSub;
     }
 
     /**
      * @param totalSharesOverSub the totalSharesOverSub to set
      */
-    public void setTotalSharesOverSub(int totalSharesOverSub) {
+    public void setTotalSharesOverSub(long totalSharesOverSub) {
         this.totalSharesOverSub = totalSharesOverSub;
     }
 

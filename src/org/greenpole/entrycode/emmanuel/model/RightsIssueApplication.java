@@ -4,12 +4,9 @@
  * and open the template in the editor.
  */
 package org.greenpole.entrycode.emmanuel.model;
-
-import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import org.greenpole.entity.model.holder.Holder;
@@ -23,11 +20,15 @@ import org.greenpole.entity.model.holder.Holder;
 @XmlType(propOrder = {"id","holder", "rightsIssueId", "issuer", "totalHoldings",
     "allottedRights", "sharesSubscribed", "additionalSharesSubscribed",
     "amountPaid", "issuingHouse", "sharesSubscribedValue", "additionalSharesSubValue", "additionalSharesGivenValue", "totalValue",
-    "totalSharesRenounced", "returnMoney", "cancelled", "clientCompanyId", "additionalSharesAwaitingSub", "valueOfAdditionalShares", "dateApplied","rate"})
+    "totalSharesRenounced", "returnMoney", "cancelled", "clientCompanyId", "additionalSharesAwaitingSub", "valueOfAdditionalShares", "dateApplied",
+    "clearingHouseId","clearingHouseName","clearingHouseBrokerage","rate","percentageValueForDistri","taxRate","applicationType","totalRightsAvailable",
+    "totalSharesSubscribed","valueOfTotalSharesSubscribed","HolderAPRAccountNo"})
 public class RightsIssueApplication {
 
     @XmlElement
     private int id;
+    @XmlElement
+    private int clearingHouseId;
     @XmlElement
     private Holder holder;
     @XmlElement
@@ -59,17 +60,20 @@ public class RightsIssueApplication {
     @XmlElement
     private double returnMoney;
     @XmlElement
+    private boolean processingPayment;
+    @XmlElement
+    private boolean approved;
+    @XmlElement
     private boolean cancelled;
-    @XmlElement
-    private int clientCompanyId;
-    @XmlElement
-    private int additionalSharesAwaitingSub;
-    @XmlElement
-    private double valueOfAdditionalShares;
     @XmlElement
     private String dateApplied;
     @XmlElement
-    private int clearingHouseId;
+    //for report
+    private int clientCompanyId;
+    @XmlElement
+    private long additionalSharesAwaitingSub;
+    @XmlElement
+    private double valueOfAdditionalShares;
     @XmlElement
     private String clearingHouseName;
     @XmlElement
@@ -83,25 +87,17 @@ public class RightsIssueApplication {
     @XmlElement
     private String applicationType;
     @XmlElement
-    private int totalRightsAvailable;
+    private long totalRightsAvailable;
      @XmlElement
     private int totalSharesSubscribed;
     @XmlElement
-    private double valueOfTotalSharesSubscribed;
-    @XmlElement
     private int HolderAPRAccountNo; 
-    //newly added
-    @XmlElement
-    private int numSucProApp;
-    @XmlElement
-    private int numUnSucProApp;
-    @XmlElementWrapper(name = "unsuccessfulApplicants")
-    private List<?> unsuccessfulApplicants;
     public RightsIssueApplication() {
     }
 
-    public RightsIssueApplication(int id, Holder holder, int rightsIssueId, String issuer, int totalHoldings, int allottedRights, int sharesSubscribed, int additionalSharesSubscribed, double amountPaid, String issuingHouse, double sharesSubscribedValue, double additionalSharesSubValue, double additionalSharesGivenValue, double totalValue, int totalSharesRenounced, double returnMoney, boolean cancelled, int clientCompanyId, int additionalSharesAwaitingSub, double valueOfAdditionalShares, String dateApplied, int clearingHouseId, String clearingHouseName, double clearingHouseBrokerage, int rate, int percentageValueForDistri, int taxRate) {
+    public RightsIssueApplication(int id, int clearingHouseId, Holder holder, int rightsIssueId, String issuer, int totalHoldings, int allottedRights, int sharesSubscribed, int additionalSharesSubscribed, double amountPaid, String issuingHouse, double sharesSubscribedValue, double additionalSharesSubValue, double additionalSharesGivenValue, double totalValue, int totalSharesRenounced, double returnMoney, boolean processingPayment, boolean approved, boolean cancelled, String dateApplied) {
         this.id = id;
+        this.clearingHouseId = clearingHouseId;
         this.holder = holder;
         this.rightsIssueId = rightsIssueId;
         this.issuer = issuer;
@@ -117,49 +113,30 @@ public class RightsIssueApplication {
         this.totalValue = totalValue;
         this.totalSharesRenounced = totalSharesRenounced;
         this.returnMoney = returnMoney;
+        this.processingPayment = processingPayment;
+        this.approved = approved;
         this.cancelled = cancelled;
-        this.clientCompanyId = clientCompanyId;
-        this.additionalSharesAwaitingSub = additionalSharesAwaitingSub;
-        this.valueOfAdditionalShares = valueOfAdditionalShares;
         this.dateApplied = dateApplied;
-        this.clearingHouseId = clearingHouseId;
-        this.clearingHouseName = clearingHouseName;
-        this.clearingHouseBrokerage = clearingHouseBrokerage;
-        this.rate = rate;
-        this.percentageValueForDistri = percentageValueForDistri;
-        this.taxRate = taxRate;
-    }
-    public RightsIssueApplication(Holder holder, int rightsIssueId, String issuer, int totalHoldings, int allottedRights, int sharesSubscribed, int additionalSharesSubscribed, double amountPaid, String issuingHouse, double sharesSubscribedValue, double additionalSharesSubValue, double additionalSharesGivenValue, double totalValue, int totalSharesRenounced, double returnMoney, boolean cancelled, int clientCompanyId, int additionalSharesAwaitingSub, double valueOfAdditionalShares, String dateApplied, int clearingHouseId, String clearingHouseName, double clearingHouseBrokerage, int rate, int percentageValueForDistri, int taxRate) {
-        this.holder = holder;
-        this.rightsIssueId = rightsIssueId;
-        this.issuer = issuer;
-        this.totalHoldings = totalHoldings;
-        this.allottedRights = allottedRights;
-        this.sharesSubscribed = sharesSubscribed;
-        this.additionalSharesSubscribed = additionalSharesSubscribed;
-        this.amountPaid = amountPaid;
-        this.issuingHouse = issuingHouse;
-        this.sharesSubscribedValue = sharesSubscribedValue;
-        this.additionalSharesSubValue = additionalSharesSubValue;
-        this.additionalSharesGivenValue = additionalSharesGivenValue;
-        this.totalValue = totalValue;
-        this.totalSharesRenounced = totalSharesRenounced;
-        this.returnMoney = returnMoney;
-        this.cancelled = cancelled;
-        this.clientCompanyId = clientCompanyId;
-        this.additionalSharesAwaitingSub = additionalSharesAwaitingSub;
-        this.valueOfAdditionalShares = valueOfAdditionalShares;
-        this.dateApplied = dateApplied;
-        this.clearingHouseId = clearingHouseId;
-        this.clearingHouseName = clearingHouseName;
-        this.clearingHouseBrokerage = clearingHouseBrokerage;
-        this.rate = rate;
-        this.percentageValueForDistri = percentageValueForDistri;
-        this.taxRate = taxRate;
     }
 
-    public RightsIssueApplication(int id, Holder holder, int rightsIssueId, String issuer, int totalHoldings, int allottedRights, int sharesSubscribed, int additionalSharesSubscribed, double amountPaid, String issuingHouse, double sharesSubscribedValue, double additionalSharesSubValue, double additionalSharesGivenValue, double totalValue, int totalSharesRenounced, double returnMoney, boolean cancelled, int clientCompanyId, int additionalSharesAwaitingSub, double valueOfAdditionalShares, String dateApplied, int clearingHouseId) {
+    public RightsIssueApplication(int clientCompanyId, long additionalSharesAwaitingSub, double valueOfAdditionalShares, String clearingHouseName, double clearingHouseBrokerage, int rate, int percentageValueForDistri, int taxRate, String applicationType, int totalRightsAvailable, int totalSharesSubscribed, int HolderAPRAccountNo) {
+        this.clientCompanyId = clientCompanyId;
+        this.additionalSharesAwaitingSub = additionalSharesAwaitingSub;
+        this.valueOfAdditionalShares = valueOfAdditionalShares;
+        this.clearingHouseName = clearingHouseName;
+        this.clearingHouseBrokerage = clearingHouseBrokerage;
+        this.rate = rate;
+        this.percentageValueForDistri = percentageValueForDistri;
+        this.taxRate = taxRate;
+        this.applicationType = applicationType;
+        this.totalRightsAvailable = totalRightsAvailable;
+        this.totalSharesSubscribed = totalSharesSubscribed;
+        this.HolderAPRAccountNo = HolderAPRAccountNo;
+    }
+
+    public RightsIssueApplication(int id, int clearingHouseId, Holder holder, int rightsIssueId, String issuer, int totalHoldings, int allottedRights, int sharesSubscribed, int additionalSharesSubscribed, double amountPaid, String issuingHouse, double sharesSubscribedValue, double additionalSharesSubValue, double additionalSharesGivenValue, double totalValue, int totalSharesRenounced, double returnMoney, boolean processingPayment, boolean approved, boolean cancelled, String dateApplied, int clientCompanyId, long additionalSharesAwaitingSub, double valueOfAdditionalShares, String clearingHouseName, double clearingHouseBrokerage, int rate, int percentageValueForDistri, int taxRate, String applicationType, int totalRightsAvailable, int totalSharesSubscribed, int HolderAPRAccountNo) {
         this.id = id;
+        this.clearingHouseId = clearingHouseId;
         this.holder = holder;
         this.rightsIssueId = rightsIssueId;
         this.issuer = issuer;
@@ -175,19 +152,25 @@ public class RightsIssueApplication {
         this.totalValue = totalValue;
         this.totalSharesRenounced = totalSharesRenounced;
         this.returnMoney = returnMoney;
+        this.processingPayment = processingPayment;
+        this.approved = approved;
         this.cancelled = cancelled;
+        this.dateApplied = dateApplied;
         this.clientCompanyId = clientCompanyId;
         this.additionalSharesAwaitingSub = additionalSharesAwaitingSub;
         this.valueOfAdditionalShares = valueOfAdditionalShares;
-        this.dateApplied = dateApplied;
-        this.clearingHouseId = clearingHouseId;
+        this.clearingHouseName = clearingHouseName;
+        this.clearingHouseBrokerage = clearingHouseBrokerage;
+        this.rate = rate;
+        this.percentageValueForDistri = percentageValueForDistri;
+        this.taxRate = taxRate;
+        this.applicationType = applicationType;
+        this.totalRightsAvailable = totalRightsAvailable;
+        this.totalSharesSubscribed = totalSharesSubscribed;
+        this.HolderAPRAccountNo = HolderAPRAccountNo;
     }
-public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsuccessfulApplicants) {
-        this.numSucProApp = numSucProApp;
-        this.numUnSucProApp = numUnSucProApp;
-        this.unsuccessfulApplicants = unsuccessfulApplicants;
-    }
-/**
+
+    /**
      * @return the id
      */
     public int getId() {
@@ -199,6 +182,20 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the clearingHouseId
+     */
+    public int getClearingHouseId() {
+        return clearingHouseId;
+    }
+
+    /**
+     * @param clearingHouseId the clearingHouseId to set
+     */
+    public void setClearingHouseId(int clearingHouseId) {
+        this.clearingHouseId = clearingHouseId;
     }
 
     /**
@@ -241,6 +238,34 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
      */
     public void setIssuer(String issuer) {
         this.issuer = issuer;
+    }
+
+    /**
+     * @return the totalHoldings
+     */
+    public int getTotalHoldings() {
+        return totalHoldings;
+    }
+
+    /**
+     * @param totalHoldings the totalHoldings to set
+     */
+    public void setTotalHoldings(int totalHoldings) {
+        this.totalHoldings = totalHoldings;
+    }
+
+    /**
+     * @return the allottedRights
+     */
+    public int getAllottedRights() {
+        return allottedRights;
+    }
+
+    /**
+     * @param allottedRights the allottedRights to set
+     */
+    public void setAllottedRights(int allottedRights) {
+        this.allottedRights = allottedRights;
     }
 
     /**
@@ -328,6 +353,20 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
     }
 
     /**
+     * @return the additionalSharesGivenValue
+     */
+    public double getAdditionalSharesGivenValue() {
+        return additionalSharesGivenValue;
+    }
+
+    /**
+     * @param additionalSharesGivenValue the additionalSharesGivenValue to set
+     */
+    public void setAdditionalSharesGivenValue(double additionalSharesGivenValue) {
+        this.additionalSharesGivenValue = additionalSharesGivenValue;
+    }
+
+    /**
      * @return the totalValue
      */
     public double getTotalValue() {
@@ -370,6 +409,34 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
     }
 
     /**
+     * @return the processingPayment
+     */
+    public boolean isProcessingPayment() {
+        return processingPayment;
+    }
+
+    /**
+     * @param processingPayment the processingPayment to set
+     */
+    public void setProcessingPayment(boolean processingPayment) {
+        this.processingPayment = processingPayment;
+    }
+
+    /**
+     * @return the approved
+     */
+    public boolean isApproved() {
+        return approved;
+    }
+
+    /**
+     * @param approved the approved to set
+     */
+    public void setApproved(boolean approved) {
+        this.approved = approved;
+    }
+
+    /**
      * @return the cancelled
      */
     public boolean isCancelled() {
@@ -381,62 +448,6 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
      */
     public void setCancelled(boolean cancelled) {
         this.cancelled = cancelled;
-    }
-
-    /**
-     * @return the clientCompanyId
-     */
-    public int getClientCompanyId() {
-        return clientCompanyId;
-    }
-
-    /**
-     * @param clientCompanyId the clientCompanyId to set
-     */
-    public void setClientCompanyId(int clientCompanyId) {
-        this.clientCompanyId = clientCompanyId;
-    }
-
-    /**
-     * @return the allottedRights
-     */
-    public int getAllottedRights() {
-        return allottedRights;
-    }
-
-    /**
-     * @param allottedRights the allottedRights to set
-     */
-    public void setAllottedRights(int allottedRights) {
-        this.allottedRights = allottedRights;
-    }
-
-    /**
-     * @return the additionalSharesAwaitingSub
-     */
-    public int getAdditionalSharesAwaitingSub() {
-        return additionalSharesAwaitingSub;
-    }
-
-    /**
-     * @param additionalSharesAwaitingSub the additionalSharesAwaitingSub to set
-     */
-    public void setAdditionalSharesAwaitingSub(int additionalSharesAwaitingSub) {
-        this.additionalSharesAwaitingSub = additionalSharesAwaitingSub;
-    }
-
-    /**
-     * @return the valueOfAdditionalShares
-     */
-    public double getValueOfAdditionalShares() {
-        return valueOfAdditionalShares;
-    }
-
-    /**
-     * @param valueOfAdditionalShares the valueOfAdditionalShares to set
-     */
-    public void setValueOfAdditionalShares(double valueOfAdditionalShares) {
-        this.valueOfAdditionalShares = valueOfAdditionalShares;
     }
 
     /**
@@ -454,45 +465,45 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
     }
 
     /**
-     * @return the totalHoldings
+     * @return the clientCompanyId
      */
-    public int getTotalHoldings() {
-        return totalHoldings;
+    public int getClientCompanyId() {
+        return clientCompanyId;
     }
 
     /**
-     * @param totalHoldings the totalHoldings to set
+     * @param clientCompanyId the clientCompanyId to set
      */
-    public void setTotalHoldings(int totalHoldings) {
-        this.totalHoldings = totalHoldings;
+    public void setClientCompanyId(int clientCompanyId) {
+        this.clientCompanyId = clientCompanyId;
     }
 
     /**
-     * @return the additionalSharesGivenValue
+     * @return the additionalSharesAwaitingSub
      */
-    public double getAdditionalSharesGivenValue() {
-        return additionalSharesGivenValue;
+    public long getAdditionalSharesAwaitingSub() {
+        return additionalSharesAwaitingSub;
     }
 
     /**
-     * @param additionalSharesGivenValue the additionalSharesGivenValue to set
+     * @param additionalSharesAwaitingSub the additionalSharesAwaitingSub to set
      */
-    public void setAdditionalSharesGivenValue(double additionalSharesGivenValue) {
-        this.additionalSharesGivenValue = additionalSharesGivenValue;
+    public void setAdditionalSharesAwaitingSub(long additionalSharesAwaitingSub) {
+        this.additionalSharesAwaitingSub = additionalSharesAwaitingSub;
     }
 
     /**
-     * @return the clearingHouseId
+     * @return the valueOfAdditionalShares
      */
-    public int getClearingHouseId() {
-        return clearingHouseId;
+    public double getValueOfAdditionalShares() {
+        return valueOfAdditionalShares;
     }
 
     /**
-     * @param clearingHouseId the clearingHouseId to set
+     * @param valueOfAdditionalShares the valueOfAdditionalShares to set
      */
-    public void setClearingHouseId(int clearingHouseId) {
-        this.clearingHouseId = clearingHouseId;
+    public void setValueOfAdditionalShares(double valueOfAdditionalShares) {
+        this.valueOfAdditionalShares = valueOfAdditionalShares;
     }
 
     /**
@@ -523,6 +534,19 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
         this.clearingHouseBrokerage = clearingHouseBrokerage;
     }
 
+    /**
+     * @return the rate
+     */
+    public int getRate() {
+        return rate;
+    }
+
+    /**
+     * @param rate the rate to set
+     */
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
 
     /**
      * @return the percentageValueForDistri
@@ -536,20 +560,6 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
      */
     public void setPercentageValueForDistri(int percentageValueForDistri) {
         this.percentageValueForDistri = percentageValueForDistri;
-    }
-
-    /**
-     * @return the rate
-     */
-    public int getRate() {
-        return rate;
-    }
-
-    /**
-     * @param rate the rate to set
-     */
-    public void setRate(int rate) {
-        this.rate = rate;
     }
 
     /**
@@ -583,14 +593,14 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
     /**
      * @return the totalRightsAvailable
      */
-    public int getTotalRightsAvailable() {
+    public long getTotalRightsAvailable() {
         return totalRightsAvailable;
     }
 
     /**
      * @param totalRightsAvailable the totalRightsAvailable to set
      */
-    public void setTotalRightsAvailable(int totalRightsAvailable) {
+    public void setTotalRightsAvailable(long totalRightsAvailable) {
         this.totalRightsAvailable = totalRightsAvailable;
     }
 
@@ -609,20 +619,6 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
     }
 
     /**
-     * @return the valueOfTotalSharesSubscribed
-     */
-    public double getValueOfTotalSharesSubscribed() {
-        return valueOfTotalSharesSubscribed;
-    }
-
-    /**
-     * @param valueOfTotalSharesSubscribed the valueOfTotalSharesSubscribed to set
-     */
-    public void setValueOfTotalSharesSubscribed(double valueOfTotalSharesSubscribed) {
-        this.valueOfTotalSharesSubscribed = valueOfTotalSharesSubscribed;
-    }
-
-    /**
      * @return the HolderAPRAccountNo
      */
     public int getHolderAPRAccountNo() {
@@ -635,31 +631,5 @@ public RightsIssueApplication(int numSucProApp, int numUnSucProApp, List<?> unsu
     public void setHolderAPRAccountNo(int HolderAPRAccountNo) {
         this.HolderAPRAccountNo = HolderAPRAccountNo;
     }
-
-    public int getNumSucProApp() {
-        return numSucProApp;
-    }
-
-    public void setNumSucProApp(int numSucProApp) {
-        this.numSucProApp = numSucProApp;
-    }
-
-    public int getNumUnSucProApp() {
-        return numUnSucProApp;
-    }
-
-    public void setNumUnSucProApp(int numUnSucProApp) {
-        this.numUnSucProApp = numUnSucProApp;
-    }
-
-    public List<?> getUnsuccessfulApplicants() {
-        return unsuccessfulApplicants;
-    }
-
-    public void setUnsuccessfulApplicants(List<?> unsuccessfulApplicants) {
-        this.unsuccessfulApplicants = unsuccessfulApplicants;
-    }
-
     
-
-}
+        }
