@@ -32,7 +32,7 @@ public class InitialPublicOffer implements Serializable {
     @XmlElement
     private String clientCompanyName;
     @XmlElement
-    private int totalSharesOnOffer;
+    private BigDecimal totalSharesOnOffer;
     @XmlElement
     private String methodOfOffer;
     @XmlElement
@@ -61,7 +61,7 @@ public class InitialPublicOffer implements Serializable {
     public InitialPublicOffer() {
     }
 
-    public InitialPublicOffer(int id, int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate, double tax, double interestRate) {
+    public InitialPublicOffer(int id, int clientCompanyId, BigDecimal totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate, double tax, double interestRate) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnOffer = totalSharesOnOffer;
@@ -76,7 +76,7 @@ public class InitialPublicOffer implements Serializable {
         this.interestRate = interestRate;
     }
 
-    public InitialPublicOffer(int clientCompanyId, int totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate, double tax, double interestRate) {
+    public InitialPublicOffer(int clientCompanyId, BigDecimal totalSharesOnOffer, String methodOfOffer, int startingMinimumSubscription, int continuingMinimumSubscription, double offerPrice, BigDecimal offerSize, String openingDate, String closingDate, double tax, double interestRate) {
         this.clientCompanyId = clientCompanyId;
         this.totalSharesOnOffer = totalSharesOnOffer;
         this.methodOfOffer = methodOfOffer;
@@ -90,7 +90,7 @@ public class InitialPublicOffer implements Serializable {
         this.interestRate = interestRate;
     }
 
-    public InitialPublicOffer(int id, int totalSharesOnOffer, int totalSharesSubscribed, int totalSharesRemaining, int totalSharesOverSubscribed) {
+    public InitialPublicOffer(int id, BigDecimal totalSharesOnOffer, int totalSharesSubscribed, int totalSharesRemaining, int totalSharesOverSubscribed) {
         this.id = id;
         this.totalSharesOnOffer = totalSharesOnOffer;
         this.totalSharesSubscribed = totalSharesSubscribed;
@@ -138,14 +138,14 @@ public class InitialPublicOffer implements Serializable {
     /**
      * @return the totalSharesOnOffer
      */
-    public int getTotalSharesOnOffer() {
+    public BigDecimal getTotalSharesOnOffer() {
         return totalSharesOnOffer;
     }
 
     /**
      * @param totalSharesOnOffer the totalSharesOnOffer to set
      */
-    public void setTotalSharesOnOffer(int totalSharesOnOffer) {
+    public void setTotalSharesOnOffer(BigDecimal totalSharesOnOffer) {
         this.totalSharesOnOffer = totalSharesOnOffer;
     }
 
