@@ -79,7 +79,7 @@ public class Dividend implements Serializable {
     @XmlElement
     private String reIssuedDate;//
     @XmlElement
-    private Boolean paid;//
+    private boolean paid;//
     @XmlElement
     private String paidDate;//
     @XmlElement
