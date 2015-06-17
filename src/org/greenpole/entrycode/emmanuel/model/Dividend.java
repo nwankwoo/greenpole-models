@@ -33,7 +33,7 @@ public class Dividend {
   @XmlElement
      private int holderCompanyAccountId;
   @XmlElement
-     private int warrantNumber;
+     private long warrantNumber;
   @XmlElement
      private String clientCompName;
   @XmlElement
@@ -163,14 +163,14 @@ public class Dividend {
     /**
      * @return the warrantNumber
      */
-    public int getWarrantNumber() {
+    public long getWarrantNumber() {
         return warrantNumber;
     }
 
     /**
      * @param warrantNumber the warrantNumber to set
      */
-    public void setWarrantNumber(int warrantNumber) {
+    public void setWarrantNumber(long warrantNumber) {
         this.warrantNumber = warrantNumber;
     }
 

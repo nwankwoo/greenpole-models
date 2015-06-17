@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package org.greenpole.entrycode.emmanuel.model;
-
 import java.io.Serializable;
 import java.util.Map;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -14,14 +13,15 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-/**
+/**utilized in querying and viewing dividend records
  *
  * @author user
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"descriptor","dividend","startDate","endDate"})
+@XmlType(propOrder = {"descriptor","dividend","startDate","endDate","grossAmount","tax","payableAmount"})
 public class QueryDividend implements Serializable {
+    //descriptor must be date:none / date:exact / date:between / date:before / date:after
     @XmlElement
      private String descriptor;
     @XmlElement
@@ -45,6 +45,11 @@ public class QueryDividend implements Serializable {
         this.grossAmount = grossAmount;
         this.tax = tax;
         this.payableAmount = payableAmount;
+    }
+    public QueryDividend(String descriptor, String startDate, String endDate) {
+        this.descriptor = descriptor;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     
@@ -146,5 +151,5 @@ public class QueryDividend implements Serializable {
     public void setPayableAmount(Map<String, Double> payableAmount) {
         this.payableAmount = payableAmount;
     }
-    
+
 }
