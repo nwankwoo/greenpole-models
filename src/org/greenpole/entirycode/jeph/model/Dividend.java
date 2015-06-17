@@ -81,7 +81,7 @@ public class Dividend implements Serializable {
     @XmlElement
     private String reIssuedDate;//
     @XmlElement
-    private Boolean paid;//
+    private boolean paid;//
     @XmlElement
     private String paidDate;//
     @XmlElement
@@ -102,7 +102,7 @@ public class Dividend implements Serializable {
     public Dividend() {
     }
 
-    public Dividend(int id, int clientCompanyId, int dividendDeclaredId, int dividendIssueTypeId, int holderCompanyAccountId, int warrantNumber, String clientCompName, String issueType, String issueDate, int divNumber, String yearType, String yearEnding, String SHolderMailingAddr, double rate, int compAccHoldings, double withldingTaxRate, double grossAmount, double tax, double payableAmount, String payableDate, boolean issued, String issuedDate, boolean reIssued, String reIssuedDate, Boolean paid, String paidDate, String paymentMethod, boolean unclaimed, String unclaimedDate, boolean cancelled, String canelledDate, String annotation, List<DividendAnnotation> dividenAnnotations) {
+    public Dividend(int id, int clientCompanyId, int dividendDeclaredId, int dividendIssueTypeId, int holderCompanyAccountId, int warrantNumber, String clientCompName, String issueType, String issueDate, int divNumber, String yearType, String yearEnding, String SHolderMailingAddr, double rate, int compAccHoldings, double withldingTaxRate, double grossAmount, double tax, double payableAmount, String payableDate, boolean issued, String issuedDate, boolean reIssued, String reIssuedDate, boolean paid, String paidDate, String paymentMethod, boolean unclaimed, String unclaimedDate, boolean cancelled, String canelledDate, String annotation, List<DividendAnnotation> dividenAnnotations) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;
         this.dividendDeclaredId = dividendDeclaredId;
@@ -330,11 +330,11 @@ public class Dividend implements Serializable {
         this.reIssuedDate = reIssuedDate;
     }
 
-    public Boolean getPaid() {
+    public boolean getPaid() {
         return paid;
     }
 
-    public void setPaid(Boolean paid) {
+    public void setPaid(boolean paid) {
         this.paid = paid;
     }
 
