@@ -5,41 +5,41 @@
  */
 package org.greenpole.entrycode.emmanuel.model;
 
+import java.io.Serializable;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import org.greenpole.entity.model.clientcompany.InitialPublicOffer;
-import org.greenpole.entity.model.clientcompany.PrivatePlacement;
-import org.greenpole.entity.model.clientcompany.ClientCompany;
-import org.greenpole.entity.model.holder.Holder;
 
 /**
- *
+ *use for processing holders certificate
  * @author user
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id","certificateLodgement","clientCompany",
-    "holder","initialPublicOffer","privatePlacement",
-    "rightsIssue","certificateNumber","shareVolume","bondHolding","holderName",
-    "holderAddress","issuingCompName","issueDate","certNarration","cancelled","claimed","immobStatus"})
-public class Certificate {
+@XmlType(propOrder = {"id","certificateLodgementId","clientCompanyId",
+    "holderId","initialPublicOfferId","privatePlacementId",
+    "rightsIssueId","certificateNumber","shareVolume","bondHolding","holderName",
+    "holderAddress","issuingCompName","issueDate","certNarration","cancelled","claimed","immobStatus","certificateVerification","isShareholder",
+    "newHolderId","newHolderClientCompanyId"})
+public class Certificate implements Serializable {
     @XmlElement
      private int id;
     @XmlElement
-    private CertificateLodgement certificateLodgement;
+    private int certificateLodgementId;
     @XmlElement
-     private ClientCompany clientCompany;
+     private int clientCompanyId;
     @XmlElement
-     private Holder holder;
+     private int holderId;
     @XmlElement
-     private InitialPublicOffer initialPublicOffer;
+     private int initialPublicOfferId;
     @XmlElement
-     private PrivatePlacement privatePlacement;
+     private int privatePlacementId;
     @XmlElement
-     private RightsIssue rightsIssue;
+     private int rightsIssueId;
     @XmlElement
      private int certificateNumber;
     @XmlElement
@@ -62,18 +62,27 @@ public class Certificate {
      private boolean claimed;
     @XmlElement
      private boolean immobStatus;
+    @XmlElement
+     private boolean isShareholder;//true for shareholder but false for bondholder
+    @XmlElementWrapper (name = "certificateVerification")
+    private List<CertificateVerification> certificateVerification;
+    //the fields below is for transfer of certificate ownership
+    @XmlElement
+    private int newHolderId;
+    @XmlElement
+    private int newHolderClientCompanyId;
 
     public Certificate() {
     }
 
-    public Certificate(int id, CertificateLodgement certificateLodgement, ClientCompany clientCompany, Holder holder, InitialPublicOffer initialPublicOffer, PrivatePlacement privatePlacement, RightsIssue rightsIssue, int certificateNumber, int shareVolume, int bondHolding, String holderName, String holderAddress, String issuingCompName, String issueDate, String certNarration, boolean cancelled, boolean claimed, boolean immobStatus) {
+    public Certificate(int id, int certificateLodgementId, int clientCompanyId, int holderId, int initialPublicOfferId, int privatePlacementId, int rightsIssueId, int certificateNumber, int shareVolume, int bondHolding, String holderName, String holderAddress, String issuingCompName, String issueDate, String certNarration, boolean cancelled, boolean claimed, boolean immobStatus, boolean isShareholder, List<CertificateVerification> certificateVerification) {
         this.id = id;
-        this.certificateLodgement = certificateLodgement;
-        this.clientCompany = clientCompany;
-        this.holder = holder;
-        this.initialPublicOffer = initialPublicOffer;
-        this.privatePlacement = privatePlacement;
-        this.rightsIssue = rightsIssue;
+        this.certificateLodgementId = certificateLodgementId;
+        this.clientCompanyId = clientCompanyId;
+        this.holderId = holderId;
+        this.initialPublicOfferId = initialPublicOfferId;
+        this.privatePlacementId = privatePlacementId;
+        this.rightsIssueId = rightsIssueId;
         this.certificateNumber = certificateNumber;
         this.shareVolume = shareVolume;
         this.bondHolding = bondHolding;
@@ -85,27 +94,37 @@ public class Certificate {
         this.cancelled = cancelled;
         this.claimed = claimed;
         this.immobStatus = immobStatus;
+        this.isShareholder = isShareholder;
+        this.certificateVerification = certificateVerification;
+    }
+    public Certificate(int certificateLodgementId, int clientCompanyId, int holderId, int initialPublicOfferId, int privatePlacementId, int rightsIssueId, int certificateNumber, int shareVolume, int bondHolding, String holderName, String holderAddress, String issuingCompName, String issueDate, String certNarration, boolean cancelled, boolean claimed, boolean immobStatus, boolean isShareholder, List<CertificateVerification> certificateVerification) {
+        this.certificateLodgementId = certificateLodgementId;
+        this.clientCompanyId = clientCompanyId;
+        this.holderId = holderId;
+        this.initialPublicOfferId = initialPublicOfferId;
+        this.privatePlacementId = privatePlacementId;
+        this.rightsIssueId = rightsIssueId;
+        this.certificateNumber = certificateNumber;
+        this.shareVolume = shareVolume;
+        this.bondHolding = bondHolding;
+        this.holderName = holderName;
+        this.holderAddress = holderAddress;
+        this.issuingCompName = issuingCompName;
+        this.issueDate = issueDate;
+        this.certNarration = certNarration;
+        this.cancelled = cancelled;
+        this.claimed = claimed;
+        this.immobStatus = immobStatus;
+        this.isShareholder = isShareholder;
+        this.certificateVerification = certificateVerification;
     }
 
-    public Certificate(CertificateLodgement certificateLodgement, ClientCompany clientCompany, Holder holder, InitialPublicOffer initialPublicOffer, PrivatePlacement privatePlacement, RightsIssue rightsIssue, int certificateNumber, int shareVolume, int bondHolding, String holderName, String holderAddress, String issuingCompName, String issueDate, String certNarration, boolean cancelled, boolean claimed, boolean immobStatus) {
-        this.certificateLodgement = certificateLodgement;
-        this.clientCompany = clientCompany;
-        this.holder = holder;
-        this.initialPublicOffer = initialPublicOffer;
-        this.privatePlacement = privatePlacement;
-        this.rightsIssue = rightsIssue;
-        this.certificateNumber = certificateNumber;
-        this.shareVolume = shareVolume;
-        this.bondHolding = bondHolding;
-        this.holderName = holderName;
-        this.holderAddress = holderAddress;
-        this.issuingCompName = issuingCompName;
-        this.issueDate = issueDate;
-        this.certNarration = certNarration;
-        this.cancelled = cancelled;
-        this.claimed = claimed;
-        this.immobStatus = immobStatus;
+    public Certificate(int newHolderId, int newHolderClientCompanyId) {
+        this.newHolderId = newHolderId;
+        this.newHolderClientCompanyId = newHolderClientCompanyId;
     }
+
+    
 
     /**
      * @return the id
@@ -122,87 +141,87 @@ public class Certificate {
     }
 
     /**
-     * @return the certificateLodgement
+     * @return the certificateLodgementId
      */
-    public CertificateLodgement getCertificateLodgement() {
-        return certificateLodgement;
+    public int getCertificateLodgementId() {
+        return certificateLodgementId;
     }
 
     /**
-     * @param certificateLodgement the certificateLodgement to set
+     * @param certificateLodgementId the certificateLodgementId to set
      */
-    public void setCertificateLodgement(CertificateLodgement certificateLodgement) {
-        this.certificateLodgement = certificateLodgement;
+    public void setCertificateLodgementId(int certificateLodgementId) {
+        this.certificateLodgementId = certificateLodgementId;
     }
 
     /**
-     * @return the clientCompany
+     * @return the clientCompanyId
      */
-    public ClientCompany getClientCompany() {
-        return clientCompany;
+    public int getClientCompanyId() {
+        return clientCompanyId;
     }
 
     /**
-     * @param clientCompany the clientCompany to set
+     * @param clientCompanyId the clientCompanyId to set
      */
-    public void setClientCompany(ClientCompany clientCompany) {
-        this.clientCompany = clientCompany;
+    public void setClientCompanyId(int clientCompanyId) {
+        this.clientCompanyId = clientCompanyId;
     }
 
     /**
-     * @return the holder
+     * @return the holderId
      */
-    public Holder getHolder() {
-        return holder;
+    public int getHolderId() {
+        return holderId;
     }
 
     /**
-     * @param holder the holder to set
+     * @param holderId the holderId to set
      */
-    public void setHolder(Holder holder) {
-        this.holder = holder;
+    public void setHolderId(int holderId) {
+        this.holderId = holderId;
     }
 
     /**
-     * @return the initialPublicOffer
+     * @return the initialPublicOfferId
      */
-    public InitialPublicOffer getInitialPublicOffer() {
-        return initialPublicOffer;
+    public int getInitialPublicOfferId() {
+        return initialPublicOfferId;
     }
 
     /**
-     * @param initialPublicOffer the initialPublicOffer to set
+     * @param initialPublicOfferId the initialPublicOfferId to set
      */
-    public void setInitialPublicOffer(InitialPublicOffer initialPublicOffer) {
-        this.initialPublicOffer = initialPublicOffer;
+    public void setInitialPublicOfferId(int initialPublicOfferId) {
+        this.initialPublicOfferId = initialPublicOfferId;
     }
 
     /**
-     * @return the privatePlacement
+     * @return the privatePlacementId
      */
-    public PrivatePlacement getPrivatePlacement() {
-        return privatePlacement;
+    public int getPrivatePlacementId() {
+        return privatePlacementId;
     }
 
     /**
-     * @param privatePlacement the privatePlacement to set
+     * @param privatePlacementId the privatePlacementId to set
      */
-    public void setPrivatePlacement(PrivatePlacement privatePlacement) {
-        this.privatePlacement = privatePlacement;
+    public void setPrivatePlacementId(int privatePlacementId) {
+        this.privatePlacementId = privatePlacementId;
     }
 
     /**
-     * @return the rightsIssue
+     * @return the rightsIssueId
      */
-    public RightsIssue getRightsIssue() {
-        return rightsIssue;
+    public int getRightsIssueId() {
+        return rightsIssueId;
     }
 
     /**
-     * @param rightsIssue the rightsIssue to set
+     * @param rightsIssueId the rightsIssueId to set
      */
-    public void setRightsIssue(RightsIssue rightsIssue) {
-        this.rightsIssue = rightsIssue;
+    public void setRightsIssueId(int rightsIssueId) {
+        this.rightsIssueId = rightsIssueId;
     }
 
     /**
@@ -358,5 +377,61 @@ public class Certificate {
     public void setImmobStatus(boolean immobStatus) {
         this.immobStatus = immobStatus;
     }
-    
-}
+
+    /**
+     * @return the certificateVerification
+     */
+    public List<CertificateVerification> getCertificateVerification() {
+        return certificateVerification;
+    }
+
+    /**
+     * @param certificateVerification the certificateVerification to set
+     */
+    public void setCertificateVerification(List<CertificateVerification> certificateVerification) {
+        this.certificateVerification = certificateVerification;
+    }
+
+    /**
+     * @return the isShareholder
+     */
+    public boolean isIsShareholder() {
+        return isShareholder;
+    }
+
+    /**
+     * @param isShareholder the isShareholder to set
+     */
+    public void setIsShareholder(boolean isShareholder) {
+        this.isShareholder = isShareholder;
+    }
+
+    /**
+     * @return the newHolderId
+     */
+    public int getNewHolderId() {
+        return newHolderId;
+    }
+
+    /**
+     * @param newHolderId the newHolderId to set
+     */
+    public void setNewHolderId(int newHolderId) {
+        this.newHolderId = newHolderId;
+    }
+
+    /**
+     * @return the newHolderClientCompanyId
+     */
+    public int getNewHolderClientCompanyId() {
+        return newHolderClientCompanyId;
+    }
+
+    /**
+     * @param newHolderClientCompanyId the newHolderClientCompanyId to set
+     */
+    public void setNewHolderClientCompanyId(int newHolderClientCompanyId) {
+        this.newHolderClientCompanyId = newHolderClientCompanyId;
+    }
+
+    }
