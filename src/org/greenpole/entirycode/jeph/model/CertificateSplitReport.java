@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,6 +6,7 @@
  */
 package org.greenpole.entirycode.jeph.model;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,34 +21,28 @@ import javax.xml.bind.annotation.XmlType;
  * @author Jephthah Sadare
  */
 @XmlRootElement
-@XmlSeeAlso({Dividend.class})
+@XmlSeeAlso({ProcessedCertificateSplit.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"descriptor", "dividend", "startDate", "endDate"})
+@XmlType(propOrder = {"descriptor", "companyAccountConsolidation",
+    "accountConsolidation", "startDate", "endDate"})
 
-public class QueryCanceledDividend {
+public class CertificateSplitReport implements Serializable {
 
     @XmlElement
     private String descriptor;
-    @XmlElementWrapper(name = "dividend")
-    private List<Dividend> dividend;
+    @XmlElementWrapper(name = "processedTransactions")
+    private List<ProcessedCertificateSplit> processedCertificateSplit;
     @XmlElement
     private String startDate;
     @XmlElement
     private String endDate;
 
-    public QueryCanceledDividend() {
+    public CertificateSplitReport() {
     }
 
-    /**
-     * 
-     * @param descriptor
-     * @param dividend
-     * @param startDate
-     * @param endDate 
-     */
-    public QueryCanceledDividend(String descriptor, List<Dividend> dividend, String startDate, String endDate) {
+    public CertificateSplitReport(String descriptor, List<ProcessedCertificateSplit> processedCertificateSplit, String startDate, String endDate) {
         this.descriptor = descriptor;
-        this.dividend = dividend;
+        this.processedCertificateSplit = processedCertificateSplit;
         this.startDate = startDate;
         this.endDate = endDate;
     }
@@ -59,12 +55,12 @@ public class QueryCanceledDividend {
         this.descriptor = descriptor;
     }
 
-    public List<Dividend> getDividend() {
-        return dividend;
+    public List<ProcessedCertificateSplit> getProcessedCertificateSplit() {
+        return processedCertificateSplit;
     }
 
-    public void setDividend(List<Dividend> dividend) {
-        this.dividend = dividend;
+    public void setProcessedCertificateSplit(List<ProcessedCertificateSplit> processedCertificateSplit) {
+        this.processedCertificateSplit = processedCertificateSplit;
     }
 
     public String getStartDate() {

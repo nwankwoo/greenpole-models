@@ -6,11 +6,14 @@
 package org.greenpole.entirycode.jeph.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import org.greenpole.entity.model.holder.Holder;
 
 /**
  *
@@ -19,7 +22,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"id", "clientCompanyId", "title", "qualifyDate",
-    "qualifyShareUnit", "bonusUnitPerQualifyUnit"})
+    "qualifyShareUnit", "bonusUnitPerQualifyUnit", "holders"})
 
 public class ShareBonus implements Serializable {
 
@@ -35,6 +38,8 @@ public class ShareBonus implements Serializable {
     private int qualifyShareUnit;
     @XmlElement
     private int bonusUnitPerQualifyUnit;
+    @XmlElementWrapper(name = "holders")
+    private List<Holder> holders;
 
     public ShareBonus() {
     }
@@ -55,6 +60,16 @@ public class ShareBonus implements Serializable {
         this.qualifyDate = qualifyDate;
         this.qualifyShareUnit = qualifyShareUnit;
         this.bonusUnitPerQualifyUnit = bonusUnitPerQualifyUnit;
+    }
+
+    public ShareBonus(int id, int clientCompanyId, String title, String qualifyDate, int qualifyShareUnit, int bonusUnitPerQualifyUnit, List<Holder> holders) {
+        this.id = id;
+        this.clientCompanyId = clientCompanyId;
+        this.title = title;
+        this.qualifyDate = qualifyDate;
+        this.qualifyShareUnit = qualifyShareUnit;
+        this.bonusUnitPerQualifyUnit = bonusUnitPerQualifyUnit;
+        this.holders = holders;
     }
 
     public int getId() {
@@ -103,6 +118,14 @@ public class ShareBonus implements Serializable {
 
     public void setBonusUnitPerQualifyUnit(int bonusUnitPerQualifyUnit) {
         this.bonusUnitPerQualifyUnit = bonusUnitPerQualifyUnit;
+    }
+
+    public List<Holder> getHolders() {
+        return holders;
+    }
+
+    public void setHolders(List<Holder> holders) {
+        this.holders = holders;
     }
 
 }

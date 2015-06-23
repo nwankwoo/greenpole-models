@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -19,13 +20,14 @@ import javax.xml.bind.annotation.XmlType;
  * @author Jephthah Sadare
  */
 @XmlRootElement
+@XmlSeeAlso({DividendAnnotation.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id", "clientCompanyId", "dividendDeclaredId","dividendIssueTypeId", 
-    "holderCompanyAccountId", "warrantNumber", "clientCompName","issueType", "issueDate", 
-    "divNumber", "yearType", "yearEnding","SHolderMailingAddr", "rate", 
-    "compAccHoldings", "withldingTaxRate", "grossAmount","tax", "payableAmount", 
-    "payableDate", "issued", "issuedDate","reIssued", "reIssuedDate", 
-    "paid", "paidDate", "paymentMethod","unclaimed", "unclaimedDate", 
+@XmlType(propOrder = {"id", "clientCompanyId", "dividendDeclaredId", "dividendIssueTypeId",
+    "holderCompanyAccountId", "warrantNumber", "clientCompName", "issueType", "issueDate",
+    "divNumber", "yearType", "yearEnding", "SHolderMailingAddr", "rate",
+    "compAccHoldings", "withldingTaxRate", "grossAmount", "tax", "payableAmount",
+    "payableDate", "issued", "issuedDate", "reIssued", "reIssuedDate",
+    "paid", "paidDate", "paymentMethod", "unclaimed", "unclaimedDate",
     "cancelled", "canelledDate", "dividenAnnotations"})
 
 public class Dividend implements Serializable {
@@ -79,7 +81,7 @@ public class Dividend implements Serializable {
     @XmlElement
     private String reIssuedDate;//
     @XmlElement
-    private Boolean paid;//
+    private boolean paid;//
     @XmlElement
     private String paidDate;//
     @XmlElement
@@ -92,48 +94,15 @@ public class Dividend implements Serializable {
     private boolean cancelled;//
     @XmlElement
     private String canelledDate;//
+    @XmlElement
+    private String annotation;
     @XmlElementWrapper(name = "dividenAnnotations")
     private List<DividendAnnotation> dividenAnnotations;//
 
     public Dividend() {
     }
 
-    /**
-     * 
-     * @param id
-     * @param clientCompanyId
-     * @param dividendDeclaredId
-     * @param dividendIssueTypeId
-     * @param holderCompanyAccountId
-     * @param warrantNumber
-     * @param clientCompName
-     * @param issueType
-     * @param issueDate
-     * @param divNumber
-     * @param yearType
-     * @param yearEnding
-     * @param SHolderMailingAddr
-     * @param rate
-     * @param compAccHoldings
-     * @param withldingTaxRate
-     * @param grossAmount
-     * @param tax
-     * @param payableAmount
-     * @param payableDate
-     * @param issued
-     * @param issuedDate
-     * @param reIssued
-     * @param reIssuedDate
-     * @param paid
-     * @param paidDate
-     * @param paymentMethod
-     * @param unclaimed
-     * @param unclaimedDate
-     * @param cancelled
-     * @param canelledDate
-     * @param dividenAnnotations 
-     */
-    public Dividend(int id, int clientCompanyId, int dividendDeclaredId, int dividendIssueTypeId, int holderCompanyAccountId, int warrantNumber, String clientCompName, String issueType, String issueDate, int divNumber, String yearType, String yearEnding, String SHolderMailingAddr, double rate, int compAccHoldings, double withldingTaxRate, double grossAmount, double tax, double payableAmount, String payableDate, boolean issued, String issuedDate, boolean reIssued, String reIssuedDate, Boolean paid, String paidDate, String paymentMethod, boolean unclaimed, String unclaimedDate, boolean cancelled, String canelledDate, List<DividendAnnotation> dividenAnnotations) {
+    public Dividend(int id, int clientCompanyId, int dividendDeclaredId, int dividendIssueTypeId, int holderCompanyAccountId, int warrantNumber, String clientCompName, String issueType, String issueDate, int divNumber, String yearType, String yearEnding, String SHolderMailingAddr, double rate, int compAccHoldings, double withldingTaxRate, double grossAmount, double tax, double payableAmount, String payableDate, boolean issued, String issuedDate, boolean reIssued, String reIssuedDate, boolean paid, String paidDate, String paymentMethod, boolean unclaimed, String unclaimedDate, boolean cancelled, String canelledDate, String annotation, List<DividendAnnotation> dividenAnnotations) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;
         this.dividendDeclaredId = dividendDeclaredId;
@@ -165,6 +134,7 @@ public class Dividend implements Serializable {
         this.unclaimedDate = unclaimedDate;
         this.cancelled = cancelled;
         this.canelledDate = canelledDate;
+        this.annotation = annotation;
         this.dividenAnnotations = dividenAnnotations;
     }
 
@@ -360,11 +330,11 @@ public class Dividend implements Serializable {
         this.reIssuedDate = reIssuedDate;
     }
 
-    public Boolean getPaid() {
+    public boolean getPaid() {
         return paid;
     }
 
-    public void setPaid(Boolean paid) {
+    public void setPaid(boolean paid) {
         this.paid = paid;
     }
 
@@ -414,6 +384,14 @@ public class Dividend implements Serializable {
 
     public void setCanelledDate(String canelledDate) {
         this.canelledDate = canelledDate;
+    }
+
+    public String getAnnotation() {
+        return annotation;
+    }
+
+    public void setAnnotation(String annotation) {
+        this.annotation = annotation;
     }
 
     public List<DividendAnnotation> getDividenAnnotations() {
