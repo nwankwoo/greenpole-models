@@ -14,18 +14,19 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+import org.greenpole.entity.model.holder.Holder;
 
 /**
  *
  * @author Jephthah Sadare
  */
 @XmlRootElement
-@XmlSeeAlso({Dividend.class, DividendSettlement.class})
+@XmlSeeAlso({Dividend.class, DividendSettlement.class, Holder.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"id", "clientCompanyId", "yearType",
     "issueType", "issueDate", "qualifyDate", "withholdingTaxRateInd",
     "withholdingTaxRateCorp", "yearEnding", "datePayable", "rate",
-    "dividends", "dividendSettlements"})
+    "dividends", "dividendSettlements", "holders"})
 
 public class DividendDeclared implements Serializable {
 
@@ -38,8 +39,6 @@ public class DividendDeclared implements Serializable {
     @XmlElement
     private String issueType;
     @XmlElement
-    private String issueDate;
-    @XmlElement
     private String qualifyDate;
     @XmlElement
     private double withholdingTaxRateInd;
@@ -51,20 +50,21 @@ public class DividendDeclared implements Serializable {
     private String datePayable;
     @XmlElement
     private double rate;
-    @XmlElementWrapper
+    @XmlElementWrapper(name = "dividends")
     private List<Dividend> dividends;
-    @XmlElementWrapper
+    @XmlElementWrapper(name = "dividendSettlements")
     private List<DividendSettlement> dividendSettlements;
+    @XmlElementWrapper
+    private List<Holder> holders;
 
     public DividendDeclared() {
     }
 
-    public DividendDeclared(int id, int clientCompanyId, String yearType, String issueType, String issueDate, String qualifyDate, double withholdingTaxRateInd, double withholdingTaxRateCorp, int yearEnding, String datePayable, double rate, List<Dividend> dividends, List<DividendSettlement> dividendSettlements) {
+    public DividendDeclared(int id, int clientCompanyId, String yearType, String issueType, String qualifyDate, double withholdingTaxRateInd, double withholdingTaxRateCorp, int yearEnding, String datePayable, double rate, List<Dividend> dividends, List<DividendSettlement> dividendSettlements) {
         this.id = id;
         this.clientCompanyId = clientCompanyId;
         this.yearType = yearType;
         this.issueType = issueType;
-        this.issueDate = issueDate;
         this.qualifyDate = qualifyDate;
         this.withholdingTaxRateInd = withholdingTaxRateInd;
         this.withholdingTaxRateCorp = withholdingTaxRateCorp;
@@ -73,6 +73,22 @@ public class DividendDeclared implements Serializable {
         this.rate = rate;
         this.dividends = dividends;
         this.dividendSettlements = dividendSettlements;
+    }
+
+    public DividendDeclared(int id, int clientCompanyId, String yearType, String issueType, String issueDate, String qualifyDate, double withholdingTaxRateInd, double withholdingTaxRateCorp, int yearEnding, String datePayable, double rate, List<Dividend> dividends, List<DividendSettlement> dividendSettlements, List<Holder> holders) {
+        this.id = id;
+        this.clientCompanyId = clientCompanyId;
+        this.yearType = yearType;
+        this.issueType = issueType;
+        this.qualifyDate = qualifyDate;
+        this.withholdingTaxRateInd = withholdingTaxRateInd;
+        this.withholdingTaxRateCorp = withholdingTaxRateCorp;
+        this.yearEnding = yearEnding;
+        this.datePayable = datePayable;
+        this.rate = rate;
+        this.dividends = dividends;
+        this.dividendSettlements = dividendSettlements;
+        this.holders = holders;
     }
 
     public int getId() {
@@ -101,14 +117,6 @@ public class DividendDeclared implements Serializable {
 
     public String getIssueType() {
         return issueType;
-    }
-
-    public String getIssueDate() {
-        return issueDate;
-    }
-
-    public void setIssueDate(String issueDate) {
-        this.issueDate = issueDate;
     }
 
     public void setIssueType(String issueType) {
@@ -177,6 +185,14 @@ public class DividendDeclared implements Serializable {
 
     public void setDividendSettlements(List<DividendSettlement> dividendSettlements) {
         this.dividendSettlements = dividendSettlements;
+    }
+
+    public List<Holder> getHolders() {
+        return holders;
+    }
+
+    public void setHolders(List<Holder> holders) {
+        this.holders = holders;
     }
 
 }

@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"descriptor","shareUnit","numberOfShareholders",
     "numberOfBondholders","clientCompany"})
+
 public class QueryClientCompany implements Serializable {
     /**
      * Default representation of descriptor=clientCompany:none;shareUnit:none;numberOfShareholders:none;numberOfBondholders:none
