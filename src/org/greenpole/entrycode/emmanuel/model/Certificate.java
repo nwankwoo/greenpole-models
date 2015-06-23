@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
     "holderId","initialPublicOfferId","privatePlacementId",
     "rightsIssueId","certificateNumber","shareVolume","bondHolding","holderName",
     "holderAddress","issuingCompName","issueDate","certNarration","cancelled","claimed","immobStatus","certificateVerification","isShareholder",
-    "newHolderId","newHolderClientCompanyId"})
+    "newHolderId","newHolderClientCompanyId","certificateLodgement"})
 public class Certificate implements Serializable {
     @XmlElement
      private int id;
@@ -71,11 +71,13 @@ public class Certificate implements Serializable {
     private int newHolderId;
     @XmlElement
     private int newHolderClientCompanyId;
+    @XmlElement
+    private CertificateLodgement certificateLodgement;
 
     public Certificate() {
     }
 
-    public Certificate(int id, int certificateLodgementId, int clientCompanyId, int holderId, int initialPublicOfferId, int privatePlacementId, int rightsIssueId, int certificateNumber, int shareVolume, int bondHolding, String holderName, String holderAddress, String issuingCompName, String issueDate, String certNarration, boolean cancelled, boolean claimed, boolean immobStatus, boolean isShareholder, List<CertificateVerification> certificateVerification) {
+    public Certificate(int id, int certificateLodgementId, int clientCompanyId, int holderId, int initialPublicOfferId, int privatePlacementId, int rightsIssueId, int certificateNumber, int shareVolume, int bondHolding, String holderName, String holderAddress, String issuingCompName, String issueDate, String certNarration, boolean cancelled, boolean claimed, boolean immobStatus, boolean isShareholder, List<CertificateVerification> certificateVerification, int newHolderId, int newHolderClientCompanyId, CertificateLodgement certificateLodgement) {
         this.id = id;
         this.certificateLodgementId = certificateLodgementId;
         this.clientCompanyId = clientCompanyId;
@@ -96,8 +98,12 @@ public class Certificate implements Serializable {
         this.immobStatus = immobStatus;
         this.isShareholder = isShareholder;
         this.certificateVerification = certificateVerification;
+        this.newHolderId = newHolderId;
+        this.newHolderClientCompanyId = newHolderClientCompanyId;
+        this.certificateLodgement = certificateLodgement;
     }
-    public Certificate(int certificateLodgementId, int clientCompanyId, int holderId, int initialPublicOfferId, int privatePlacementId, int rightsIssueId, int certificateNumber, int shareVolume, int bondHolding, String holderName, String holderAddress, String issuingCompName, String issueDate, String certNarration, boolean cancelled, boolean claimed, boolean immobStatus, boolean isShareholder, List<CertificateVerification> certificateVerification) {
+
+    public Certificate(int certificateLodgementId, int clientCompanyId, int holderId, int initialPublicOfferId, int privatePlacementId, int rightsIssueId, int certificateNumber, int shareVolume, int bondHolding, String holderName, String holderAddress, String issuingCompName, String issueDate, String certNarration, boolean cancelled, boolean claimed, boolean immobStatus, boolean isShareholder, List<CertificateVerification> certificateVerification, int newHolderId, int newHolderClientCompanyId, CertificateLodgement certificateLodgement) {
         this.certificateLodgementId = certificateLodgementId;
         this.clientCompanyId = clientCompanyId;
         this.holderId = holderId;
@@ -117,7 +123,12 @@ public class Certificate implements Serializable {
         this.immobStatus = immobStatus;
         this.isShareholder = isShareholder;
         this.certificateVerification = certificateVerification;
+        this.newHolderId = newHolderId;
+        this.newHolderClientCompanyId = newHolderClientCompanyId;
+        this.certificateLodgement = certificateLodgement;
     }
+
+    
 
     public Certificate(int newHolderId, int newHolderClientCompanyId) {
         this.newHolderId = newHolderId;
@@ -432,6 +443,20 @@ public class Certificate implements Serializable {
      */
     public void setNewHolderClientCompanyId(int newHolderClientCompanyId) {
         this.newHolderClientCompanyId = newHolderClientCompanyId;
+    }
+
+    /**
+     * @return the certificateLodgement
+     */
+    public CertificateLodgement getCertificateLodgement() {
+        return certificateLodgement;
+    }
+
+    /**
+     * @param certificateLodgement the certificateLodgement to set
+     */
+    public void setCertificateLodgement(CertificateLodgement certificateLodgement) {
+        this.certificateLodgement = certificateLodgement;
     }
 
     }
