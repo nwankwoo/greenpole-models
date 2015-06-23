@@ -5,6 +5,7 @@
  */
 package org.greenpole.entrycode.emmanuel.model;
 
+import java.io.Serializable;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -20,8 +21,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"id","clientCompanyId","dividendDeclaredId","dividendIssueTypeId","holderCompanyAccountId","warrantNumber","clientCompName","issueType",
     "issueDate","divNumber","yearType","yearEnding","SHolderMailingAddr","rate","compAccHoldings","withldingTaxRate","grossAmount","tax","payableAmount",
-    "payableDate","issued","issuedDate","reIssued","reIssuedDate","paid","paidDate","paymentMethod","unclaimed","unclaimedDate","cancelled","canelledDate","dividendAnnotation"})
-public class Dividend {
+    "payableDate","issued","issuedDate","reIssued","reIssuedDate","paid","paidDate","paymentMethod","unclaimed","unclaimedDate","cancelled","canelledDate","dividenAnnotation"})
+public class Dividend implements Serializable {
   @XmlElement
      private int id;
   @XmlElement
@@ -84,8 +85,8 @@ public class Dividend {
      private boolean cancelled;
   @XmlElement
      private String canelledDate; 
-  @XmlElementWrapper(name = "dividendAnnotation ")
-     private List<DividenAnnotation> dividendAnnotation;
+  @XmlElementWrapper(name = "dividenAnnotation ")
+     private List<DividenAnnotation> dividenAnnotation;
 
     public Dividend() {
     }
@@ -525,17 +526,17 @@ public class Dividend {
     }
 
     /**
-     * @return the dividendAnnotation
+     * @return the dividenAnnotation
      */
-    public List<DividenAnnotation> getDividendAnnotation() {
-        return dividendAnnotation;
+    public List<DividenAnnotation> getDividenAnnotation() {
+        return dividenAnnotation;
     }
 
     /**
-     * @param dividendAnnotation the dividendAnnotation to set
+     * @param dividenAnnotation the dividenAnnotation to set
      */
-    public void setDividendAnnotation(List<DividenAnnotation> dividendAnnotation) {
-        this.dividendAnnotation = dividendAnnotation;
+    public void setDividenAnnotation(List<DividenAnnotation> dividenAnnotation) {
+        this.dividenAnnotation = dividenAnnotation;
     }
 
      

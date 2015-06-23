@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package org.greenpole.entrycode.emmanuel.model;
+import java.io.Serializable;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -16,8 +17,8 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {""})
-public class CertificateLodgement {
+@XmlType(propOrder = {"id","controlNumber","title","date","certificateNumber","holdings","shareholderName","chn","status","processed","certificate"})
+public class CertificateLodgement implements Serializable {
     @XmlElement
      private int id;
     @XmlElement
