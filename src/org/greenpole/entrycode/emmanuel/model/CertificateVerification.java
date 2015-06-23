@@ -8,6 +8,7 @@ package org.greenpole.entrycode.emmanuel.model;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -18,28 +19,36 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"id", "certificateId", "status",
-    "note"})
+    "note","verificationType"})
 public class CertificateVerification implements Serializable {
 
+    @XmlElement
     private int id;
+    @XmlElement
     private int certificateId;
+    @XmlElement
     private String status;
+    @XmlElement
     private String note;
+    @XmlElement
+    private String verificationType;
 
     public CertificateVerification() {
     }
 
-    public CertificateVerification(int id, int certificateId, String status, String note) {
+    public CertificateVerification(int id, int certificateId, String status, String note, String verificationType) {
         this.id = id;
         this.certificateId = certificateId;
         this.status = status;
         this.note = note;
+        this.verificationType = verificationType;
     }
 
-    public CertificateVerification(int certificateId, String status, String note) {
+    public CertificateVerification(int certificateId, String status, String note, String verificationType) {
         this.certificateId = certificateId;
         this.status = status;
         this.note = note;
+        this.verificationType = verificationType;
     }
 
     /**
@@ -97,5 +106,19 @@ public class CertificateVerification implements Serializable {
     public void setNote(String note) {
         this.note = note;
     }
-    
+
+    /**
+     * @return the verificationType
+     */
+    public String getVerificationType() {
+        return verificationType;
+    }
+
+    /**
+     * @param verificationType the verificationType to set
+     */
+    public void setVerificationType(String verificationType) {
+        this.verificationType = verificationType;
+    }
+
 }

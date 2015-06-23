@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id","holderBondAccountId","clientCompanyName","issueDate","couponNumber","bondType","redemptionAmt","couponAmt","bondholderMailingAddress",
+@XmlType(propOrder = {"id","holderBondAccountId","clientCompanyName","issueDate","couponNumber","bondTypeId","redemptionAmt","couponAmt","bondholderMailingAddress",
     "redemptnDate","totalPymtsToBMade","totalPaymtsMade","paid","paidDate"})
 public class Coupon implements Serializable {
     @XmlElement
@@ -32,7 +32,7 @@ public class Coupon implements Serializable {
     @XmlElement
      private int couponNumber;
     @XmlElement
-     private String bondType;
+     private int bondTypeId;
     @XmlElement
      private double redemptionAmt;
     @XmlElement
@@ -52,14 +52,13 @@ public class Coupon implements Serializable {
 
     public Coupon() {
     }
-
-    public Coupon(int id, int holderBondAccountId, String clientCompanyName, String issueDate, int couponNumber, String bondType, double redemptionAmt, double couponAmt, String bondholderMailingAddress, String redemptnDate, double totalPymtsToBMade, double totalPaymtsMade, boolean paid, String paidDate) {
+    public Coupon(int id, int holderBondAccountId, String clientCompanyName, String issueDate, int couponNumber, int bondTypeId, double redemptionAmt, double couponAmt, String bondholderMailingAddress, String redemptnDate, double totalPymtsToBMade, double totalPaymtsMade, boolean paid, String paidDate) {
         this.id = id;
         this.holderBondAccountId = holderBondAccountId;
         this.clientCompanyName = clientCompanyName;
         this.issueDate = issueDate;
         this.couponNumber = couponNumber;
-        this.bondType = bondType;
+        this.bondTypeId = bondTypeId;
         this.redemptionAmt = redemptionAmt;
         this.couponAmt = couponAmt;
         this.bondholderMailingAddress = bondholderMailingAddress;
@@ -69,7 +68,6 @@ public class Coupon implements Serializable {
         this.paid = paid;
         this.paidDate = paidDate;
     }
-
     /**
      * @return the id
      */
@@ -141,17 +139,17 @@ public class Coupon implements Serializable {
     }
 
     /**
-     * @return the bondType
+     * @return the bondTypeId
      */
-    public String getBondType() {
-        return bondType;
+    public int getBondTypeId() {
+        return bondTypeId;
     }
 
     /**
-     * @param bondType the bondType to set
+     * @param bondTypeId the bondTypeId to set
      */
-    public void setBondType(String bondType) {
-        this.bondType = bondType;
+    public void setBondTypeId(int bondTypeId) {
+        this.bondTypeId = bondTypeId;
     }
 
     /**
@@ -265,5 +263,5 @@ public class Coupon implements Serializable {
     public void setPaidDate(String paidDate) {
         this.paidDate = paidDate;
     }
-     
-}
+
+    }
