@@ -60,7 +60,8 @@ import org.greenpole.entity.security.UserProfile;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"id","code","messageTag","notificationType","from","to",
-    "description","model","fromType","toType","attendedTo"})
+    "description","model","fromType","toType","attendedTo","rejected","rejectionReason",
+    "sentDate","attendedDate"})
 @XmlSeeAlso({Address.class, EmailAddress.class, PhoneNumber.class, Bank.class, BondOffer.class,
     BondOfferPaymentPlan.class, BondType.class, ClientCompany.class, InitialPublicOffer.class,
     PrivatePlacement.class, QueryClientCompany.class, ShareQuotation.class, UnitTransfer.class,
@@ -93,6 +94,14 @@ public class NotificationWrapper implements Serializable {
     private String toType;
     @XmlElement
     private boolean attendedTo;
+    @XmlElement
+    private boolean rejected;
+    @XmlElement
+    private String rejectionReason;
+    @XmlElement
+    private String sentDate;
+    @XmlElement
+    private String attendedDate;
 
     public NotificationWrapper() {
     }
@@ -111,7 +120,7 @@ public class NotificationWrapper implements Serializable {
      * @param toType
      * @param attendedTo 
      */
-    public NotificationWrapper(int id, String code, String description, String from, String to, List<?> model, String messageTag, String notificationType, String fromType, String toType, boolean attendedTo) {
+    public NotificationWrapper(int id, String code, String description, String from, String to, List<?> model, String messageTag, String notificationType, String fromType, String toType, boolean attendedTo, String rejectedReason, String sentDate, String attendedDate) {
         this.id = id;
         this.code = code;
         this.description = description;
@@ -139,7 +148,7 @@ public class NotificationWrapper implements Serializable {
      * @param toType
      * @param attendedTo 
      */
-    public NotificationWrapper(String code, String description, String from, String to, List<?> model, String messageTag, String notificationType, String fromType, String toType, boolean attendedTo) {
+    public NotificationWrapper(String code, String description, String from, String to, List<?> model, String messageTag, String notificationType, String fromType, String toType, boolean attendedTo, String rejectedReason, String sentDate, String attendedDate) {
         this.code = code;
         this.description = description;
         this.from = from;
@@ -332,5 +341,37 @@ public class NotificationWrapper implements Serializable {
      */
     public void setAttendedTo(boolean attendedTo) {
         this.attendedTo = attendedTo;
+    }
+
+    public boolean isRejected() {
+        return rejected;
+    }
+
+    public void setRejected(boolean rejected) {
+        this.rejected = rejected;
+    }
+
+    public String getRejectionReason() {
+        return rejectionReason;
+    }
+
+    public void setRejectionReason(String rejectionReason) {
+        this.rejectionReason = rejectionReason;
+    }
+
+    public String getSentDate() {
+        return sentDate;
+    }
+
+    public void setSentDate(String sentDate) {
+        this.sentDate = sentDate;
+    }
+
+    public String getAttendedDate() {
+        return attendedDate;
+    }
+
+    public void setAttendedDate(String attendedDate) {
+        this.attendedDate = attendedDate;
     }
 }
