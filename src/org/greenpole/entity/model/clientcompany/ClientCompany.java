@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlSeeAlso({Address.class,EmailAddress.class,PhoneNumber.class})
 @XmlAccessorType(XmlAccessType.NONE)
-@XmlType(propOrder = {"id","name","code","ceo","secretary","addresses","emailAddresses",
+@XmlType(propOrder = {"id","name","code","ceo","secretary","dateIncorp","addresses","emailAddresses",
     "phoneNumbers","nseSectorId","nseSectorName","depositoryId","depositoryName","valid",
     "clientCompanyPrimary","merged","shareUnitPrice","noShareholders","noBondholders",
     "deletedAddresses","deletedEmailAddresses","deletedPhoneNumbers"})
@@ -45,6 +45,8 @@ public class ClientCompany implements Serializable {
     private String ceo;
     @XmlElement
     private String secretary;
+    @XmlElement
+    private String dateIncorp;
     @XmlElementWrapper(name = "addresses")
     private List <Address> addresses;
     @XmlElementWrapper(name = "emailAddresses")
@@ -93,6 +95,7 @@ public class ClientCompany implements Serializable {
      * @param code the company's code
      * @param nseSectorName  the NSE Sector the company belongs to
      * @param ceo the company's CEO
+     * @param dateIncorp date the company was incorporated
      * @param secretary the company's secretary
      * @param addresses the company's addresses
      * @param emailAddresses the company's email addresses
@@ -100,11 +103,12 @@ public class ClientCompany implements Serializable {
      * @param depositoryName the company's depository
      * @param valid the company's valid status
      */
-    public ClientCompany(String name, String code, String ceo, String secretary, List<Address> addresses, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers, String nseSectorName, String depositoryName) {
+    public ClientCompany(String name, String code, String ceo, String secretary, String dateIncorp, List<Address> addresses, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers, String nseSectorName, String depositoryName) {
         this.name = name;
         this.code = code;
         this.ceo = ceo;
         this.secretary = secretary;
+        this.dateIncorp = dateIncorp;
         this.addresses = addresses;
         this.valid = valid;
         this.emailAddresses = emailAddresses;
@@ -121,18 +125,20 @@ public class ClientCompany implements Serializable {
      * @param nseSectorId the NSE Sector the company belongs to
      * @param ceo the company's CEO
      * @param secretary the company's secretary
+     * @param dateIncorp date the company was incorporated
      * @param addresses the company's addresses
      * @param depositoryId the depository's unique identification
      * @param valid the company's valid status
      * @param emailAddresses the company's email addresses
      * @param phoneNumbers the company's phone numbers 
      */
-    public ClientCompany(String name, String code, int nseSectorId, String ceo, String secretary, List<Address> addresses, int depositoryId, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers) {
+    public ClientCompany(String name, String code, int nseSectorId, String ceo, String secretary, String dateIncorp, List<Address> addresses, int depositoryId, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers) {
         this.name = name;
         this.code = code;
         this.nseSectorId = nseSectorId;
         this.ceo = ceo;
         this.secretary = secretary;
+        this.dateIncorp = dateIncorp;
         this.addresses = addresses;
         this.depositoryId = depositoryId;
         this.valid = valid;
@@ -151,6 +157,7 @@ public class ClientCompany implements Serializable {
      * @param nseSectorId the NSE Sector the company belongs to
      * @param ceo the company's CEO
      * @param secretary the company's secretary
+     * @param dateIncorp date the company was incorporated
      * @param addresses the company's addresses
      * @param depositoryId the depository's unique identification
      * @param valid the company's valid status
@@ -160,13 +167,14 @@ public class ClientCompany implements Serializable {
      * @param deletedEmailAddresses the company's email addresses to delete
      * @param deletedPhoneNumbers the company's phone numbers to delete
      */
-    public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, List<Address> addresses, int depositoryId, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers, List<Address> deletedAddresses, List<EmailAddress> deletedEmailAddresses, List<PhoneNumber> deletedPhoneNumbers) {
+    public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, String dateIncorp, List<Address> addresses, int depositoryId, boolean valid, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers, List<Address> deletedAddresses, List<EmailAddress> deletedEmailAddresses, List<PhoneNumber> deletedPhoneNumbers) {
         this.id = id;
         this.name = name;
         this.code = code;
         this.nseSectorId = nseSectorId;
         this.ceo = ceo;
         this.secretary = secretary;
+        this.dateIncorp = dateIncorp;
         this.addresses = addresses;
         this.depositoryId = depositoryId;
         this.valid = valid;
@@ -194,13 +202,14 @@ public class ClientCompany implements Serializable {
         this.depositoryName = depositoryName;
     }
 
-    public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, List<Address> addresses, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers, int depositoryId, boolean valid, String nseSectorName, String depositoryName, int noShareholders, int noBondholders, double shareUnitPrice, List<Address> deletedAddresses, List<EmailAddress> deletedEmailAddresses, List<PhoneNumber> deletedPhoneNumbers, boolean clientCompanyPrimary, boolean merged) {
+    public ClientCompany(int id, String name, String code, int nseSectorId, String ceo, String secretary, String dateIncorp, List<Address> addresses, List<EmailAddress> emailAddresses, List<PhoneNumber> phoneNumbers, int depositoryId, boolean valid, String nseSectorName, String depositoryName, int noShareholders, int noBondholders, double shareUnitPrice, List<Address> deletedAddresses, List<EmailAddress> deletedEmailAddresses, List<PhoneNumber> deletedPhoneNumbers, boolean clientCompanyPrimary, boolean merged) {
         this.id = id;
         this.name = name;
         this.code = code;
         this.nseSectorId = nseSectorId;
         this.ceo = ceo;
         this.secretary = secretary;
+        this.dateIncorp = dateIncorp;
         this.addresses = addresses;
         this.emailAddresses = emailAddresses;
         this.phoneNumbers = phoneNumbers;
@@ -319,6 +328,14 @@ public class ClientCompany implements Serializable {
      */
     public void setSecretary(String secretary) {
         this.secretary = secretary;
+    }
+
+    public String getDateIncorp() {
+        return dateIncorp;
+    }
+
+    public void setDateIncorp(String dateIncorp) {
+        this.dateIncorp = dateIncorp;
     }
 
     /**

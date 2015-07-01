@@ -27,7 +27,8 @@ import org.greenpole.entity.model.stockbroker.Stockbroker;
 @XmlSeeAlso({HolderBondAccount.class, HolderCompanyAccount.class, EmailAddress.class, PhoneNumber.class, Address.class})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(propOrder = {"holderId","holderAcctNumber", "chn", "firstName", "middleName", "lastName",
-    "typeId", "gender", "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "addressPrimary",
+    "typeId", "gender", "maritalStatus", "occupation", "religion", "stateOfOrigin", "lga", 
+    "dob", "taxExempted", "merged", "pryHolder", "pryAddress", "addressPrimary",
     "phoneNumbers", "emailAddresses", "residentialAddresses", "postalAddresses", "companyAccounts",
     "bondAccounts", "administrators","holderStockbroker","changes","deletedPostalAddresses",
     "deletedResidentialAddresses","deletedEmailAddresses","deletedPhoneNumbers"})
@@ -51,6 +52,16 @@ public class Holder implements Serializable {
     private String gender;
     @XmlElement
     private String dob;
+    @XmlElement
+    private String maritalStatus;
+    @XmlElement
+    private String occupation;
+    @XmlElement
+    private String religion;
+    @XmlElement
+    private String stateOfOrigin;
+    @XmlElement
+    private String lga;
     @XmlElement
     private boolean taxExempted;
     @XmlElement
@@ -92,40 +103,6 @@ public class Holder implements Serializable {
     private List<PhoneNumber> deletedPhoneNumbers;
     
     public Holder(){}
-
-    public Holder(String chn, String firstName, String middleName, String lastName, int typeId, String gender, String dob, boolean taxExempted, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<EmailAddress> holderEmailAddresses, List<Address> holderResidentialAddresses, List<Address> holderPostalAddresses) {
-        this.chn = chn;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.typeId = typeId;
-        this.gender = gender;
-        this.dob = dob;
-        this.taxExempted = taxExempted;
-        this.pryAddress = pryAddress;
-        this.phoneNumbers = holderPhoneNumbers;
-        this.emailAddresses = holderEmailAddresses;
-        this.residentialAddresses = holderResidentialAddresses;
-        this.postalAddresses = holderPostalAddresses;
-    }
-
-    public Holder(int holderId, String chn, String firstName, String middleName, String lastName, int typeId, String gender, String dob, boolean taxExempted, String pryAddress, List<PhoneNumber> holderPhoneNumbers, List<EmailAddress> holderEmailAddresses, List<Address> holderResidentialAddresses, List<Address> holderPostalAddresses, List<HolderChanges> changes) {
-        this.holderId = holderId;
-        this.chn = chn;
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.typeId = typeId;
-        this.gender = gender;
-        this.dob = dob;
-        this.taxExempted = taxExempted;
-        this.pryAddress = pryAddress;
-        this.phoneNumbers = holderPhoneNumbers;
-        this.emailAddresses = holderEmailAddresses;
-        this.residentialAddresses = holderResidentialAddresses;
-        this.postalAddresses = holderPostalAddresses;
-        this.changes = changes;
-    }
         
     public int getHolderId() {
         return holderId;
@@ -197,6 +174,46 @@ public class Holder implements Serializable {
 
     public void setDob(String dob) {
         this.dob = dob;
+    }
+
+    public String getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public String getReligion() {
+        return religion;
+    }
+
+    public void setReligion(String religion) {
+        this.religion = religion;
+    }
+
+    public String getStateOfOrigin() {
+        return stateOfOrigin;
+    }
+
+    public void setStateOfOrigin(String stateOfOrigin) {
+        this.stateOfOrigin = stateOfOrigin;
+    }
+
+    public String getLga() {
+        return lga;
+    }
+
+    public void setLga(String lga) {
+        this.lga = lga;
     }
 
     public boolean isTaxExempted() {

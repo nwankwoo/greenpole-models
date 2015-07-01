@@ -22,6 +22,8 @@ public class TextSend implements Serializable {
     private Map<String, String> numbersAndIds;
     private boolean isFlash;
     private boolean isBulk;
+    private boolean allowText;
+    private boolean withDbInfo;
     private int holderId;
 
     public TextSend() {
@@ -89,6 +91,22 @@ public class TextSend implements Serializable {
 
     public void setIsBulk(boolean isBulk) {
         this.isBulk = isBulk;
+    }
+
+    public boolean isAllowText() {
+        return allowText;
+    }
+
+    public void setAllowText(boolean allowText) {
+        this.allowText = allowText;
+    }
+
+    public boolean isWithDbInfo() {
+        return withDbInfo;
+    }
+
+    public void setWithDbInfo(boolean withDbInfo) {
+        this.withDbInfo = withDbInfo;
     }
 
     public int getHolderId() {

@@ -31,12 +31,7 @@ public class ConfirmationDetails implements Serializable {
 
     public ConfirmationDetails() {
     }
-
-    /**
-     *
-     * @param title
-     * @param details
-     */
+    
     public ConfirmationDetails(String title, List<?> details) {
         this.title = title;
         this.details = details;
